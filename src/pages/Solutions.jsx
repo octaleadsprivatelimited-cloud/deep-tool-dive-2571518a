@@ -8,28 +8,52 @@ import Footer from '@/components/Footer';
 
 const Solutions = () => {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
       <Header currentPage="Solutions" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950">
-        <div className="container mx-auto text-center px-4">
+      <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
+            alt="Security Solutions" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-slate-900/80 to-cyan-950/80"></div>
+        </div>
+        <div className="container mx-auto text-center px-4 relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             Security Solutions
           </h1>
-          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
             Comprehensive security solutions designed for different industries and organizational needs. 
             From enterprise-grade platforms to specialized industry solutions.
           </p>
         </div>
       </section>
 
+      {/* White Transparent Section */}
+      <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Industry-Leading Security Solutions
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Tailored cybersecurity solutions designed for different industries and organizational needs, 
+              from enterprise-grade platforms to specialized industry solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Industry Solutions */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Industry-Specific Solutions</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-slate-900">Industry-Specific Solutions</h2>
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Tailored security solutions designed to meet the unique challenges and compliance requirements of different industries.
             </p>
           </div>
@@ -78,16 +102,16 @@ const Solutions = () => {
                 compliance: "ISO 27001, NIST, IEC 62443"
               }
             ].map((solution, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="mb-4">{solution.icon}</div>
-                  <CardTitle className="text-xl text-white">{solution.title}</CardTitle>
-                  <CardDescription className="text-slate-300">{solution.description}</CardDescription>
+                  <CardTitle className="text-xl text-slate-900">{solution.title}</CardTitle>
+                  <CardDescription className="text-slate-600">{solution.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 mb-4">
                     {solution.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-slate-300">
+                      <li key={idx} className="flex items-center text-slate-600">
                         <CheckCircle className="text-cyan-400 mr-2" size={16} />
                         {feature}
                       </li>
@@ -98,7 +122,7 @@ const Solutions = () => {
                       Compliance: {solution.compliance}
                     </Badge>
                   </div>
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-slate-900">
                     Learn More
                     <ArrowRight className="ml-2" size={16} />
                   </Button>
@@ -110,11 +134,11 @@ const Solutions = () => {
       </section>
 
       {/* Technology Solutions */}
-      <section className="py-20 bg-slate-950">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Technology Solutions</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Cutting-edge security technologies and platforms to protect your digital infrastructure.
             </p>
           </div>
@@ -145,15 +169,15 @@ const Solutions = () => {
                 icon: <Zap className="text-cyan-400" size={32} />
               }
             ].map((solution, index) => (
-              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-cyan-600 transition-all duration-300">
+              <div key={index} className="bg-slate-50 rounded-lg p-6 border border-slate-200 hover:border-cyan-600 transition-all duration-300">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">{solution.icon}</div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-white mb-2">{solution.title}</h3>
-                    <p className="text-slate-300 mb-4">{solution.description}</p>
+                    <h3 className="text-xl font-semibold text-slate-900 mb-2">{solution.title}</h3>
+                    <p className="text-slate-600 mb-4">{solution.description}</p>
                     <ul className="space-y-1">
                       {solution.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-slate-300 text-sm">
+                        <li key={idx} className="flex items-center text-slate-600 text-sm">
                           <CheckCircle className="text-cyan-400 mr-2" size={14} />
                           {feature}
                         </li>
@@ -168,11 +192,11 @@ const Solutions = () => {
       </section>
 
       {/* Implementation Process */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Implementation Process</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Our proven methodology ensures successful implementation and deployment of security solutions.
             </p>
           </div>
@@ -200,11 +224,11 @@ const Solutions = () => {
               }
             ].map((step, index) => (
               <div key={index} className="text-center">
-                <div className="w-16 h-16 bg-cyan-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
+                <div className="w-16 h-16 bg-cyan-600 rounded-full flex items-center justify-center text-2xl font-bold text-slate-900 mx-auto mb-4">
                   {step.step}
                 </div>
-                <h3 className="text-xl font-semibold text-white mb-2">{step.title}</h3>
-                <p className="text-slate-300">{step.description}</p>
+                <h3 className="text-xl font-semibold text-slate-900 mb-2">{step.title}</h3>
+                <p className="text-slate-600">{step.description}</p>
               </div>
             ))}
           </div>
@@ -212,7 +236,7 @@ const Solutions = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-cyan-900 to-blue-900">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Find the Right Solution for Your Organization</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
@@ -223,7 +247,7 @@ const Solutions = () => {
               Schedule Consultation
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-white text-slate-900 hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
               Download Solutions Guide
             </Button>
           </div>

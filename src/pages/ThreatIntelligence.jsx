@@ -8,35 +8,59 @@ import Footer from '@/components/Footer';
 
 const ThreatIntelligence = () => {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
       <Header currentPage="Threat Intelligence" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950">
-        <div className="container mx-auto text-center px-4">
+      <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+            alt="Threat Intelligence" 
+            className="w-full h-full object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-slate-900/80 to-cyan-950/80"></div>
+        </div>
+        <div className="container mx-auto text-center px-4 relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             Threat Intelligence
           </h1>
-          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
             Stay ahead of emerging threats with our advanced threat intelligence platform. 
             Real-time monitoring, analysis, and actionable intelligence to protect your organization.
           </p>
         </div>
       </section>
 
+      {/* White Transparent Section */}
+      <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
+        <div className="container mx-auto px-4">
+          <div className="text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+              Advanced Threat Intelligence Platform
+            </h2>
+            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+              Stay ahead of emerging threats with our cutting-edge threat intelligence platform, 
+              providing real-time monitoring, analysis, and actionable intelligence.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Live Threat Dashboard */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Live Threat Dashboard</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Real-time threat monitoring and analysis from our global threat intelligence network.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Threat Alerts */}
-            <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4 flex items-center">
                 <AlertTriangle className="text-red-400 mr-2" size={24} />
                 Active Threat Alerts
               </h3>
@@ -88,16 +112,16 @@ const ThreatIntelligence = () => {
                       </Badge>
                       <span className="text-slate-400 text-sm">{alert.time}</span>
                     </div>
-                    <h4 className="text-white font-semibold mb-1">{alert.title}</h4>
-                    <p className="text-slate-300 text-sm">{alert.description}</p>
+                    <h4 className="text-slate-900 font-semibold mb-1">{alert.title}</h4>
+                    <p className="text-slate-600 text-sm">{alert.description}</p>
                   </div>
                 ))}
               </div>
             </div>
 
             {/* Threat Statistics */}
-            <div className="bg-slate-800 rounded-lg p-6 border border-slate-700">
-              <h3 className="text-xl font-semibold text-white mb-4 flex items-center">
+            <div className="bg-slate-50 rounded-lg p-6 border border-slate-200">
+              <h3 className="text-xl font-semibold text-slate-900 mb-4 flex items-center">
                 <BarChart3 className="text-cyan-400 mr-2" size={24} />
                 Threat Statistics
               </h3>
@@ -110,21 +134,21 @@ const ThreatIntelligence = () => {
                 ].map((stat, index) => (
                   <div key={index} className="text-center p-4 bg-slate-700 rounded-lg">
                     <div className="flex items-center justify-center mb-2">{stat.icon}</div>
-                    <div className="text-2xl font-bold text-white mb-1">{stat.value}</div>
-                    <div className="text-slate-300 text-sm">{stat.label}</div>
+                    <div className="text-2xl font-bold text-slate-900 mb-1">{stat.value}</div>
+                    <div className="text-slate-600 text-sm">{stat.label}</div>
                   </div>
                 ))}
               </div>
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-300">Malware Detection Rate</span>
+                  <span className="text-slate-600">Malware Detection Rate</span>
                   <span className="text-green-400 font-semibold">99.7%</span>
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-2">
                   <div className="bg-green-400 h-2 rounded-full" style={{ width: '99.7%' }}></div>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="text-slate-300">False Positive Rate</span>
+                  <span className="text-slate-600">False Positive Rate</span>
                   <span className="text-cyan-400 font-semibold">0.1%</span>
                 </div>
                 <div className="w-full bg-slate-700 rounded-full h-2">
@@ -137,11 +161,11 @@ const ThreatIntelligence = () => {
       </section>
 
       {/* Threat Intelligence Services */}
-      <section className="py-20 bg-slate-950">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Threat Intelligence Services</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Comprehensive threat intelligence services to help you understand and defend against evolving cyber threats.
             </p>
           </div>
@@ -184,16 +208,16 @@ const ThreatIntelligence = () => {
                 features: ["Rapid response", "Countermeasures", "Threat mitigation", "Recovery support"]
               }
             ].map((service, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="mb-4">{service.icon}</div>
-                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
-                  <CardDescription className="text-slate-300">{service.description}</CardDescription>
+                  <CardTitle className="text-xl text-slate-900">{service.title}</CardTitle>
+                  <CardDescription className="text-slate-600">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-slate-300">
+                      <li key={idx} className="flex items-center text-slate-600">
                         <CheckCircle className="text-cyan-400 mr-2" size={16} />
                         {feature}
                       </li>
@@ -207,11 +231,11 @@ const ThreatIntelligence = () => {
       </section>
 
       {/* Threat Intelligence Reports */}
-      <section className="py-20 bg-slate-900">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Latest Threat Intelligence Reports</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
               Stay informed with our latest threat intelligence reports and security insights.
             </p>
           </div>
@@ -260,7 +284,7 @@ const ThreatIntelligence = () => {
                 severity: "Low Priority"
               }
             ].map((report, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300">
+              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
@@ -275,13 +299,13 @@ const ThreatIntelligence = () => {
                       {report.severity}
                     </Badge>
                   </div>
-                  <CardTitle className="text-lg text-white">{report.title}</CardTitle>
-                  <CardDescription className="text-slate-300">{report.description}</CardDescription>
+                  <CardTitle className="text-lg text-slate-900">{report.title}</CardTitle>
+                  <CardDescription className="text-slate-600">{report.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-400 text-sm">{report.date}</span>
-                    <Button variant="outline" className="text-cyan-400 border-cyan-600 hover:bg-cyan-600 hover:text-white">
+                    <Button variant="outline" className="text-cyan-400 border-cyan-600 hover:bg-cyan-600 hover:text-slate-900">
                       Read Report
                     </Button>
                   </div>
@@ -293,7 +317,7 @@ const ThreatIntelligence = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-cyan-900 to-blue-900">
+      <section className="py-20 bg-white text-slate-900">
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Get Advanced Threat Intelligence</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
@@ -305,7 +329,7 @@ const ThreatIntelligence = () => {
               Start Free Trial
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-white text-slate-900 hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
               Download Sample Report
             </Button>
           </div>

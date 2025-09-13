@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const News = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
+    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="News" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -26,7 +26,7 @@ const News = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             News & Updates
           </h1>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Stay informed with the latest cybersecurity news, company updates, industry insights, 
             and thought leadership from our expert team.
           </p>
@@ -37,10 +37,10 @@ const News = () => {
       <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Stay Informed With Latest Updates
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
               Stay informed with the latest cybersecurity news, company updates, industry insights, 
               and thought leadership from our expert team.
             </p>
@@ -49,20 +49,20 @@ const News = () => {
       </section>
 
       {/* Featured News */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Featured News</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               The most important cybersecurity news and company updates.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Main Featured Article */}
-            <Card className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+            <Card className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
               <div className="relative">
-                <div className="h-64 bg-white text-slate-900 rounded-t-lg flex items-center justify-center">
-                  <Shield className="text-slate-900" size={64} />
+                <div className="h-64 text-white rounded-t-lg flex items-center justify-center" style={{backgroundColor: '#003386'}}>
+                  <Shield className="text-white" size={64} />
                 </div>
                 <Badge className="absolute top-4 left-4 bg-red-900 text-red-300">Breaking News</Badge>
               </div>
@@ -81,8 +81,8 @@ const News = () => {
                     5 min read
                   </span>
                 </div>
-                <CardTitle className="text-2xl text-slate-900">CyberShield Pro Named Leader in Gartner Magic Quadrant for Managed Security Services</CardTitle>
-                <CardDescription className="text-slate-600 text-lg">
+                <CardTitle className="text-2xl text-white">CyberShield Pro Named Leader in Gartner Magic Quadrant for Managed Security Services</CardTitle>
+                <CardDescription className="text-slate-300 text-lg">
                   We're proud to announce that CyberShield Pro has been recognized as a Leader in the 
                   2024 Gartner Magic Quadrant for Managed Security Services for the third consecutive year.
                 </CardDescription>
@@ -93,7 +93,7 @@ const News = () => {
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">Company News</Badge>
                     <Badge className="bg-green-900/30 text-green-300 border-green-700">Award</Badge>
                   </div>
-                  <Button className="bg-cyan-600 hover:bg-cyan-700 text-slate-900">
+                  <Button className="bg-[#021346] hover:bg-[#021346]/90 text-white">
                     Read More
                     <ArrowRight className="ml-2" size={16} />
                   </Button>
@@ -129,7 +129,7 @@ const News = () => {
                   readTime: "4 min read"
                 }
               ].map((article, index) => (
-                <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
+                <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                   <CardHeader>
                     <div className="flex items-center space-x-4 text-sm text-slate-400 mb-2">
                       <span className="flex items-center">
@@ -145,13 +145,13 @@ const News = () => {
                         {article.readTime}
                       </span>
                     </div>
-                    <CardTitle className="text-lg text-slate-900">{article.title}</CardTitle>
-                    <CardDescription className="text-slate-600">{article.excerpt}</CardDescription>
+                    <CardTitle className="text-lg text-white">{article.title}</CardTitle>
+                    <CardDescription className="text-slate-300">{article.excerpt}</CardDescription>
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between">
                       <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{article.category}</Badge>
-                      <Button variant="outline" className="text-cyan-400 border-cyan-600 hover:bg-cyan-600 hover:text-slate-900">
+                      <Button variant="outline" className="text-cyan-400 border-[#021346] hover:bg-[#021346] hover:text-white">
                         Read More
                       </Button>
                     </div>
@@ -164,11 +164,11 @@ const News = () => {
       </section>
 
       {/* Industry News */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Industry News</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Latest cybersecurity news and insights from around the industry.
             </p>
           </div>
@@ -229,7 +229,7 @@ const News = () => {
                 trending: true
               }
             ].map((article, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{article.category}</Badge>
@@ -240,8 +240,8 @@ const News = () => {
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-lg text-slate-900">{article.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{article.excerpt}</CardDescription>
+                  <CardTitle className="text-lg text-white">{article.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{article.excerpt}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
@@ -257,7 +257,7 @@ const News = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-slate-400 text-sm">Source: {article.source}</span>
-                      <Button variant="outline" className="text-cyan-400 border-cyan-600 hover:bg-cyan-600 hover:text-slate-900">
+                      <Button variant="outline" className="text-cyan-400 border-[#021346] hover:bg-[#021346] hover:text-white">
                         <ExternalLink className="mr-1" size={14} />
                         Read
                       </Button>
@@ -271,11 +271,11 @@ const News = () => {
       </section>
 
       {/* Company Updates */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Company Updates</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Stay updated with the latest news and announcements from CyberShield Pro.
             </p>
           </div>
@@ -310,19 +310,19 @@ const News = () => {
                 icon: <User className="text-cyan-400" size={24} />
               }
             ].map((update, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-2">
                     {update.icon}
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{update.type}</Badge>
                   </div>
-                  <CardTitle className="text-lg text-slate-900">{update.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{update.description}</CardDescription>
+                  <CardTitle className="text-lg text-white">{update.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{update.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-400 text-sm">{update.date}</span>
-                    <Button variant="outline" className="text-cyan-400 border-cyan-600 hover:bg-cyan-600 hover:text-slate-900">
+                    <Button variant="outline" className="text-cyan-400 border-[#021346] hover:bg-[#021346] hover:text-white">
                       Learn More
                     </Button>
                   </div>
@@ -334,11 +334,11 @@ const News = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
-          <div className="bg-slate-50 rounded-lg p-8 border border-slate-200 text-center">
+          <div className="bg-slate-800 rounded-lg p-8 border border-slate-700 text-center">
             <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
-            <p className="text-xl text-slate-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-slate-300 mb-8 max-w-2xl mx-auto">
               Subscribe to our newsletter to receive the latest cybersecurity news, company updates, 
               and industry insights directly in your inbox.
             </p>
@@ -346,9 +346,9 @@ const News = () => {
               <input
                 type="email"
                 placeholder="Enter your email address"
-                className="flex-1 px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-slate-900 placeholder-slate-400 focus:border-cyan-600 focus:outline-none"
+                className="flex-1 px-4 py-3 rounded-lg bg-slate-700 border border-slate-600 text-white placeholder-slate-400 focus:border-[#021346] focus:outline-none"
               />
-              <Button className="bg-cyan-600 hover:bg-cyan-700 text-slate-900 font-semibold px-6 py-3 rounded-lg">
+              <Button className="bg-[#021346] hover:bg-[#021346]/90 text-white font-semibold px-6 py-3 rounded-lg">
                 Subscribe
               </Button>
             </div>
@@ -360,7 +360,7 @@ const News = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Stay Informed About Cybersecurity</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
@@ -371,7 +371,7 @@ const News = () => {
               Subscribe to Newsletter
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-slate-900 hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
               Follow Us on Social Media
             </Button>
           </div>
@@ -380,7 +380,8 @@ const News = () => {
 
       {/* Footer */}
       {/* Mega Footer */}
-      <Footer />    </div>
+      <Footer />
+    </div>
   );
 };
 

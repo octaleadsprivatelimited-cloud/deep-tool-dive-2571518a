@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const About = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
+    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="About" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -26,7 +26,7 @@ const About = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             About Trans Asia Soft Tech
           </h1>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             We are the world's leading cybersecurity company, protecting organizations from evolving cyber threats 
             with cutting-edge technology and expert knowledge.
           </p>
@@ -37,10 +37,10 @@ const About = () => {
       <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Leading Cybersecurity Excellence
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
               We are the world's leading cybersecurity company, protecting organizations from evolving cyber threats 
               with cutting-edge technology and expert knowledge.
             </p>
@@ -49,12 +49,12 @@ const About = () => {
       </section>
 
       {/* Company Overview */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
-              <p className="text-xl text-slate-600 mb-6">
+              <p className="text-xl text-slate-300 mb-6">
                 To provide world-class cybersecurity solutions that protect organizations from evolving cyber threats, 
                 ensuring business continuity and data security in an increasingly connected world.
               </p>
@@ -71,13 +71,13 @@ const About = () => {
                 ].map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="text-3xl font-bold text-cyan-400 mb-1">{stat.number}</div>
-                    <div className="text-slate-600">{stat.label}</div>
+                    <div className="text-slate-300">{stat.label}</div>
                   </div>
                 ))}
               </div>
             </div>
-            <div className="bg-slate-50 rounded-lg p-8 border border-slate-200">
-              <h3 className="text-2xl font-bold text-slate-900 mb-6">Our Values</h3>
+            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700">
+              <h3 className="text-2xl font-bold text-white mb-6">Our Values</h3>
               <div className="space-y-4">
                 {[
                   {
@@ -104,8 +104,8 @@ const About = () => {
                   <div key={index} className="flex items-start space-x-4">
                     <div className="flex-shrink-0">{value.icon}</div>
                     <div>
-                      <h4 className="text-lg font-semibold text-slate-900 mb-1">{value.title}</h4>
-                      <p className="text-slate-600">{value.description}</p>
+                      <h4 className="text-lg font-semibold text-white mb-1">{value.title}</h4>
+                      <p className="text-slate-300">{value.description}</p>
                     </div>
                   </div>
                 ))}
@@ -116,11 +116,11 @@ const About = () => {
       </section>
 
       {/* Leadership Team */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Leadership Team</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Meet the cybersecurity experts leading our mission to protect organizations worldwide.
             </p>
           </div>
@@ -163,18 +163,18 @@ const About = () => {
                 expertise: ["SOC Operations", "Incident Response", "Global Operations"]
               }
             ].map((leader, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <CardHeader>
-                  <div className="w-20 h-20 bg-cyan-600 rounded-full flex items-center justify-center text-2xl font-bold text-slate-900 mx-auto mb-4">
+                  <div className="w-20 h-20 bg-[#021346] rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
                     {leader.name.split(' ').map(n => n[0]).join('')}
                   </div>
-                  <CardTitle className="text-xl text-slate-900 text-center">{leader.name}</CardTitle>
+                  <CardTitle className="text-xl text-white text-center">{leader.name}</CardTitle>
                   <CardDescription className="text-cyan-400 text-center">{leader.title}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 mb-4 text-center">{leader.bio}</p>
+                  <p className="text-slate-300 mb-4 text-center">{leader.bio}</p>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-slate-900">Expertise:</h4>
+                    <h4 className="text-sm font-semibold text-white">Expertise:</h4>
                     <div className="flex flex-wrap gap-2">
                       {leader.expertise.map((skill, idx) => (
                         <Badge key={idx} className="bg-cyan-900/30 text-cyan-300 border-cyan-700 text-xs">
@@ -191,11 +191,11 @@ const About = () => {
       </section>
 
       {/* Company Achievements */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Awards & Recognition</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Our commitment to excellence has been recognized by industry leaders and security organizations worldwide.
             </p>
           </div>
@@ -242,13 +242,13 @@ const About = () => {
                 description: "Received the Cybersecurity Innovation Award for our AI-powered threat detection platform."
               }
             ].map((achievement, index) => (
-              <div key={index} className="bg-slate-50 rounded-lg p-6 border border-slate-200 text-center hover:border-cyan-600 transition-all duration-300">
-                <div className="w-16 h-16 bg-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Award className="text-slate-900" size={24} />
+              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 text-center hover:border-[#021346] transition-all duration-300">
+                <div className="w-16 h-16 bg-[#021346] rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Award className="text-white" size={24} />
                 </div>
-                <h3 className="text-lg font-semibold text-slate-900 mb-2">{achievement.award}</h3>
+                <h3 className="text-lg font-semibold text-white mb-2">{achievement.award}</h3>
                 <div className="text-cyan-400 font-bold mb-2">{achievement.year}</div>
-                <p className="text-slate-600 text-sm">{achievement.description}</p>
+                <p className="text-slate-300 text-sm">{achievement.description}</p>
               </div>
             ))}
           </div>
@@ -256,11 +256,11 @@ const About = () => {
       </section>
 
       {/* Global Presence */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Global Presence</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               With offices and security operations centers around the world, we provide 24/7 protection to our global client base.
             </p>
           </div>
@@ -303,21 +303,21 @@ const About = () => {
                 features: ["Canadian Team", "Government Services", "Local Compliance", "Regional SOC"]
               }
             ].map((office, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-2">
                     <Globe className="text-cyan-400" size={24} />
                     <div>
-                      <CardTitle className="text-lg text-slate-900">{office.location}</CardTitle>
+                      <CardTitle className="text-lg text-white">{office.location}</CardTitle>
                       <CardDescription className="text-cyan-400">{office.type}</CardDescription>
                     </div>
                   </div>
-                  <p className="text-slate-600 text-sm">{office.description}</p>
+                  <p className="text-slate-300 text-sm">{office.description}</p>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2">
                     {office.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-slate-600 text-sm">
+                      <div key={idx} className="flex items-center text-slate-300 text-sm">
                         <CheckCircle className="text-cyan-400 mr-2" size={14} />
                         {feature}
                       </div>
@@ -331,19 +331,19 @@ const About = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6 text-slate-900">Join Our Mission</h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6 text-white">Join Our Mission</h2>
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Be part of the team that's protecting organizations worldwide from cyber threats. 
             Explore career opportunities and join our mission.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-cyan-600 text-white hover:bg-cyan-700 font-semibold px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" className="bg-[#021346] text-white hover:bg-[#021346]/90 font-semibold px-8 py-4 rounded-lg text-lg">
               View Careers
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-white px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-[#021346] text-[#021346] hover:bg-[#021346] hover:text-white px-8 py-4 rounded-lg text-lg">
               Contact Us
             </Button>
           </div>

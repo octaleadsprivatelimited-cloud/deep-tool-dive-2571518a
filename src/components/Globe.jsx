@@ -29,15 +29,15 @@ const Globe = () => {
         
         {/* Data points representing global threats */}
         <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
-        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-red-600 rounded-full animate-ping"></div>
+        <div className="absolute top-1/3 right-1/3 w-1.5 h-1.5 bg-[#021346] rounded-full animate-ping"></div>
         <div className="absolute bottom-1/3 left-1/3 w-1 h-1 bg-red-400 rounded-full animate-bounce"></div>
         <div className="absolute top-1/2 right-1/4 w-2.5 h-2.5 bg-red-700 rounded-full animate-pulse"></div>
         <div className="absolute bottom-1/4 right-1/2 w-1.5 h-1.5 bg-red-500 rounded-full animate-ping"></div>
-        <div className="absolute top-3/4 left-1/2 w-1 h-1 bg-red-600 rounded-full animate-bounce"></div>
+        <div className="absolute top-3/4 left-1/2 w-1 h-1 bg-[#021346] rounded-full animate-bounce"></div>
         <div className="absolute bottom-1/2 left-1/6 w-2 h-2 bg-red-400 rounded-full animate-pulse"></div>
         <div className="absolute top-1/6 right-1/6 w-1.5 h-1.5 bg-red-700 rounded-full animate-ping"></div>
         <div className="absolute top-2/3 left-1/2 w-1 h-1 bg-red-500 rounded-full animate-bounce"></div>
-        <div className="absolute bottom-1/6 right-1/3 w-2 h-2 bg-red-600 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-1/6 right-1/3 w-2 h-2 bg-[#021346] rounded-full animate-pulse"></div>
         
         {/* Connection lines between threat points */}
         <div className="absolute inset-0">

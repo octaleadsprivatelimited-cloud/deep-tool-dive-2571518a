@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const Services = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
+    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="Services" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -26,7 +26,7 @@ const Services = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             Cybersecurity Services
           </h1>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Comprehensive security solutions designed to protect your organization from evolving cyber threats. 
             Our expert team delivers world-class cybersecurity services tailored to your business needs.
           </p>
@@ -37,10 +37,10 @@ const Services = () => {
       <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Comprehensive Security Services
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
               Our expert team delivers cutting-edge cybersecurity solutions tailored to protect your organization 
               from evolving threats and ensure business continuity.
             </p>
@@ -49,11 +49,11 @@ const Services = () => {
       </section>
 
       {/* Core Services */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-slate-900">Core Security Services</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-white">Core Security Services</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Our comprehensive suite of cybersecurity services provides end-to-end protection for your digital infrastructure.
             </p>
           </div>
@@ -102,23 +102,23 @@ const Services = () => {
                 price: "Starting at $1,500/month"
               }
             ].map((service, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="mb-4">{service.icon}</div>
-                  <CardTitle className="text-xl text-slate-900">{service.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{service.description}</CardDescription>
+                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{service.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-2 mb-6">
                     {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-slate-600">
-                        <CheckCircle className="text-cyan-600 mr-2" size={16} />
+                      <li key={idx} className="flex items-center text-slate-300">
+                        <CheckCircle className="text-[#021346] mr-2" size={16} />
                         {feature}
                       </li>
                     ))}
                   </ul>
-                  <div className="text-cyan-600 font-semibold mb-4">{service.price}</div>
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-slate-900">
+                  <div className="text-[#021346] font-semibold mb-4">{service.price}</div>
+                  <Button className="w-full bg-[#021346] hover:bg-[#021346]/90 text-white">
                     Learn More
                     <ArrowRight className="ml-2" size={16} />
                   </Button>
@@ -130,11 +130,11 @@ const Services = () => {
       </section>
 
       {/* Additional Services */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-slate-900">Additional Services</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-white">Additional Services</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Specialized security services to address specific industry needs and compliance requirements.
             </p>
           </div>
@@ -161,12 +161,12 @@ const Services = () => {
                 icon: <Headphones className="text-cyan-400" size={32} />
               }
             ].map((service, index) => (
-              <div key={index} className="bg-slate-50 rounded-lg p-6 border border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">{service.icon}</div>
                   <div>
-                    <h3 className="text-xl font-semibold text-slate-900 mb-2">{service.title}</h3>
-                    <p className="text-slate-600">{service.description}</p>
+                    <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
+                    <p className="text-slate-300">{service.description}</p>
                   </div>
                 </div>
               </div>
@@ -176,18 +176,18 @@ const Services = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6 text-slate-900">Ready to Secure Your Organization?</h2>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6 text-white">Ready to Secure Your Organization?</h2>
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Contact our security experts to discuss your specific needs and get a customized security solution.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-cyan-600 text-slate-900 hover:bg-cyan-700 font-semibold px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" className="bg-[#021346] text-white hover:bg-[#021346]/90 font-semibold px-8 py-4 rounded-lg text-lg">
               Get Free Consultation
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-cyan-600 text-cyan-600 hover:bg-cyan-600 hover:text-slate-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-[#021346] text-[#021346] hover:bg-[#021346] hover:text-white px-8 py-4 rounded-lg text-lg">
               Download Service Catalog
             </Button>
           </div>

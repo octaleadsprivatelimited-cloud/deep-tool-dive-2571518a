@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const Partners = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
+    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="Partners" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -26,7 +26,7 @@ const Partners = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             Our Partners
           </h1>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             We work with industry-leading technology partners to deliver comprehensive security solutions 
             and provide our clients with the best-in-class cybersecurity tools and services.
           </p>
@@ -37,10 +37,10 @@ const Partners = () => {
       <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Strategic Technology Partnerships
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
               We work with industry-leading technology partners to deliver comprehensive security solutions 
               and provide our clients with the best-in-class cybersecurity tools and services.
             </p>
@@ -49,11 +49,11 @@ const Partners = () => {
       </section>
 
       {/* Partnership Benefits */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Why Partner With Us?</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Join our ecosystem of trusted partners and expand your reach in the cybersecurity market.
             </p>
           </div>
@@ -80,11 +80,11 @@ const Partners = () => {
                 description: "Comprehensive training and certification for your team."
               }
             ].map((benefit, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
                 <CardHeader>
                   <div className="mb-4">{benefit.icon}</div>
-                  <CardTitle className="text-xl text-slate-900">{benefit.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{benefit.description}</CardDescription>
+                  <CardTitle className="text-xl text-white">{benefit.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{benefit.description}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -93,11 +93,11 @@ const Partners = () => {
       </section>
 
       {/* Technology Partners */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Technology Partners</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               We integrate with leading technology platforms to provide comprehensive security solutions.
             </p>
           </div>
@@ -152,10 +152,10 @@ const Partners = () => {
                 tier: "Silver"
               }
             ].map((partner, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-16 h-16 bg-cyan-600 rounded-lg flex items-center justify-center text-slate-900 font-bold text-xl">
+                    <div className="w-16 h-16 bg-[#021346] rounded-lg flex items-center justify-center text-white font-bold text-xl">
                       {partner.logo}
                     </div>
                     <Badge className={`${
@@ -166,16 +166,16 @@ const Partners = () => {
                       {partner.tier}
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl text-slate-900">{partner.name}</CardTitle>
+                  <CardTitle className="text-xl text-white">{partner.name}</CardTitle>
                   <CardDescription className="text-cyan-400">{partner.category}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-600 mb-4">{partner.description}</p>
+                  <p className="text-slate-300 mb-4">{partner.description}</p>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-slate-900">Key Features:</h4>
+                    <h4 className="text-sm font-semibold text-white">Key Features:</h4>
                     <ul className="space-y-1">
                       {partner.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-slate-600 text-sm">
+                        <li key={idx} className="flex items-center text-slate-300 text-sm">
                           <CheckCircle className="text-cyan-400 mr-2" size={14} />
                           {feature}
                         </li>
@@ -190,11 +190,11 @@ const Partners = () => {
       </section>
 
       {/* Channel Partners */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Channel Partners</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Our trusted channel partners help us deliver cybersecurity solutions to clients worldwide.
             </p>
           </div>
@@ -233,10 +233,10 @@ const Partners = () => {
                 years: "7+ years"
               }
             ].map((partner, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-xl text-slate-900">{partner.name}</CardTitle>
+                    <CardTitle className="text-xl text-white">{partner.name}</CardTitle>
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{partner.type}</Badge>
                   </div>
                   <div className="flex items-center space-x-4 text-sm text-slate-400 mb-2">
@@ -249,14 +249,14 @@ const Partners = () => {
                       {partner.years}
                     </span>
                   </div>
-                  <CardDescription className="text-slate-600">{partner.description}</CardDescription>
+                  <CardDescription className="text-slate-300">{partner.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <h4 className="text-sm font-semibold text-slate-900">Specialties:</h4>
+                    <h4 className="text-sm font-semibold text-white">Specialties:</h4>
                     <div className="flex flex-wrap gap-2">
                       {partner.specialties.map((specialty, idx) => (
-                        <Badge key={idx} className="bg-slate-700 text-slate-600 text-xs">
+                        <Badge key={idx} className="bg-slate-700 text-slate-300 text-xs">
                           {specialty}
                         </Badge>
                       ))}
@@ -270,11 +270,11 @@ const Partners = () => {
       </section>
 
       {/* Partner Programs */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Partner Programs</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Choose the partner program that best fits your business model and growth objectives.
             </p>
           </div>
@@ -338,29 +338,29 @@ const Partners = () => {
                 color: "yellow"
               }
             ].map((program, index) => (
-              <Card key={index} className={`bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 ${
+              <Card key={index} className={`bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 ${
                 program.color === 'cyan' ? 'ring-2 ring-cyan-600' : ''
               }`}>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-xl text-slate-900">{program.name}</CardTitle>
+                    <CardTitle className="text-xl text-white">{program.name}</CardTitle>
                     <Badge className={`${
                       program.color === 'yellow' ? 'bg-yellow-900/30 text-yellow-300 border-yellow-700' :
                       program.color === 'cyan' ? 'bg-cyan-900/30 text-cyan-300 border-cyan-700' :
-                      'bg-white text-slate-900/30 text-slate-600 border-slate-200'
+                      'bg-slate-800/30 text-slate-300 border-slate-700'
                     }`}>
                       {program.tier}
                     </Badge>
                   </div>
-                  <CardDescription className="text-slate-600">{program.description}</CardDescription>
+                  <CardDescription className="text-slate-300">{program.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-sm font-semibold text-slate-900 mb-2">Benefits:</h4>
+                      <h4 className="text-sm font-semibold text-white mb-2">Benefits:</h4>
                       <ul className="space-y-1">
                         {program.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-center text-slate-600 text-sm">
+                          <li key={idx} className="flex items-center text-slate-300 text-sm">
                             <CheckCircle className="text-cyan-400 mr-2" size={14} />
                             {benefit}
                           </li>
@@ -368,10 +368,10 @@ const Partners = () => {
                       </ul>
                     </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-slate-900 mb-2">Requirements:</h4>
+                      <h4 className="text-sm font-semibold text-white mb-2">Requirements:</h4>
                       <ul className="space-y-1">
                         {program.requirements.map((req, idx) => (
-                          <li key={idx} className="flex items-center text-slate-600 text-sm">
+                          <li key={idx} className="flex items-center text-slate-300 text-sm">
                             <CheckCircle className="text-slate-400 mr-2" size={14} />
                             {req}
                           </li>
@@ -379,10 +379,10 @@ const Partners = () => {
                       </ul>
                     </div>
                     <Button className={`w-full ${
-                      program.color === 'cyan' ? 'bg-cyan-600 hover:bg-cyan-700' :
+                      program.color === 'cyan' ? 'bg-[#021346] hover:bg-[#021346]/90' :
                       program.color === 'yellow' ? 'bg-yellow-600 hover:bg-yellow-700' :
                       'bg-slate-600 hover:bg-slate-700'
-                    } text-slate-900`}>
+                    } text-white`}>
                       Learn More
                       <ArrowRight className="ml-2" size={16} />
                     </Button>
@@ -395,11 +395,11 @@ const Partners = () => {
       </section>
 
       {/* Partner Success Stories */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Partner Success Stories</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               See how our partners have grown their business and delivered value to their clients.
             </p>
           </div>
@@ -422,17 +422,17 @@ const Partners = () => {
                 metrics: ["5 New Markets", "200% Client Growth", "90% Partner Satisfaction"]
               }
             ].map((story, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-xl text-slate-900">{story.partner}</CardTitle>
+                    <CardTitle className="text-xl text-white">{story.partner}</CardTitle>
                     <Badge className="bg-green-900/30 text-green-300 border-green-700">Success Story</Badge>
                   </div>
                   <CardDescription className="text-cyan-400">{story.industry}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
-                    <p className="text-slate-600 italic">"{story.quote}"</p>
+                    <p className="text-slate-300 italic">"{story.quote}"</p>
                     <div className="text-slate-400 text-sm">- {story.author}</div>
                     <div className="grid grid-cols-3 gap-4">
                       {story.metrics.map((metric, idx) => (
@@ -450,7 +450,7 @@ const Partners = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
@@ -461,7 +461,7 @@ const Partners = () => {
               Become a Partner
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-slate-900 hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
               Download Partner Kit
             </Button>
           </div>

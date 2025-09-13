@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const Resources = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
+    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="Resources" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-white text-slate-900 relative overflow-hidden">
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -26,7 +26,7 @@ const Resources = () => {
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             Security Resources
           </h1>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Access our comprehensive library of security resources, including whitepapers, case studies, 
             webinars, and tools to help strengthen your organization's security posture.
           </p>
@@ -37,10 +37,10 @@ const Resources = () => {
       <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
               Comprehensive Security Resources
             </h2>
-            <p className="text-lg text-slate-600 max-w-3xl mx-auto">
+            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
               Access our comprehensive library of security resources, including whitepapers, case studies, 
               webinars, and tools to help strengthen your organization's security posture.
             </p>
@@ -49,11 +49,11 @@ const Resources = () => {
       </section>
 
       {/* Resource Categories */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Resource Categories</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Explore our extensive collection of security resources organized by category and topic.
             </p>
           </div>
@@ -84,15 +84,15 @@ const Resources = () => {
                 description: "Free security tools, checklists, and templates to help improve your security posture."
               }
             ].map((category, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
                 <CardHeader>
                   <div className="mb-4">{category.icon}</div>
-                  <CardTitle className="text-xl text-slate-900">{category.title}</CardTitle>
+                  <CardTitle className="text-xl text-white">{category.title}</CardTitle>
                   <div className="text-cyan-400 font-bold text-2xl mb-2">{category.count}</div>
-                  <CardDescription className="text-slate-600">{category.description}</CardDescription>
+                  <CardDescription className="text-slate-300">{category.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-slate-900">
+                  <Button className="w-full bg-[#021346] hover:bg-[#021346]/90 text-white">
                     Explore Resources
                     <ArrowRight className="ml-2" size={16} />
                   </Button>
@@ -104,11 +104,11 @@ const Resources = () => {
       </section>
 
       {/* Featured Resources */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Featured Resources</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Our most popular and recently updated security resources.
             </p>
           </div>
@@ -175,7 +175,7 @@ const Resources = () => {
                 featured: false
               }
             ].map((resource, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
@@ -187,8 +187,8 @@ const Resources = () => {
                       </Badge>
                     )}
                   </div>
-                  <CardTitle className="text-lg text-slate-900">{resource.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{resource.description}</CardDescription>
+                  <CardTitle className="text-lg text-white">{resource.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{resource.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 mb-4">
@@ -213,7 +213,7 @@ const Resources = () => {
                       </span>
                     </div>
                   </div>
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-slate-900">
+                  <Button className="w-full bg-[#021346] hover:bg-[#021346]/90 text-white">
                     <Download className="mr-2" size={16} />
                     Download
                   </Button>
@@ -225,11 +225,11 @@ const Resources = () => {
       </section>
 
       {/* Security Tools */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Free Security Tools</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Download our free security tools and templates to help improve your organization's security posture.
             </p>
           </div>
@@ -264,21 +264,21 @@ const Resources = () => {
                 rating: 4.6
               }
             ].map((tool, index) => (
-              <div key={index} className="bg-slate-50 rounded-lg p-6 border border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex items-center space-x-3">
-                    <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center">
-                      <Download className="text-slate-900" size={24} />
+                    <div className="w-12 h-12 bg-[#021346] rounded-lg flex items-center justify-center">
+                      <Download className="text-white" size={24} />
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-slate-900">{tool.title}</h3>
-                      <p className="text-slate-600">{tool.description}</p>
+                      <h3 className="text-xl font-semibold text-white">{tool.title}</h3>
+                      <p className="text-slate-300">{tool.description}</p>
                     </div>
                   </div>
                 </div>
                 <div className="space-y-2 mb-4">
                   {tool.features.map((feature, idx) => (
-                    <div key={idx} className="flex items-center text-slate-600 text-sm">
+                    <div key={idx} className="flex items-center text-slate-300 text-sm">
                       <span className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
                       {feature}
                     </div>
@@ -296,7 +296,7 @@ const Resources = () => {
                     </span>
                   </div>
                 </div>
-                <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-slate-900">
+                <Button className="w-full bg-[#021346] hover:bg-[#021346]/90 text-white">
                   <Download className="mr-2" size={16} />
                   Download Tool
                 </Button>
@@ -307,11 +307,11 @@ const Resources = () => {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Upcoming Events</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Join our upcoming webinars, conferences, and training sessions to stay updated on the latest security trends.
             </p>
           </div>
@@ -345,7 +345,7 @@ const Resources = () => {
                 description: "Annual conference featuring the latest in threat intelligence and security research."
               }
             ].map((event, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
@@ -355,11 +355,11 @@ const Resources = () => {
                       Upcoming
                     </Badge>
                   </div>
-                  <CardTitle className="text-lg text-slate-900">{event.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{event.description}</CardDescription>
+                  <CardTitle className="text-lg text-white">{event.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{event.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="space-y-2 mb-4 text-sm text-slate-600">
+                  <div className="space-y-2 mb-4 text-sm text-slate-300">
                     <div className="flex items-center">
                       <Calendar className="mr-2" size={14} />
                       {event.date} at {event.time}
@@ -373,7 +373,7 @@ const Resources = () => {
                       Speakers: {event.speakers}
                     </div>
                   </div>
-                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-slate-900">
+                  <Button className="w-full bg-[#021346] hover:bg-[#021346]/90 text-white">
                     Register Now
                     <ArrowRight className="ml-2" size={16} />
                   </Button>
@@ -385,7 +385,7 @@ const Resources = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Stay Updated with Our Resources</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
@@ -397,7 +397,7 @@ const Resources = () => {
               Subscribe to Newsletter
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-slate-900 hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
               Browse All Resources
             </Button>
           </div>

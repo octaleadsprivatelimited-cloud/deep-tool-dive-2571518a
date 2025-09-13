@@ -8,25 +8,25 @@ import Footer from '@/components/Footer';
 
 const Careers = () => {
   return (
-    <div className="min-h-screen bg-white text-slate-900 text-slate-900">
+    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="Careers" />
 
       {/* Hero Section */}
-      <section className="py-24 bg-white text-slate-900">
+      <section className="py-24 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
             Join Our Team
           </h1>
-          <p className="text-xl text-slate-600 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
             Build the future of cybersecurity with us. Join a team of passionate experts dedicated to 
             protecting organizations worldwide from evolving cyber threats.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-cyan-600 hover:bg-cyan-700 text-slate-900 font-semibold px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" className="bg-[#021346] hover:bg-[#021346]/90 text-white font-semibold px-8 py-4 rounded-lg text-lg">
               View Open Positions
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-cyan-600 text-cyan-400 hover:bg-cyan-600 hover:text-slate-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-[#021346] text-cyan-400 hover:bg-[#021346] hover:text-white px-8 py-4 rounded-lg text-lg">
               Learn About Our Culture
             </Button>
           </div>
@@ -34,11 +34,11 @@ const Careers = () => {
       </section>
 
       {/* Why Work With Us */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Why Work With Us?</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               We offer more than just a job - we provide a career path in the exciting world of cybersecurity.
             </p>
           </div>
@@ -65,11 +65,11 @@ const Careers = () => {
                 description: "Work with the latest security tools and technologies in the industry."
               }
             ].map((benefit, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
                 <CardHeader>
                   <div className="mb-4">{benefit.icon}</div>
-                  <CardTitle className="text-xl text-slate-900">{benefit.title}</CardTitle>
-                  <CardDescription className="text-slate-600">{benefit.description}</CardDescription>
+                  <CardTitle className="text-xl text-white">{benefit.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{benefit.description}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -78,11 +78,11 @@ const Careers = () => {
       </section>
 
       {/* Open Positions */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Open Positions</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Explore our current job openings and find the perfect role for your cybersecurity career.
             </p>
           </div>
@@ -149,10 +149,10 @@ const Careers = () => {
                 posted: "4 days ago"
               }
             ].map((job, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="flex items-start justify-between mb-2">
-                    <CardTitle className="text-xl text-slate-900">{job.title}</CardTitle>
+                    <CardTitle className="text-xl text-white">{job.title}</CardTitle>
                     <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
                       {job.type}
                     </Badge>
@@ -171,14 +171,14 @@ const Careers = () => {
                       {job.experience}
                     </span>
                   </div>
-                  <CardDescription className="text-slate-600">{job.description}</CardDescription>
+                  <CardDescription className="text-slate-300">{job.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 mb-4">
-                    <h4 className="text-sm font-semibold text-slate-900">Key Requirements:</h4>
+                    <h4 className="text-sm font-semibold text-white">Key Requirements:</h4>
                     <div className="flex flex-wrap gap-2">
                       {job.requirements.map((req, idx) => (
-                        <Badge key={idx} className="bg-slate-700 text-slate-600 text-xs">
+                        <Badge key={idx} className="bg-slate-700 text-slate-300 text-xs">
                           {req}
                         </Badge>
                       ))}
@@ -186,7 +186,7 @@ const Careers = () => {
                   </div>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-400 text-sm">Posted {job.posted}</span>
-                    <Button className="bg-cyan-600 hover:bg-cyan-700 text-slate-900">
+                    <Button className="bg-[#021346] hover:bg-[#021346]/90 text-white">
                       Apply Now
                       <ArrowRight className="ml-2" size={16} />
                     </Button>
@@ -199,11 +199,11 @@ const Careers = () => {
       </section>
 
       {/* Company Culture */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Our Culture</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               We foster a collaborative, innovative, and inclusive environment where everyone can thrive.
             </p>
           </div>
@@ -240,12 +240,12 @@ const Careers = () => {
                 icon: <Shield className="text-cyan-400" size={32} />
               }
             ].map((value, index) => (
-              <div key={index} className="bg-slate-50 rounded-lg p-6 border border-slate-200 hover:border-cyan-600 transition-all duration-300">
+              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">{value.icon}</div>
                   <div>
-                    <h3 className="text-lg font-semibold text-slate-900 mb-2">{value.title}</h3>
-                    <p className="text-slate-600">{value.description}</p>
+                    <h3 className="text-lg font-semibold text-white mb-2">{value.title}</h3>
+                    <p className="text-slate-300">{value.description}</p>
                   </div>
                 </div>
               </div>
@@ -255,11 +255,11 @@ const Careers = () => {
       </section>
 
       {/* Employee Testimonials */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">What Our Team Says</h2>
-            <p className="text-xl text-slate-600 max-w-3xl mx-auto">
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Hear from our team members about their experience working at CyberShield Pro.
             </p>
           </div>
@@ -284,19 +284,19 @@ const Careers = () => {
                 rating: 5
               }
             ].map((testimonial, index) => (
-              <Card key={index} className="bg-slate-50 border-slate-200">
+              <Card key={index} className="bg-slate-800 border-slate-700">
                 <CardHeader>
                   <div className="flex items-center mb-2">
                     {[...Array(testimonial.rating)].map((_, i) => (
                       <Star key={i} className="text-yellow-400 fill-current" size={16} />
                     ))}
                   </div>
-                  <CardDescription className="text-slate-600 italic">
+                  <CardDescription className="text-slate-300 italic">
                     "{testimonial.quote}"
                   </CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <div className="text-slate-900 font-semibold">{testimonial.name}</div>
+                  <div className="text-white font-semibold">{testimonial.name}</div>
                   <div className="text-cyan-400 text-sm">{testimonial.role}</div>
                 </CardContent>
               </Card>
@@ -306,7 +306,7 @@ const Careers = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-white text-slate-900">
+      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Ready to Join Our Team?</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
@@ -318,7 +318,7 @@ const Careers = () => {
               View All Positions
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-slate-900 hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
               Submit Your Resume
             </Button>
           </div>

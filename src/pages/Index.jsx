@@ -10,7 +10,7 @@ import CyberGlobe from '@/components/Globe';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
+    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="Home" />
 
       {/* Hero Section */}

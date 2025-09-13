@@ -223,7 +223,7 @@ const Footer = () => {
                 <a
                   key={index}
                   href={social.href}
-                  className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-red-600 transition-colors duration-200"
+                  className="w-10 h-10 bg-slate-800 rounded-lg flex items-center justify-center hover:bg-[#021346] transition-colors duration-200"
                 >
                   <social.icon className="w-5 h-5" />
                 </a>
@@ -256,7 +256,7 @@ const Footer = () => {
         <div className="border-t border-slate-800 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center space-x-2">
-              <Shield className="w-6 h-6 text-red-500" />
+              <Shield className="w-6 h-6 text-[#021346]" />
               <span className="text-xl font-bold">Trans Asia Soft Tech</span>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm text-slate-400">

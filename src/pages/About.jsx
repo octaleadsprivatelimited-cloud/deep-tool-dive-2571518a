@@ -1,0 +1,388 @@
+import React from 'react';
+import { Shield, Users, Award, Target, CheckCircle, ArrowRight, Globe, Clock, TrendingUp, Star } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import Header from '@/components/Header';
+
+const About = () => {
+  return (
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Header currentPage="About" />
+
+      {/* Hero Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950">
+        <div className="container mx-auto text-center px-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
+            About CyberShield Pro
+          </h1>
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+            We are the world's leading cybersecurity company, protecting organizations from evolving cyber threats 
+            with cutting-edge technology and expert knowledge.
+          </p>
+        </div>
+      </section>
+
+      {/* Company Overview */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
+              <p className="text-xl text-slate-300 mb-6">
+                To provide world-class cybersecurity solutions that protect organizations from evolving cyber threats, 
+                ensuring business continuity and data security in an increasingly connected world.
+              </p>
+              <p className="text-lg text-slate-400 mb-8">
+                Founded in 2009, CyberShield Pro has grown from a small team of security experts to a global leader 
+                in cybersecurity, serving Fortune 500 companies and government agencies worldwide.
+              </p>
+              <div className="grid grid-cols-2 gap-6">
+                {[
+                  { number: "500+", label: "Fortune 500 Clients" },
+                  { number: "50+", label: "Countries Served" },
+                  { number: "15+", label: "Years Experience" },
+                  { number: "99.9%", label: "Uptime Guarantee" }
+                ].map((stat, index) => (
+                  <div key={index} className="text-center">
+                    <div className="text-3xl font-bold text-cyan-400 mb-1">{stat.number}</div>
+                    <div className="text-slate-300">{stat.label}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700">
+              <h3 className="text-2xl font-bold text-white mb-6">Our Values</h3>
+              <div className="space-y-4">
+                {[
+                  {
+                    icon: <Shield className="text-cyan-400" size={24} />,
+                    title: "Security First",
+                    description: "We prioritize security in everything we do, ensuring our clients' data and systems are always protected."
+                  },
+                  {
+                    icon: <Users className="text-cyan-400" size={24} />,
+                    title: "Client Success",
+                    description: "Our success is measured by our clients' success. We are committed to delivering exceptional value."
+                  },
+                  {
+                    icon: <Award className="text-cyan-400" size={24} />,
+                    title: "Excellence",
+                    description: "We strive for excellence in all our services, continuously improving and innovating."
+                  },
+                  {
+                    icon: <Target className="text-cyan-400" size={24} />,
+                    title: "Innovation",
+                    description: "We leverage cutting-edge technology and innovative approaches to stay ahead of threats."
+                  }
+                ].map((value, index) => (
+                  <div key={index} className="flex items-start space-x-4">
+                    <div className="flex-shrink-0">{value.icon}</div>
+                    <div>
+                      <h4 className="text-lg font-semibold text-white mb-1">{value.title}</h4>
+                      <p className="text-slate-300">{value.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Team */}
+      <section className="py-20 bg-slate-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Leadership Team</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Meet the cybersecurity experts leading our mission to protect organizations worldwide.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                name: "Sarah Chen",
+                title: "Chief Executive Officer",
+                bio: "Former NSA cybersecurity director with 20+ years of experience in threat intelligence and incident response.",
+                expertise: ["Threat Intelligence", "Incident Response", "Strategic Leadership"]
+              },
+              {
+                name: "Michael Rodriguez",
+                title: "Chief Technology Officer",
+                bio: "Cybersecurity architect and former CTO at leading security companies, specializing in AI and machine learning.",
+                expertise: ["AI Security", "Cloud Security", "Technology Innovation"]
+              },
+              {
+                name: "Dr. Emily Watson",
+                title: "Chief Security Officer",
+                bio: "Renowned cybersecurity researcher and former FBI cybercrime investigator with expertise in digital forensics.",
+                expertise: ["Digital Forensics", "Cybercrime Investigation", "Security Research"]
+              },
+              {
+                name: "James Thompson",
+                title: "VP of Threat Intelligence",
+                bio: "Former military intelligence officer with extensive experience in nation-state threats and APT analysis.",
+                expertise: ["APT Analysis", "Nation-State Threats", "Intelligence Operations"]
+              },
+              {
+                name: "Lisa Park",
+                title: "VP of Engineering",
+                bio: "Software engineering leader with expertise in building scalable security platforms and distributed systems.",
+                expertise: ["Platform Engineering", "Scalable Systems", "DevSecOps"]
+              },
+              {
+                name: "David Kumar",
+                title: "VP of Operations",
+                bio: "Operations leader with experience managing global security operations centers and incident response teams.",
+                expertise: ["SOC Operations", "Incident Response", "Global Operations"]
+              }
+            ].map((leader, index) => (
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300">
+                <CardHeader>
+                  <div className="w-20 h-20 bg-cyan-600 rounded-full flex items-center justify-center text-2xl font-bold text-white mx-auto mb-4">
+                    {leader.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <CardTitle className="text-xl text-white text-center">{leader.name}</CardTitle>
+                  <CardDescription className="text-cyan-400 text-center">{leader.title}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-slate-300 mb-4 text-center">{leader.bio}</p>
+                  <div className="space-y-2">
+                    <h4 className="text-sm font-semibold text-white">Expertise:</h4>
+                    <div className="flex flex-wrap gap-2">
+                      {leader.expertise.map((skill, idx) => (
+                        <Badge key={idx} className="bg-cyan-900/30 text-cyan-300 border-cyan-700 text-xs">
+                          {skill}
+                        </Badge>
+                      ))}
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Company Achievements */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Awards & Recognition</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Our commitment to excellence has been recognized by industry leaders and security organizations worldwide.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                award: "Gartner Magic Quadrant Leader",
+                year: "2024",
+                description: "Recognized as a leader in managed security services for the third consecutive year."
+              },
+              {
+                award: "Forrester Wave Leader",
+                year: "2024",
+                description: "Top-rated in the Forrester Wave for threat intelligence platforms."
+              },
+              {
+                award: "SC Awards Winner",
+                year: "2023",
+                description: "Best Managed Security Service Provider at the SC Awards."
+              },
+              {
+                award: "ISO 27001 Certified",
+                year: "2023",
+                description: "Achieved ISO 27001 certification for our information security management system."
+              },
+              {
+                award: "SOC 2 Type II",
+                year: "2023",
+                description: "Successfully completed SOC 2 Type II audit for security, availability, and confidentiality."
+              },
+              {
+                award: "Inc. 5000 Fastest Growing",
+                year: "2022",
+                description: "Ranked among the fastest-growing private companies in America."
+              },
+              {
+                award: "Best Place to Work",
+                year: "2022",
+                description: "Recognized as one of the best places to work in cybersecurity by Great Place to Work."
+              },
+              {
+                award: "Innovation Award",
+                year: "2021",
+                description: "Received the Cybersecurity Innovation Award for our AI-powered threat detection platform."
+              }
+            ].map((achievement, index) => (
+              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 text-center hover:border-cyan-600 transition-all duration-300">
+                <div className="w-16 h-16 bg-cyan-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                  <Award className="text-white" size={24} />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">{achievement.award}</h3>
+                <div className="text-cyan-400 font-bold mb-2">{achievement.year}</div>
+                <p className="text-slate-300 text-sm">{achievement.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Global Presence */}
+      <section className="py-20 bg-slate-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Global Presence</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              With offices and security operations centers around the world, we provide 24/7 protection to our global client base.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                location: "New York, USA",
+                type: "Global Headquarters",
+                description: "Our main headquarters and primary security operations center serving North America.",
+                features: ["Global HQ", "Primary SOC", "Executive Team", "R&D Center"]
+              },
+              {
+                location: "London, UK",
+                type: "European Operations",
+                description: "European headquarters and security operations center serving EMEA region.",
+                features: ["EMEA HQ", "European SOC", "Compliance Center", "Training Facility"]
+              },
+              {
+                location: "Singapore",
+                type: "Asia-Pacific Operations",
+                description: "Asia-Pacific headquarters and security operations center serving APAC region.",
+                features: ["APAC HQ", "Regional SOC", "Threat Intel Center", "Partner Hub"]
+              },
+              {
+                location: "Tokyo, Japan",
+                type: "Regional Office",
+                description: "Regional office serving Japan and surrounding markets with local expertise.",
+                features: ["Local Team", "Japanese Market", "Compliance Support", "Local SOC"]
+              },
+              {
+                location: "Sydney, Australia",
+                type: "Regional Office",
+                description: "Regional office serving Australia and New Zealand with specialized services.",
+                features: ["ANZ Team", "Local Compliance", "Regional Support", "Training Center"]
+              },
+              {
+                location: "Toronto, Canada",
+                type: "Regional Office",
+                description: "Regional office serving Canada with specialized government and enterprise services.",
+                features: ["Canadian Team", "Government Services", "Local Compliance", "Regional SOC"]
+              }
+            ].map((office, index) => (
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300">
+                <CardHeader>
+                  <div className="flex items-center space-x-3 mb-2">
+                    <Globe className="text-cyan-400" size={24} />
+                    <div>
+                      <CardTitle className="text-lg text-white">{office.location}</CardTitle>
+                      <CardDescription className="text-cyan-400">{office.type}</CardDescription>
+                    </div>
+                  </div>
+                  <p className="text-slate-300 text-sm">{office.description}</p>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2">
+                    {office.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-slate-300 text-sm">
+                        <CheckCircle className="text-cyan-400 mr-2" size={14} />
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-cyan-900 to-blue-900">
+        <div className="container mx-auto text-center px-4">
+          <h2 className="text-4xl font-bold mb-6">Join Our Mission</h2>
+          <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+            Be part of the team that's protecting organizations worldwide from cyber threats. 
+            Explore career opportunities and join our mission.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
+              View Careers
+              <ArrowRight className="ml-2" size={20} />
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+              Contact Us
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-950 py-16 border-t border-slate-800">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <Shield className="text-cyan-400" size={24} />
+                <div className="text-xl font-bold text-cyan-400">CyberShield Pro</div>
+              </div>
+              <p className="text-slate-400 mb-4">
+                Leading cybersecurity company providing advanced security solutions to protect your digital assets.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
+              <ul className="space-y-2">
+                {['About Us', 'Leadership', 'Careers', 'News', 'Awards'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
+              <ul className="space-y-2">
+                {['Managed Security', 'Threat Intelligence', 'Security Assessment', 'Incident Response', 'Training'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Contact Info</h3>
+              <div className="space-y-3">
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">📞</span>
+                  +1 (555) 123-4567
+                </div>
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">✉️</span>
+                  info@cybershieldpro.com
+                </div>
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">📍</span>
+                  New York, NY
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
+            <p>&copy; 2024 CyberShield Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default About;

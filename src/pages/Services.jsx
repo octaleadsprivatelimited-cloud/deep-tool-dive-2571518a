@@ -1,0 +1,232 @@
+import React from 'react';
+import { Shield, Lock, Eye, Globe, Zap, Target, CheckCircle, ArrowRight, Users, Award, Clock, Headphones } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import Header from '@/components/Header';
+
+const Services = () => {
+  return (
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Header currentPage="Services" />
+
+      {/* Hero Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950">
+        <div className="container mx-auto text-center px-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
+            Cybersecurity Services
+          </h1>
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+            Comprehensive security solutions designed to protect your organization from evolving cyber threats. 
+            Our expert team delivers world-class cybersecurity services tailored to your business needs.
+          </p>
+        </div>
+      </section>
+
+      {/* Core Services */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Core Security Services</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Our comprehensive suite of cybersecurity services provides end-to-end protection for your digital infrastructure.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Shield className="text-cyan-400" size={48} />,
+                title: "Managed Security Services",
+                description: "24/7 monitoring and management of your security infrastructure by our expert SOC team.",
+                features: ["24/7 SOC monitoring", "Threat detection & response", "Security incident management", "Compliance reporting"],
+                price: "Starting at $5,000/month"
+              },
+              {
+                icon: <Lock className="text-cyan-400" size={48} />,
+                title: "Identity & Access Management",
+                description: "Comprehensive identity management solutions with multi-factor authentication and privileged access controls.",
+                features: ["Multi-factor authentication", "Single sign-on (SSO)", "Privileged access management", "Identity governance"],
+                price: "Starting at $2,500/month"
+              },
+              {
+                icon: <Eye className="text-cyan-400" size={48} />,
+                title: "Security Assessment & Testing",
+                description: "Regular security audits, penetration testing, and vulnerability assessments to identify and remediate risks.",
+                features: ["Penetration testing", "Vulnerability scanning", "Security audits", "Risk assessments"],
+                price: "Starting at $3,000/assessment"
+              },
+              {
+                icon: <Globe className="text-cyan-400" size={48} />,
+                title: "Cloud Security",
+                description: "Protect your cloud infrastructure with advanced security controls, monitoring, and compliance management.",
+                features: ["Cloud security monitoring", "Data encryption", "Access controls", "Compliance management"],
+                price: "Starting at $4,000/month"
+              },
+              {
+                icon: <Zap className="text-cyan-400" size={48} />,
+                title: "Incident Response",
+                description: "Rapid response to security incidents with expert forensic analysis, containment, and recovery services.",
+                features: ["24/7 incident response", "Forensic analysis", "Recovery planning", "Legal support"],
+                price: "Starting at $10,000/incident"
+              },
+              {
+                icon: <Target className="text-cyan-400" size={48} />,
+                title: "Security Training & Awareness",
+                description: "Comprehensive security awareness training and technical training for your employees and IT teams.",
+                features: ["Phishing simulation", "Security awareness training", "Technical training", "Certification programs"],
+                price: "Starting at $1,500/month"
+              }
+            ].map((service, index) => (
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+                <CardHeader>
+                  <div className="mb-4">{service.icon}</div>
+                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2 mb-6">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-slate-300">
+                        <CheckCircle className="text-cyan-400 mr-2" size={16} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <div className="text-cyan-400 font-semibold mb-4">{service.price}</div>
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                    Learn More
+                    <ArrowRight className="ml-2" size={16} />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Services */}
+      <section className="py-20 bg-slate-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Additional Services</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Specialized security services to address specific industry needs and compliance requirements.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Compliance & Governance",
+                description: "Help you meet regulatory requirements including GDPR, HIPAA, SOX, and industry-specific standards.",
+                icon: <Award className="text-cyan-400" size={32} />
+              },
+              {
+                title: "Security Consulting",
+                description: "Strategic security consulting to help you develop and implement comprehensive security programs.",
+                icon: <Users className="text-cyan-400" size={32} />
+              },
+              {
+                title: "Emergency Response",
+                description: "24/7 emergency response services for critical security incidents and data breaches.",
+                icon: <Clock className="text-cyan-400" size={32} />
+              },
+              {
+                title: "Security Support",
+                description: "Dedicated security support and maintenance for your security infrastructure and tools.",
+                icon: <Headphones className="text-cyan-400" size={32} />
+              }
+            ].map((service, index) => (
+              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-cyan-600 transition-all duration-300">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0">{service.icon}</div>
+                  <div>
+                    <h3 className="text-xl font-semibold text-white mb-2">{service.title}</h3>
+                    <p className="text-slate-300">{service.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-cyan-900 to-blue-900">
+        <div className="container mx-auto text-center px-4">
+          <h2 className="text-4xl font-bold mb-6">Ready to Secure Your Organization?</h2>
+          <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+            Contact our security experts to discuss your specific needs and get a customized security solution.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
+              Get Free Consultation
+              <ArrowRight className="ml-2" size={20} />
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+              Download Service Catalog
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-950 py-16 border-t border-slate-800">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <Shield className="text-cyan-400" size={24} />
+                <div className="text-xl font-bold text-cyan-400">CyberShield Pro</div>
+              </div>
+              <p className="text-slate-400 mb-4">
+                Leading cybersecurity company providing advanced security solutions to protect your digital assets.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Services</h3>
+              <ul className="space-y-2">
+                {['Managed Security', 'Identity Management', 'Security Assessment', 'Cloud Security', 'Incident Response'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
+              <ul className="space-y-2">
+                {['About Us', 'Careers', 'News', 'Partners', 'Contact'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Contact Info</h3>
+              <div className="space-y-3">
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">📞</span>
+                  +1 (555) 123-4567
+                </div>
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">✉️</span>
+                  info@cybershieldpro.com
+                </div>
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">📍</span>
+                  New York, NY
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
+            <p>&copy; 2024 CyberShield Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Services;

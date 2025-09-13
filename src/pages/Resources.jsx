@@ -1,0 +1,442 @@
+import React from 'react';
+import { Shield, FileText, Download, Calendar, Users, BookOpen, Video, ArrowRight, Clock, Star, Tag } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import Header from '@/components/Header';
+
+const Resources = () => {
+  return (
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Header currentPage="Resources" />
+
+      {/* Hero Section */}
+      <section className="py-24 bg-gradient-to-br from-slate-950 via-slate-900 to-cyan-950">
+        <div className="container mx-auto text-center px-4">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
+            Security Resources
+          </h1>
+          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
+            Access our comprehensive library of security resources, including whitepapers, case studies, 
+            webinars, and tools to help strengthen your organization's security posture.
+          </p>
+        </div>
+      </section>
+
+      {/* Resource Categories */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Resource Categories</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Explore our extensive collection of security resources organized by category and topic.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {[
+              {
+                icon: <FileText className="text-cyan-400" size={48} />,
+                title: "Whitepapers",
+                count: "25+",
+                description: "In-depth research reports and analysis on cybersecurity trends and best practices."
+              },
+              {
+                icon: <BookOpen className="text-cyan-400" size={48} />,
+                title: "Case Studies",
+                count: "40+",
+                description: "Real-world examples of security implementations and successful threat responses."
+              },
+              {
+                icon: <Video className="text-cyan-400" size={48} />,
+                title: "Webinars",
+                count: "60+",
+                description: "Expert-led webinars covering the latest security topics and threat intelligence."
+              },
+              {
+                icon: <Download className="text-cyan-400" size={48} />,
+                title: "Tools & Templates",
+                count: "30+",
+                description: "Free security tools, checklists, and templates to help improve your security posture."
+              }
+            ].map((category, index) => (
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
+                <CardHeader>
+                  <div className="mb-4">{category.icon}</div>
+                  <CardTitle className="text-xl text-white">{category.title}</CardTitle>
+                  <div className="text-cyan-400 font-bold text-2xl mb-2">{category.count}</div>
+                  <CardDescription className="text-slate-300">{category.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                    Explore Resources
+                    <ArrowRight className="ml-2" size={16} />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Featured Resources */}
+      <section className="py-20 bg-slate-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Featured Resources</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Our most popular and recently updated security resources.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                type: "Whitepaper",
+                title: "2024 Cybersecurity Threat Landscape Report",
+                description: "Comprehensive analysis of emerging threats, attack vectors, and security trends for 2024.",
+                date: "December 15, 2024",
+                readTime: "15 min read",
+                downloads: "2,847",
+                rating: 4.9,
+                featured: true
+              },
+              {
+                type: "Case Study",
+                title: "Fortune 500 Ransomware Recovery Success Story",
+                description: "How we helped a Fortune 500 company recover from a sophisticated ransomware attack in 48 hours.",
+                date: "December 10, 2024",
+                readTime: "8 min read",
+                downloads: "1,523",
+                rating: 4.8,
+                featured: true
+              },
+              {
+                type: "Webinar",
+                title: "AI-Powered Threat Detection: The Future of Cybersecurity",
+                description: "Expert panel discussion on leveraging artificial intelligence for advanced threat detection and response.",
+                date: "December 8, 2024",
+                readTime: "45 min watch",
+                downloads: "3,421",
+                rating: 4.9,
+                featured: true
+              },
+              {
+                type: "Tool",
+                title: "Security Assessment Checklist Template",
+                description: "Comprehensive checklist for conducting security assessments and vulnerability evaluations.",
+                date: "December 5, 2024",
+                readTime: "5 min read",
+                downloads: "4,156",
+                rating: 4.7,
+                featured: false
+              },
+              {
+                type: "Whitepaper",
+                title: "Zero Trust Architecture Implementation Guide",
+                description: "Step-by-step guide to implementing zero trust security model in enterprise environments.",
+                date: "November 28, 2024",
+                readTime: "20 min read",
+                downloads: "2,134",
+                rating: 4.8,
+                featured: false
+              },
+              {
+                type: "Case Study",
+                title: "Healthcare Data Breach Prevention and Response",
+                description: "Case study on protecting patient data and ensuring HIPAA compliance in healthcare organizations.",
+                date: "November 20, 2024",
+                readTime: "12 min read",
+                downloads: "1,789",
+                rating: 4.6,
+                featured: false
+              }
+            ].map((resource, index) => (
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
+                      {resource.type}
+                    </Badge>
+                    {resource.featured && (
+                      <Badge className="bg-yellow-900/30 text-yellow-300 border-yellow-700">
+                        Featured
+                      </Badge>
+                    )}
+                  </div>
+                  <CardTitle className="text-lg text-white">{resource.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{resource.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-3 mb-4">
+                    <div className="flex items-center justify-between text-sm text-slate-400">
+                      <span className="flex items-center">
+                        <Calendar className="mr-1" size={14} />
+                        {resource.date}
+                      </span>
+                      <span className="flex items-center">
+                        <Clock className="mr-1" size={14} />
+                        {resource.readTime}
+                      </span>
+                    </div>
+                    <div className="flex items-center justify-between text-sm text-slate-400">
+                      <span className="flex items-center">
+                        <Download className="mr-1" size={14} />
+                        {resource.downloads} downloads
+                      </span>
+                      <span className="flex items-center">
+                        <Star className="mr-1" size={14} />
+                        {resource.rating}/5
+                      </span>
+                    </div>
+                  </div>
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                    <Download className="mr-2" size={16} />
+                    Download
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Security Tools */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Free Security Tools</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Download our free security tools and templates to help improve your organization's security posture.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {[
+              {
+                title: "Security Risk Assessment Tool",
+                description: "Interactive tool to assess your organization's security risks and vulnerabilities.",
+                features: ["Risk scoring", "Vulnerability assessment", "Compliance checking", "Report generation"],
+                downloads: "15,234",
+                rating: 4.8
+              },
+              {
+                title: "Incident Response Playbook Template",
+                description: "Comprehensive template for creating your organization's incident response procedures.",
+                features: ["Response procedures", "Contact lists", "Communication templates", "Recovery steps"],
+                downloads: "12,567",
+                rating: 4.7
+              },
+              {
+                title: "Security Awareness Training Kit",
+                description: "Complete training materials for security awareness programs and employee education.",
+                features: ["Training modules", "Phishing simulations", "Assessment quizzes", "Certificates"],
+                downloads: "8,934",
+                rating: 4.9
+              },
+              {
+                title: "Vulnerability Management Checklist",
+                description: "Step-by-step checklist for implementing effective vulnerability management processes.",
+                features: ["Scanning procedures", "Prioritization matrix", "Remediation tracking", "Reporting"],
+                downloads: "6,789",
+                rating: 4.6
+              }
+            ].map((tool, index) => (
+              <div key={index} className="bg-slate-800 rounded-lg p-6 border border-slate-700 hover:border-cyan-600 transition-all duration-300">
+                <div className="flex items-start justify-between mb-4">
+                  <div className="flex items-center space-x-3">
+                    <div className="w-12 h-12 bg-cyan-600 rounded-lg flex items-center justify-center">
+                      <Download className="text-white" size={24} />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-white">{tool.title}</h3>
+                      <p className="text-slate-300">{tool.description}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="space-y-2 mb-4">
+                  {tool.features.map((feature, idx) => (
+                    <div key={idx} className="flex items-center text-slate-300 text-sm">
+                      <span className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
+                      {feature}
+                    </div>
+                  ))}
+                </div>
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center space-x-4 text-sm text-slate-400">
+                    <span className="flex items-center">
+                      <Download className="mr-1" size={14} />
+                      {tool.downloads} downloads
+                    </span>
+                    <span className="flex items-center">
+                      <Star className="mr-1" size={14} />
+                      {tool.rating}/5
+                    </span>
+                  </div>
+                </div>
+                <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                  <Download className="mr-2" size={16} />
+                  Download Tool
+                </Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Upcoming Events */}
+      <section className="py-20 bg-slate-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold mb-6">Upcoming Events</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              Join our upcoming webinars, conferences, and training sessions to stay updated on the latest security trends.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Cybersecurity Trends 2025",
+                type: "Webinar",
+                date: "January 15, 2025",
+                time: "2:00 PM EST",
+                duration: "60 minutes",
+                speakers: "Sarah Chen, Michael Rodriguez",
+                description: "Join our experts as they discuss the top cybersecurity trends and predictions for 2025."
+              },
+              {
+                title: "Zero Trust Implementation Workshop",
+                type: "Workshop",
+                date: "January 22, 2025",
+                time: "10:00 AM EST",
+                duration: "4 hours",
+                speakers: "Dr. Emily Watson, James Thompson",
+                description: "Hands-on workshop on implementing zero trust architecture in your organization."
+              },
+              {
+                title: "Threat Intelligence Summit 2025",
+                type: "Conference",
+                date: "February 5-7, 2025",
+                time: "9:00 AM EST",
+                duration: "3 days",
+                speakers: "Multiple Experts",
+                description: "Annual conference featuring the latest in threat intelligence and security research."
+              }
+            ].map((event, index) => (
+              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-cyan-600 transition-all duration-300">
+                <CardHeader>
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
+                      {event.type}
+                    </Badge>
+                    <Badge className="bg-green-900/30 text-green-300 border-green-700">
+                      Upcoming
+                    </Badge>
+                  </div>
+                  <CardTitle className="text-lg text-white">{event.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{event.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-2 mb-4 text-sm text-slate-300">
+                    <div className="flex items-center">
+                      <Calendar className="mr-2" size={14} />
+                      {event.date} at {event.time}
+                    </div>
+                    <div className="flex items-center">
+                      <Clock className="mr-2" size={14} />
+                      Duration: {event.duration}
+                    </div>
+                    <div className="flex items-center">
+                      <Users className="mr-2" size={14} />
+                      Speakers: {event.speakers}
+                    </div>
+                  </div>
+                  <Button className="w-full bg-cyan-600 hover:bg-cyan-700 text-white">
+                    Register Now
+                    <ArrowRight className="ml-2" size={16} />
+                  </Button>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-cyan-900 to-blue-900">
+        <div className="container mx-auto text-center px-4">
+          <h2 className="text-4xl font-bold mb-6">Stay Updated with Our Resources</h2>
+          <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+            Subscribe to our newsletter to receive the latest security resources, threat intelligence, 
+            and industry insights directly in your inbox.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
+              Subscribe to Newsletter
+              <ArrowRight className="ml-2" size={20} />
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+              Browse All Resources
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-slate-950 py-16 border-t border-slate-800">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div>
+              <div className="flex items-center space-x-2 mb-4">
+                <Shield className="text-cyan-400" size={24} />
+                <div className="text-xl font-bold text-cyan-400">CyberShield Pro</div>
+              </div>
+              <p className="text-slate-400 mb-4">
+                Leading cybersecurity company providing advanced security solutions to protect your digital assets.
+              </p>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Resources</h3>
+              <ul className="space-y-2">
+                {['Whitepapers', 'Case Studies', 'Webinars', 'Tools', 'Events'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
+              <ul className="space-y-2">
+                {['About Us', 'Careers', 'News', 'Partners', 'Contact'].map((item) => (
+                  <li key={item}>
+                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-lg font-semibold text-white mb-4">Contact Info</h3>
+              <div className="space-y-3">
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">📞</span>
+                  +1 (555) 123-4567
+                </div>
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">✉️</span>
+                  info@cybershieldpro.com
+                </div>
+                <div className="flex items-center text-slate-400">
+                  <span className="mr-2">📍</span>
+                  New York, NY
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
+            <p>&copy; 2024 CyberShield Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+  );
+};
+
+export default Resources;

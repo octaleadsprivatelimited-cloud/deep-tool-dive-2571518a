@@ -1,133 +1,235 @@
 import React from 'react';
-import { Search, Wrench, Star, TrendingUp } from 'lucide-react';
+import { Shield, Lock, Eye, Users, Award, CheckCircle, ArrowRight, Phone, Mail, MapPin, Globe, Zap, Target, AlertTriangle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import Header from '@/components/Header';
+import Footer from '@/components/Footer';
+import CyberGlobe from '@/components/Globe';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Header */}
-      <header className="bg-gray-900 py-4">
-        <div className="container mx-auto flex justify-between items-center">
-          <div className="text-2xl font-bold text-green-400">AI Tool Tester</div>
-          <nav>
-            <ul className="flex space-x-4">
-              {['Home', 'About', 'Tools', 'Reviews', 'Trends', 'Blog', 'Contact'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-gray-300 hover:text-green-400">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </nav>
-          <div className="relative">
-            <Input type="text" placeholder="Search AI Tools" className="pl-10 pr-4 py-2 rounded-full bg-gray-800 text-white" />
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" size={18} />
-          </div>
-        </div>
-      </header>
+    <div className="min-h-screen bg-slate-950 text-white">
+      <Header currentPage="Home" />
 
       {/* Hero Section */}
-      <section className="py-20 bg-gradient-to-r from-gray-900 via-green-900 to-blue-900">
-        <div className="container mx-auto text-center">
-          <h1 className="text-5xl font-bold mb-4">Your Ultimate AI Tools Resource</h1>
-          <p className="text-xl mb-8">Testing, Reviewing, and Trending AI Innovations</p>
-          <Button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-6 rounded-full">
-            Explore Tools
-          </Button>
+      <section className="py-24 relative overflow-hidden min-h-screen flex items-center">
+        
+        {/* Globe Background */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-1/2 right-0 w-1/2 h-full -translate-y-1/2 opacity-60">
+            <CyberGlobe />
+          </div>
+        </div>
+        
+        <div className="container mx-auto text-center relative z-10 px-4">
+          <Badge className="bg-red-900/30 text-red-300 border-red-700 mb-6 px-4 py-2">
+            <Shield className="w-4 h-4 mr-2" />
+            Trusted by Fortune 500 Companies
+          </Badge>
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-red-100 to-red-400 bg-clip-text text-transparent">
+            Advanced Cybersecurity
+            <br />
+            <span className="text-red-400">Solutions</span>
+          </h1>
+          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
+            Protect your enterprise with cutting-edge security technologies, 24/7 threat monitoring, 
+            and expert incident response from the world's leading cybersecurity company.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg text-lg">
+              <a href="/contact" className="flex items-center">
+                Start Security Assessment
+                <ArrowRight className="ml-2" size={20} />
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white px-8 py-4 rounded-lg text-lg">
+              <a href="/solutions">View Our Solutions</a>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Featured Sections */}
-      <section className="py-16 bg-gray-900">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Featured AI Tools</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-gray-800 rounded-lg p-6">
-                <Wrench className="text-green-400 mb-4" size={48} />
-                <h3 className="text-xl font-bold mb-2">AI Tool {item}</h3>
-                <p className="text-gray-400 mb-4">Brief description of the AI tool and its capabilities.</p>
-                <Button variant="outline" className="text-green-400 border-green-400 hover:bg-green-400 hover:text-white">
-                  Add to Toolbox
-                </Button>
+      {/* Stats Section */}
+      <section className="py-16 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {[
+              { number: "500+", label: "Fortune 500 Clients" },
+              { number: "99.9%", label: "Uptime Guarantee" },
+              { number: "24/7", label: "Security Monitoring" },
+              { number: "15+", label: "Years Experience" }
+            ].map((stat, index) => (
+              <div key={index} className="text-center">
+                <div className="text-4xl md:text-5xl font-bold text-cyan-400 mb-2">{stat.number}</div>
+                <div className="text-slate-300">{stat.label}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="py-16 bg-gray-800">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Expert Reviews</h2>
-          <div className="flex space-x-8 overflow-x-auto pb-4">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-gray-700 rounded-lg p-6 min-w-[300px]">
-                <div className="flex items-center mb-4">
-                  <Star className="text-yellow-400 mr-2" />
-                  <span className="text-yellow-400 font-bold">4.5/5</span>
-                </div>
-                <h3 className="text-xl font-bold mb-2">AI Tool Review {item}</h3>
-                <p className="text-gray-400 mb-4">Snippet of the review highlighting key points...</p>
-                <Button variant="link" className="text-blue-400 hover:text-blue-300 p-0">
-                  Read Full Review
-                </Button>
-              </div>
-            ))}
+      {/* Services Section */}
+      <section className="py-20 bg-slate-950">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Comprehensive Security Services</h2>
+            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+              From threat detection to incident response, we provide end-to-end cybersecurity solutions 
+              tailored to your organization's unique needs.
+            </p>
           </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-gray-900">
-        <div className="container mx-auto">
-          <h2 className="text-3xl font-bold mb-8 text-center">Trending Now</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3].map((item) => (
-              <div key={item} className="bg-gray-800 rounded-lg p-6">
-                <TrendingUp className="text-blue-400 mb-4" size={32} />
-                <h3 className="text-xl font-bold mb-2">AI Trend Article {item}</h3>
-                <p className="text-gray-400 mb-4">Brief snippet of the trending AI topic or news...</p>
-                <Button variant="link" className="text-blue-400 hover:text-blue-300 p-0">
-                  Read More
-                </Button>
-              </div>
+            {[
+              {
+                icon: <Shield className="text-cyan-400" size={48} />,
+                title: "Threat Detection & Response",
+                description: "Advanced AI-powered threat detection with real-time monitoring and automated response capabilities.",
+                features: ["Real-time monitoring", "AI threat analysis", "Automated response", "24/7 SOC"]
+              },
+              {
+                icon: <Lock className="text-cyan-400" size={48} />,
+                title: "Identity & Access Management",
+                description: "Secure identity management with multi-factor authentication and privileged access controls.",
+                features: ["Multi-factor auth", "Privileged access", "Identity governance", "Single sign-on"]
+              },
+              {
+                icon: <Eye className="text-cyan-400" size={48} />,
+                title: "Security Assessment",
+                description: "Comprehensive security audits and penetration testing to identify vulnerabilities.",
+                features: ["Penetration testing", "Vulnerability scans", "Compliance audits", "Risk assessment"]
+              },
+              {
+                icon: <Globe className="text-cyan-400" size={48} />,
+                title: "Cloud Security",
+                description: "Protect your cloud infrastructure with advanced security controls and monitoring.",
+                features: ["Cloud monitoring", "Data encryption", "Access controls", "Compliance"]
+              },
+              {
+                icon: <Zap className="text-cyan-400" size={48} />,
+                title: "Incident Response",
+                description: "Rapid response to security incidents with expert forensic analysis and recovery.",
+                features: ["24/7 response", "Forensic analysis", "Recovery planning", "Legal support"]
+              },
+              {
+                icon: <Target className="text-cyan-400" size={48} />,
+                title: "Security Training",
+                description: "Comprehensive security awareness training for your employees and IT teams.",
+                features: ["Phishing simulation", "Security awareness", "Technical training", "Certification"]
+              }
+            ].map((service, index) => (
+              <Card key={index} className="bg-slate-900 border-slate-800 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+                <CardHeader>
+                  <div className="mb-4">{service.icon}</div>
+                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
+                  <CardDescription className="text-slate-300">{service.description}</CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-2">
+                    {service.features.map((feature, idx) => (
+                      <li key={idx} className="flex items-center text-slate-300">
+                        <CheckCircle className="text-cyan-400 mr-2" size={16} />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="bg-gray-900 py-8">
-        <div className="container mx-auto flex flex-wrap justify-between">
-          <div className="w-full md:w-1/3 mb-8 md:mb-0">
-            <h3 className="text-xl font-bold mb-4">Quick Links</h3>
-            <ul className="space-y-2">
-              {['Privacy Policy', 'Terms of Service', 'Support'].map((item) => (
-                <li key={item}>
-                  <a href="#" className="text-gray-400 hover:text-green-400">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
-          <div className="w-full md:w-1/3 mb-8 md:mb-0">
-            <h3 className="text-xl font-bold mb-4">Follow Us</h3>
-            <div className="flex space-x-4">
-              {['LinkedIn', 'Twitter', 'Facebook', 'Instagram'].map((item) => (
-                <a key={item} href="#" className="text-gray-400 hover:text-green-400">
-                  {item}
-                </a>
-              ))}
+      {/* Threat Intelligence Section */}
+      <section className="py-20 bg-slate-900">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Real-Time Threat Intelligence</h2>
+              <p className="text-xl text-slate-300 mb-8">
+                Stay ahead of emerging threats with our advanced threat intelligence platform. 
+                We monitor global threat landscapes and provide actionable intelligence to protect your organization.
+              </p>
+              <div className="space-y-4">
+                {[
+                  "Global threat monitoring",
+                  "AI-powered threat analysis",
+                  "Custom threat reports",
+                  "Threat hunting services"
+                ].map((feature, index) => (
+                  <div key={index} className="flex items-center">
+                    <CheckCircle className="text-cyan-400 mr-3" size={20} />
+                    <span className="text-slate-300 text-lg">{feature}</span>
+                  </div>
+                ))}
+              </div>
+              <Button className="mt-8 bg-cyan-600 hover:bg-cyan-700 text-white font-semibold px-6 py-3 rounded-lg">
+                Learn More About Threat Intelligence
+              </Button>
             </div>
-          </div>
-          <div className="w-full md:w-1/3">
-            <h3 className="text-xl font-bold mb-4">Newsletter</h3>
-            <p className="text-gray-400 mb-4">Get the Latest AI News</p>
-            <div className="flex">
-              <Input type="email" placeholder="Your email" className="rounded-l-full" />
-              <Button className="bg-green-500 hover:bg-green-600 rounded-r-full">Subscribe</Button>
+            <div className="bg-slate-800 rounded-lg p-8 border border-slate-700">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between p-4 bg-red-900/20 border border-red-800 rounded-lg">
+                  <div className="flex items-center">
+                    <AlertTriangle className="text-red-400 mr-3" size={24} />
+                    <div>
+                      <div className="text-red-400 font-semibold">Critical Threat Detected</div>
+                      <div className="text-slate-300 text-sm">Ransomware campaign targeting financial sector</div>
+                    </div>
+                  </div>
+                  <Badge className="bg-red-900 text-red-300">High Risk</Badge>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-yellow-900/20 border border-yellow-800 rounded-lg">
+                  <div className="flex items-center">
+                    <Eye className="text-yellow-400 mr-3" size={24} />
+                    <div>
+                      <div className="text-yellow-400 font-semibold">Suspicious Activity</div>
+                      <div className="text-slate-300 text-sm">Unusual login patterns detected</div>
+                    </div>
+                  </div>
+                  <Badge className="bg-yellow-900 text-yellow-300">Medium Risk</Badge>
+                </div>
+                <div className="flex items-center justify-between p-4 bg-green-900/20 border border-green-800 rounded-lg">
+                  <div className="flex items-center">
+                    <Shield className="text-green-400 mr-3" size={24} />
+                    <div>
+                      <div className="text-green-400 font-semibold">System Secure</div>
+                      <div className="text-slate-300 text-sm">All security checks passed</div>
+                    </div>
+                  </div>
+                  <Badge className="bg-green-900 text-green-300">Secure</Badge>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </footer>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-cyan-900 to-blue-900">
+        <div className="container mx-auto text-center px-4">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Secure Your Organization?</h2>
+          <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+            Join thousands of organizations that trust CyberShield Pro for their cybersecurity needs. 
+            Get a free security assessment and discover how we can protect your business.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
+              <a href="/contact" className="flex items-center">
+                Get Free Assessment
+                <ArrowRight className="ml-2" size={20} />
+              </a>
+            </Button>
+            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+              <a href="/contact">Contact Sales</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Mega Footer */}
+      <Footer />
     </div>
   );
 };

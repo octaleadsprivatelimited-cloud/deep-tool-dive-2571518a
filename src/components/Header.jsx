@@ -2,11 +2,9 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import ContactModal from './ContactModal';
 
 const Header = ({ currentPage = 'Home' }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   const navItems = [
     { name: 'Home', href: '/' },
@@ -24,15 +22,6 @@ const Header = ({ currentPage = 'Home' }) => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  const openContactModal = () => {
-    setIsContactModalOpen(true);
-    setIsMobileMenuOpen(false); // Close mobile menu if open
-  };
-
-  const closeContactModal = () => {
-    setIsContactModalOpen(false);
-  };
-
   return (
     <header className="bg-slate-900/95 backdrop-blur-sm border-b border-red-500/30 py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4">
@@ -44,7 +33,7 @@ const Header = ({ currentPage = 'Home' }) => {
             transition={{ type: "spring", stiffness: 300 }}
           >
             <Shield className="text-red-500" size={32} />
-            <div className="text-2xl font-bold text-red-500">CyberShield Pro</div>
+            <div className="text-2xl font-bold text-red-500">Trans Asia Soft Tech</div>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -79,10 +68,10 @@ const Header = ({ currentPage = 'Home' }) => {
           {/* Desktop CTA Button */}
           <div className="hidden lg:block">
             <Button 
-              onClick={openContactModal}
+              asChild
               className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-lg"
             >
-              Get Started
+              <a href="/contact">Get Started</a>
             </Button>
           </div>
 
@@ -139,10 +128,10 @@ const Header = ({ currentPage = 'Home' }) => {
                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
                 >
                   <Button 
-                    onClick={openContactModal}
+                    asChild
                     className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg"
                   >
-                    Get Started
+                    <a href="/contact">Get Started</a>
                   </Button>
                 </motion.div>
               </motion.nav>
@@ -150,12 +139,6 @@ const Header = ({ currentPage = 'Home' }) => {
           )}
         </AnimatePresence>
       </div>
-      
-      {/* Contact Modal */}
-      <ContactModal 
-        isOpen={isContactModalOpen} 
-        onClose={closeContactModal} 
-      />
     </header>
   );
 };

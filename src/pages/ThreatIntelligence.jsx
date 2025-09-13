@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Header from '@/components/Header';
+import Footer from '@/components/Footer';
 
 const ThreatIntelligence = () => {
   return (
@@ -312,61 +313,8 @@ const ThreatIntelligence = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-slate-950 py-16 border-t border-slate-800">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
-            <div>
-              <div className="flex items-center space-x-2 mb-4">
-                <Shield className="text-cyan-400" size={24} />
-                <div className="text-xl font-bold text-cyan-400">CyberShield Pro</div>
-              </div>
-              <p className="text-slate-400 mb-4">
-                Leading cybersecurity company providing advanced security solutions to protect your digital assets.
-              </p>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Threat Intelligence</h3>
-              <ul className="space-y-2">
-                {['Threat Monitoring', 'Threat Analysis', 'Threat Hunting', 'Global Intelligence', 'Reports'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Company</h3>
-              <ul className="space-y-2">
-                {['About Us', 'Careers', 'News', 'Partners', 'Contact'].map((item) => (
-                  <li key={item}>
-                    <a href="#" className="text-slate-400 hover:text-cyan-400 transition-colors">{item}</a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-lg font-semibold text-white mb-4">Contact Info</h3>
-              <div className="space-y-3">
-                <div className="flex items-center text-slate-400">
-                  <span className="mr-2">📞</span>
-                  +1 (555) 123-4567
-                </div>
-                <div className="flex items-center text-slate-400">
-                  <span className="mr-2">✉️</span>
-                  info@cybershieldpro.com
-                </div>
-                <div className="flex items-center text-slate-400">
-                  <span className="mr-2">📍</span>
-                  New York, NY
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="border-t border-slate-800 pt-8 text-center text-slate-400">
-            <p>&copy; 2024 CyberShield Pro. All rights reserved. | Privacy Policy | Terms of Service</p>
-          </div>
-        </div>
-      </footer>
+      {/* Mega Footer */}
+      <Footer />
     </div>
   );
 };

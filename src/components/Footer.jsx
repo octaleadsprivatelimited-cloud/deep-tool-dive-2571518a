@@ -191,28 +191,28 @@ const Footer = () => {
 
         {/* Contact Information */}
         <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12">
-          <div className="text-center md:text-left">
-            <h4 className="font-semibold text-red-400 mb-4">Headquarters</h4>
-            <div className="space-y-2 text-slate-300">
-              <p>1234 Security Boulevard</p>
-              <p>Cyber City, CC 12345</p>
-              <p>United States</p>
+            <div className="text-center md:text-left">
+              <h4 className="font-semibold text-red-400 mb-4">Headquarters</h4>
+              <div className="space-y-2 text-slate-300">
+                <p>T-hub 2.0, Madhapur</p>
+                <p>Hyderabad-500017</p>
+                <p>India</p>
+              </div>
             </div>
-          </div>
           <div className="text-center md:text-left">
             <h4 className="font-semibold text-red-400 mb-4">Contact</h4>
             <div className="space-y-2 text-slate-300">
               <p className="flex items-center justify-center md:justify-start">
                 <Phone className="w-4 h-4 mr-2" />
-                +1 (555) 123-4567
+                +91 89-2583-4989
               </p>
               <p className="flex items-center justify-center md:justify-start">
                 <Mail className="w-4 h-4 mr-2" />
-                info@cybersecurity.com
+                info@transasiatec.com
               </p>
               <p className="flex items-center justify-center md:justify-start">
                 <Globe className="w-4 h-4 mr-2" />
-                www.cybersecurity.com
+                www.transasiatec.com
               </p>
             </div>
           </div>
@@ -235,11 +235,15 @@ const Footer = () => {
         {/* CEO Introduction Section */}
         <div className="bg-gradient-to-r from-slate-900 to-slate-800 rounded-lg p-6 mb-8">
           <div className="flex items-center gap-4">
-            <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-red-700 rounded-full flex items-center justify-center flex-shrink-0">
-              <span className="text-xl font-bold text-white">JS</span>
+            <div className="w-16 h-16 rounded-full flex items-center justify-center flex-shrink-0 overflow-hidden">
+              <img 
+                src="https://media.licdn.com/dms/image/v2/D5603AQHnXpVq2X5uvQ/profile-displayphoto-shrink_800_800/profile-displayphoto-shrink_800_800/0/1669802740007?e=1760572800&v=beta&t=qiet6r3RmIkPzq1a7NWZ59w3KJWgDUFPLEpOSrjVJKc" 
+                alt="Vijayanand Subramaniam - CEO"
+                className="w-full h-full object-cover rounded-full"
+              />
             </div>
             <div className="flex-1">
-              <h3 className="text-lg font-bold text-white mb-1">John Smith</h3>
+              <h3 className="text-lg font-bold text-white mb-1">Vijayanand Subramaniam</h3>
               <p className="text-red-400 font-medium text-sm mb-2">Chief Executive Officer & Founder</p>
               <p className="text-slate-300 text-sm leading-relaxed">
                 "Leading cybersecurity innovation with 20+ years of experience protecting organizations worldwide."
@@ -253,7 +257,7 @@ const Footer = () => {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center space-x-2">
               <Shield className="w-6 h-6 text-red-500" />
-              <span className="text-xl font-bold">CyberShield</span>
+              <span className="text-xl font-bold">Trans Asia Soft Tech</span>
             </div>
             <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm text-slate-400">
               <a href="/privacy" className="hover:text-red-400 transition-colors">Privacy Policy</a>
@@ -263,7 +267,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="mt-4 text-center text-sm text-slate-500">
-            <p>&copy; 2024 CyberShield Security. All rights reserved. | ISO 27001 Certified | SOC 2 Type II Compliant</p>
+            <p>&copy; 2024 Trans Asia Soft Tech. All rights reserved. | ISO 27001 Certified | SOC 2 Type II Compliant</p>
           </div>
         </div>
       </div>

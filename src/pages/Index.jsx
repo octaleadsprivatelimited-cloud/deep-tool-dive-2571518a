@@ -211,7 +211,7 @@ const Index = () => {
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl md:text-5xl font-bold mb-6">Ready to Secure Your Organization?</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
-            Join thousands of organizations that trust CyberShield Pro for their cybersecurity needs. 
+            Join thousands of organizations that trust Trans Asia Soft Tech for their cybersecurity needs. 
             Get a free security assessment and discover how we can protect your business.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

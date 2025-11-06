@@ -24,11 +24,10 @@ const Partners = () => {
         </div>
         <div className="container mx-auto text-center px-4 relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
-            Our Partners
+            Partners & Sponsors
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            We work with industry-leading technology partners to deliver comprehensive security solutions 
-            and provide our clients with the best-in-class cybersecurity tools and services.
+            We collaborate with organizations and sponsors to support community programs, education, and culture.
           </p>
         </div>
       </section>
@@ -38,11 +37,10 @@ const Partners = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Strategic Technology Partnerships
+              Strategic Partnerships
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              We work with industry-leading technology partners to deliver comprehensive security solutions 
-              and provide our clients with the best-in-class cybersecurity tools and services.
+              Together with our partners, we enable impactful programs across chapters worldwide.
             </p>
           </div>
         </div>
@@ -92,65 +90,20 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* Technology Partners */}
+      {/* Sponsor Categories */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Technology Partners</h2>
+            <h2 className="text-4xl font-bold mb-6">Sponsor Categories</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              We integrate with leading technology platforms to provide comprehensive security solutions.
+              Ways to partner and support federation programs and events.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
-              {
-                name: "Microsoft",
-                category: "Cloud Security",
-                description: "Advanced security solutions for Microsoft Azure and Office 365 environments.",
-                features: ["Azure Security Center", "Office 365 Protection", "Identity Management", "Compliance Tools"],
-                logo: "MS",
-                tier: "Platinum"
-              },
-              {
-                name: "Amazon Web Services",
-                category: "Cloud Infrastructure",
-                description: "Comprehensive security services for AWS cloud environments and workloads.",
-                features: ["AWS Security Hub", "CloudTrail Monitoring", "IAM Management", "WAF Protection"],
-                logo: "AWS",
-                tier: "Platinum"
-              },
-              {
-                name: "Google Cloud",
-                category: "Cloud Security",
-                description: "Security solutions for Google Cloud Platform and G Suite environments.",
-                features: ["Security Command Center", "Cloud Identity", "Data Loss Prevention", "Threat Detection"],
-                logo: "GCP",
-                tier: "Gold"
-              },
-              {
-                name: "CrowdStrike",
-                category: "Endpoint Security",
-                description: "Next-generation endpoint protection and threat hunting capabilities.",
-                features: ["Falcon Platform", "Threat Intelligence", "Incident Response", "Forensics"],
-                logo: "CS",
-                tier: "Gold"
-              },
-              {
-                name: "Palo Alto Networks",
-                category: "Network Security",
-                description: "Advanced firewall and network security solutions for enterprise environments.",
-                features: ["Next-Gen Firewalls", "Threat Prevention", "URL Filtering", "VPN Solutions"],
-                logo: "PAN",
-                tier: "Gold"
-              },
-              {
-                name: "Splunk",
-                category: "Security Analytics",
-                description: "Security information and event management (SIEM) platform integration.",
-                features: ["SIEM Platform", "Log Analysis", "Threat Detection", "Compliance Reporting"],
-                logo: "SP",
-                tier: "Silver"
-              }
+              { name: "Title Sponsor", category: "Annual Programs", description: "Primary supporter of flagship programs and global meets.", features: ["Stage branding", "Media mentions", "Meet leadership", "Prime booth"], logo: "TS", tier: "Platinum" },
+              { name: "Gold Sponsor", category: "Education & Youth", description: "Supports scholarships and youth initiatives.", features: ["Scholarship branding", "Media mentions", "Chapter features", "Booth"], logo: "GS", tier: "Gold" },
+              { name: "Community Partner", category: "Chapters", description: "Supports local events and community drives.", features: ["Event branding", "Chapter mentions", "Volunteer engagement", "Tables"], logo: "CP", tier: "Silver" }
             ].map((partner, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
@@ -189,49 +142,20 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* Channel Partners */}
+      {/* Community Partners */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Channel Partners</h2>
+            <h2 className="text-4xl font-bold mb-6">Community Partners</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Our trusted channel partners help us deliver cybersecurity solutions to clients worldwide.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
-              {
-                name: "CDW Corporation",
-                type: "Value-Added Reseller",
-                region: "North America",
-                description: "Leading technology solutions provider delivering cybersecurity services to enterprise clients.",
-                specialties: ["Enterprise Security", "Cloud Solutions", "Managed Services", "Professional Services"],
-                years: "5+ years"
-              },
-              {
-                name: "Dimension Data",
-                type: "System Integrator",
-                region: "Global",
-                description: "Global systems integrator providing comprehensive IT and security solutions.",
-                specialties: ["System Integration", "Security Consulting", "Managed Services", "Digital Transformation"],
-                years: "8+ years"
-              },
-              {
-                name: "Accenture",
-                type: "Consulting Partner",
-                region: "Global",
-                description: "Global consulting firm delivering cybersecurity transformation and advisory services.",
-                specialties: ["Security Consulting", "Digital Transformation", "Risk Management", "Compliance"],
-                years: "10+ years"
-              },
-              {
-                name: "Deloitte",
-                type: "Advisory Partner",
-                region: "Global",
-                description: "Professional services firm providing cybersecurity risk and advisory services.",
-                specialties: ["Risk Advisory", "Security Assessment", "Compliance", "Incident Response"],
-                years: "7+ years"
-              }
+              { name: "Local Businesses Collective", type: "Community Partner", region: "Hyderabad", description: "Supporting cultural events and youth programs.", specialties: ["Events", "Scholarships", "Volunteer support", "Logistics"], years: "3+ years" },
+              { name: "Tech Professionals Network", type: "Community Partner", region: "Dallas", description: "Mentorship and networking for students and professionals.", specialties: ["Mentorship", "Workshops", "Career talks", "Networking"], years: "2+ years" },
+              { name: "Cultural Association UK", type: "Community Partner", region: "London", description: "Promoting cultural programs and community service.", specialties: ["Cultural", "Fundraising", "Volunteer", "Media"], years: "4+ years" }
             ].map((partner, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
                 <CardHeader>
@@ -269,74 +193,20 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* Partner Programs */}
+      {/* Sponsorship Tiers */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Partner Programs</h2>
+            <h2 className="text-4xl font-bold mb-6">Sponsorship Tiers</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Choose the partner program that best fits your business model and growth objectives.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
-              {
-                name: "Reseller Program",
-                tier: "Silver",
-                description: "Perfect for VARs and resellers looking to add cybersecurity to their portfolio.",
-                benefits: [
-                  "Competitive pricing",
-                  "Sales training",
-                  "Marketing support",
-                  "Technical support",
-                  "Lead generation"
-                ],
-                requirements: [
-                  "Established business",
-                  "Security expertise",
-                  "Sales commitment",
-                  "Customer references"
-                ],
-                color: "slate"
-              },
-              {
-                name: "System Integrator Program",
-                tier: "Gold",
-                description: "Designed for system integrators delivering comprehensive security solutions.",
-                benefits: [
-                  "Enhanced margins",
-                  "Dedicated support",
-                  "Joint marketing",
-                  "Technical certification",
-                  "Priority support"
-                ],
-                requirements: [
-                  "Integration capabilities",
-                  "Certified engineers",
-                  "Project experience",
-                  "Customer base"
-                ],
-                color: "cyan"
-              },
-              {
-                name: "Strategic Alliance Program",
-                tier: "Platinum",
-                description: "For strategic partners with deep integration and joint go-to-market initiatives.",
-                benefits: [
-                  "Highest margins",
-                  "Executive sponsorship",
-                  "Joint development",
-                  "Global support",
-                  "Co-marketing funds"
-                ],
-                requirements: [
-                  "Strategic alignment",
-                  "Global presence",
-                  "Innovation partnership",
-                  "Market leadership"
-                ],
-                color: "yellow"
-              }
+              { name: "Community Partner", tier: "Silver", description: "Support local events and initiatives.", benefits: ["Logo on event collateral", "Chapter shout-outs", "Booth/table", "Volunteer engagement", "Tickets"], requirements: ["Basic sponsorship", "Local presence"], color: "slate" },
+              { name: "Program Sponsor", tier: "Gold", description: "Fund scholarships and youth programs.", benefits: ["Branding on materials", "Media mentions", "Speaking slots", "Mentor access", "VIP tickets"], requirements: ["Annual sponsorship", "Program alignment"], color: "cyan" },
+              { name: "Title Sponsor", tier: "Platinum", description: "Lead supporter of flagship programs and global meet.", benefits: ["Stage branding", "Prime visibility", "Leadership meet", "Press features", "All-access passes"], requirements: ["Strategic alignment", "Annual commitment"], color: "yellow" }
             ].map((program, index) => (
               <Card key={index} className={`bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 ${
                 program.color === 'cyan' ? 'ring-2 ring-cyan-600' : ''
@@ -454,7 +324,7 @@ const Partners = () => {
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
-            Join our partner ecosystem and help us deliver world-class cybersecurity solutions to organizations worldwide.
+            Support culture, education, and community programs across global Kamma communities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">

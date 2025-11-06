@@ -1,5 +1,5 @@
 import React from 'react';
-import { Shield, FileText, Download, Calendar, Users, BookOpen, Video, ArrowRight, Clock, Star, Tag } from 'lucide-react';
+import { FileText, Download, Calendar, Users, BookOpen, Video, ArrowRight, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -24,11 +24,10 @@ const Resources = () => {
         </div>
         <div className="container mx-auto text-center px-4 relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
-            Security Resources
+            Federation Resources
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Access our comprehensive library of security resources, including whitepapers, case studies, 
-            webinars, and tools to help strengthen your organization's security posture.
+            Access publications, community stories, media, and guides from Kamma Global Federation.
           </p>
         </div>
       </section>
@@ -38,11 +37,10 @@ const Resources = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Comprehensive Security Resources
+              Community Knowledge Hub
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              Access our comprehensive library of security resources, including whitepapers, case studies, 
-              webinars, and tools to help strengthen your organization's security posture.
+              Explore our publications, reports, and materials supporting culture, education, and service.
             </p>
           </div>
         </div>
@@ -61,27 +59,27 @@ const Resources = () => {
             {[
               {
                 icon: <FileText className="text-cyan-400" size={48} />,
-                title: "Whitepapers",
+                title: "Publications",
                 count: "25+",
-                description: "In-depth research reports and analysis on cybersecurity trends and best practices."
+                description: "Reports and publications on culture, education, entrepreneurship, and community."
               },
               {
                 icon: <BookOpen className="text-cyan-400" size={48} />,
-                title: "Case Studies",
+                title: "Community Stories",
                 count: "40+",
-                description: "Real-world examples of security implementations and successful threat responses."
+                description: "Impact stories from chapters and members across the globe."
               },
               {
                 icon: <Video className="text-cyan-400" size={48} />,
-                title: "Webinars",
+                title: "Media",
                 count: "60+",
-                description: "Expert-led webinars covering the latest security topics and threat intelligence."
+                description: "Videos and talks from federation events and leaders."
               },
               {
                 icon: <Download className="text-cyan-400" size={48} />,
-                title: "Tools & Templates",
+                title: "Guides & Templates",
                 count: "30+",
-                description: "Free security tools, checklists, and templates to help improve your security posture."
+                description: "Guides, forms, and templates for programs, events, and chapters."
               }
             ].map((category, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
@@ -115,9 +113,9 @@ const Resources = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                type: "Whitepaper",
-                title: "2024 Cybersecurity Threat Landscape Report",
-                description: "Comprehensive analysis of emerging threats, attack vectors, and security trends for 2024.",
+                type: "Report",
+                title: "Global Chapters Annual Report",
+                description: "Highlights of chapter activities, impact metrics, and programs across regions.",
                 date: "December 15, 2024",
                 readTime: "15 min read",
                 downloads: "2,847",
@@ -125,9 +123,9 @@ const Resources = () => {
                 featured: true
               },
               {
-                type: "Case Study",
-                title: "Fortune 500 Ransomware Recovery Success Story",
-                description: "How we helped a Fortune 500 company recover from a sophisticated ransomware attack in 48 hours.",
+                type: "Story",
+                title: "Youth Scholarship Winners",
+                description: "Recognizing outstanding students supported by the federation scholarship program.",
                 date: "December 10, 2024",
                 readTime: "8 min read",
                 downloads: "1,523",
@@ -135,9 +133,9 @@ const Resources = () => {
                 featured: true
               },
               {
-                type: "Webinar",
-                title: "AI-Powered Threat Detection: The Future of Cybersecurity",
-                description: "Expert panel discussion on leveraging artificial intelligence for advanced threat detection and response.",
+                type: "Video",
+                title: "Global Meet Highlights",
+                description: "Key moments and speeches from the latest global federation meet.",
                 date: "December 8, 2024",
                 readTime: "45 min watch",
                 downloads: "3,421",
@@ -145,9 +143,9 @@ const Resources = () => {
                 featured: true
               },
               {
-                type: "Tool",
-                title: "Security Assessment Checklist Template",
-                description: "Comprehensive checklist for conducting security assessments and vulnerability evaluations.",
+                type: "Form",
+                title: "Chapter Registration Template",
+                description: "Standard form to register and onboard a new chapter.",
                 date: "December 5, 2024",
                 readTime: "5 min read",
                 downloads: "4,156",
@@ -155,9 +153,9 @@ const Resources = () => {
                 featured: false
               },
               {
-                type: "Whitepaper",
-                title: "Zero Trust Architecture Implementation Guide",
-                description: "Step-by-step guide to implementing zero trust security model in enterprise environments.",
+                type: "Guide",
+                title: "Event Hosting Checklist",
+                description: "Step-by-step checklist for running successful community events.",
                 date: "November 28, 2024",
                 readTime: "20 min read",
                 downloads: "2,134",
@@ -165,9 +163,9 @@ const Resources = () => {
                 featured: false
               },
               {
-                type: "Case Study",
-                title: "Healthcare Data Breach Prevention and Response",
-                description: "Case study on protecting patient data and ensuring HIPAA compliance in healthcare organizations.",
+                type: "Story",
+                title: "Entrepreneurship Mentorship Impact",
+                description: "Member success stories from mentorship and incubation initiatives.",
                 date: "November 20, 2024",
                 readTime: "12 min read",
                 downloads: "1,789",
@@ -224,11 +222,11 @@ const Resources = () => {
         </div>
       </section>
 
-      {/* Security Tools */}
+      {/* Downloads & Forms */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Free Security Tools</h2>
+            <h2 className="text-4xl font-bold mb-6">Downloads & Forms</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Download our free security tools and templates to help improve your organization's security posture.
             </p>
@@ -236,30 +234,30 @@ const Resources = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                title: "Security Risk Assessment Tool",
-                description: "Interactive tool to assess your organization's security risks and vulnerabilities.",
-                features: ["Risk scoring", "Vulnerability assessment", "Compliance checking", "Report generation"],
+                title: "Membership Application Form",
+                description: "Apply to become a federation member and join your nearest chapter.",
+                features: ["Personal details", "Chapter preference", "Membership tier", "Consent"],
                 downloads: "15,234",
                 rating: 4.8
               },
               {
-                title: "Incident Response Playbook Template",
-                description: "Comprehensive template for creating your organization's incident response procedures.",
-                features: ["Response procedures", "Contact lists", "Communication templates", "Recovery steps"],
+                title: "Event Proposal Template",
+                description: "Template to propose and plan chapter events.",
+                features: ["Event details", "Budget", "Volunteers", "Outcomes"],
                 downloads: "12,567",
                 rating: 4.7
               },
               {
-                title: "Security Awareness Training Kit",
-                description: "Complete training materials for security awareness programs and employee education.",
-                features: ["Training modules", "Phishing simulations", "Assessment quizzes", "Certificates"],
+                title: "Scholarship Application Pack",
+                description: "Resources for students applying to federation scholarships.",
+                features: ["Eligibility", "Documents", "Submission form", "Deadlines"],
                 downloads: "8,934",
                 rating: 4.9
               },
               {
-                title: "Vulnerability Management Checklist",
-                description: "Step-by-step checklist for implementing effective vulnerability management processes.",
-                features: ["Scanning procedures", "Prioritization matrix", "Remediation tracking", "Reporting"],
+                title: "Chapter Compliance Checklist",
+                description: "Checklist for chapter operations and governance.",
+                features: ["Bylaws", "Finance", "Meetings", "Reporting"],
                 downloads: "6,789",
                 rating: 4.6
               }
@@ -312,37 +310,37 @@ const Resources = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Upcoming Events</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Join our upcoming webinars, conferences, and training sessions to stay updated on the latest security trends.
+              Join upcoming federation events, cultural celebrations, and youth programs.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Cybersecurity Trends 2025",
-                type: "Webinar",
+                title: "Global Meet 2025",
+                type: "Conference",
                 date: "January 15, 2025",
-                time: "2:00 PM EST",
-                duration: "60 minutes",
-                speakers: "Sarah Chen, Michael Rodriguez",
-                description: "Join our experts as they discuss the top cybersecurity trends and predictions for 2025."
+                time: "10:00 AM IST",
+                duration: "Full day",
+                speakers: "Community Leaders",
+                description: "Annual gathering of chapters and members across the globe."
               },
               {
-                title: "Zero Trust Implementation Workshop",
+                title: "Youth Leadership Workshop",
                 type: "Workshop",
                 date: "January 22, 2025",
-                time: "10:00 AM EST",
+                time: "2:00 PM IST",
                 duration: "4 hours",
-                speakers: "Dr. Emily Watson, James Thompson",
-                description: "Hands-on workshop on implementing zero trust architecture in your organization."
+                speakers: "Mentors & Alumni",
+                description: "Skill-building for youth leaders across chapters."
               },
               {
-                title: "Threat Intelligence Summit 2025",
-                type: "Conference",
+                title: "Entrepreneurship Forum",
+                type: "Summit",
                 date: "February 5-7, 2025",
-                time: "9:00 AM EST",
+                time: "9:00 AM",
                 duration: "3 days",
-                speakers: "Multiple Experts",
-                description: "Annual conference featuring the latest in threat intelligence and security research."
+                speakers: "Founders & Investors",
+                description: "Networking and mentorship for entrepreneurs and professionals."
               }
             ].map((event, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
@@ -387,10 +385,9 @@ const Resources = () => {
       {/* CTA Section */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Stay Updated with Our Resources</h2>
+          <h2 className="text-4xl font-bold mb-6">Stay Updated with Resources</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
-            Subscribe to our newsletter to receive the latest security resources, threat intelligence, 
-            and industry insights directly in your inbox.
+            Subscribe to receive publications, event updates, and opportunities from the federation.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">

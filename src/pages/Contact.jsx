@@ -29,8 +29,7 @@ const Contact = () => {
             Contact Us
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Ready to strengthen your organization's security? Get in touch with our cybersecurity experts 
-            for a consultation or to learn more about our services.
+            Get in touch with Kamma Global Federation for membership, chapters, events, and media.
           </p>
         </div>
       </section>
@@ -40,11 +39,10 @@ const Contact = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Get In Touch With Our Experts
+              Connect With the Federation
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              Ready to strengthen your organization's security? Our cybersecurity experts are here to help 
-              with consultation and to learn more about our services.
+              Questions about membership, chapters, donations, or media? We’re here to help.
             </p>
           </div>
         </div>
@@ -62,36 +60,28 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <Phone className="text-cyan-400" size={48} />,
-                title: "Emergency Hotline",
-                description: "24/7 emergency response for critical security incidents",
-                contact: "+1 (555) 911-SEC",
-                availability: "24/7",
-                responseTime: "Immediate"
-              },
-              {
                 icon: <MessageSquare className="text-cyan-400" size={48} />,
                 title: "General Inquiries",
-                description: "Questions about our services and solutions",
-                contact: "+1 (555) 123-4567",
-                availability: "Mon-Fri 9AM-6PM EST",
-                responseTime: "< 2 hours"
+                description: "Membership, chapters, and programs",
+                contact: "+91 0000-000-000",
+                availability: "Mon-Fri 9AM-6PM",
+                responseTime: "< 24 hours"
               },
               {
                 icon: <Mail className="text-cyan-400" size={48} />,
-                title: "Email Support",
+                title: "Email",
                 description: "Send us an email for detailed inquiries",
-                contact: "info@cybershieldpro.com",
+                contact: "info@kammaglobal.org",
                 availability: "24/7",
-                responseTime: "< 4 hours"
+                responseTime: "< 2 days"
               },
               {
                 icon: <Headphones className="text-cyan-400" size={48} />,
-                title: "Technical Support",
-                description: "Support for existing clients and technical issues",
-                contact: "support@cybershieldpro.com",
-                availability: "24/7",
-                responseTime: "< 1 hour"
+                title: "Donations & Sponsorships",
+                description: "Support the federation’s programs",
+                contact: "donate@kammaglobal.org",
+                availability: "Mon-Fri 9AM-6PM",
+                responseTime: "< 2 days"
               }
             ].map((method, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
@@ -158,15 +148,15 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
                   <Input 
                     type="email" 
-                    placeholder="john.doe@company.com" 
+                    placeholder="you@example.com" 
                     className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Company</label>
+                  <label className="block text-sm font-medium text-slate-300 mb-2">City/Chapter</label>
                   <Input 
                     type="text" 
-                    placeholder="Your Company Name" 
+                    placeholder="Hyderabad / Dallas / London" 
                     className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
                   />
                 </div>
@@ -174,14 +164,14 @@ const Contact = () => {
                   <label className="block text-sm font-medium text-slate-300 mb-2">Subject</label>
                   <Input 
                     type="text" 
-                    placeholder="How can we help you?" 
+                    placeholder="Membership / Chapter / Media / Donation" 
                     className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
                   />
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-slate-300 mb-2">Message</label>
                   <Textarea 
-                    placeholder="Tell us about your security needs and how we can help..."
+                    placeholder="Tell us how we can help..."
                     className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346] min-h-[120px]"
                   />
                 </div>
@@ -194,35 +184,35 @@ const Contact = () => {
 
             {/* Office Locations */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">Our Offices</h2>
+              <h2 className="text-3xl font-bold mb-6">Federation Chapters</h2>
               <p className="text-slate-300 mb-8">
-                Visit us at any of our global offices or schedule a virtual meeting.
+                Reach out to a nearby chapter or schedule a virtual meeting.
               </p>
               <div className="space-y-6">
                 {[
                   {
-                    city: "New York, USA",
-                    type: "Global Headquarters",
-                    address: "123 Cybersecurity Ave, New York, NY 10001",
-                    phone: "+1 (555) 123-4567",
-                    email: "ny@cybershieldpro.com",
-                    hours: "Mon-Fri 9AM-6PM EST"
+                    city: "Hyderabad, India",
+                    type: "Chapter Office",
+                    address: "Madhapur",
+                    phone: "+91 0000-000-000",
+                    email: "hyderabad@kammaglobal.org",
+                    hours: "Mon-Fri 9AM-6PM"
+                  },
+                  {
+                    city: "Dallas, USA",
+                    type: "Chapter Office",
+                    address: "Plano, TX",
+                    phone: "+1 (000) 000-0000",
+                    email: "dallas@kammaglobal.org",
+                    hours: "Mon-Fri 9AM-6PM"
                   },
                   {
                     city: "London, UK",
-                    type: "European Headquarters",
-                    address: "456 Security Street, London EC1A 4HD, UK",
-                    phone: "+44 20 7946 0958",
-                    email: "london@cybershieldpro.com",
-                    hours: "Mon-Fri 9AM-6PM GMT"
-                  },
-                  {
-                    city: "Singapore",
-                    type: "Asia-Pacific Headquarters",
-                    address: "789 Cyber Boulevard, Singapore 018956",
-                    phone: "+65 6123 4567",
-                    email: "singapore@cybershieldpro.com",
-                    hours: "Mon-Fri 9AM-6PM SGT"
+                    type: "Chapter Office",
+                    address: "Central London",
+                    phone: "+44 0000 000000",
+                    email: "london@kammaglobal.org",
+                    hours: "Mon-Fri 9AM-6PM"
                   }
                 ].map((office, index) => (
                   <Card key={index} className="bg-slate-800 border-slate-700">
@@ -274,28 +264,28 @@ const Contact = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {[
               {
-                question: "How quickly can you respond to a security incident?",
-                answer: "Our emergency response team is available 24/7 and can respond to critical incidents within minutes. For non-critical issues, we typically respond within 2-4 hours."
+                question: "How do I become a member?",
+                answer: "Visit the Membership page, choose a tier, and submit the application form. A chapter representative will reach out."
               },
               {
-                question: "Do you provide services for small businesses?",
-                answer: "Yes, we offer scalable security solutions for organizations of all sizes, from small businesses to large enterprises. We can customize our services to fit your budget and needs."
+                question: "How can I start a new chapter?",
+                answer: "Contact us with your city details. We’ll share the chapter handbook and onboarding process."
               },
               {
-                question: "What compliance standards do you support?",
-                answer: "We support all major compliance standards including SOC 2, ISO 27001, HIPAA, PCI DSS, GDPR, and industry-specific regulations. Our team can help you achieve and maintain compliance."
+                question: "Do you offer scholarships?",
+                answer: "Yes. Scholarship announcements and application packs are published in the Resources page."
               },
               {
-                question: "How do you ensure data privacy and security?",
-                answer: "We follow strict data protection protocols and are SOC 2 Type II certified. All data is encrypted in transit and at rest, and we maintain strict access controls and monitoring."
+                question: "How do donations help?",
+                answer: "Donations fund education, healthcare drives, cultural events, and entrepreneurship initiatives."
               },
               {
-                question: "Can you help with existing security infrastructure?",
-                answer: "Absolutely. We can assess your current security setup, identify gaps, and help optimize your existing tools and processes. We work with all major security platforms and vendors."
+                question: "How do I volunteer?",
+                answer: "Reach out via the Membership page indicating your interests. We’ll connect you with your local chapter."
               },
               {
-                question: "What training do you provide for employees?",
-                answer: "We offer comprehensive security awareness training including phishing simulations, interactive modules, and regular updates on emerging threats. Training can be customized for different roles and departments."
+                question: "Where can I find event schedules?",
+                answer: "Check the Events page for upcoming programs and registration details."
               }
             ].map((faq, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700">
@@ -314,18 +304,17 @@ const Contact = () => {
       {/* CTA Section */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Ready to Get Started?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Connect?</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
-            Don't wait for a security incident. Contact us today for a free security assessment 
-            and discover how we can protect your organization.
+            Join the federation, participate in a chapter, or partner with us to create impact.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
-              Schedule Free Assessment
+              Become a Member
               <ArrowRight className="ml-2" size={20} />
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
-              Call Emergency Hotline
+              Donate Now
             </Button>
           </div>
         </div>

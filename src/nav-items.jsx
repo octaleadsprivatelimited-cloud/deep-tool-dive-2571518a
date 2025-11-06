@@ -1,14 +1,17 @@
-import { Home, Shield, Lock, Eye, Users, FileText, Phone, Award, Briefcase, Newspaper, Handshake } from "lucide-react";
+import { Home, Users, Calendar, Map, Heart, FileText, Phone, Newspaper, Handshake, BookOpen } from "lucide-react";
 import Index from "./pages/Index.jsx";
-import Services from "./pages/Services.jsx";
-import Solutions from "./pages/Solutions.jsx";
-import ThreatIntelligence from "./pages/ThreatIntelligence.jsx";
 import About from "./pages/About.jsx";
 import Resources from "./pages/Resources.jsx";
+import LibraryPage from "./pages/Library.jsx";
+import Login from "./pages/Login.jsx";
+import Signup from "./pages/Signup.jsx";
 import Contact from "./pages/Contact.jsx";
-import Careers from "./pages/Careers.jsx";
 import News from "./pages/News.jsx";
 import Partners from "./pages/Partners.jsx";
+import Chapters from "./pages/Chapters.jsx";
+import Events from "./pages/Events.jsx";
+import Membership from "./pages/Membership.jsx";
+import Donate from "./pages/Donate.jsx";
 
 /**
  * Central place for defining the navigation items. Used for navigation components and routing.
@@ -21,28 +24,22 @@ export const navItems = [
     page: <Index />,
   },
   {
-    title: "Services",
-    to: "/services",
-    icon: <Shield className="h-4 w-4" />,
-    page: <Services />,
-  },
-  {
-    title: "Solutions",
-    to: "/solutions",
-    icon: <Lock className="h-4 w-4" />,
-    page: <Solutions />,
-  },
-  {
-    title: "Threat Intelligence",
-    to: "/threat-intelligence",
-    icon: <Eye className="h-4 w-4" />,
-    page: <ThreatIntelligence />,
-  },
-  {
     title: "About",
     to: "/about",
     icon: <Users className="h-4 w-4" />,
     page: <About />,
+  },
+  {
+    title: "Chapters",
+    to: "/chapters",
+    icon: <Map className="h-4 w-4" />,
+    page: <Chapters />,
+  },
+  {
+    title: "Events",
+    to: "/events",
+    icon: <Calendar className="h-4 w-4" />,
+    page: <Events />,
   },
   {
     title: "Resources",
@@ -51,16 +48,16 @@ export const navItems = [
     page: <Resources />,
   },
   {
+    title: "Library",
+    to: "/library",
+    icon: <BookOpen className="h-4 w-4" />,
+    page: <LibraryPage />,
+  },
+  {
     title: "Contact",
     to: "/contact",
     icon: <Phone className="h-4 w-4" />,
     page: <Contact />,
-  },
-  {
-    title: "Careers",
-    to: "/careers",
-    icon: <Briefcase className="h-4 w-4" />,
-    page: <Careers />,
   },
   {
     title: "News",
@@ -73,5 +70,29 @@ export const navItems = [
     to: "/partners",
     icon: <Handshake className="h-4 w-4" />,
     page: <Partners />,
+  },
+  {
+    title: "Membership",
+    to: "/membership",
+    icon: <Users className="h-4 w-4" />,
+    page: <Membership />,
+  },
+  {
+    title: "Donate",
+    to: "/donate",
+    icon: <Heart className="h-4 w-4" />,
+    page: <Donate />,
+  },
+  {
+    title: "Login",
+    to: "/login",
+    icon: <Users className="h-4 w-4" />,
+    page: <Login />,
+  },
+  {
+    title: "Sign Up",
+    to: "/signup",
+    icon: <Users className="h-4 w-4" />,
+    page: <Signup />,
   },
 ];

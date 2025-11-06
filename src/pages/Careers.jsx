@@ -9,25 +9,24 @@ import Footer from '@/components/Footer';
 const Careers = () => {
   return (
     <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
-      <Header currentPage="Careers" />
+      <Header currentPage="Membership" />
 
       {/* Hero Section */}
       <section className="py-24 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
-            Join Our Team
+            Volunteer & Opportunities
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Build the future of cybersecurity with us. Join a team of passionate experts dedicated to 
-            protecting organizations worldwide from evolving cyber threats.
+            Contribute your time and skills to strengthen Kamma communities worldwide.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-[#021346] hover:bg-[#021346]/90 text-white font-semibold px-8 py-4 rounded-lg text-lg">
-              View Open Positions
+              Explore Roles
               <ArrowRight className="ml-2" size={20} />
             </Button>
             <Button size="lg" variant="outline" className="border-[#021346] text-cyan-400 hover:bg-[#021346] hover:text-white px-8 py-4 rounded-lg text-lg">
-              Learn About Our Culture
+              Sign Up to Volunteer
             </Button>
           </div>
         </div>
@@ -37,9 +36,9 @@ const Careers = () => {
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Why Work With Us?</h2>
+            <h2 className="text-4xl font-bold mb-6">Why Volunteer With Us?</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              We offer more than just a job - we provide a career path in the exciting world of cybersecurity.
+              Make a meaningful impact through culture, education, and community initiatives.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -61,8 +60,8 @@ const Careers = () => {
               },
               {
                 icon: <Zap className="text-cyan-400" size={48} />,
-                title: "Cutting-Edge Technology",
-                description: "Work with the latest security tools and technologies in the industry."
+                title: "Community Impact",
+                description: "Create visible impact across chapters and programs."
               }
             ].map((benefit, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
@@ -77,76 +76,46 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Open Positions */}
+      {/* Volunteer Roles */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Open Positions</h2>
+            <h2 className="text-4xl font-bold mb-6">Volunteer Roles</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Explore our current job openings and find the perfect role for your cybersecurity career.
+              Explore current volunteer opportunities with chapters and federation programs.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {[
               {
-                title: "Senior Security Engineer",
-                department: "Engineering",
-                location: "New York, NY",
-                type: "Full-time",
-                experience: "5+ years",
-                description: "Lead the design and implementation of security solutions for enterprise clients.",
-                requirements: ["CISSP certification", "5+ years experience", "Cloud security expertise", "Python/Go programming"],
+                title: "Chapter Coordinator",
+                department: "Chapters",
+                location: "Hyderabad, India",
+                type: "Volunteer",
+                experience: "2+ years",
+                description: "Coordinate local events and member engagement.",
+                requirements: ["Organizing skills", "Communication", "Community spirit"],
                 posted: "2 days ago"
               },
               {
-                title: "Threat Intelligence Analyst",
-                department: "Threat Intelligence",
-                location: "London, UK",
-                type: "Full-time",
+                title: "Youth Program Mentor",
+                department: "Programs",
+                location: "Dallas, USA",
+                type: "Volunteer",
                 experience: "3+ years",
-                description: "Analyze threat data and provide actionable intelligence to protect our clients.",
-                requirements: ["Security analysis experience", "OSINT knowledge", "Malware analysis", "Threat hunting skills"],
+                description: "Mentor students and young professionals.",
+                requirements: ["Mentoring experience", "Time commitment", "Professional expertise"],
                 posted: "1 week ago"
               },
               {
-                title: "Incident Response Manager",
-                department: "Security Operations",
-                location: "Singapore",
-                type: "Full-time",
-                experience: "7+ years",
-                description: "Lead incident response teams and manage critical security incidents.",
-                requirements: ["CISM certification", "7+ years experience", "Team leadership", "Crisis management"],
-                posted: "3 days ago"
-              },
-              {
-                title: "Security Consultant",
-                department: "Professional Services",
+                title: "Media & Communications Lead",
+                department: "Communications",
                 location: "Remote",
-                type: "Full-time",
-                experience: "4+ years",
-                description: "Provide security consulting services to clients across various industries.",
-                requirements: ["Consulting experience", "Multiple certifications", "Client-facing skills", "Travel availability"],
-                posted: "5 days ago"
-              },
-              {
-                title: "DevSecOps Engineer",
-                department: "Engineering",
-                location: "Toronto, Canada",
-                type: "Full-time",
-                experience: "3+ years",
-                description: "Integrate security practices into development and operations workflows.",
-                requirements: ["DevOps experience", "Security automation", "CI/CD pipelines", "Container security"],
-                posted: "1 week ago"
-              },
-              {
-                title: "Security Awareness Specialist",
-                department: "Training",
-                location: "Sydney, Australia",
-                type: "Full-time",
+                type: "Volunteer",
                 experience: "2+ years",
-                description: "Develop and deliver security awareness training programs for clients.",
-                requirements: ["Training experience", "Communication skills", "Security knowledge", "Content creation"],
-                posted: "4 days ago"
+                description: "Manage social media and newsletters.",
+                requirements: ["Writing", "Design basics", "Consistency"],
+                posted: "3 days ago"
               }
             ].map((job, index) => (
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
@@ -187,7 +156,7 @@ const Careers = () => {
                   <div className="flex items-center justify-between">
                     <span className="text-slate-400 text-sm">Posted {job.posted}</span>
                     <Button className="bg-[#021346] hover:bg-[#021346]/90 text-white">
-                      Apply Now
+                      Express Interest
                       <ArrowRight className="ml-2" size={16} />
                     </Button>
                   </div>
@@ -198,11 +167,11 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Company Culture */}
+      {/* Federation Values */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Our Culture</h2>
+            <h2 className="text-4xl font-bold mb-6">Our Values</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               We foster a collaborative, innovative, and inclusive environment where everyone can thrive.
             </p>
@@ -210,18 +179,18 @@ const Careers = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Innovation First",
-                description: "We encourage creative thinking and embrace new technologies to stay ahead of threats.",
+                title: "Unity",
+                description: "We strengthen bonds across global Kamma communities.",
                 icon: <Zap className="text-cyan-400" size={32} />
               },
               {
-                title: "Collaborative Spirit",
-                description: "We work together as one team, sharing knowledge and supporting each other's growth.",
+                title: "Service",
+                description: "We promote philanthropy and community service.",
                 icon: <Users className="text-cyan-400" size={32} />
               },
               {
-                title: "Continuous Learning",
-                description: "We invest in our people's development through training, certifications, and conferences.",
+                title: "Progress",
+                description: "We empower youth, professionals, and entrepreneurs.",
                 icon: <GraduationCap className="text-cyan-400" size={32} />
               },
               {
@@ -230,13 +199,13 @@ const Careers = () => {
                 icon: <Heart className="text-cyan-400" size={32} />
               },
               {
-                title: "Diversity & Inclusion",
-                description: "We celebrate diversity and create an inclusive environment for all team members.",
+                title: "Inclusion",
+                description: "We welcome members from all backgrounds and regions.",
                 icon: <Award className="text-cyan-400" size={32} />
               },
               {
                 title: "Impact-Driven",
-                description: "We're motivated by the positive impact we make in protecting organizations worldwide.",
+                description: "We create measurable outcomes for our communities.",
                 icon: <Shield className="text-cyan-400" size={32} />
               }
             ].map((value, index) => (
@@ -254,11 +223,11 @@ const Careers = () => {
         </div>
       </section>
 
-      {/* Employee Testimonials */}
+      {/* Member Testimonials */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">What Our Team Says</h2>
+            <h2 className="text-4xl font-bold mb-6">What Our Members Say</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
               Hear from our team members about their experience working at CyberShield Pro.
             </p>
@@ -266,21 +235,21 @@ const Careers = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                name: "Sarah Chen",
-                role: "Senior Security Engineer",
-                quote: "Working at CyberShield Pro has been incredible. The team is supportive, the technology is cutting-edge, and I'm constantly learning new things.",
+                name: "Harini T",
+                role: "Volunteer, Hyderabad Chapter",
+                quote: "I’ve met inspiring mentors and contributed to cultural events that brought our community together.",
                 rating: 5
               },
               {
-                name: "Michael Rodriguez",
-                role: "Threat Intelligence Analyst",
-                quote: "The culture here is amazing. Everyone is passionate about cybersecurity and genuinely cares about protecting our clients.",
+                name: "Raj K",
+                role: "Member, Dallas Chapter",
+                quote: "The federation helped me network with professionals and launch a mentorship circle.",
                 rating: 5
               },
               {
-                name: "Emily Watson",
-                role: "Incident Response Manager",
-                quote: "I've grown so much professionally since joining. The company invests in our development and provides great opportunities for advancement.",
+                name: "Anita P",
+                role: "Student, Scholarship Recipient",
+                quote: "The scholarship and guidance I received have been life-changing.",
                 rating: 5
               }
             ].map((testimonial, index) => (
@@ -308,18 +277,17 @@ const Careers = () => {
       {/* CTA Section */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Ready to Join Our Team?</h2>
+          <h2 className="text-4xl font-bold mb-6">Ready to Volunteer?</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
-            Don't see a position that matches your skills? We're always looking for talented individuals 
-            to join our growing team. Send us your resume and let's talk.
+            Don’t see a role listed? We’re always looking for passionate volunteers. Share your interests and we’ll connect you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
-              View All Positions
+              View All Roles
               <ArrowRight className="ml-2" size={20} />
             </Button>
             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
-              Submit Your Resume
+              Submit Your Details
             </Button>
           </div>
         </div>

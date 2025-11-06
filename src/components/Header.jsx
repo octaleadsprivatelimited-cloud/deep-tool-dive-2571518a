@@ -8,14 +8,18 @@ const Header = ({ currentPage = 'Home' }) => {
 
   const navItems = [
     { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'Solutions', href: '/solutions' },
-    { name: 'Threat Intelligence', href: '/threat-intelligence' },
     { name: 'About', href: '/about' },
+    { name: 'Chapters', href: '/chapters' },
+    { name: 'Events', href: '/events' },
     { name: 'Resources', href: '/resources' },
+    { name: 'Library', href: '/library' },
+    { name: 'News', href: '/news' },
+    { name: 'Partners', href: '/partners' },
+    { name: 'Membership', href: '/membership' },
+    { name: 'Donate', href: '/donate' },
     { name: 'Contact', href: '/contact' },
-    { name: 'Careers', href: '/careers' },
-    { name: 'News', href: '/news' }
+    { name: 'Login', href: '/login' },
+    { name: 'Sign Up', href: '/signup' }
   ];
 
   const toggleMobileMenu = () => {
@@ -23,7 +27,7 @@ const Header = ({ currentPage = 'Home' }) => {
   };
 
   return (
-    <header className="bg-slate-900/95 backdrop-blur-sm border-b border-red-500/30 py-4 sticky top-0 z-50">
+    <header className="bg-white border-b border-black/20 py-4 sticky top-0 z-50">
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
           {/* Logo */}
@@ -32,8 +36,8 @@ const Header = ({ currentPage = 'Home' }) => {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            <Shield className="text-red-500" size={32} />
-            <div className="text-2xl font-bold text-red-500">Trans Asia Soft Tech</div>
+            <Shield className="text-black" size={32} />
+            <div className="text-2xl font-bold text-black">KGF</div>
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -45,8 +49,8 @@ const Header = ({ currentPage = 'Home' }) => {
                     href={item.href}
                     className={`relative px-2 py-1 text-xs font-medium transition-colors duration-200 ${
                       currentPage === item.name 
-                        ? 'text-red-500' 
-                        : 'text-slate-300 hover:text-red-500'
+                        ? 'text-black'
+                        : 'text-slate-800 hover:text-black'
                     }`}
                     whileHover={{ y: -2 }}
                     transition={{ type: "spring", stiffness: 300 }}
@@ -54,7 +58,7 @@ const Header = ({ currentPage = 'Home' }) => {
                     {item.name}
                     {currentPage === item.name && (
                       <motion.div
-                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-500"
+                        className="absolute bottom-0 left-0 right-0 h-0.5 bg-black"
                         layoutId="activeIndicator"
                         transition={{ type: "spring", stiffness: 300, damping: 30 }}
                       />
@@ -69,15 +73,15 @@ const Header = ({ currentPage = 'Home' }) => {
           <div className="hidden lg:block">
             <Button 
               asChild
-              className="bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2 rounded-lg"
+              className="border border-black text-black hover:bg-black hover:text-white font-semibold px-6 py-2 rounded-lg"
             >
-              <a href="/contact">Get Started</a>
+              <a href="/donate">Donate</a>
             </Button>
           </div>
 
           {/* Mobile Menu Button */}
           <motion.button
-            className="lg:hidden p-2 text-slate-300 hover:text-red-500 transition-colors"
+            className="lg:hidden p-2 text-slate-800 hover:text-black transition-colors"
             onClick={toggleMobileMenu}
             whileTap={{ scale: 0.95 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -101,7 +105,7 @@ const Header = ({ currentPage = 'Home' }) => {
                 animate={{ y: 0 }}
                 exit={{ y: -20 }}
                 transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="bg-slate-800 border border-red-500/20 rounded-lg p-4 space-y-2"
+              className="bg-white border border-black/20 rounded-lg p-4 space-y-2"
               >
                 {navItems.map((item, index) => (
                   <motion.a
@@ -109,8 +113,8 @@ const Header = ({ currentPage = 'Home' }) => {
                     href={item.href}
                     className={`block px-3 py-2 rounded-lg text-xs font-medium transition-colors duration-200 ${
                       currentPage === item.name
-                        ? 'bg-red-600 text-white'
-                        : 'text-slate-300 hover:bg-slate-700 hover:text-red-500'
+                        ? 'text-black font-semibold'
+                        : 'text-slate-800 hover:bg-black/10 hover:text-black'
                     }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -122,16 +126,16 @@ const Header = ({ currentPage = 'Home' }) => {
                   </motion.a>
                 ))}
                 <motion.div
-                  className="pt-4 border-t border-red-500/30"
+                  className="pt-4 border-t border-black/10"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
                 >
                   <Button 
                     asChild
-                    className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3 rounded-lg"
+                    className="w-full border border-black text-black hover:bg-black hover:text-white font-semibold py-3 rounded-lg"
                   >
-                    <a href="/contact">Get Started</a>
+                    <a href="/donate">Donate</a>
                   </Button>
                 </motion.div>
               </motion.nav>

@@ -27,8 +27,7 @@ const News = () => {
             News & Updates
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Stay informed with the latest cybersecurity news, company updates, industry insights, 
-            and thought leadership from our expert team.
+            Follow federation announcements, chapter highlights, member stories, and event recaps.
           </p>
         </div>
       </section>
@@ -41,8 +40,7 @@ const News = () => {
               Stay Informed With Latest Updates
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              Stay informed with the latest cybersecurity news, company updates, industry insights, 
-              and thought leadership from our expert team.
+              News from chapters worldwide and updates on programs, initiatives, and impact.
             </p>
           </div>
         </div>
@@ -54,7 +52,7 @@ const News = () => {
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Featured News</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              The most important cybersecurity news and company updates.
+              Featured federation stories and announcements.
             </p>
           </div>
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -81,10 +79,9 @@ const News = () => {
                     5 min read
                   </span>
                 </div>
-                <CardTitle className="text-2xl text-white">CyberShield Pro Named Leader in Gartner Magic Quadrant for Managed Security Services</CardTitle>
+                <CardTitle className="text-2xl text-white">Global Meet 2025 Announced in Hyderabad</CardTitle>
                 <CardDescription className="text-slate-300 text-lg">
-                  We're proud to announce that CyberShield Pro has been recognized as a Leader in the 
-                  2024 Gartner Magic Quadrant for Managed Security Services for the third consecutive year.
+                  The annual federation gathering will bring together chapters from across the world for three days of programs and networking.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -167,64 +164,64 @@ const News = () => {
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Industry News</h2>
+              <h2 className="text-4xl font-bold mb-6">Community News</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Latest cybersecurity news and insights from around the industry.
+              Updates from chapters, programs, and partners.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
-                title: "Ransomware Attacks Increase 150% in 2024",
-                excerpt: "New report shows significant increase in ransomware attacks targeting healthcare and education sectors.",
+                title: "Hyderabad Chapter Hosts Cultural Night",
+                excerpt: "Hundreds attend performances and community awards.",
                 date: "December 14, 2024",
-                source: "Cybersecurity News",
-                category: "Threat Intelligence",
+                source: "Chapter Update",
+                category: "Events",
                 readTime: "6 min read",
                 trending: true
               },
               {
-                title: "Zero Trust Architecture Becomes Industry Standard",
-                excerpt: "Major organizations are adopting zero trust security models to protect against advanced threats.",
+                title: "Scholarship Applications Open",
+                excerpt: "New education grants announced for 2025.",
                 date: "December 13, 2024",
-                source: "Security Weekly",
-                category: "Security Trends",
+                source: "Programs",
+                category: "Education",
                 readTime: "5 min read",
                 trending: false
               },
               {
-                title: "AI-Powered Security Tools Show 90% Accuracy",
-                excerpt: "New study demonstrates the effectiveness of AI in detecting and preventing cyber attacks.",
+                title: "Entrepreneurship Forum Expands",
+                excerpt: "Startups showcase and mentorship circles grow across chapters.",
                 date: "December 11, 2024",
-                source: "Tech Security",
-                category: "Technology",
+                source: "Programs",
+                category: "Entrepreneurship",
                 readTime: "4 min read",
                 trending: true
               },
               {
-                title: "New GDPR Compliance Requirements Announced",
-                excerpt: "Updated data protection regulations introduce stricter requirements for data processors.",
+                title: "Health Drive in Chennai",
+                excerpt: "Free screenings and wellness workshops for the community.",
                 date: "December 9, 2024",
-                source: "Privacy Today",
-                category: "Compliance",
+                source: "Chennai Chapter",
+                category: "Health",
                 readTime: "8 min read",
                 trending: false
               },
               {
-                title: "Cloud Security Breaches Down 40%",
-                excerpt: "Improved cloud security practices and tools lead to significant reduction in breaches.",
+                title: "London Chapter Networking Night",
+                excerpt: "Professionals and students connect for mentorship.",
                 date: "December 7, 2024",
-                source: "Cloud Security Report",
-                category: "Cloud Security",
+                source: "London Chapter",
+                category: "Networking",
                 readTime: "5 min read",
                 trending: false
               },
               {
-                title: "Quantum Computing Threat to Encryption",
-                excerpt: "Researchers warn about the potential impact of quantum computing on current encryption methods.",
+                title: "Partnerships Announced",
+                excerpt: "New sponsors join to support 2025 programs.",
                 date: "December 5, 2024",
-                source: "Quantum Security",
-                category: "Future Threats",
+                source: "Federation",
+                category: "Partners",
                 readTime: "7 min read",
                 trending: true
               }
@@ -274,9 +271,9 @@ const News = () => {
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Company Updates</h2>
+            <h2 className="text-4xl font-bold mb-6">Federation Updates</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Stay updated with the latest news and announcements from CyberShield Pro.
+              The latest announcements from Kamma Global Federation.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -362,9 +359,9 @@ const News = () => {
       {/* CTA Section */}
       <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Stay Informed About Cybersecurity</h2>
+          <h2 className="text-4xl font-bold mb-6">Stay Informed</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
-            Get the latest insights, threat intelligence, and security best practices from our expert team.
+            Get the latest updates about chapters, programs, and opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">

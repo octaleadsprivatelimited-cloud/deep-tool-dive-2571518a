@@ -92,13 +92,16 @@ Changes made via gptengineer.app will be committed automatically to this repo.
 
 If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in the GPT Engineer UI.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+The only requirement is having Node.js 22.x & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
 Follow these steps: 
 
 ```sh
 git clone https://github.com/GPT-Engineer-App/ai-tool-hub.git
 cd ai-tool-hub
+# Ensure Node 22 is used
+nvm install 22
+nvm use 22
 npm i
 
 # This will run a dev server with auto reloading and an instant preview.

@@ -24,11 +24,10 @@ const About = () => {
         </div>
         <div className="container mx-auto text-center px-4 relative z-10">
           <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
-            About Trans Asia Soft Tech
+            About Kamma Global Federation
           </h1>
           <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            We are the world's leading cybersecurity company, protecting organizations from evolving cyber threats 
-            with cutting-edge technology and expert knowledge.
+            A global federation uniting Kamma communities to promote culture, education, entrepreneurship, and philanthropy.
           </p>
         </div>
       </section>
@@ -38,11 +37,10 @@ const About = () => {
         <div className="container mx-auto px-4">
           <div className="text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Leading Cybersecurity Excellence
+              Empowering a Global Community
             </h2>
             <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              We are the world's leading cybersecurity company, protecting organizations from evolving cyber threats 
-              with cutting-edge technology and expert knowledge.
+              We foster unity, service, and progress through global chapters, events, and programs that uplift communities.
             </p>
           </div>
         </div>
@@ -55,19 +53,17 @@ const About = () => {
             <div>
               <h2 className="text-4xl font-bold mb-6">Our Mission</h2>
               <p className="text-xl text-slate-300 mb-6">
-                To provide world-class cybersecurity solutions that protect organizations from evolving cyber threats, 
-                ensuring business continuity and data security in an increasingly connected world.
+                To connect Kamma diaspora worldwide, support youth and entrepreneurs, celebrate culture, and advance social impact.
               </p>
               <p className="text-lg text-slate-400 mb-8">
-                Founded in 2009, Trans Asia Soft Tech has grown from a small team of security experts to a global leader 
-                in cybersecurity, serving Fortune 500 companies and government agencies worldwide.
+                Founded by community leaders, Kamma Global Federation is a non-profit platform enabling collaboration across continents.
               </p>
               <div className="grid grid-cols-2 gap-6">
                 {[
-                  { number: "500+", label: "Fortune 500 Clients" },
-                  { number: "50+", label: "Countries Served" },
-                  { number: "15+", label: "Years Experience" },
-                  { number: "99.9%", label: "Uptime Guarantee" }
+                  { number: "50+", label: "Chapters Worldwide" },
+                  { number: "100k+", label: "Members & Supporters" },
+                  { number: "200+", label: "Annual Events" },
+                  { number: "10+", label: "Countries Active" }
                 ].map((stat, index) => (
                   <div key={index} className="text-center">
                     <div className="text-3xl font-bold text-cyan-400 mb-1">{stat.number}</div>
@@ -82,23 +78,23 @@ const About = () => {
                 {[
                   {
                     icon: <Shield className="text-cyan-400" size={24} />,
-                    title: "Security First",
-                    description: "We prioritize security in everything we do, ensuring our clients' data and systems are always protected."
+                    title: "Unity",
+                    description: "We strengthen bonds across global Kamma communities."
                   },
                   {
                     icon: <Users className="text-cyan-400" size={24} />,
-                    title: "Client Success",
-                    description: "Our success is measured by our clients' success. We are committed to delivering exceptional value."
+                    title: "Service",
+                    description: "We promote philanthropy and community service."
                   },
                   {
                     icon: <Award className="text-cyan-400" size={24} />,
                     title: "Excellence",
-                    description: "We strive for excellence in all our services, continuously improving and innovating."
+                    description: "We strive for impact through high-quality programs."
                   },
                   {
                     icon: <Target className="text-cyan-400" size={24} />,
-                    title: "Innovation",
-                    description: "We leverage cutting-edge technology and innovative approaches to stay ahead of threats."
+                    title: "Progress",
+                    description: "We empower youth, professionals, and entrepreneurs."
                   }
                 ].map((value, index) => (
                   <div key={index} className="flex items-start space-x-4">

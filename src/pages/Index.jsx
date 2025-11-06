@@ -6,46 +6,35 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import CyberGlobe from '@/components/Globe';
+ 
 
 const Index = () => {
   return (
     <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="Home" />
 
-      {/* Hero Section */}
-      <section className="py-24 relative overflow-hidden min-h-screen flex items-center">
-        
-        {/* Globe Background */}
-        <div className="absolute inset-0 z-0">
-          <div className="absolute top-1/2 right-0 w-1/2 h-full -translate-y-1/2 opacity-60">
-            <CyberGlobe />
-          </div>
-        </div>
-        
-        <div className="container mx-auto text-center relative z-10 px-4">
-          <Badge className="bg-red-900/30 text-red-300 border-red-700 mb-6 px-4 py-2">
+      {/* Hero Section - Clean UI */}
+      <section className="py-16 md:py-24 relative min-h-[70vh] flex items-center bg-white text-black">
+        <div className="container mx-auto text-center px-4 w-full">
+          <Badge className="inline-flex items-center justify-center border border-black/10 bg-black/5 text-black mb-6 px-4 py-2">
             <Shield className="w-4 h-4 mr-2" />
-            Trusted by Fortune 500 Companies
+            Building a Strong Global Community
           </Badge>
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-white via-red-100 to-red-400 bg-clip-text text-transparent">
-            Advanced Cybersecurity
-            <br />
-            <span className="text-red-400">Solutions</span>
+          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+            Kamma Global Federation
           </h1>
-          <p className="text-xl md:text-2xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Protect your enterprise with cutting-edge security technologies, 24/7 threat monitoring, 
-            and expert incident response from the world's leading cybersecurity company.
+          <p className="text-lg md:text-2xl text-slate-600 mb-10 max-w-3xl mx-auto">
+            Uniting Kammas worldwide to advance culture, education, entrepreneurship, and community service.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg text-lg">
-              <a href="/contact" className="flex items-center">
-                Start Security Assessment
+            <Button size="lg" className="bg-[#b99b4c] hover:bg-[#a3893f] text-white font-semibold px-8 py-4 rounded-lg text-lg">
+              <a href="/membership" className="flex items-center">
+                Become a Member
                 <ArrowRight className="ml-2" size={20} />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="border-red-600 text-red-400 hover:bg-red-600 hover:text-white px-8 py-4 rounded-lg text-lg">
-              <a href="/solutions">View Our Solutions</a>
+            <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg text-lg">
+              <a href="/donate">Support Our Mission</a>
             </Button>
           </div>
         </div>
@@ -70,53 +59,53 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Services Section */}
+      {/* Achievements Section */}
       <section className="py-20 bg-slate-950">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Comprehensive Security Services</h2>
+            <h2 className="text-4xl md:text-5xl font-bold mb-6">Kamma Achievements</h2>
             <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              From threat detection to incident response, we provide end-to-end cybersecurity solutions 
-              tailored to your organization's unique needs.
+              Celebrating our community’s impact across chapters: culture, education, entrepreneurship,
+              health, and youth leadership around the world.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
               {
                 icon: <Shield className="text-cyan-400" size={48} />,
-                title: "Threat Detection & Response",
-                description: "Advanced AI-powered threat detection with real-time monitoring and automated response capabilities.",
-                features: ["Real-time monitoring", "AI threat analysis", "Automated response", "24/7 SOC"]
+                title: "Cultural Preservation",
+                description: "Festivals, heritage programs, and cultural nights across chapters.",
+                features: ["200+ events annually", "Heritage workshops", "Community awards", "Global meet"]
               },
               {
-                icon: <Lock className="text-cyan-400" size={48} />,
-                title: "Identity & Access Management",
-                description: "Secure identity management with multi-factor authentication and privileged access controls.",
-                features: ["Multi-factor auth", "Privileged access", "Identity governance", "Single sign-on"]
-              },
-              {
-                icon: <Eye className="text-cyan-400" size={48} />,
-                title: "Security Assessment",
-                description: "Comprehensive security audits and penetration testing to identify vulnerabilities.",
-                features: ["Penetration testing", "Vulnerability scans", "Compliance audits", "Risk assessment"]
-              },
-              {
-                icon: <Globe className="text-cyan-400" size={48} />,
-                title: "Cloud Security",
-                description: "Protect your cloud infrastructure with advanced security controls and monitoring.",
-                features: ["Cloud monitoring", "Data encryption", "Access controls", "Compliance"]
-              },
-              {
-                icon: <Zap className="text-cyan-400" size={48} />,
-                title: "Incident Response",
-                description: "Rapid response to security incidents with expert forensic analysis and recovery.",
-                features: ["24/7 response", "Forensic analysis", "Recovery planning", "Legal support"]
+                icon: <Users className="text-cyan-400" size={48} />,
+                title: "Scholarships & Education",
+                description: "Supporting students with scholarships and mentorship.",
+                features: ["5,000+ scholarships", "Mentor network", "Career guidance", "Alumni circles"]
               },
               {
                 icon: <Target className="text-cyan-400" size={48} />,
-                title: "Security Training",
-                description: "Comprehensive security awareness training for your employees and IT teams.",
-                features: ["Phishing simulation", "Security awareness", "Technical training", "Certification"]
+                title: "Entrepreneurship",
+                description: "Incubation, networking, and founder mentorship across regions.",
+                features: ["1,000+ mentees", "Pitch forums", "Investor connects", "Founder panels"]
+              },
+              {
+                icon: <Globe className="text-cyan-400" size={48} />,
+                title: "Global Chapters",
+                description: "Expanding our footprint to connect the diaspora worldwide.",
+                features: ["50+ chapters", "Regional councils", "Local leadership", "Global coordination"]
+              },
+              {
+                icon: <Zap className="text-cyan-400" size={48} />,
+                title: "Health & Wellness",
+                description: "Community health drives, screenings, and wellness workshops.",
+                features: ["100+ camps", "Specialist talks", "Wellness guides", "Local partnerships"]
+              },
+              {
+                icon: <Award className="text-cyan-400" size={48} />,
+                title: "Youth Leadership",
+                description: "Leadership workshops and volunteer opportunities for youth.",
+                features: ["10k+ participants", "Chapter projects", "Mentor hours", "Recognition"]
               }
             ].map((service, index) => (
               <Card key={index} className="bg-slate-900 border-slate-800 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">

@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const News = () => {
   return (
-    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
+    <div className="min-h-screen text-black" style={{backgroundColor: 'white'}}>
       <Header currentPage="News" />
 
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: 'white'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -47,11 +47,11 @@ const News = () => {
       </section>
 
       {/* Featured News */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Featured News</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-black">Featured News</h2>
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Featured federation stories and announcements.
             </p>
           </div>
@@ -59,7 +59,7 @@ const News = () => {
             {/* Main Featured Article */}
             <Card className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
               <div className="relative">
-                <div className="h-64 text-white rounded-t-lg flex items-center justify-center" style={{backgroundColor: '#003386'}}>
+                <div className="h-64 text-white rounded-t-lg flex items-center justify-center" style={{backgroundColor: 'black'}}>
                   <Shield className="text-white" size={64} />
                 </div>
                 <Badge className="absolute top-4 left-4 bg-red-900 text-red-300">Breaking News</Badge>
@@ -87,7 +87,7 @@ const News = () => {
               <CardContent>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center space-x-2">
-                    <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">Company News</Badge>
+                    <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">Company News</Badge>
                     <Badge className="bg-green-900/30 text-green-300 border-green-700">Award</Badge>
                   </div>
                   <Button className="bg-[#021346] hover:bg-[#021346]/90 text-white">
@@ -147,8 +147,8 @@ const News = () => {
                   </CardHeader>
                   <CardContent>
                     <div className="flex items-center justify-between">
-                      <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{article.category}</Badge>
-                      <Button variant="outline" className="text-cyan-400 border-[#021346] hover:bg-[#021346] hover:text-white">
+                      <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">{article.category}</Badge>
+                      <Button variant="outline" className="text-black border-black hover:bg-black hover:text-white">
                         Read More
                       </Button>
                     </div>
@@ -161,7 +161,7 @@ const News = () => {
       </section>
 
       {/* Industry News */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-6">Community News</h2>
@@ -229,7 +229,7 @@ const News = () => {
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{article.category}</Badge>
+                    <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">{article.category}</Badge>
                     {article.trending && (
                       <Badge className="bg-orange-900/30 text-orange-300 border-orange-700 flex items-center">
                         <TrendingUp className="mr-1" size={12} />
@@ -254,7 +254,7 @@ const News = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <span className="text-slate-400 text-sm">Source: {article.source}</span>
-                      <Button variant="outline" className="text-cyan-400 border-[#021346] hover:bg-[#021346] hover:text-white">
+                      <Button variant="outline" className="text-black border-black hover:bg-black hover:text-white">
                         <ExternalLink className="mr-1" size={14} />
                         Read
                       </Button>
@@ -268,7 +268,7 @@ const News = () => {
       </section>
 
       {/* Company Updates */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Federation Updates</h2>
@@ -311,7 +311,7 @@ const News = () => {
                 <CardHeader>
                   <div className="flex items-center space-x-3 mb-2">
                     {update.icon}
-                    <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{update.type}</Badge>
+                  <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">{update.type}</Badge>
                   </div>
                   <CardTitle className="text-lg text-white">{update.title}</CardTitle>
                   <CardDescription className="text-slate-300">{update.description}</CardDescription>
@@ -319,7 +319,7 @@ const News = () => {
                 <CardContent>
                   <div className="flex items-center justify-between">
                     <span className="text-slate-400 text-sm">{update.date}</span>
-                    <Button variant="outline" className="text-cyan-400 border-[#021346] hover:bg-[#021346] hover:text-white">
+                    <Button variant="outline" className="text-black border-black hover:bg-black hover:text-white">
                       Learn More
                     </Button>
                   </div>
@@ -331,7 +331,7 @@ const News = () => {
       </section>
 
       {/* Newsletter Signup */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="bg-slate-800 rounded-lg p-8 border border-slate-700 text-center">
             <h2 className="text-3xl font-bold mb-4">Stay Updated</h2>
@@ -357,18 +357,18 @@ const News = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Stay Informed</h2>
-          <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+          <p className="text-xl text-black/70 mb-8 max-w-3xl mx-auto">
             Get the latest updates about chapters, programs, and opportunities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" className="bg-black text-white hover:bg-black/90 font-semibold px-8 py-4 rounded-lg text-lg">
               Subscribe to Newsletter
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg text-lg">
               Follow Us on Social Media
             </Button>
           </div>

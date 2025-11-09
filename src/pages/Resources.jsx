@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const Resources = () => {
   return (
-    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
+    <div className="min-h-screen text-black" style={{backgroundColor: 'white'}}>
       <Header currentPage="Resources" />
 
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: 'white'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -47,36 +47,36 @@ const Resources = () => {
       </section>
 
       {/* Resource Categories */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Resource Categories</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-black">Resource Categories</h2>
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Explore our extensive collection of security resources organized by category and topic.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <FileText className="text-cyan-400" size={48} />,
+                icon: <FileText className="text-[#b99b4c]" size={48} />,
                 title: "Publications",
                 count: "25+",
                 description: "Reports and publications on culture, education, entrepreneurship, and community."
               },
               {
-                icon: <BookOpen className="text-cyan-400" size={48} />,
+                icon: <BookOpen className="text-[#b99b4c]" size={48} />,
                 title: "Community Stories",
                 count: "40+",
                 description: "Impact stories from chapters and members across the globe."
               },
               {
-                icon: <Video className="text-cyan-400" size={48} />,
+                icon: <Video className="text-[#b99b4c]" size={48} />,
                 title: "Media",
                 count: "60+",
                 description: "Videos and talks from federation events and leaders."
               },
               {
-                icon: <Download className="text-cyan-400" size={48} />,
+                icon: <Download className="text-[#b99b4c]" size={48} />,
                 title: "Guides & Templates",
                 count: "30+",
                 description: "Guides, forms, and templates for programs, events, and chapters."
@@ -86,7 +86,7 @@ const Resources = () => {
                 <CardHeader>
                   <div className="mb-4">{category.icon}</div>
                   <CardTitle className="text-xl text-white">{category.title}</CardTitle>
-                  <div className="text-cyan-400 font-bold text-2xl mb-2">{category.count}</div>
+                  <div className="text-[#b99b4c] font-bold text-2xl mb-2">{category.count}</div>
                   <CardDescription className="text-slate-300">{category.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
@@ -102,7 +102,7 @@ const Resources = () => {
       </section>
 
       {/* Featured Resources */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Featured Resources</h2>
@@ -176,7 +176,7 @@ const Resources = () => {
               <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
+                    <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">
                       {resource.type}
                     </Badge>
                     {resource.featured && (
@@ -223,7 +223,7 @@ const Resources = () => {
       </section>
 
       {/* Downloads & Forms */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Downloads & Forms</h2>
@@ -277,7 +277,7 @@ const Resources = () => {
                 <div className="space-y-2 mb-4">
                   {tool.features.map((feature, idx) => (
                     <div key={idx} className="flex items-center text-slate-300 text-sm">
-                      <span className="w-2 h-2 bg-cyan-400 rounded-full mr-3"></span>
+                      <span className="w-2 h-2 bg-[#b99b4c] rounded-full mr-3"></span>
                       {feature}
                     </div>
                   ))}
@@ -305,7 +305,7 @@ const Resources = () => {
       </section>
 
       {/* Upcoming Events */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold mb-6">Upcoming Events</h2>
@@ -383,7 +383,7 @@ const Resources = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-white" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto text-center px-4">
           <h2 className="text-4xl font-bold mb-6">Stay Updated with Resources</h2>
           <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">

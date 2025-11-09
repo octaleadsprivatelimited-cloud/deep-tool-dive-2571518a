@@ -136,23 +136,25 @@ const Library = () => {
     return matchQuery && matchGender && matchAge && matchCountry && matchNet && matchAch;
   });
   return (
-    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
+    <div className="min-h-screen bg-white text-black">
       <Header currentPage="Library" />
 
-      <section className="py-16 md:py-12 bg-white text-black">
-        <div className="container mx-auto px-4 text-center">
-          <Badge className="inline-flex items-center justify-center border border-black/10 bg-black/5 text-black mb-4 px-3 py-1.5">
+      <section className="relative overflow-hidden py-20 md:py-24">
+        <div className="absolute -left-48 top-16 h-80 w-80 rounded-full bg-[#b99b4c]/20 blur-3xl" />
+        <div className="absolute -right-40 bottom-0 h-96 w-96 rounded-full bg-black/5 blur-3xl" />
+        <div className="container mx-auto px-4 relative z-10 text-center max-w-4xl">
+          <Badge className="inline-flex items-center justify-center border border-black/10 bg-black/5 text-black mb-6 px-3 py-1.5 uppercase tracking-wide">
             Community Library
           </Badge>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">Kamma Community Library</h1>
-          <p className="text-slate-600 max-w-3xl mx-auto">
-            Curated, readable summaries about Kamma history, notable figures, culture, entrepreneurship, and the global diaspora.
+          <h1 className="text-4xl md:text-5xl font-bold mb-5 tracking-tight">Kamma Knowledge & Heritage Repository</h1>
+          <p className="text-lg md:text-xl text-slate-600 leading-relaxed">
+            Discover curated research, biographies, oral histories, and cultural archives that celebrate the resilience and leadership of the Kamma community across generations and geographies.
           </p>
         </div>
       </section>
 
       {/* Search & Filters */}
-      <section className="py-6 bg-white text-black">
+      <section className="py-6 bg-slate-50 text-black border-y border-slate-200">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-5 gap-3 md:gap-4 items-end">
             <div className="md:col-span-2">
@@ -201,48 +203,77 @@ const Library = () => {
               </div>
             </div>
             <div className="flex gap-2">
-              <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white" onClick={() => { setQuery(''); setGender('any'); setCountry('any'); setMinAge(''); setMaxAge(''); setMinNet(''); setAchv(''); }}>Clear</Button>
-              <div className="text-sm text-slate-600 self-center">{filtered.length} result{filtered.length !== 1 ? 's' : ''}</div>
+              <Button
+                variant="outline"
+                className="border-black text-black hover:bg-black hover:text-white"
+                onClick={() => {
+                  setQuery('');
+                  setGender('any');
+                  setCountry('any');
+                  setMinAge('');
+                  setMaxAge('');
+                  setMinNet('');
+                  setAchv('');
+                }}
+              >
+                Clear
+              </Button>
+              <div className="text-sm text-slate-600 self-center">
+                {filtered.length} result{filtered.length !== 1 ? 's' : ''}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* Results */}
-      <section className="py-6 bg-white text-black">
-        <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filtered.map((p) => (
-            <Card key={p.name} className="border-black/10">
-              <CardHeader>
-                <CardTitle className="text-lg">{p.name}</CardTitle>
-                <CardDescription className="text-slate-600">
-                  {p.gender ? (p.gender.charAt(0).toUpperCase() + p.gender.slice(1)) : '—'} • {typeof p.age === 'number' ? p.age : '—'} • {p.country}
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="mb-3">
-                  <div className="text-sm font-medium">Achievements</div>
-                  <div className="flex flex-wrap gap-2 mt-1">
-                    {p.achievements?.map(a => (
-                      <span key={a} className="text-xs px-2 py-1 rounded bg-black/5 text-slate-700 border border-black/10">{a}</span>
+      <section className="py-12 bg-white text-black">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+              <h2 className="text-3xl font-bold">Featured Profiles</h2>
+              <p className="text-slate-600 max-w-2xl">
+                Detailed, searchable profiles covering trailblazers in governance, enterprise, culture, and community service.
+              </p>
+            </div>
+            <Button className="bg-[#b99b4c] hover:bg-[#a3893f] text-white font-semibold px-6 py-3 rounded-lg">
+              Explore Full Archive
+            </Button>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {filtered.map((p) => (
+              <Card key={p.name} className="border-black/10">
+                <CardHeader>
+                  <CardTitle className="text-lg">{p.name}</CardTitle>
+                  <CardDescription className="text-slate-600">
+                    {p.gender ? (p.gender.charAt(0).toUpperCase() + p.gender.slice(1)) : '—'} • {typeof p.age === 'number' ? p.age : '—'} • {p.country}
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="mb-3">
+                    <div className="text-sm font-medium">Achievements</div>
+                    <div className="flex flex-wrap gap-2 mt-1">
+                      {p.achievements?.map(a => (
+                        <span key={a} className="text-xs px-2 py-1 rounded bg-black/5 text-slate-700 border border-black/10">{a}</span>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="text-sm text-slate-700">
+                    Net Worth: {typeof p.netWorth === 'number' ? `₹ ${p.netWorth} crore` : 'N/A'}
+                  </div>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {p.tags?.map(t => (
+                      <span key={t} className="text-xs px-2 py-1 rounded bg-black/5 text-slate-700 border border-black/10">#{t}</span>
                     ))}
                   </div>
-                </div>
-                <div className="text-sm text-slate-700">
-                  Net Worth: {typeof p.netWorth === 'number' ? `₹ ${p.netWorth} crore` : 'N/A'}
-                </div>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {p.tags?.map(t => (
-                    <span key={t} className="text-xs px-2 py-1 rounded bg-black/5 text-slate-700 border border-black/10">#{t}</span>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-          ))}
+                </CardContent>
+              </Card>
+            ))}
+          </div>
         </div>
       </section>
 
-      <section className="py-12 bg-white text-black">
+      <section className="py-16 bg-slate-50 text-black border-y border-slate-200">
         <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-8">
           {sections.map((sec) => (
             <div key={sec.title} className="space-y-4">
@@ -274,13 +305,36 @@ const Library = () => {
         </div>
       </section>
 
-      <section className="py-12 bg-white text-black">
-        <div className="container mx-auto px-4 text-center">
-          <h3 className="text-xl font-semibold mb-2">Want to contribute?</h3>
-          <p className="text-slate-600 mb-4 max-w-2xl mx-auto">
-            Share references, articles, and stories to expand this community knowledge base. We’ll add citations and structured summaries.
-          </p>
-          <a href="/contact" className="inline-block border border-black text-black hover:bg-black hover:text-white px-5 py-2 rounded">Submit Content</a>
+      <section className="py-16 bg-white text-black">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-3">Community Source Program</h3>
+              <p className="text-slate-600 mb-6">
+                Collaborate with historians, archivists, and chapter leads to expand primary sources—oral histories, manuscripts, and multimedia.
+              </p>
+              <Button variant="outline" className="border-black text-black hover:bg-black hover:text-white w-full">Partner With Us</Button>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-3">Research Desk</h3>
+              <p className="text-slate-600 mb-6">
+                Request curated dossiers for policy advocacy, academic work, or community initiatives. Our research desk compiles verified data sets.
+              </p>
+              <Button className="bg-[#b99b4c] hover:bg-[#a3893f] text-white w-full">Request A Dossier</Button>
+            </div>
+            <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm">
+              <h3 className="text-2xl font-semibold mb-3">Submit New Material</h3>
+              <p className="text-slate-600 mb-6">
+                Share references, articles, and stories to expand this knowledge base. We&apos;ll review, annotate, and publish with credits.
+              </p>
+              <a
+                href="/contact"
+                className="inline-flex items-center justify-center border border-black text-black hover:bg-black hover:text-white px-5 py-3 rounded-lg w-full"
+              >
+                Submit Content
+              </a>
+            </div>
+          </div>
         </div>
       </section>
 

@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Lock, Apple, Facebook } from 'lucide-react';
@@ -19,6 +20,22 @@ const GoogleIcon = () => (
 const Login = () => {
   const [method, setMethod] = React.useState('password'); // 'password' | 'otp'
   const [otpRequested, setOtpRequested] = React.useState(false);
+  const [country, setCountry] = React.useState('India');
+  
+  const countries = [
+    { code: 'IN', name: 'India', dialCode: '+91', placeholder: '+91 98765 43210' },
+    { code: 'US', name: 'United States', dialCode: '+1', placeholder: '+1 (555) 123-4567' },
+    { code: 'GB', name: 'United Kingdom', dialCode: '+44', placeholder: '+44 20 7946 0958' },
+    { code: 'AE', name: 'United Arab Emirates', dialCode: '+971', placeholder: '+971 50 123 4567' },
+    { code: 'AU', name: 'Australia', dialCode: '+61', placeholder: '+61 2 1234 5678' },
+    { code: 'CA', name: 'Canada', dialCode: '+1', placeholder: '+1 (555) 123-4567' },
+    { code: 'SG', name: 'Singapore', dialCode: '+65', placeholder: '+65 6123 4567' },
+    { code: 'MY', name: 'Malaysia', dialCode: '+60', placeholder: '+60 12-345 6789' },
+    { code: 'NZ', name: 'New Zealand', dialCode: '+64', placeholder: '+64 21 123 4567' },
+    { code: 'ZA', name: 'South Africa', dialCode: '+27', placeholder: '+27 82 123 4567' },
+  ];
+
+  const selectedCountryData = countries.find(c => c.name === country) || countries[0];
 
   return (
     <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
@@ -33,46 +50,71 @@ const Login = () => {
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                <div>
-                  <label className="block text-sm mb-1">Email or Mobile Number</label>
-                  <div className="relative">
-                    <Mail className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                    <Input type="text" placeholder="you@example.com or +91 98765 43210" className="pl-9 border-black/20" required />
-                  </div>
-                </div>
+                {method === 'password' ? (
+                  <>
+                    <div>
+                      <label className="block text-sm mb-1">Email or Mobile Number</label>
+                      <div className="relative">
+                        <Mail className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+                        <Input type="text" placeholder="you@example.com or +91 98765 43210" className="pl-9 border-black/20" required />
+                      </div>
+                    </div>
+                    <div>
+                      <label className="block text-sm mb-1">Password</label>
+                      <div className="relative">
+                        <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
+                        <Input type="password" placeholder="••••••••" className="pl-9 border-black/20" required />
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div>
+                      <label className="block text-sm mb-1">Country <span className="text-red-600">*</span></label>
+                      <Select value={country} onValueChange={setCountry}>
+                        <SelectTrigger className="border-black/20"><SelectValue /></SelectTrigger>
+                        <SelectContent>
+                          {countries.map(c => (
+                            <SelectItem key={c.code} value={c.name}>{c.name} {c.dialCode}</SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div>
+                      <label className="block text-sm mb-1">Mobile Number <span className="text-red-600">*</span></label>
+                      <Input 
+                        type="tel" 
+                        placeholder={selectedCountryData.placeholder}
+                        className="border-black/20" 
+                        required 
+                      />
+                    </div>
+                    <div className="space-y-2">
+                      <Button type="button" variant="outline" className="w-full border-black text-black hover:bg-black hover:text-white" onClick={() => setOtpRequested(true)}>Send OTP</Button>
+                      {otpRequested && (
+                        <>
+                          <div className="text-xs text-slate-600 text-center">OTP sent to {selectedCountryData.dialCode} (your mobile)</div>
+                          <InputOTP maxLength={6} className="[&_input]:border-black/20">
+                            <InputOTPGroup>
+                              <InputOTPSlot index={0} />
+                              <InputOTPSlot index={1} />
+                              <InputOTPSlot index={2} />
+                              <InputOTPSlot index={3} />
+                              <InputOTPSlot index={4} />
+                              <InputOTPSlot index={5} />
+                            </InputOTPGroup>
+                          </InputOTP>
+                        </>
+                      )}
+                    </div>
+                  </>
+                )}
 
                 <div className="flex items-center gap-2 text-sm">
                   <button type="button" onClick={() => setMethod('password')} className={`${method==='password' ? 'font-semibold' : 'text-slate-500'}`}>Password</button>
                   <span className="text-slate-400">/</span>
                   <button type="button" onClick={() => setMethod('otp')} className={`${method==='otp' ? 'font-semibold' : 'text-slate-500'}`}>OTP</button>
                 </div>
-
-                {method === 'password' ? (
-                  <div>
-                    <label className="block text-sm mb-1">Password</label>
-                    <div className="relative">
-                      <Lock className="w-4 h-4 absolute left-3 top-1/2 -translate-y-1/2 text-slate-500" />
-                      <Input type="password" placeholder="••••••••" className="pl-9 border-black/20" required />
-                    </div>
-                  </div>
-                ) : (
-                  <div className="space-y-2">
-                    <div className="flex gap-2">
-                      <Button type="button" variant="outline" className="border-black text-black hover:bg-black hover:text-white" onClick={() => setOtpRequested(true)}>Send OTP</Button>
-                      {otpRequested && <span className="text-xs text-slate-500 self-center">OTP sent</span>}
-                    </div>
-                    <InputOTP maxLength={6} className="[&_input]:border-black/20">
-                      <InputOTPGroup>
-                        <InputOTPSlot index={0} />
-                        <InputOTPSlot index={1} />
-                        <InputOTPSlot index={2} />
-                        <InputOTPSlot index={3} />
-                        <InputOTPSlot index={4} />
-                        <InputOTPSlot index={5} />
-                      </InputOTPGroup>
-                    </InputOTP>
-                  </div>
-                )}
 
                 <Button className="w-full bg-[#b99b4c] hover:bg-[#a3893f] text-white">Login</Button>
 

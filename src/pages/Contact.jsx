@@ -10,11 +10,11 @@ import Footer from '@/components/Footer';
 
 const Contact = () => {
   return (
-    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
+    <div className="min-h-screen text-black" style={{backgroundColor: 'white'}}>
       <Header currentPage="Contact" />
 
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: 'white'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -49,51 +49,51 @@ const Contact = () => {
       </section>
 
       {/* Contact Methods */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Get in Touch</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-black">Get in Touch</h2>
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Choose the best way to reach us based on your needs and urgency.
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {[
               {
-                icon: <MessageSquare className="text-cyan-400" size={48} />,
+                icon: <MessageSquare className="text-[#b99b4c]" size={48} />,
                 title: "General Inquiries",
                 description: "Membership, chapters, and programs",
-                contact: "+91 0000-000-000",
+                contact: "+91 90555 17555",
                 availability: "Mon-Fri 9AM-6PM",
                 responseTime: "< 24 hours"
               },
               {
-                icon: <Mail className="text-cyan-400" size={48} />,
+                icon: <Mail className="text-[#b99b4c]" size={48} />,
                 title: "Email",
                 description: "Send us an email for detailed inquiries",
-                contact: "info@kammaglobal.org",
+                contact: "info@kammaglobal.com",
                 availability: "24/7",
                 responseTime: "< 2 days"
               },
               {
-                icon: <Headphones className="text-cyan-400" size={48} />,
-                title: "Donations & Sponsorships",
-                description: "Support the federation’s programs",
-                contact: "donate@kammaglobal.org",
+                icon: <Headphones className="text-[#b99b4c]" size={48} />,
+                title: "Support",
+                description: "Technical support and assistance",
+                contact: "support@kammaglobal.com",
                 availability: "Mon-Fri 9AM-6PM",
                 responseTime: "< 2 days"
               }
             ].map((method, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
+              <Card key={index} className="bg-white border-slate-300 hover:border-[#b99b4c] transition-all duration-300 hover:shadow-2xl hover:shadow-[#b99b4c]/20 text-center shadow-md">
                 <CardHeader>
                   <div className="mb-4">{method.icon}</div>
-                  <CardTitle className="text-xl text-white">{method.title}</CardTitle>
-                  <CardDescription className="text-slate-300">{method.description}</CardDescription>
+                  <CardTitle className="text-xl text-black">{method.title}</CardTitle>
+                  <CardDescription className="text-slate-700">{method.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3 mb-4">
-                    <div className="text-cyan-400 font-semibold">{method.contact}</div>
-                    <div className="text-slate-300 text-sm">
+                    <div className="text-[#b99b4c] font-semibold">{method.contact}</div>
+                    <div className="text-slate-700 text-sm">
                       <div className="flex items-center justify-center mb-1">
                         <Clock className="mr-1" size={14} />
                         {method.availability}
@@ -104,7 +104,7 @@ const Contact = () => {
                       </div>
                     </div>
                   </div>
-                  <Button className="w-full bg-[#021346] hover:bg-[#021346]/90 text-white">
+                  <Button className="w-full bg-black hover:bg-black/90 text-white">
                     Contact Now
                     <ArrowRight className="ml-2" size={16} />
                   </Button>
@@ -116,66 +116,66 @@ const Contact = () => {
       </section>
 
       {/* Contact Form & Office Locations */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Form */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">Send us a Message</h2>
-              <p className="text-slate-300 mb-8">
+              <h2 className="text-3xl font-bold mb-6 text-black">Send us a Message</h2>
+              <p className="text-slate-700 mb-8">
                 Fill out the form below and our team will get back to you within 24 hours.
               </p>
               <form className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">First Name</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
                     <Input 
                       type="text" 
                       placeholder="John" 
-                      className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
+                      className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-300 mb-2">Last Name</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
                     <Input 
                       type="text" 
                       placeholder="Doe" 
-                      className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
+                      className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
                     />
                   </div>
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Email</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
                   <Input 
                     type="email" 
                     placeholder="you@example.com" 
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
+                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">City/Chapter</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">City/Chapter</label>
                   <Input 
                     type="text" 
                     placeholder="Hyderabad / Dallas / London" 
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
+                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Subject</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
                   <Input 
                     type="text" 
                     placeholder="Membership / Chapter / Media / Donation" 
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346]"
+                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-medium text-slate-300 mb-2">Message</label>
+                    <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
                   <Textarea 
                     placeholder="Tell us how we can help..."
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-[#021346] min-h-[120px]"
+                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black min-h-[120px]"
                   />
                 </div>
-                <Button className="w-full bg-[#021346] hover:bg-[#021346]/90 text-white font-semibold py-3">
+                <Button className="w-full bg-black hover:bg-black/90 text-white font-semibold py-3">
                   <Send className="mr-2" size={20} />
                   Send Message
                 </Button>
@@ -184,48 +184,72 @@ const Contact = () => {
 
             {/* Office Locations */}
             <div>
-              <h2 className="text-3xl font-bold mb-6">Federation Chapters</h2>
-              <p className="text-slate-300 mb-8">
+              <h2 className="text-3xl font-bold mb-6 text-black">Federation Chapters</h2>
+              <p className="text-slate-700 mb-8">
                 Reach out to a nearby chapter or schedule a virtual meeting.
               </p>
               <div className="space-y-6">
                 {[
                   {
                     city: "Hyderabad, India",
-                    type: "Chapter Office",
-                    address: "Madhapur",
-                    phone: "+91 0000-000-000",
-                    email: "hyderabad@kammaglobal.org",
-                    hours: "Mon-Fri 9AM-6PM"
+                    type: "Headquarters",
+                    address: "Jetti mansion, Plot no 831/A, Road no 41, Jubileehills, Hyderabad 500033, Telangana, India",
+                    phone: "+91 90555 17555",
+                    email: "info@kammaglobal.com",
+                    hours: "Mon-Fri 9AM-6PM IST"
                   },
                   {
                     city: "Dallas, USA",
                     type: "Chapter Office",
                     address: "Plano, TX",
                     phone: "+1 (000) 000-0000",
-                    email: "dallas@kammaglobal.org",
-                    hours: "Mon-Fri 9AM-6PM"
+                    email: "dallas@kammaglobal.com",
+                    hours: "Mon-Fri 9AM-6PM CST"
                   },
                   {
                     city: "London, UK",
                     type: "Chapter Office",
                     address: "Central London",
                     phone: "+44 0000 000000",
-                    email: "london@kammaglobal.org",
-                    hours: "Mon-Fri 9AM-6PM"
+                    email: "london@kammaglobal.com",
+                    hours: "Mon-Fri 9AM-6PM GMT"
+                  },
+                  {
+                    city: "Sydney, Australia",
+                    type: "Chapter Office",
+                    address: "Sydney, NSW",
+                    phone: "+61 2 0000 0000",
+                    email: "sydney@kammaglobal.com",
+                    hours: "Mon-Fri 9AM-6PM AEST"
+                  },
+                  {
+                    city: "Toronto, Canada",
+                    type: "Chapter Office",
+                    address: "Toronto, Ontario",
+                    phone: "+1 (000) 000-0000",
+                    email: "toronto@kammaglobal.com",
+                    hours: "Mon-Fri 9AM-6PM EST"
+                  },
+                  {
+                    city: "Dubai, UAE",
+                    type: "Chapter Office",
+                    address: "Dubai",
+                    phone: "+971 50 000 0000",
+                    email: "dubai@kammaglobal.com",
+                    hours: "Mon-Fri 9AM-6PM GST"
                   }
                 ].map((office, index) => (
-                  <Card key={index} className="bg-slate-800 border-slate-700">
+                  <Card key={index} className="bg-white border-slate-300 shadow-md">
                     <CardHeader>
-                      <div className="flex items-center justify-between mb-2">
-                        <CardTitle className="text-lg text-white">{office.city}</CardTitle>
-                        <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">
+                  <div className="flex items-center justify-between mb-2">
+                        <CardTitle className="text-lg text-black">{office.city}</CardTitle>
+                    <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">
                           {office.type}
                         </Badge>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="space-y-2 text-slate-300">
+                      <div className="space-y-2 text-slate-700">
                         <div className="flex items-center">
                           <MapPin className="mr-2" size={16} />
                           {office.address}
@@ -253,11 +277,11 @@ const Contact = () => {
       </section>
 
       {/* FAQ Section */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Frequently Asked Questions</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-black">Frequently Asked Questions</h2>
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Find answers to common questions about our services and solutions.
             </p>
           </div>
@@ -288,12 +312,12 @@ const Contact = () => {
                 answer: "Check the Events page for upcoming programs and registration details."
               }
             ].map((faq, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700">
+              <Card key={index} className="bg-white border-slate-300 shadow-md">
                 <CardHeader>
-                  <CardTitle className="text-lg text-white">{faq.question}</CardTitle>
+                  <CardTitle className="text-lg text-black">{faq.question}</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-300">{faq.answer}</p>
+                  <p className="text-slate-700">{faq.answer}</p>
                 </CardContent>
               </Card>
             ))}
@@ -302,18 +326,18 @@ const Contact = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Ready to Connect?</h2>
-          <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6 text-black">Ready to Connect?</h2>
+          <p className="text-xl text-black/70 mb-8 max-w-3xl mx-auto">
             Join the federation, participate in a chapter, or partner with us to create impact.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg text-lg">
               Become a Member
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg text-lg">
               Donate Now
             </Button>
           </div>

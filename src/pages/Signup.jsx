@@ -3,6 +3,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { InputOTP, InputOTPGroup, InputOTPSlot } from '@/components/ui/input-otp';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Mail, Lock, User, Apple, Facebook } from 'lucide-react';
@@ -18,6 +19,23 @@ const GoogleIcon = () => (
 
 const Signup = () => {
   const [otpRequested, setOtpRequested] = React.useState(false);
+  const [country, setCountry] = React.useState('India');
+  
+  const countries = [
+    { code: 'IN', name: 'India', dialCode: '+91', placeholder: '+91 98765 43210' },
+    { code: 'US', name: 'United States', dialCode: '+1', placeholder: '+1 (555) 123-4567' },
+    { code: 'GB', name: 'United Kingdom', dialCode: '+44', placeholder: '+44 20 7946 0958' },
+    { code: 'AE', name: 'United Arab Emirates', dialCode: '+971', placeholder: '+971 50 123 4567' },
+    { code: 'AU', name: 'Australia', dialCode: '+61', placeholder: '+61 2 1234 5678' },
+    { code: 'CA', name: 'Canada', dialCode: '+1', placeholder: '+1 (555) 123-4567' },
+    { code: 'SG', name: 'Singapore', dialCode: '+65', placeholder: '+65 6123 4567' },
+    { code: 'MY', name: 'Malaysia', dialCode: '+60', placeholder: '+60 12-345 6789' },
+    { code: 'NZ', name: 'New Zealand', dialCode: '+64', placeholder: '+64 21 123 4567' },
+    { code: 'ZA', name: 'South Africa', dialCode: '+27', placeholder: '+27 82 123 4567' },
+  ];
+
+  const selectedCountryData = countries.find(c => c.name === country) || countries[0];
+
   return (
     <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
       <Header currentPage="Signup" />
@@ -45,13 +63,24 @@ const Signup = () => {
                     <Input type="email" placeholder="you@example.com" className="pl-9 border-black/20" />
                   </div>
                 </div>
+                <div>
+                  <label className="block text-sm mb-1">Country <span className="text-red-600">*</span></label>
+                  <Select value={country} onValueChange={setCountry}>
+                    <SelectTrigger className="border-black/20"><SelectValue /></SelectTrigger>
+                    <SelectContent>
+                      {countries.map(c => (
+                        <SelectItem key={c.code} value={c.name}>{c.name} {c.dialCode}</SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
               <div>
                 <label className="block text-sm mb-1">Mobile Number<span className="text-red-600"> *</span></label>
                 <div className="flex gap-2">
                   <Input
                     type="tel"
                     inputMode="tel"
-                    placeholder="e.g. +91 98765 43210"
+                    placeholder={selectedCountryData.placeholder}
                     className="border-black/20"
                     required
                   />
@@ -59,7 +88,7 @@ const Signup = () => {
                 </div>
                 {otpRequested && (
                   <div className="mt-3 space-y-2">
-                    <div className="text-xs text-slate-600">Enter the 6-digit OTP sent to your mobile</div>
+                    <div className="text-xs text-slate-600">Enter the 6-digit OTP sent to {selectedCountryData.dialCode} (your mobile)</div>
                     <InputOTP maxLength={6} className="[&_input]:border-black/20">
                       <InputOTPGroup>
                         <InputOTPSlot index={0} />

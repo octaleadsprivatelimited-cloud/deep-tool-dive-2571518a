@@ -8,11 +8,11 @@ import Footer from '@/components/Footer';
 
 const Partners = () => {
   return (
-    <div className="min-h-screen text-white" style={{backgroundColor: '#003386'}}>
+    <div className="min-h-screen text-black" style={{backgroundColor: 'white'}}>
       <Header currentPage="Partners" />
 
       {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: '#003386'}}>
+      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: 'white'}}>
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
@@ -46,43 +46,38 @@ const Partners = () => {
         </div>
       </section>
 
-      {/* Partnership Benefits */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      {/* Why Sponsor KGF */}
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Why Partner With Us?</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Join our ecosystem of trusted partners and expand your reach in the cybersecurity market.
+            <h2 className="text-4xl font-bold mb-6 text-black">Why Sponsor KGF?</h2>
+            <p className="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
+              By sponsoring KGF events and initiatives, you're not just promoting your brand – you're investing in community development and cultural preservation.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {[
               {
-                icon: <Globe className="text-cyan-400" size={48} />,
-                title: "Global Reach",
-                description: "Access to our worldwide client base and international markets."
+                icon: <Users className="text-[#b99b4c]" size={48} />,
+                title: "Community Reach",
+                description: "Connect with over 1,000+ Kamma professionals and families from around the world"
               },
               {
-                icon: <Users className="text-cyan-400" size={48} />,
-                title: "Expert Support",
-                description: "Dedicated partner success managers and technical support teams."
+                icon: <Globe className="text-[#b99b4c]" size={48} />,
+                title: "Global Visibility",
+                description: "Gain international exposure through our global network and digital platforms"
               },
               {
-                icon: <Zap className="text-cyan-400" size={48} />,
-                title: "Fast Integration",
-                description: "Streamlined integration process with our security platforms."
-              },
-              {
-                icon: <Award className="text-cyan-400" size={48} />,
-                title: "Certification Program",
-                description: "Comprehensive training and certification for your team."
+                icon: <Award className="text-[#b99b4c]" size={48} />,
+                title: "Brand Recognition",
+                description: "Enhance your brand reputation through association with community development"
               }
             ].map((benefit, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 text-center">
+              <Card key={index} className="bg-white border-slate-300 hover:border-[#b99b4c]/60 transition-all duration-300 hover:shadow-2xl hover:shadow-[#b99b4c]/20 text-center shadow-md">
                 <CardHeader>
-                  <div className="mb-4">{benefit.icon}</div>
-                  <CardTitle className="text-xl text-white">{benefit.title}</CardTitle>
-                  <CardDescription className="text-slate-300">{benefit.description}</CardDescription>
+                  <div className="mb-4 flex justify-center">{benefit.icon}</div>
+                  <CardTitle className="text-xl text-black mb-3">{benefit.title}</CardTitle>
+                  <CardDescription className="text-slate-700 leading-relaxed">{benefit.description}</CardDescription>
                 </CardHeader>
               </Card>
             ))}
@@ -91,11 +86,11 @@ const Partners = () => {
       </section>
 
       {/* Sponsor Categories */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Sponsor Categories</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-black">Sponsor Categories</h2>
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Ways to partner and support federation programs and events.
             </p>
           </div>
@@ -105,31 +100,31 @@ const Partners = () => {
               { name: "Gold Sponsor", category: "Education & Youth", description: "Supports scholarships and youth initiatives.", features: ["Scholarship branding", "Media mentions", "Chapter features", "Booth"], logo: "GS", tier: "Gold" },
               { name: "Community Partner", category: "Chapters", description: "Supports local events and community drives.", features: ["Event branding", "Chapter mentions", "Volunteer engagement", "Tables"], logo: "CP", tier: "Silver" }
             ].map((partner, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
+              <Card key={index} className="bg-white border-slate-300 hover:border-[#b99b4c] transition-all duration-300 hover:shadow-2xl hover:shadow-[#b99b4c]/20 shadow-md">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-4">
-                    <div className="w-16 h-16 bg-[#021346] rounded-lg flex items-center justify-center text-white font-bold text-xl">
+                    <div className="w-16 h-16 bg-[#b99b4c] rounded-lg flex items-center justify-center text-white font-bold text-xl">
                       {partner.logo}
                     </div>
                     <Badge className={`${
-                      partner.tier === 'Platinum' ? 'bg-yellow-900/30 text-yellow-300 border-yellow-700' :
-                      partner.tier === 'Gold' ? 'bg-gray-900/30 text-gray-300 border-gray-700' :
-                      'bg-orange-900/30 text-orange-300 border-orange-700'
+                      partner.tier === 'Platinum' ? 'bg-yellow-100 text-yellow-800 border-yellow-300' :
+                      partner.tier === 'Gold' ? 'bg-gray-100 text-gray-800 border-gray-300' :
+                      'bg-orange-100 text-orange-800 border-orange-300'
                     }`}>
                       {partner.tier}
                     </Badge>
                   </div>
-                  <CardTitle className="text-xl text-white">{partner.name}</CardTitle>
-                  <CardDescription className="text-cyan-400">{partner.category}</CardDescription>
+                  <CardTitle className="text-xl text-black">{partner.name}</CardTitle>
+                  <CardDescription className="text-[#b99b4c]">{partner.category}</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-slate-300 mb-4">{partner.description}</p>
+                  <p className="text-slate-700 mb-4">{partner.description}</p>
                   <div className="space-y-2">
-                    <h4 className="text-sm font-semibold text-white">Key Features:</h4>
+                    <h4 className="text-sm font-semibold text-black">Key Features:</h4>
                     <ul className="space-y-1">
                       {partner.features.map((feature, idx) => (
-                        <li key={idx} className="flex items-center text-slate-300 text-sm">
-                          <CheckCircle className="text-cyan-400 mr-2" size={14} />
+                        <li key={idx} className="flex items-center text-slate-700 text-sm">
+                          <CheckCircle className="text-[#b99b4c] mr-2" size={14} />
                           {feature}
                         </li>
                       ))}
@@ -143,11 +138,11 @@ const Partners = () => {
       </section>
 
       {/* Community Partners */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Community Partners</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-black">Community Partners</h2>
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Our trusted channel partners help us deliver cybersecurity solutions to clients worldwide.
             </p>
           </div>
@@ -157,13 +152,13 @@ const Partners = () => {
               { name: "Tech Professionals Network", type: "Community Partner", region: "Dallas", description: "Mentorship and networking for students and professionals.", specialties: ["Mentorship", "Workshops", "Career talks", "Networking"], years: "2+ years" },
               { name: "Cultural Association UK", type: "Community Partner", region: "London", description: "Promoting cultural programs and community service.", specialties: ["Cultural", "Fundraising", "Volunteer", "Media"], years: "4+ years" }
             ].map((partner, index) => (
-              <Card key={index} className="bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300">
+              <Card key={index} className="bg-white border-slate-300 hover:border-[#b99b4c] transition-all duration-300 shadow-md">
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-xl text-white">{partner.name}</CardTitle>
-                    <Badge className="bg-cyan-900/30 text-cyan-300 border-cyan-700">{partner.type}</Badge>
+                    <CardTitle className="text-xl text-black">{partner.name}</CardTitle>
+                  <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">{partner.type}</Badge>
                   </div>
-                  <div className="flex items-center space-x-4 text-sm text-slate-400 mb-2">
+                  <div className="flex items-center space-x-4 text-sm text-slate-600 mb-2">
                     <span className="flex items-center">
                       <Globe className="mr-1" size={14} />
                       {partner.region}
@@ -173,14 +168,14 @@ const Partners = () => {
                       {partner.years}
                     </span>
                   </div>
-                  <CardDescription className="text-slate-300">{partner.description}</CardDescription>
+                  <CardDescription className="text-slate-700">{partner.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-3">
-                    <h4 className="text-sm font-semibold text-white">Specialties:</h4>
+                    <h4 className="text-sm font-semibold text-black">Specialties:</h4>
                     <div className="flex flex-wrap gap-2">
                       {partner.specialties.map((specialty, idx) => (
-                        <Badge key={idx} className="bg-slate-700 text-slate-300 text-xs">
+                        <Badge key={idx} className="bg-slate-100 text-slate-700 text-xs border-slate-300">
                           {specialty}
                         </Badge>
                       ))}
@@ -194,11 +189,11 @@ const Partners = () => {
       </section>
 
       {/* Sponsorship Tiers */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6">Sponsorship Tiers</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
+            <h2 className="text-4xl font-bold mb-6 text-black">Sponsorship Tiers</h2>
+            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
               Choose the partner program that best fits your business model and growth objectives.
             </p>
           </div>
@@ -208,48 +203,48 @@ const Partners = () => {
               { name: "Program Sponsor", tier: "Gold", description: "Fund scholarships and youth programs.", benefits: ["Branding on materials", "Media mentions", "Speaking slots", "Mentor access", "VIP tickets"], requirements: ["Annual sponsorship", "Program alignment"], color: "cyan" },
               { name: "Title Sponsor", tier: "Platinum", description: "Lead supporter of flagship programs and global meet.", benefits: ["Stage branding", "Prime visibility", "Leadership meet", "Press features", "All-access passes"], requirements: ["Strategic alignment", "Annual commitment"], color: "yellow" }
             ].map((program, index) => (
-              <Card key={index} className={`bg-slate-800 border-slate-700 hover:border-[#021346] transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20 ${
-                program.color === 'cyan' ? 'ring-2 ring-cyan-600' : ''
+              <Card key={index} className={`bg-white border-slate-300 hover:border-[#b99b4c] transition-all duration-300 hover:shadow-2xl hover:shadow-[#b99b4c]/20 shadow-md ${
+                program.color === 'cyan' ? 'ring-2 ring-[#b99b4c]' : ''
               }`}>
                 <CardHeader>
                   <div className="flex items-center justify-between mb-2">
-                    <CardTitle className="text-xl text-white">{program.name}</CardTitle>
+                    <CardTitle className="text-xl text-black">{program.name}</CardTitle>
                     <Badge className={`${
-                      program.color === 'yellow' ? 'bg-yellow-900/30 text-yellow-300 border-yellow-700' :
-                      program.color === 'cyan' ? 'bg-cyan-900/30 text-cyan-300 border-cyan-700' :
-                      'bg-slate-800/30 text-slate-300 border-slate-700'
+                      program.color === 'yellow' ? 'bg-yellow-100 text-yellow-800 border-yellow-300' :
+                      program.color === 'cyan' ? 'bg-[#b99b4c]/20 text-[#b99b4c] border-[#b99b4c]/40' :
+                      'bg-slate-100 text-slate-700 border-slate-300'
                     }`}>
                       {program.tier}
                     </Badge>
                   </div>
-                  <CardDescription className="text-slate-300">{program.description}</CardDescription>
+                  <CardDescription className="text-slate-700">{program.description}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="text-sm font-semibold text-white mb-2">Benefits:</h4>
+                      <h4 className="text-sm font-semibold text-black mb-2">Benefits:</h4>
                       <ul className="space-y-1">
                         {program.benefits.map((benefit, idx) => (
-                          <li key={idx} className="flex items-center text-slate-300 text-sm">
-                            <CheckCircle className="text-cyan-400 mr-2" size={14} />
+                          <li key={idx} className="flex items-center text-slate-700 text-sm">
+                            <CheckCircle className="text-[#b99b4c] mr-2" size={14} />
                             {benefit}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <div>
-                      <h4 className="text-sm font-semibold text-white mb-2">Requirements:</h4>
+                      <h4 className="text-sm font-semibold text-black mb-2">Requirements:</h4>
                       <ul className="space-y-1">
                         {program.requirements.map((req, idx) => (
-                          <li key={idx} className="flex items-center text-slate-300 text-sm">
-                            <CheckCircle className="text-slate-400 mr-2" size={14} />
+                          <li key={idx} className="flex items-center text-slate-700 text-sm">
+                            <CheckCircle className="text-slate-500 mr-2" size={14} />
                             {req}
                           </li>
                         ))}
                       </ul>
                     </div>
                     <Button className={`w-full ${
-                      program.color === 'cyan' ? 'bg-[#021346] hover:bg-[#021346]/90' :
+                      program.color === 'cyan' ? 'bg-[#b99b4c] hover:bg-[#a3893f]' :
                       program.color === 'yellow' ? 'bg-yellow-600 hover:bg-yellow-700' :
                       'bg-slate-600 hover:bg-slate-700'
                     } text-white`}>
@@ -298,7 +293,7 @@ const Partners = () => {
                     <CardTitle className="text-xl text-white">{story.partner}</CardTitle>
                     <Badge className="bg-green-900/30 text-green-300 border-green-700">Success Story</Badge>
                   </div>
-                  <CardDescription className="text-cyan-400">{story.industry}</CardDescription>
+                <CardDescription className="text-[#b99b4c]">{story.industry}</CardDescription>
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-4">
@@ -307,7 +302,7 @@ const Partners = () => {
                     <div className="grid grid-cols-3 gap-4">
                       {story.metrics.map((metric, idx) => (
                         <div key={idx} className="text-center p-3 bg-slate-700 rounded-lg">
-                          <div className="text-cyan-400 font-bold text-sm">{metric}</div>
+                          <div className="text-[#b99b4c] font-bold text-sm">{metric}</div>
                         </div>
                       ))}
                     </div>
@@ -320,18 +315,18 @@ const Partners = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 text-white" style={{backgroundColor: '#003386'}}>
+      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
         <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6">Ready to Partner With Us?</h2>
-          <p className="text-xl text-cyan-100 mb-8 max-w-3xl mx-auto">
+          <h2 className="text-4xl font-bold mb-6 text-black">Ready to Partner With Us?</h2>
+          <p className="text-xl text-black/70 mb-8 max-w-3xl mx-auto">
             Support culture, education, and community programs across global Kamma communities.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-white text-cyan-900 hover:bg-cyan-100 font-semibold px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" className="bg-black text-white hover:bg-black/90 font-semibold px-8 py-4 rounded-lg text-lg">
               Become a Partner
               <ArrowRight className="ml-2" size={20} />
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-cyan-900 px-8 py-4 rounded-lg text-lg">
+            <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg text-lg">
               Download Partner Kit
             </Button>
           </div>

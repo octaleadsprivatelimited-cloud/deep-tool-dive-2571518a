@@ -90,9 +90,9 @@ const Footer = () => {
   return (
     <footer className="bg-[#b99b4c] text-black">
       {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 py-10 md:py-12">
         {/* Desktop Footer Grid */}
-        <div className="hidden lg:grid lg:grid-cols-6 gap-8 mb-12">
+        <div className="hidden lg:grid lg:grid-cols-6 gap-8 mb-8">
           {footerSections.map((section, index) => (
             <div key={index} className="space-y-4">
               <h3 className="text-lg font-semibold text-black mb-4">{section.title}</h3>
@@ -113,7 +113,7 @@ const Footer = () => {
         </div>
 
         {/* Mobile Footer Dropdowns */}
-        <div className="lg:hidden space-y-4 mb-8">
+        <div className="lg:hidden space-y-4 mb-6">
           {footerSections.map((section, index) => (
             <div key={index} className="border border-black/20 rounded-lg">
               <button
@@ -149,12 +149,14 @@ const Footer = () => {
 
 
         {/* Contact Information */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-6">
             <div className="text-center md:text-left">
               <h4 className="font-semibold text-black mb-4">Headquarters</h4>
               <div className="space-y-2 text-black/80">
-                <p>Hyderabad, Telangana</p>
-                <p>India</p>
+                <p className="flex items-start justify-center md:justify-start">
+                  <MapPin className="w-4 h-4 mr-2 mt-0.5 shrink-0" />
+                  <span>Jetti mansion, Plot no 831/A, Road no 41, Jubileehills, Hyderabad 500033, Telangana, India</span>
+                </p>
               </div>
             </div>
           <div className="text-center md:text-left">
@@ -162,15 +164,19 @@ const Footer = () => {
             <div className="space-y-2 text-black/80">
               <p className="flex items-center justify-center md:justify-start">
                 <Phone className="w-4 h-4 mr-2" />
-                +91 0000-000-000
+                +91 90555 17555
               </p>
               <p className="flex items-center justify-center md:justify-start">
                 <Mail className="w-4 h-4 mr-2" />
-                info@kammaglobal.org
+                info@kammaglobal.com
+              </p>
+              <p className="flex items-center justify-center md:justify-start">
+                <Mail className="w-4 h-4 mr-2" />
+                support@kammaglobal.com
               </p>
               <p className="flex items-center justify-center md:justify-start">
                 <Globe className="w-4 h-4 mr-2" />
-                www.kammaglobal.org
+                www.kammaglobal.com
               </p>
             </div>
           </div>
@@ -191,7 +197,7 @@ const Footer = () => {
         </div>
 
         {/* Organization Note */}
-        <div className="bg-white/20 rounded-lg p-6 mb-8">
+        <div className="bg-white/20 rounded-lg p-5 mb-6">
           <div className="flex items-center gap-4">
             <div className="flex-1">
               <h3 className="text-lg font-bold text-black mb-1">Kamma Global Federation</h3>
@@ -204,7 +210,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-black/20 pt-8">
+        <div className="border-t border-black/20 pt-4 md:pt-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center space-x-2">
               <Shield className="w-6 h-6 text-black" />
@@ -217,8 +223,8 @@ const Footer = () => {
               <a href="/security" className="hover:opacity-80 transition-colors">Security Policy</a>
             </div>
           </div>
-          <div className="mt-4 text-center text-sm text-black/70">
-            <p>&copy; 2024 Kamma Global Federation. All rights reserved.</p>
+          <div className="mt-2 text-center text-xs text-black/70">
+            <p>&copy; 2025 Kamma Global Federation. All rights reserved. Developed by Octaleads Pvt Ltd.</p>
           </div>
         </div>
       </div>

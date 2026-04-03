@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight, UserPlus, Heart, Mail, Play } from 'lucide-react';
+import { getHighlightedMembers } from '@/lib/dataStore';
 import heroBg from '@/assets/hero-bg.jpg';
 import riseLogo from '@/assets/rise-logo.png';
 import { Button } from '@/components/ui/button';
@@ -9,18 +10,27 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
+  const [featuredMembers, setFeaturedMembers] = useState([]);
+
+  useEffect(() => {
+    const highlighted = getHighlightedMembers();
+    if (highlighted.length > 0) {
+      setFeaturedMembers(highlighted.map((m) => ({ name: m.fullName, profession: m.profession, location: m.location, image: m.image })));
+    } else {
+      setFeaturedMembers([
+        { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
+        { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
+        { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
+        { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
+      ]);
+    }
+  }, []);
+
   const highlights = [
     { icon: Users, title: 'Networking', desc: 'Connect with professionals across industries and regions.' },
     { icon: Handshake, title: 'Mentorship', desc: 'Get guidance from experienced leaders and mentors.' },
     { icon: Calendar, title: 'Events', desc: 'Attend exclusive community events, summits, and workshops.' },
     { icon: TrendingUp, title: 'Growth', desc: 'Unlock career and business opportunities within the community.' },
-  ];
-
-  const featuredMembers = [
-    { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
-    { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
-    { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
-    { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
   ];
 
   const upcomingEvents = [
@@ -174,9 +184,13 @@ const Index = () => {
               <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
                 {/* Profile image area */}
                 <div className="h-48 bg-secondary flex items-center justify-center">
-                  <div className="w-24 h-24 rounded-full bg-primary/20 border-4 border-primary/30 flex items-center justify-center text-3xl font-heading font-bold text-primary group-hover:border-primary transition-colors">
-                    {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                  </div>
+                  {m.image ? (
+                    <img src={m.image} alt={m.name} className="w-24 h-24 rounded-full object-cover border-4 border-primary/30 group-hover:border-primary transition-colors" />
+                  ) : (
+                    <div className="w-24 h-24 rounded-full bg-primary/20 border-4 border-primary/30 flex items-center justify-center text-3xl font-heading font-bold text-primary group-hover:border-primary transition-colors">
+                      {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                    </div>
+                  )}
                 </div>
                 <div className="p-5 text-center">
                   <h3 className="font-heading font-bold text-base mb-1">{m.name}</h3>

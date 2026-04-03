@@ -133,20 +133,20 @@ const Donate = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
             {/* QR Code */}
             <div className="text-center">
-              <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
-                <Smartphone className="w-7 h-7 text-primary" />
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-3">
+                <Smartphone className="w-6 h-6 text-primary" />
               </div>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
+              <h2 className="text-xl md:text-2xl font-heading font-bold mb-3">
                 Scan & <span className="text-primary">Pay</span>
               </h2>
-              <div className="w-16 h-0.5 bg-primary mx-auto mb-6" />
-              <p className="text-muted-foreground mb-8 leading-relaxed">
-                Scan the QR code using any UPI app (GPay, PhonePe, Paytm, BHIM) to donate instantly.
+              <div className="w-12 h-0.5 bg-primary mx-auto mb-4" />
+              <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                Scan the QR code using any UPI app to donate instantly.
               </p>
-              <div className="bg-card border border-border rounded-xl p-6 shadow-md inline-block">
-                <img src={paymentQR} alt="UPI Payment QR Code" className="w-72 h-auto mx-auto rounded-lg" />
+              <div className="bg-card border border-border rounded-xl p-4 shadow-md inline-block">
+                <img src={paymentQR} alt="UPI Payment QR Code" className="w-56 h-auto mx-auto rounded-lg" />
               </div>
-              <p className="text-muted-foreground text-sm mt-4">UPI ID: 9848353503@sbi</p>
+              <p className="text-muted-foreground text-xs mt-3">UPI ID: 9848353503@sbi</p>
             </div>
 
             {/* Upload Form */}

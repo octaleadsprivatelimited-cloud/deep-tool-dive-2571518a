@@ -96,78 +96,125 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Key Highlights */}
-      <section className="py-20 bg-secondary text-secondary-foreground">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
-            Why <span className="text-primary">RISE</span>?
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {highlights.map((h) => (
-              <Card key={h.title} className="bg-secondary-foreground/5 border-secondary-foreground/10 hover:border-primary transition-all duration-300 hover:scale-105 group">
-                <CardContent className="p-6 text-center">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
-                    <h.icon className="w-8 h-8 text-primary" />
+      {/* Why RISE — Full-width immersive */}
+      <section className="relative bg-secondary text-secondary-foreground overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-b from-primary/5 via-transparent to-primary/5" />
+        <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[600px]">
+          {/* Left: text content */}
+          <div className="flex items-center justify-center p-10 md:p-16 lg:p-20 relative z-10">
+            <div className="max-w-lg">
+              <h2 className="text-3xl md:text-5xl font-heading font-black uppercase mb-3">
+                Why <span className="text-primary">RISE</span>?
+              </h2>
+              <div className="w-16 h-1 bg-primary mb-8" />
+              <p className="text-secondary-foreground/60 mb-10 leading-relaxed">
+                A platform built for impact — connecting professionals, enabling mentorship, and accelerating collective growth.
+              </p>
+              <div className="space-y-6">
+                {highlights.map((h) => (
+                  <div key={h.title} className="flex items-start gap-4 group">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0 group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-300">
+                      <h.icon className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                    </div>
+                    <div>
+                      <h3 className="font-heading font-bold uppercase text-sm mb-1">{h.title}</h3>
+                      <p className="text-secondary-foreground/50 text-sm">{h.desc}</p>
+                    </div>
                   </div>
-                  <h3 className="font-heading font-bold text-lg uppercase mb-2">{h.title}</h3>
-                  <p className="text-secondary-foreground/60 text-sm">{h.desc}</p>
-                </CardContent>
-              </Card>
-            ))}
+                ))}
+              </div>
+            </div>
+          </div>
+          {/* Right: large visual block */}
+          <div className="relative hidden lg:block">
+            <div className="absolute inset-0 bg-primary" />
+            <div className="absolute inset-0 bg-gradient-to-br from-primary via-primary/90 to-secondary flex items-center justify-center">
+              <div className="text-center text-primary-foreground p-16">
+                <div className="text-8xl font-heading font-black mb-4">4</div>
+                <div className="text-2xl font-heading font-bold uppercase tracking-wide mb-2">Pillars of Strength</div>
+                <div className="w-16 h-1 bg-gold mx-auto mb-6" />
+                <div className="grid grid-cols-2 gap-4 text-sm font-medium">
+                  {highlights.map((h) => (
+                    <div key={h.title} className="bg-primary-foreground/10 rounded-lg px-4 py-3 backdrop-blur">{h.title}</div>
+                  ))}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Members */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
-            Featured <span className="text-primary">Members</span>
-          </h2>
-          <div className="w-20 h-1 bg-primary mx-auto mb-12" />
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredMembers.map((m) => (
-              <Card key={m.name} className="border-border hover:border-primary hover:shadow-xl transition-all duration-300 hover:scale-105 group overflow-hidden">
-                <CardContent className="p-6">
-                  <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-4 text-2xl font-heading font-bold text-primary">
-                    {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                  </div>
-                  <h3 className="font-heading font-bold text-center mb-1">{m.name}</h3>
-                  <p className="text-primary text-sm text-center font-medium">{m.profession}</p>
-                  <p className="text-muted-foreground text-sm text-center">{m.location}</p>
-                </CardContent>
-              </Card>
+      {/* Featured Members — Immersive overlap style */}
+      <section className="relative bg-background overflow-hidden">
+        <div className="bg-secondary h-48 md:h-64" />
+        <div className="container mx-auto px-4 -mt-28 md:-mt-40 relative z-10 pb-20">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl md:text-5xl font-heading font-black uppercase text-secondary-foreground mb-3">
+              Featured <span className="text-primary">Members</span>
+            </h2>
+            <div className="w-20 h-1 bg-primary mx-auto" />
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+            {featuredMembers.map((m, i) => (
+              <div
+                key={m.name}
+                className={`relative p-8 text-center border border-border transition-all duration-300 hover:z-10 hover:scale-105 hover:shadow-2xl ${
+                  i % 2 === 0 ? 'bg-background' : 'bg-muted'
+                }`}
+              >
+                <div className="w-20 h-20 rounded-full bg-primary/10 border-4 border-primary/20 flex items-center justify-center mx-auto mb-4 text-2xl font-heading font-bold text-primary">
+                  {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                </div>
+                <h3 className="font-heading font-bold text-lg mb-1">{m.name}</h3>
+                <p className="text-primary text-sm font-semibold">{m.profession}</p>
+                <p className="text-muted-foreground text-xs mt-1">{m.location}</p>
+              </div>
             ))}
           </div>
           <div className="text-center mt-10">
-            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 font-bold">
+            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-10 font-bold h-12">
               <a href="/directory">View All Members <ArrowRight className="ml-2 w-4 h-4" /></a>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Upcoming Events */}
-      <section className="py-20 bg-primary text-primary-foreground">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
-            Upcoming Events
-          </h2>
-          <div className="w-20 h-1 bg-gold mx-auto mb-12" />
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {upcomingEvents.map((e) => (
-              <div key={e.title} className="bg-primary-foreground/10 backdrop-blur border border-primary-foreground/20 rounded-xl p-6 hover:bg-primary-foreground/20 transition-all">
-                <h3 className="font-heading font-bold text-xl mb-3">{e.title}</h3>
-                <p className="text-primary-foreground/80 mb-1">{e.date}</p>
-                <p className="text-primary-foreground/60 text-sm">{e.location}</p>
+      {/* Upcoming Events — Full-width magazine layout */}
+      <section className="relative bg-secondary text-secondary-foreground overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-2 bg-primary" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 min-h-[500px]">
+          {/* Left highlight */}
+          <div className="lg:col-span-5 bg-primary text-primary-foreground p-10 md:p-16 flex flex-col justify-center">
+            <h2 className="text-3xl md:text-5xl font-heading font-black uppercase mb-3">
+              Upcoming<br />Events
+            </h2>
+            <div className="w-16 h-1 bg-gold mb-6" />
+            <p className="text-primary-foreground/70 mb-8 leading-relaxed">
+              Join us at our next events — summits, workshops, and networking nights designed to inspire and connect.
+            </p>
+            <Button asChild variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-full px-8 font-bold w-fit">
+              <a href="/events">View All Events</a>
+            </Button>
+          </div>
+          {/* Right event list */}
+          <div className="lg:col-span-7 flex flex-col">
+            {upcomingEvents.map((e, i) => (
+              <div
+                key={e.title}
+                className={`flex-1 p-8 md:p-10 flex items-center border-b border-secondary-foreground/10 last:border-b-0 hover:bg-secondary-foreground/5 transition-all group ${
+                  i === 0 ? 'bg-secondary-foreground/5' : ''
+                }`}
+              >
+                <div className="w-16 h-16 md:w-20 md:h-20 rounded-2xl bg-primary/10 flex flex-col items-center justify-center shrink-0 mr-6 group-hover:bg-primary group-hover:text-primary-foreground transition-all">
+                  <Calendar className="w-6 h-6 text-primary group-hover:text-primary-foreground transition-colors" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="font-heading font-bold text-lg md:text-xl mb-1 group-hover:text-primary transition-colors">{e.title}</h3>
+                  <p className="text-secondary-foreground/60 text-sm">{e.date} · {e.location}</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-secondary-foreground/30 group-hover:text-primary group-hover:translate-x-1 transition-all hidden md:block" />
               </div>
             ))}
-          </div>
-          <div className="text-center mt-10">
-            <Button asChild variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-full px-8 font-bold">
-              <a href="/events">All Events</a>
-            </Button>
           </div>
         </div>
       </section>
@@ -221,23 +268,31 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-heading font-black uppercase mb-6">
-            Ready to Rise?
-          </h2>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-            Join thousands of community professionals. Network, grow, and make an impact together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold rounded-full px-10 text-lg h-14">
-              <a href="/register">
-                Join RISE Now <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold rounded-full px-10 text-lg h-14">
-              <a href="/directory">Explore Members</a>
-            </Button>
+      <section className="relative min-h-[500px] flex items-center overflow-hidden">
+        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 bg-primary/85" />
+        <div className="relative z-10 w-full">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
+              <div>
+                <h2 className="text-4xl md:text-6xl font-heading font-black uppercase text-primary-foreground leading-tight mb-6">
+                  Ready<br />to Rise?
+                </h2>
+                <p className="text-lg text-primary-foreground/80 max-w-lg mb-8">
+                  Join thousands of community professionals. Network, grow, and make an impact together.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-4 lg:items-end">
+                <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold rounded-full px-10 text-lg h-14 shadow-2xl">
+                  <a href="/register">
+                    Join RISE Now <ArrowRight className="ml-2 w-5 h-5" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold rounded-full px-10 text-lg h-14">
+                  <a href="/directory">Explore Members</a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

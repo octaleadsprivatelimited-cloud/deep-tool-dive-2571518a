@@ -10,18 +10,27 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
+  const [featuredMembers, setFeaturedMembers] = useState([]);
+
+  useEffect(() => {
+    const highlighted = getHighlightedMembers();
+    if (highlighted.length > 0) {
+      setFeaturedMembers(highlighted.map((m) => ({ name: m.fullName, profession: m.profession, location: m.location, image: m.image })));
+    } else {
+      setFeaturedMembers([
+        { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
+        { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
+        { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
+        { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
+      ]);
+    }
+  }, []);
+
   const highlights = [
     { icon: Users, title: 'Networking', desc: 'Connect with professionals across industries and regions.' },
     { icon: Handshake, title: 'Mentorship', desc: 'Get guidance from experienced leaders and mentors.' },
     { icon: Calendar, title: 'Events', desc: 'Attend exclusive community events, summits, and workshops.' },
     { icon: TrendingUp, title: 'Growth', desc: 'Unlock career and business opportunities within the community.' },
-  ];
-
-  const featuredMembers = [
-    { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
-    { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
-    { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
-    { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
   ];
 
   const upcomingEvents = [

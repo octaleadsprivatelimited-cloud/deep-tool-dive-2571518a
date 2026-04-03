@@ -57,16 +57,38 @@ const Donate = () => {
         </div>
       </section>
 
-      {/* CTA */}
+      {/* Scan & Pay */}
       <section className="py-16 md:py-24 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="max-w-md mx-auto text-center">
+            <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
+              <Smartphone className="w-7 h-7 text-primary" />
+            </div>
             <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
-              Ready to <span className="text-primary">Contribute?</span>
+              Scan & <span className="text-primary">Pay</span>
             </h2>
             <div className="w-16 h-0.5 bg-primary mx-auto mb-6" />
             <p className="text-muted-foreground mb-8 leading-relaxed">
-              To make a donation, please reach out to us via our contact page or WhatsApp. We'll guide you through the process and ensure your contribution reaches those who need it most.
+              Scan the QR code below using any UPI app (GPay, PhonePe, Paytm, BHIM) to make your donation instantly.
+            </p>
+            <div className="bg-card border border-border rounded-xl p-6 shadow-md inline-block">
+              <img src={paymentQR} alt="UPI Payment QR Code" className="w-72 h-auto mx-auto rounded-lg" />
+            </div>
+            <p className="text-muted-foreground text-sm mt-4">UPI ID: 9848353503@sbi</p>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="py-16 md:py-24 bg-background">
+        <div className="container mx-auto px-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <h2 className="text-2xl md:text-3xl font-heading font-bold mb-4">
+              Need <span className="text-primary">Help?</span>
+            </h2>
+            <div className="w-16 h-0.5 bg-primary mx-auto mb-6" />
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              For any questions about donations, reach out via our contact page or WhatsApp.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-md px-10 h-14 text-lg">

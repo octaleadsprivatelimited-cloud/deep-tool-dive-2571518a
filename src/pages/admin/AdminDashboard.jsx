@@ -1,16 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { Card, CardContent } from '@/components/ui/card';
 import { Users, Newspaper, Image, Star } from 'lucide-react';
 import { getMembers, getBlogs, getGalleryImages, getHighlightedMembers } from '@/lib/dataStore';
 
 const AdminDashboard = () => {
-  const stats = [
-    { label: 'Total Members', value: getMembers().length, icon: Users, color: 'text-primary' },
-    { label: 'Highlighted', value: getHighlightedMembers().length, icon: Star, color: 'text-yellow-500' },
-    { label: 'Blog Posts', value: getBlogs().length, icon: Newspaper, color: 'text-blue-500' },
-    { label: 'Gallery Images', value: getGalleryImages().length, icon: Image, color: 'text-green-500' },
-  ];
+  const [stats, setStats] = useState([
+    { label: 'Total Members', value: 0, icon: Users, color: 'text-primary' },
+    { label: 'Highlighted', value: 0, icon: Star, color: 'text-accent' },
+    { label: 'Blog Posts', value: 0, icon: Newspaper, color: 'text-primary' },
+    { label: 'Gallery Images', value: 0, icon: Image, color: 'text-accent' },
+  ]);
+
+  useEffect(() => {
+    const load = async () => {
+      const [members, highlighted, blogs, gallery] = await Promise.all([
+        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(),
+      ]);
+      setStats([
+        { label: 'Total Members', value: members.length, icon: Users, color: 'text-primary' },
+        { label: 'Highlighted', value: highlighted.length, icon: Star, color: 'text-accent' },
+        { label: 'Blog Posts', value: blogs.length, icon: Newspaper, color: 'text-primary' },
+        { label: 'Gallery Images', value: gallery.length, icon: Image, color: 'text-accent' },
+      ]);
+    };
+    load();
+  }, []);
 
   return (
     <AdminLayout title="Dashboard">
@@ -36,7 +51,7 @@ const AdminDashboard = () => {
             Manage your members, blog posts, and gallery images from here. Use the sidebar to navigate between sections.
           </p>
           <p className="text-xs text-muted-foreground mt-4 p-3 bg-muted rounded-lg">
-            ⚠️ Currently using localStorage. Connect Firebase to persist data permanently.
+            🔥 Connected to Firebase — data is persisted in Firestore.
           </p>
         </CardContent>
       </Card>

@@ -1,110 +1,82 @@
 import React, { useState } from 'react';
-import { 
-  Shield, 
-  Lock, 
-  Eye, 
-  Users, 
-  Award, 
-  CheckCircle, 
-  ArrowRight, 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Globe, 
-  Zap, 
-  Target, 
-  AlertTriangle,
-  ChevronDown,
-  ChevronUp,
-  Facebook,
-  Twitter,
-  Linkedin,
-  Instagram,
-  Youtube,
-  Github,
-  ExternalLink
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { Card, CardContent } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Phone, Mail, MapPin, Globe, ChevronDown, ChevronUp, Facebook, Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
 
 const Footer = () => {
   const [openSections, setOpenSections] = useState({});
+  const toggleSection = (s) => setOpenSections((p) => ({ ...p, [s]: !p[s] }));
 
-  const toggleSection = (section) => {
-    setOpenSections(prev => ({
-      ...prev,
-      [section]: !prev[section]
-    }));
-  };
-
-  const footerSections = [
+  const sections = [
     {
-      title: "About",
+      title: 'Quick Links',
       items: [
-        { name: "Who We Are", href: "/about" },
-        { name: "Vision & Mission", href: "/about" },
-        { name: "Leadership", href: "/about" },
-        { name: "Partners", href: "/partners" }
-      ]
+        { name: 'Home', href: '/' },
+        { name: 'About RISE', href: '/about' },
+        { name: 'Member Directory', href: '/directory' },
+        { name: 'Events', href: '/events' },
+      ],
     },
     {
-      title: "Community",
+      title: 'Services',
       items: [
-        { name: "Chapters", href: "/chapters" },
-        { name: "Events", href: "/events" },
-        { name: "Membership", href: "/membership" },
-        { name: "Volunteer", href: "/membership" }
-      ]
+        { name: 'Mentorship', href: '/mentorship' },
+        { name: 'Blog & News', href: '/blog' },
+        { name: 'Gallery', href: '/gallery' },
+        { name: 'Hall of Fame', href: '/achievements' },
+      ],
     },
     {
-      title: "Get Involved",
+      title: 'Get Involved',
       items: [
-        { name: "Donate", href: "/donate" },
-        { name: "Sponsorship", href: "/partners" },
-        { name: "Careers", href: "/about" },
-        { name: "Contact", href: "/contact" }
-      ]
+        { name: 'Join RISE', href: '/register' },
+        { name: 'Contact Us', href: '/contact' },
+        { name: 'Login', href: '/login' },
+      ],
     },
-    {
-      title: "Resources",
-      items: [
-        { name: "News", href: "/news" },
-        { name: "Publications", href: "/resources" },
-        { name: "Library", href: "/library" },
-        { name: "Media", href: "/resources" },
-        { name: "FAQs", href: "/resources" }
-      ]
-    }
   ];
 
   const socialLinks = [
-    { name: "Facebook", icon: Facebook, href: "#" },
-    { name: "Twitter", icon: Twitter, href: "#" },
-    { name: "LinkedIn", icon: Linkedin, href: "#" },
-    { name: "Instagram", icon: Instagram, href: "#" },
-    { name: "YouTube", icon: Youtube, href: "#" },
-    { name: "GitHub", icon: Github, href: "#" }
+    { icon: Facebook, href: '#' },
+    { icon: Twitter, href: '#' },
+    { icon: Linkedin, href: '#' },
+    { icon: Instagram, href: '#' },
+    { icon: Youtube, href: '#' },
   ];
 
   return (
-    <footer className="bg-[#b99b4c] text-black">
-      {/* Main Footer Content */}
-      <div className="container mx-auto px-4 py-10 md:py-12">
-        {/* Desktop Footer Grid */}
-        <div className="hidden lg:grid lg:grid-cols-6 gap-8 mb-8">
-          {footerSections.map((section, index) => (
-            <div key={index} className="space-y-4">
-              <h3 className="text-lg font-semibold text-black mb-4">{section.title}</h3>
-              <ul className="space-y-3">
-                {section.items.map((item, itemIndex) => (
-                  <li key={itemIndex}>
-                    <a 
-                      href={item.href} 
-                      className="text-black hover:opacity-80 transition-colors duration-200 text-sm"
-                    >
-                      {item.name}
-                    </a>
+    <footer className="bg-secondary text-secondary-foreground">
+      <div className="container mx-auto px-4 py-12">
+        {/* Desktop */}
+        <div className="hidden md:grid md:grid-cols-4 gap-8 mb-10">
+          {/* Brand */}
+          <div>
+            <div className="flex items-center space-x-2 mb-4">
+              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+                <span className="text-primary-foreground font-heading font-black text-lg">R</span>
+              </div>
+              <div>
+                <div className="text-lg font-heading font-bold">RISE</div>
+                <div className="text-[10px] text-gold uppercase tracking-widest">Global Directory</div>
+              </div>
+            </div>
+            <p className="text-secondary-foreground/70 text-sm leading-relaxed mb-4">
+              Royal Information System for Excellence — connecting community professionals for networking, mentorship, and growth.
+            </p>
+            <div className="flex space-x-3">
+              {socialLinks.map((s, i) => (
+                <a key={i} href={s.href} className="w-9 h-9 rounded-full bg-secondary-foreground/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors">
+                  <s.icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+
+          {sections.map((sec) => (
+            <div key={sec.title}>
+              <h4 className="font-heading font-bold text-gold mb-4 uppercase tracking-wide text-sm">{sec.title}</h4>
+              <ul className="space-y-2">
+                {sec.items.map((item) => (
+                  <li key={item.name}>
+                    <a href={item.href} className="text-sm text-secondary-foreground/70 hover:text-primary transition-colors">{item.name}</a>
                   </li>
                 ))}
               </ul>
@@ -112,119 +84,54 @@ const Footer = () => {
           ))}
         </div>
 
-        {/* Mobile Footer Dropdowns */}
-        <div className="lg:hidden space-y-4 mb-6">
-          {footerSections.map((section, index) => (
-            <div key={index} className="border border-black/20 rounded-lg">
-              <button
-                onClick={() => toggleSection(section.title)}
-                className="w-full px-4 py-3 flex items-center justify-between text-left hover:bg-black/10 transition-colors duration-200"
-              >
-                <span className="font-semibold text-black">{section.title}</span>
-                {openSections[section.title] ? (
-                  <ChevronUp className="w-5 h-5 text-black/60" />
-                ) : (
-                  <ChevronDown className="w-5 h-5 text-black/60" />
-                )}
+        {/* Mobile */}
+        <div className="md:hidden space-y-3 mb-8">
+          <div className="flex items-center space-x-2 mb-4">
+            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
+              <span className="text-primary-foreground font-heading font-black text-lg">R</span>
+            </div>
+            <div>
+              <div className="text-lg font-heading font-bold">RISE</div>
+              <div className="text-[10px] text-gold uppercase tracking-widest">Global Directory</div>
+            </div>
+          </div>
+          {sections.map((sec) => (
+            <div key={sec.title} className="border border-secondary-foreground/10 rounded-lg">
+              <button onClick={() => toggleSection(sec.title)} className="w-full px-4 py-3 flex justify-between items-center">
+                <span className="font-semibold text-sm">{sec.title}</span>
+                {openSections[sec.title] ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
               </button>
-              {openSections[section.title] && (
-                <div className="px-4 pb-4 border-t border-black/10">
-                  <ul className="space-y-2 pt-3">
-                    {section.items.map((item, itemIndex) => (
-                      <li key={itemIndex}>
-                        <a 
-                          href={item.href} 
-                          className="text-black hover:opacity-80 transition-colors duration-200 text-sm block py-1"
-                        >
-                          {item.name}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+              {openSections[sec.title] && (
+                <div className="px-4 pb-3 space-y-2 border-t border-secondary-foreground/10 pt-2">
+                  {sec.items.map((item) => (
+                    <a key={item.name} href={item.href} className="block text-sm text-secondary-foreground/70 hover:text-primary py-1">{item.name}</a>
+                  ))}
                 </div>
               )}
             </div>
           ))}
         </div>
 
-
-        {/* Contact Information */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-8 mb-6">
-            <div className="text-center md:text-left">
-              <h4 className="font-semibold text-black mb-4">Headquarters</h4>
-              <div className="space-y-2 text-black/80">
-                <p className="flex items-start justify-center md:justify-start">
-                  <MapPin className="w-4 h-4 mr-2 mt-0.5 shrink-0" />
-                  <span>Jetti mansion, Plot no 831/A, Road no 41, Jubileehills, Hyderabad 500033, Telangana, India</span>
-                </p>
-              </div>
+        {/* Contact bar */}
+        <div className="border-t border-secondary-foreground/10 pt-6 mb-6">
+          <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-sm text-secondary-foreground/70">
+            <div className="flex items-start gap-2">
+              <MapPin className="w-4 h-4 mt-0.5 shrink-0 text-primary" />
+              <span>Flat No. 102, Balaji Manor, Maruthi Nagar, Yousufguda, Hyderabad - 500045</span>
             </div>
-          <div className="text-center md:text-left">
-            <h4 className="font-semibold text-black mb-4">Contact</h4>
-            <div className="space-y-2 text-black/80">
-              <p className="flex items-center justify-center md:justify-start">
-                <Phone className="w-4 h-4 mr-2" />
-                +91 90555 17555
-              </p>
-              <p className="flex items-center justify-center md:justify-start">
-                <Mail className="w-4 h-4 mr-2" />
-                info@kammaglobal.com
-              </p>
-              <p className="flex items-center justify-center md:justify-start">
-                <Mail className="w-4 h-4 mr-2" />
-                support@kammaglobal.com
-              </p>
-              <p className="flex items-center justify-center md:justify-start">
-                <Globe className="w-4 h-4 mr-2" />
-                www.kammaglobal.com
-              </p>
-            </div>
-          </div>
-          <div className="col-span-2 md:col-span-1 text-center md:text-left">
-            <h4 className="font-semibold text-black mb-4">Follow Us</h4>
-            <div className="flex justify-center md:justify-start space-x-4">
-              {socialLinks.map((social, index) => (
-                <a
-                  key={index}
-                  href={social.href}
-                  className="w-10 h-10 bg-black/10 rounded-lg flex items-center justify-center hover:bg-black/20 transition-colors duration-200"
-                >
-                  <social.icon className="w-5 h-5 text-black" />
-                </a>
-              ))}
+            <div className="flex items-center gap-2">
+              <Phone className="w-4 h-4 text-primary" />
+              <span>+91 9848353503</span>
             </div>
           </div>
         </div>
 
-        {/* Organization Note */}
-        <div className="bg-white/20 rounded-lg p-5 mb-6">
-          <div className="flex items-center gap-4">
-            <div className="flex-1">
-              <h3 className="text-lg font-bold text-black mb-1">Kamma Global Federation</h3>
-              <p className="text-black/80 text-sm leading-relaxed">
-                A global, non-profit federation connecting Kamma communities worldwide through culture, education,
-                entrepreneurship, and service.
-              </p>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom Bar */}
-        <div className="border-t border-black/20 pt-4 md:pt-6">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="flex items-center space-x-2">
-              <Shield className="w-6 h-6 text-black" />
-              <span className="text-xl font-bold">Kamma Global Federation</span>
-            </div>
-            <div className="flex flex-wrap justify-center md:justify-end gap-6 text-sm text-black/80">
-              <a href="/privacy" className="hover:opacity-80 transition-colors">Privacy Policy</a>
-              <a href="/terms" className="hover:opacity-80 transition-colors">Terms of Service</a>
-              <a href="/cookies" className="hover:opacity-80 transition-colors">Cookie Policy</a>
-              <a href="/security" className="hover:opacity-80 transition-colors">Security Policy</a>
-            </div>
-          </div>
-          <div className="mt-2 text-center text-xs text-black/70">
-            <p>&copy; 2025 Kamma Global Federation. All rights reserved. Developed by Octaleads Pvt Ltd.</p>
+        {/* Bottom */}
+        <div className="border-t border-secondary-foreground/10 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
+          <p className="text-xs text-secondary-foreground/50">&copy; {new Date().getFullYear()} RISE Global Directory. All rights reserved.</p>
+          <div className="flex gap-4 text-xs text-secondary-foreground/50">
+            <a href="/privacy" className="hover:text-primary transition-colors">Privacy</a>
+            <a href="/terms" className="hover:text-primary transition-colors">Terms</a>
           </div>
         </div>
       </div>

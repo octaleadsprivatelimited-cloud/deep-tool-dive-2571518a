@@ -1,352 +1,123 @@
 import React from 'react';
-import { Shield, Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle, ArrowRight, Globe, Users, Headphones } from 'lucide-react';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { z } from 'zod';
+import { MapPin, Phone } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Badge } from '@/components/ui/badge';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import WhatsAppButton from '@/components/WhatsAppButton';
+import { toast } from 'sonner';
+
+const contactSchema = z.object({
+  name: z.string().min(2, 'Name is required').max(100),
+  email: z.string().email('Invalid email'),
+  message: z.string().min(10, 'Message must be at least 10 characters').max(1000),
+});
 
 const Contact = () => {
+  const form = useForm({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { name: '', email: '', message: '' },
+  });
+
+  const onSubmit = (data) => {
+    console.log('Contact form:', data);
+    toast.success('Message sent! We will get back to you soon.');
+    form.reset();
+  };
+
   return (
-    <div className="min-h-screen text-black" style={{backgroundColor: 'white'}}>
+    <div className="min-h-screen bg-background text-foreground">
       <Header currentPage="Contact" />
 
-      {/* Hero Section */}
-      <section className="py-24 text-white relative overflow-hidden" style={{backgroundColor: 'white'}}>
-        {/* Background Image */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2026&q=80" 
-            alt="Contact Us" 
-            className="w-full h-full object-cover opacity-20"
-          />
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-950/80 via-slate-900/80 to-cyan-950/80"></div>
-        </div>
-        <div className="container mx-auto text-center px-4 relative z-10">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-cyan-100 to-cyan-400 bg-clip-text text-transparent">
-            Contact Us
+      <section className="pt-32 pb-10 bg-secondary text-secondary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h1 className="text-4xl md:text-6xl font-heading font-black uppercase mb-4">
+            Contact <span className="text-primary">Us</span>
           </h1>
-          <p className="text-xl text-slate-300 mb-8 max-w-3xl mx-auto">
-            Get in touch with Kamma Global Federation for membership, chapters, events, and media.
-          </p>
+          <div className="w-20 h-1 bg-primary mx-auto mb-6" />
         </div>
       </section>
 
-      {/* White Transparent Section */}
-      <section className="py-16 bg-white/10 backdrop-blur-sm border-t border-white/10 border-b border-white/10">
+      <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
-              Connect With the Federation
-            </h2>
-            <p className="text-lg text-slate-300 max-w-3xl mx-auto">
-              Questions about membership, chapters, donations, or media? We’re here to help.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Methods */}
-      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-black">Get in Touch</h2>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
-              Choose the best way to reach us based on your needs and urgency.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {[
-              {
-                icon: <MessageSquare className="text-[#b99b4c]" size={48} />,
-                title: "General Inquiries",
-                description: "Membership, chapters, and programs",
-                contact: "+91 90555 17555",
-                availability: "Mon-Fri 9AM-6PM",
-                responseTime: "< 24 hours"
-              },
-              {
-                icon: <Mail className="text-[#b99b4c]" size={48} />,
-                title: "Email",
-                description: "Send us an email for detailed inquiries",
-                contact: "info@kammaglobal.com",
-                availability: "24/7",
-                responseTime: "< 2 days"
-              },
-              {
-                icon: <Headphones className="text-[#b99b4c]" size={48} />,
-                title: "Support",
-                description: "Technical support and assistance",
-                contact: "support@kammaglobal.com",
-                availability: "Mon-Fri 9AM-6PM",
-                responseTime: "< 2 days"
-              }
-            ].map((method, index) => (
-              <Card key={index} className="bg-white border-slate-300 hover:border-[#b99b4c] transition-all duration-300 hover:shadow-2xl hover:shadow-[#b99b4c]/20 text-center shadow-md">
-                <CardHeader>
-                  <div className="mb-4">{method.icon}</div>
-                  <CardTitle className="text-xl text-black">{method.title}</CardTitle>
-                  <CardDescription className="text-slate-700">{method.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-3 mb-4">
-                    <div className="text-[#b99b4c] font-semibold">{method.contact}</div>
-                    <div className="text-slate-700 text-sm">
-                      <div className="flex items-center justify-center mb-1">
-                        <Clock className="mr-1" size={14} />
-                        {method.availability}
-                      </div>
-                      <div className="flex items-center justify-center">
-                        <CheckCircle className="mr-1" size={14} />
-                        {method.responseTime}
-                      </div>
-                    </div>
-                  </div>
-                  <Button className="w-full bg-black hover:bg-black/90 text-white">
-                    Contact Now
-                    <ArrowRight className="ml-2" size={16} />
-                  </Button>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Contact Form & Office Locations */}
-      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Form */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
             <div>
-              <h2 className="text-3xl font-bold mb-6 text-black">Send us a Message</h2>
-              <p className="text-slate-700 mb-8">
-                Fill out the form below and our team will get back to you within 24 hours.
-              </p>
-              <form className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">First Name</label>
-                    <Input 
-                      type="text" 
-                      placeholder="John" 
-                      className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
-                    />
+              <h2 className="text-2xl font-heading font-bold mb-6">Get in Touch</h2>
+              <div className="space-y-6 mb-8">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <MapPin className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Last Name</label>
-                    <Input 
-                      type="text" 
-                      placeholder="Doe" 
-                      className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
-                    />
+                    <h3 className="font-semibold mb-1">Address</h3>
+                    <p className="text-muted-foreground text-sm">Flat No. 102, Balaji Manor, Maruthi Nagar, Yousufguda, Hyderabad - 500045</p>
                   </div>
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Email</label>
-                  <Input 
-                    type="email" 
-                    placeholder="you@example.com" 
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
-                  />
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Phone className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">WhatsApp</h3>
+                    <p className="text-muted-foreground text-sm">+91 9848353503</p>
+                  </div>
                 </div>
-                <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">City/Chapter</label>
-                  <Input 
-                    type="text" 
-                    placeholder="Hyderabad / Dallas / London" 
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
-                  />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Subject</label>
-                  <Input 
-                    type="text" 
-                    placeholder="Membership / Chapter / Media / Donation" 
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black"
-                  />
-                </div>
-                <div>
-                    <label className="block text-sm font-medium text-slate-700 mb-2">Message</label>
-                  <Textarea 
-                    placeholder="Tell us how we can help..."
-                    className="bg-slate-800 border-slate-700 text-white placeholder-slate-400 focus:border-black min-h-[120px]"
-                  />
-                </div>
-                <Button className="w-full bg-black hover:bg-black/90 text-white font-semibold py-3">
-                  <Send className="mr-2" size={20} />
-                  Send Message
-                </Button>
-              </form>
-            </div>
-
-            {/* Office Locations */}
-            <div>
-              <h2 className="text-3xl font-bold mb-6 text-black">Federation Chapters</h2>
-              <p className="text-slate-700 mb-8">
-                Reach out to a nearby chapter or schedule a virtual meeting.
-              </p>
-              <div className="space-y-6">
-                {[
-                  {
-                    city: "Hyderabad, India",
-                    type: "Headquarters",
-                    address: "Jetti mansion, Plot no 831/A, Road no 41, Jubileehills, Hyderabad 500033, Telangana, India",
-                    phone: "+91 90555 17555",
-                    email: "info@kammaglobal.com",
-                    hours: "Mon-Fri 9AM-6PM IST"
-                  },
-                  {
-                    city: "Dallas, USA",
-                    type: "Chapter Office",
-                    address: "Plano, TX",
-                    phone: "+1 (000) 000-0000",
-                    email: "dallas@kammaglobal.com",
-                    hours: "Mon-Fri 9AM-6PM CST"
-                  },
-                  {
-                    city: "London, UK",
-                    type: "Chapter Office",
-                    address: "Central London",
-                    phone: "+44 0000 000000",
-                    email: "london@kammaglobal.com",
-                    hours: "Mon-Fri 9AM-6PM GMT"
-                  },
-                  {
-                    city: "Sydney, Australia",
-                    type: "Chapter Office",
-                    address: "Sydney, NSW",
-                    phone: "+61 2 0000 0000",
-                    email: "sydney@kammaglobal.com",
-                    hours: "Mon-Fri 9AM-6PM AEST"
-                  },
-                  {
-                    city: "Toronto, Canada",
-                    type: "Chapter Office",
-                    address: "Toronto, Ontario",
-                    phone: "+1 (000) 000-0000",
-                    email: "toronto@kammaglobal.com",
-                    hours: "Mon-Fri 9AM-6PM EST"
-                  },
-                  {
-                    city: "Dubai, UAE",
-                    type: "Chapter Office",
-                    address: "Dubai",
-                    phone: "+971 50 000 0000",
-                    email: "dubai@kammaglobal.com",
-                    hours: "Mon-Fri 9AM-6PM GST"
-                  }
-                ].map((office, index) => (
-                  <Card key={index} className="bg-white border-slate-300 shadow-md">
-                    <CardHeader>
-                  <div className="flex items-center justify-between mb-2">
-                        <CardTitle className="text-lg text-black">{office.city}</CardTitle>
-                    <Badge className="bg-[#b99b4c]/15 text-[#b99b4c] border-[#b99b4c]/40">
-                          {office.type}
-                        </Badge>
-                      </div>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="space-y-2 text-slate-700">
-                        <div className="flex items-center">
-                          <MapPin className="mr-2" size={16} />
-                          {office.address}
-                        </div>
-                        <div className="flex items-center">
-                          <Phone className="mr-2" size={16} />
-                          {office.phone}
-                        </div>
-                        <div className="flex items-center">
-                          <Mail className="mr-2" size={16} />
-                          {office.email}
-                        </div>
-                        <div className="flex items-center">
-                          <Clock className="mr-2" size={16} />
-                          {office.hours}
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
+              </div>
+              <div className="rounded-xl overflow-hidden border border-border">
+                <iframe
+                  title="RISE Location"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7!2d78.4!3d17.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI0JzAwLjAiTiA3OMKwMjQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                  width="100%"
+                  height="300"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                />
               </div>
             </div>
+            <div>
+              <h2 className="text-2xl font-heading font-bold mb-6">Send a Message</h2>
+              <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                  <FormField control={form.control} name="name" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Name *</FormLabel>
+                      <FormControl><Input placeholder="Your name" {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
+                  <FormField control={form.control} name="email" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Email *</FormLabel>
+                      <FormControl><Input type="email" placeholder="your@email.com" {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
+                  <FormField control={form.control} name="message" render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Message *</FormLabel>
+                      <FormControl><Textarea placeholder="Your message..." rows={5} {...field} /></FormControl>
+                      <FormMessage />
+                    </FormItem>
+                  )} />
+                  <Button type="submit" className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full h-12 text-lg">
+                    Send Message
+                  </Button>
+                </form>
+              </Form>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
-      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold mb-6 text-black">Frequently Asked Questions</h2>
-            <p className="text-xl text-slate-700 max-w-3xl mx-auto">
-              Find answers to common questions about our services and solutions.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                question: "How do I become a member?",
-                answer: "Visit the Membership page, choose a tier, and submit the application form. A chapter representative will reach out."
-              },
-              {
-                question: "How can I start a new chapter?",
-                answer: "Contact us with your city details. We’ll share the chapter handbook and onboarding process."
-              },
-              {
-                question: "Do you offer scholarships?",
-                answer: "Yes. Scholarship announcements and application packs are published in the Resources page."
-              },
-              {
-                question: "How do donations help?",
-                answer: "Donations fund education, healthcare drives, cultural events, and entrepreneurship initiatives."
-              },
-              {
-                question: "How do I volunteer?",
-                answer: "Reach out via the Membership page indicating your interests. We’ll connect you with your local chapter."
-              },
-              {
-                question: "Where can I find event schedules?",
-                answer: "Check the Events page for upcoming programs and registration details."
-              }
-            ].map((faq, index) => (
-              <Card key={index} className="bg-white border-slate-300 shadow-md">
-                <CardHeader>
-                  <CardTitle className="text-lg text-black">{faq.question}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-700">{faq.answer}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 text-black" style={{backgroundColor: 'white'}}>
-        <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl font-bold mb-6 text-black">Ready to Connect?</h2>
-          <p className="text-xl text-black/70 mb-8 max-w-3xl mx-auto">
-            Join the federation, participate in a chapter, or partner with us to create impact.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg text-lg">
-              Become a Member
-              <ArrowRight className="ml-2" size={20} />
-            </Button>
-            <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg text-lg">
-              Donate Now
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      {/* Mega Footer */}
-      <Footer />    </div>
+      <Footer />
+      <WhatsAppButton />
+    </div>
   );
 };
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight, UserPlus, Heart, Mail, Play } from 'lucide-react';
 import heroBg from '@/assets/hero-bg.jpg';
+import riseLogo from '@/assets/rise-logo.png';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';

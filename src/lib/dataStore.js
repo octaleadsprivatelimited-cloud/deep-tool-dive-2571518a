@@ -72,3 +72,14 @@ export const uploadFile = async (file, path) => {
   const snapshot = await uploadBytes(storageRef, file);
   return getDownloadURL(snapshot.ref);
 };
+
+// ---- Donations ----
+export const getDonations = () => fetchCollection('donations');
+
+export const saveDonation = async (donation) => {
+  await addDoc(collection(db, 'donations'), { ...donation, createdAt: serverTimestamp() });
+};
+
+export const deleteDonation = async (id) => {
+  await deleteDoc(doc(db, 'donations', id));
+};

@@ -65,32 +65,42 @@ const Register = () => {
     }
   };
 
-  const onSubmit = (data) => {
-    const member = {
-      name: `${data.surname} ${data.name}`,
-      surname: data.surname,
-      firstName: data.name,
-      email: data.email,
-      phone: data.phone,
-      showContactPublicly: data.showContactPublicly,
-      address: data.address,
-      dateOfBirth: data.dateOfBirth.toISOString(),
-      nativePlace: data.nativePlace,
-      education: data.educationQualification,
-      profession: data.profession,
-      workingOrganisation: data.workingOrganisation,
-      workingPlace: data.workingPlace,
-      linkedin: data.linkedin,
-      instagram: data.instagram,
-      facebook: data.facebook,
-      photo: photoPreview || '',
-      highlighted: false,
-    };
-    saveMember(member);
-    toast.success('Registration submitted successfully! We will review and get back to you.');
-    form.reset();
-    setProfilePhoto(null);
-    setPhotoPreview(null);
+  const onSubmit = async (data) => {
+    try {
+      let photoUrl = photoPreview || '';
+      if (profilePhoto) {
+        photoUrl = await uploadFile(profilePhoto, `members/${Date.now()}_${profilePhoto.name}`);
+      }
+      const member = {
+        name: `${data.surname} ${data.name}`,
+        surname: data.surname,
+        firstName: data.name,
+        fullName: `${data.surname} ${data.name}`,
+        email: data.email,
+        phone: data.phone,
+        showContactPublicly: data.showContactPublicly,
+        address: data.address,
+        dateOfBirth: data.dateOfBirth.toISOString(),
+        nativePlace: data.nativePlace,
+        education: data.educationQualification,
+        profession: data.profession,
+        workingOrganisation: data.workingOrganisation,
+        workingPlace: data.workingPlace,
+        linkedin: data.linkedin,
+        instagram: data.instagram,
+        facebook: data.facebook,
+        photo: photoUrl,
+        image: photoUrl,
+        highlighted: false,
+      };
+      await saveMember(member);
+      toast.success('Registration submitted successfully! We will review and get back to you.');
+      form.reset();
+      setProfilePhoto(null);
+      setPhotoPreview(null);
+    } catch (err) {
+      toast.error(err.message || 'Registration failed. Please try again.');
+    }
   };
 
   return (

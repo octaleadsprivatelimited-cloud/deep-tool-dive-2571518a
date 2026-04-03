@@ -25,6 +25,7 @@ export const navItems = [
   { title: "Gallery", to: "/gallery", icon: <Image className="h-4 w-4" />, page: <Gallery /> },
   { title: "Achievements", to: "/achievements", icon: <Trophy className="h-4 w-4" />, page: <Achievements /> },
   { title: "Contact", to: "/contact", icon: <Phone className="h-4 w-4" />, page: <Contact /> },
+  { title: "Donate", to: "/donate", icon: <Heart className="h-4 w-4" />, page: <Donate /> },
   { title: "Login", to: "/login", icon: <LogIn className="h-4 w-4" />, page: <Login /> },
   { title: "Privacy", to: "/privacy", icon: <ShieldCheck className="h-4 w-4" />, page: <Privacy /> },
   { title: "Terms", to: "/terms", icon: <FileText className="h-4 w-4" />, page: <Terms /> },

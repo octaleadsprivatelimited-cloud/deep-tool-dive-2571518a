@@ -1,5 +1,6 @@
 import React from 'react';
-import { Heart, ArrowRight, Users, GraduationCap, Stethoscope, Home as HomeIcon } from 'lucide-react';
+import { Heart, ArrowRight, Users, GraduationCap, Stethoscope, Home as HomeIcon, Smartphone } from 'lucide-react';
+import paymentQR from '@/assets/payment-qr.png';
 import { Button } from '@/components/ui/button';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';

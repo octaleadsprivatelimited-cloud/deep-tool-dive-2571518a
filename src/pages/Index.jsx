@@ -292,7 +292,7 @@ const Index = () => {
                   Join RISE Now <ArrowRight className="ml-2 w-5 h-5" />
                 </a>
               </Button>
-              <Button asChild size="lg" variant="outline" className="border-primary-foreground/50 text-primary-foreground hover:bg-primary-foreground hover:text-secondary font-bold rounded-md px-10 text-lg h-14">
+              <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-secondary font-bold rounded-md px-10 text-lg h-14 bg-transparent">
                 <a href="/directory">Explore Members</a>
               </Button>
             </div>

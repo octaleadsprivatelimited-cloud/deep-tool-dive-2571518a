@@ -29,6 +29,7 @@ const Header = ({ currentPage }) => {
     { name: 'Gallery', href: '/gallery' },
     { name: 'Achievements', href: '/achievements' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Donate', href: '/donate' },
   ];
 
   const isTransparentHeader = pathname === '/' && !isScrolled;

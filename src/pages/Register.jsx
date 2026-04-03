@@ -16,7 +16,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { toast } from 'sonner';
-import { addMember } from '@/lib/dataStore';
+import { saveMember } from '@/lib/dataStore';
 
 const registerSchema = z.object({
   surname: z.string().min(1, 'Surname is required').max(100),
@@ -86,7 +86,7 @@ const Register = () => {
       photo: photoPreview || '',
       highlighted: false,
     };
-    addMember(member);
+    saveMember(member);
     toast.success('Registration submitted successfully! We will review and get back to you.');
     form.reset();
     setProfilePhoto(null);

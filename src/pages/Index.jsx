@@ -68,7 +68,7 @@ const Index = () => {
             </p>
           </div>
           <div className="hidden md:flex items-center justify-center flex-shrink-0">
-            <img src={riseLogo} alt="RISE Global Directory" className="w-52 lg:w-72 xl:w-80 drop-shadow-[0_0_30px_rgba(255,255,255,0.3)]" />
+            <img src={riseLogo} alt="RISE Global Directory" className="w-52 lg:w-72 xl:w-80 drop-shadow-[0_0_30px_rgba(255,255,255,0.3)] animate-[float_3s_ease-in-out_infinite]" />
           </div>
           </div>
         </div>

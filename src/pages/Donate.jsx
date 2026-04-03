@@ -128,9 +128,9 @@ const Donate = () => {
       </section>
 
       {/* Scan & Pay + Confirmation Form */}
-      <section className="py-16 md:py-24 bg-muted">
+      <section className="py-12 md:py-16 bg-muted">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-4xl mx-auto items-start">
             {/* QR Code */}
             <div className="text-center">
               <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">

@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react';
 import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
+import riseLogo from '@/assets/rise-logo.png';
 
 const Header = ({ currentPage }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -54,9 +55,7 @@ const Header = ({ currentPage }) => {
         <div className="flex justify-between items-center h-16 md:h-20">
           {/* Logo */}
           <a href="/" className="flex items-center space-x-2">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-heading font-black text-lg">R</span>
-            </div>
+            <img src={riseLogo} alt="RISE Global Directory" className="w-12 h-12 md:w-14 md:h-14 object-contain" />
             <div>
               <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${brandTextClass}`}>
                 RISE

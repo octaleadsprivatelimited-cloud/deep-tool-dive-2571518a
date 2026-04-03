@@ -43,7 +43,7 @@ const Header = ({ currentPage = 'Home' }) => {
               <span className="text-primary-foreground font-heading font-black text-lg">R</span>
             </div>
             <div>
-              <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-secondary-foreground'}`}>
+              <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'}`}>
                 RISE
               </div>
               <div className={`text-[10px] font-medium uppercase tracking-widest transition-colors ${isScrolled ? 'text-gold' : 'text-gold'}`}>
@@ -60,10 +60,10 @@ const Header = ({ currentPage = 'Home' }) => {
                 href={item.href}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                   currentPage === item.name
-                    ? 'text-primary font-bold'
+                    ? isScrolled ? 'text-primary font-bold' : 'text-primary-foreground font-bold'
                     : isScrolled
                     ? 'text-secondary-foreground/80 hover:text-primary'
-                    : 'text-foreground/80 hover:text-primary'
+                    : 'text-primary-foreground/90 hover:text-primary-foreground'
                 }`}
               >
                 {item.name}
@@ -75,7 +75,7 @@ const Header = ({ currentPage = 'Home' }) => {
           <div className="hidden lg:flex items-center gap-3">
             {!isAuthenticated ? (
               <>
-                <Button asChild variant="ghost" className="text-foreground hover:text-primary">
+                <Button asChild variant="ghost" className={`${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'} hover:text-primary`}>
                   <a href="/login">Login</a>
                 </Button>
                 <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6">
@@ -91,7 +91,7 @@ const Header = ({ currentPage = 'Home' }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-foreground'}`}
+            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

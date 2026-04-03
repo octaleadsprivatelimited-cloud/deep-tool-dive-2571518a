@@ -18,6 +18,7 @@ import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
 import AdminMembers from "./pages/admin/AdminMembers.jsx";
 import AdminBlogs from "./pages/admin/AdminBlogs.jsx";
 import AdminGallery from "./pages/admin/AdminGallery.jsx";
+import AdminDonations from "./pages/admin/AdminDonations.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },

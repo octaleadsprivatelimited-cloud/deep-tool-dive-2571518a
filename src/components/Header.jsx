@@ -43,7 +43,7 @@ const Header = ({ currentPage = 'Home' }) => {
               <span className="text-primary-foreground font-heading font-black text-lg">R</span>
             </div>
             <div>
-              <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-secondary-foreground'}`}>
+              <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'}`}>
                 RISE
               </div>
               <div className={`text-[10px] font-medium uppercase tracking-widest transition-colors ${isScrolled ? 'text-gold' : 'text-gold'}`}>

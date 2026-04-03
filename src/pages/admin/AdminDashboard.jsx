@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Newspaper, Image, Star, KeyRound } from 'lucide-react';
-import { getMembers, getBlogs, getGalleryImages, getHighlightedMembers } from '@/lib/dataStore';
+import { Users, Newspaper, Image, Star, KeyRound, IndianRupee } from 'lucide-react';
+import { getMembers, getBlogs, getGalleryImages, getHighlightedMembers, getDonations } from '@/lib/dataStore';
 import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Input } from '@/components/ui/input';
@@ -16,6 +16,7 @@ const AdminDashboard = () => {
     { label: 'Highlighted', value: 0, icon: Star, color: 'text-accent' },
     { label: 'Blog Posts', value: 0, icon: Newspaper, color: 'text-primary' },
     { label: 'Gallery Images', value: 0, icon: Image, color: 'text-accent' },
+    { label: 'Donations', value: 0, icon: IndianRupee, color: 'text-primary' },
   ]);
 
   const [currentPassword, setCurrentPassword] = useState('');
@@ -25,14 +26,15 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const load = async () => {
-      const [members, highlighted, blogs, gallery] = await Promise.all([
-        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(),
+      const [members, highlighted, blogs, gallery, donations] = await Promise.all([
+        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(), getDonations(),
       ]);
       setStats([
         { label: 'Total Members', value: members.length, icon: Users, color: 'text-primary' },
         { label: 'Highlighted', value: highlighted.length, icon: Star, color: 'text-accent' },
         { label: 'Blog Posts', value: blogs.length, icon: Newspaper, color: 'text-primary' },
         { label: 'Gallery Images', value: gallery.length, icon: Image, color: 'text-accent' },
+        { label: 'Donations', value: donations.length, icon: IndianRupee, color: 'text-primary' },
       ]);
     };
     load();

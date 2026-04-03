@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Users, Newspaper, Image, LayoutDashboard, LogOut } from 'lucide-react';
+import { Users, Newspaper, Image, LayoutDashboard, LogOut, IndianRupee } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -10,6 +10,7 @@ const sidebarItems = [
   { label: 'Members', icon: Users, href: '/admin/members' },
   { label: 'Blogs', icon: Newspaper, href: '/admin/blogs' },
   { label: 'Gallery', icon: Image, href: '/admin/gallery' },
+  { label: 'Donations', icon: IndianRupee, href: '/admin/donations' },
 ];
 
 const AdminLayout = ({ children, title }) => {

@@ -1,178 +1,116 @@
 import React from 'react';
-import { Shield, Lock, Eye, Users, Award, CheckCircle, ArrowRight, Phone, Mail, MapPin, Globe, Zap, Target, AlertTriangle } from 'lucide-react';
+import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
+import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
- 
+import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
+  const highlights = [
+    { icon: Users, title: 'Networking', desc: 'Connect with professionals across industries and regions.' },
+    { icon: Handshake, title: 'Mentorship', desc: 'Get guidance from experienced leaders and mentors.' },
+    { icon: Calendar, title: 'Events', desc: 'Attend exclusive community events, summits, and workshops.' },
+    { icon: TrendingUp, title: 'Growth', desc: 'Unlock career and business opportunities within the community.' },
+  ];
+
+  const featuredMembers = [
+    { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
+    { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
+    { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
+    { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
+  ];
+
+  const upcomingEvents = [
+    { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
+    { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
+    { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
+  ];
+
+  const achievements = [
+    { name: 'Dr. Suresh Babu', achievement: 'Padma Shri for contributions to Medicine' },
+    { name: 'Kavitha Naidu', achievement: 'Forbes 30 Under 30 — Tech Innovator' },
+    { name: 'Rajendra Prasad', achievement: 'Built 100+ schools across rural India' },
+  ];
+
+  const testimonials = [
+    { quote: 'RISE connected me with a mentor who changed my career trajectory. Truly life-changing.', name: 'Harini T.', role: 'Software Engineer, Hyderabad' },
+    { quote: 'The community events are world-class. I found my co-founder at a RISE networking night.', name: 'Srinivas K.', role: 'Startup Founder, Mumbai' },
+    { quote: 'Being part of RISE gave me a sense of belonging and purpose beyond my profession.', name: 'Anita P.', role: 'Teacher, London' },
+  ];
+
   return (
-    <div className="min-h-screen text-white" style={{backgroundColor: 'white'}}>
+    <div className="min-h-screen bg-background text-foreground">
       <Header currentPage="Home" />
 
-      {/* Hero Section - Clean UI */}
-      <section className="py-16 md:py-24 relative min-h-[70vh] flex items-center bg-white text-black overflow-hidden">
-        <div className="absolute -top-24 -right-24 w-[520px] h-[520px] bg-[#b99b4c]/20 blur-3xl rounded-full pointer-events-none" />
-        <div className="absolute -bottom-24 -left-24 w-[520px] h-[520px] bg-black/5 blur-3xl rounded-full pointer-events-none" />
-        <div className="container mx-auto text-center px-4 w-full max-w-5xl">
-          <Badge className="inline-flex items-center justify-center border border-black/10 bg-black/5 text-black mb-6 px-4 py-2 rounded-full">
-            <Shield className="w-4 h-4 mr-2" />
-            Building a Strong Global Community
-          </Badge>
-          <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight tracking-tight">
-            Kamma Global Federation
-          </h1>
-          <div className="mx-auto mb-8 h-1 w-24 bg-[#b99b4c] rounded" />
-          <p className="text-lg md:text-2xl text-slate-600 mb-10 max-w-4xl mx-auto leading-relaxed">
-            Kamma Global Federation stands as a beacon of unity and a catalyst for empowerment, beckoning all Kammas, Kammardukas, and Chowdary, irrespective of their geographical borders, to step into a shared space of cultural pride, professional excellence, entrepreneurship, and social responsibility.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg text-lg">
-              <a href="/membership" className="flex items-center">
-                Become a Member
-                <ArrowRight className="ml-2" size={20} />
-              </a>
-            </Button>
-            <Button
-              size="lg"
-              className="bg-[#f6c344] hover:bg-[#e3b030] text-black font-semibold px-8 py-4 rounded-lg text-lg border border-black/10"
-            >
-              <a href="/donate">Support Our Mission</a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Community Stats */}
-      <section className="py-16 bg-slate-900">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-            {[
-              { number: "50+", label: "Global Chapters" },
-              { number: "100k+", label: "Members & Supporters" },
-              { number: "200+", label: "Annual Events" },
-              { number: "5,000+", label: "Scholarships Awarded" }
-            ].map((stat, index) => (
-              <div key={index} className="text-center bg-slate-800/60 rounded-2xl p-6 border border-slate-700 hover:border-[#b99b4c]/60 transition-all">
-                <div className="text-3xl md:text-4xl font-extrabold text-[#b99b4c] mb-2 tracking-tight">{stat.number}</div>
-                <div className="text-slate-300 text-sm md:text-base">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Achievements Section */}
-      <section className="py-20 bg-slate-950">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Kamma Achievements</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Celebrating our community’s impact across chapters: culture, education, entrepreneurship,
-              health, and youth leadership around the world.
+      {/* Hero Section */}
+      <section className="relative min-h-screen flex items-center bg-secondary text-secondary-foreground overflow-hidden pt-20">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10" />
+        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 blur-[120px] rounded-full" />
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl">
+            <div className="inline-flex items-center px-4 py-2 rounded-full border border-gold/30 bg-gold/10 text-gold text-sm font-medium mb-8">
+              <Star className="w-4 h-4 mr-2" />
+              Exploring the Excellence
+            </div>
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black uppercase leading-[0.9] mb-6">
+              RISE<br />
+              <span className="text-primary">Global</span><br />
+              Directory
+            </h1>
+            <p className="text-lg md:text-xl text-secondary-foreground/70 max-w-2xl mb-10 leading-relaxed">
+              Royal Information System for Excellence — connecting Royal (Balija Kapu, Telaga, Munnuru & Turpu Kapu) community professionals for networking, mentorship, and growth.
             </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                icon: <Shield className="text-[#b99b4c]" size={48} />,
-                title: "Cultural Preservation",
-                description: "Festivals, heritage programs, and cultural nights across chapters.",
-                features: ["200+ events annually", "Heritage workshops", "Community awards", "Global meet"]
-              },
-              {
-                icon: <Users className="text-[#b99b4c]" size={48} />,
-                title: "Scholarships & Education",
-                description: "Supporting students with scholarships and mentorship.",
-                features: ["5,000+ scholarships", "Mentor network", "Career guidance", "Alumni circles"]
-              },
-              {
-                icon: <Target className="text-[#b99b4c]" size={48} />,
-                title: "Entrepreneurship",
-                description: "Incubation, networking, and founder mentorship across regions.",
-                features: ["1,000+ mentees", "Pitch forums", "Investor connects", "Founder panels"]
-              },
-              {
-                icon: <Globe className="text-[#b99b4c]" size={48} />,
-                title: "Global Chapters",
-                description: "Expanding our footprint to connect the diaspora worldwide.",
-                features: ["50+ chapters", "Regional councils", "Local leadership", "Global coordination"]
-              },
-              {
-                icon: <Zap className="text-[#b99b4c]" size={48} />,
-                title: "Health & Wellness",
-                description: "Community health drives, screenings, and wellness workshops.",
-                features: ["100+ camps", "Specialist talks", "Wellness guides", "Local partnerships"]
-              },
-              {
-                icon: <Award className="text-[#b99b4c]" size={48} />,
-                title: "Youth Leadership",
-                description: "Leadership workshops and volunteer opportunities for youth.",
-                features: ["10k+ participants", "Chapter projects", "Mentor hours", "Recognition"]
-              }
-            ].map((service, index) => (
-              <Card key={index} className="bg-slate-900 border-slate-800 hover:border-cyan-600 transition-all duration-300 hover:shadow-2xl hover:shadow-cyan-900/20">
-                <CardHeader>
-                  <div className="mb-4">{service.icon}</div>
-                  <CardTitle className="text-xl text-white">{service.title}</CardTitle>
-                  <CardDescription className="text-slate-300">{service.description}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <ul className="space-y-2">
-                    {service.features.map((feature, idx) => (
-                      <li key={idx} className="flex items-center text-slate-300">
-                        <CheckCircle className="text-[#b99b4c] mr-2" size={16} />
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </Card>
-            ))}
+            <div className="flex flex-col sm:flex-row gap-4">
+              <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground font-bold rounded-full px-8 text-lg h-14">
+                <a href="/register">
+                  Join Now <ArrowRight className="ml-2 w-5 h-5" />
+                </a>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="border-gold text-gold hover:bg-gold hover:text-secondary font-bold rounded-full px-8 text-lg h-14">
+                <a href="/directory">
+                  Explore Members <ChevronRight className="ml-1 w-5 h-5" />
+                </a>
+              </Button>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Featured Personalities */}
-      <section className="py-20 bg-slate-900">
+      {/* About Preview */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6">Kamma Personalities</h2>
-            <p className="text-xl text-slate-300 max-w-3xl mx-auto">
-              Celebrating leaders who shaped our culture, service, and progress.
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase mb-6">
+              About <span className="text-primary">RISE</span>
+            </h2>
+            <div className="w-20 h-1 bg-primary mx-auto mb-8" />
+            <p className="text-lg text-muted-foreground leading-relaxed mb-8">
+              RISE is a premier platform dedicated to empowering Royal community professionals worldwide. We bridge generations, geographies, and industries — fostering collaboration, celebrating excellence, and creating opportunities for growth.
             </p>
+            <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full px-8">
+              <a href="/about">Learn More</a>
+            </Button>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'Rani Rudrama Devi',
-                title: 'Kakatiya Ruler',
-                description: 'A symbol of leadership and administrative reform; remembered for resilience and statecraft.',
-              },
-              {
-                name: 'N. T. Rama Rao (Sr. NTR)',
-                title: 'Actor & Public Leader',
-                description: 'Icon of Telugu cinema who inspired cultural pride and later served the people in public life.',
-              },
-              {
-                name: 'N. Chandrababu Naidu',
-                title: 'Technocratic Statesman',
-                description: 'Known for governance and technology initiatives that fostered growth and innovation.',
-              },
-            ].map((p) => (
-              <Card key={p.name} className="bg-slate-800/60 backdrop-blur border-slate-700 hover:border-[#b99b4c] transition-all duration-300 hover:translate-y-[-2px]">
-                <CardHeader className="space-y-2">
-                  <div className="w-14 h-14 rounded-full bg-[#b99b4c]/20 border border-[#b99b4c]/40 flex items-center justify-center text-[#b99b4c] font-bold text-lg">
-                    {p.name.split(' ').map(n=>n[0]).join('').slice(0,3)}
+        </div>
+      </section>
+
+      {/* Key Highlights */}
+      <section className="py-20 bg-secondary text-secondary-foreground">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
+            Why <span className="text-primary">RISE</span>?
+          </h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {highlights.map((h) => (
+              <Card key={h.title} className="bg-secondary-foreground/5 border-secondary-foreground/10 hover:border-primary transition-all duration-300 hover:scale-105 group">
+                <CardContent className="p-6 text-center">
+                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 group-hover:bg-primary/20 transition-colors">
+                    <h.icon className="w-8 h-8 text-primary" />
                   </div>
-                  <CardTitle className="text-xl text-white">{p.name}</CardTitle>
-                  <CardDescription className="text-[#b99b4c]">{p.title}</CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-slate-300 text-sm leading-relaxed">{p.description}</p>
+                  <h3 className="font-heading font-bold text-lg uppercase mb-2">{h.title}</h3>
+                  <p className="text-secondary-foreground/60 text-sm">{h.desc}</p>
                 </CardContent>
               </Card>
             ))}
@@ -180,106 +118,131 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Achievements Highlights */}
-      <section className="py-20 bg-white text-black">
+      {/* Featured Members */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Achievements & Impact</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">From culture to entrepreneurship, KGF celebrates excellence and service across generations.</p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              { icon: <Award className="text-[#b99b4c]" size={28} />, title: 'Scholarships', desc: '5,000+ scholarships for students and researchers.' },
-              { icon: <Users className="text-[#b99b4c]" size={28} />, title: 'Mentorship', desc: 'Global mentor network for youth and founders.' },
-              { icon: <Globe className="text-[#b99b4c]" size={28} />, title: 'Diaspora Chapters', desc: '50+ chapters enabling service worldwide.' },
-              { icon: <Target className="text-[#b99b4c]" size={28} />, title: 'Entrepreneurship', desc: 'Pitch forums, investor connects, and incubation.' },
-              { icon: <Zap className="text-[#b99b4c]" size={28} />, title: 'Health Drives', desc: 'Camps, screenings, and wellness programs.' },
-              { icon: <Shield className="text-[#b99b4c]" size={28} />, title: 'Heritage', desc: 'Festivals and cultural preservation initiatives.' },
-            ].map((a) => (
-              <div key={a.title} className="rounded-2xl border border-black/10 p-6 hover:shadow-xl transition-all bg-white/80">
-                <div className="w-12 h-12 rounded-xl bg-[#b99b4c]/15 border border-[#b99b4c]/30 flex items-center justify-center mb-3">
-                  {a.icon}
-                </div>
-                <div className="font-semibold text-lg mb-1">{a.title}</div>
-                <div className="text-slate-600 text-sm leading-relaxed">{a.desc}</div>
-              </div>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
+            Featured <span className="text-primary">Members</span>
+          </h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {featuredMembers.map((m) => (
+              <Card key={m.name} className="border-border hover:border-primary hover:shadow-xl transition-all duration-300 hover:scale-105 group overflow-hidden">
+                <CardContent className="p-6">
+                  <div className="w-20 h-20 rounded-full bg-muted flex items-center justify-center mx-auto mb-4 text-2xl font-heading font-bold text-primary">
+                    {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                  </div>
+                  <h3 className="font-heading font-bold text-center mb-1">{m.name}</h3>
+                  <p className="text-primary text-sm text-center font-medium">{m.profession}</p>
+                  <p className="text-muted-foreground text-sm text-center">{m.location}</p>
+                </CardContent>
+              </Card>
             ))}
+          </div>
+          <div className="text-center mt-10">
+            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-8 font-bold">
+              <a href="/directory">View All Members <ArrowRight className="ml-2 w-4 h-4" /></a>
+            </Button>
           </div>
         </div>
       </section>
 
-      {/* Community Stories */}
-      <section className="py-20 bg-slate-50">
+      {/* Upcoming Events */}
+      <section className="py-20 bg-primary text-primary-foreground">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-extrabold mb-3">Community Stories</h2>
-            <p className="text-slate-600 max-w-2xl mx-auto">Voices from chapters and members making a difference.</p>
-          </div>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
+            Upcoming Events
+          </h2>
+          <div className="w-20 h-1 bg-gold mx-auto mb-12" />
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[
-              { quote: 'KGF mentorship helped me land my first role and give back as a mentor.', name: 'Harini T', role: 'Volunteer, Hyderabad' },
-              { quote: 'Our chapter health camp served 1,000+ families this year.', name: 'Raj K', role: 'Member, Dallas' },
-              { quote: 'Scholarship support and guidance changed my academic journey.', name: 'Anita P', role: 'Student, London' },
-            ].map((t) => (
-              <div key={t.name} className="rounded-2xl p-6 border border-black/10 bg-white shadow-sm hover:shadow-md transition-all">
-                <div className="text-slate-800 italic leading-relaxed mb-4">“{t.quote}”</div>
-                <div className="font-semibold">{t.name}</div>
-                <div className="text-sm text-slate-600">{t.role}</div>
+            {upcomingEvents.map((e) => (
+              <div key={e.title} className="bg-primary-foreground/10 backdrop-blur border border-primary-foreground/20 rounded-xl p-6 hover:bg-primary-foreground/20 transition-all">
+                <h3 className="font-heading font-bold text-xl mb-3">{e.title}</h3>
+                <p className="text-primary-foreground/80 mb-1">{e.date}</p>
+                <p className="text-primary-foreground/60 text-sm">{e.location}</p>
               </div>
             ))}
           </div>
+          <div className="text-center mt-10">
+            <Button asChild variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary rounded-full px-8 font-bold">
+              <a href="/events">All Events</a>
+            </Button>
+          </div>
         </div>
       </section>
 
-      {/* Partners & Sponsors */}
-      <section className="py-14 bg-white">
+      {/* Achievements */}
+      <section className="py-20 bg-secondary text-secondary-foreground">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-8">
-            <h3 className="text-xl font-semibold text-slate-700">Partners & Sponsors</h3>
+          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
+            Hall of <span className="text-gold">Fame</span>
+          </h2>
+          <div className="w-20 h-1 bg-gold mx-auto mb-12" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {achievements.map((a) => (
+              <div key={a.name} className="relative border border-gold/30 rounded-xl p-6 bg-gold/5 hover:bg-gold/10 transition-all">
+                <Award className="w-10 h-10 text-gold mb-4" />
+                <h3 className="font-heading font-bold text-lg mb-2">{a.name}</h3>
+                <p className="text-secondary-foreground/70 text-sm">{a.achievement}</p>
+              </div>
+            ))}
           </div>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-6 items-center opacity-80">
-            {Array.from({length:6}).map((_,i) => (
-              <div key={i} className="h-10 bg-black/5 rounded-md border border-black/10" />
+          <div className="text-center mt-10">
+            <Button asChild variant="outline" className="border-gold text-gold hover:bg-gold hover:text-secondary rounded-full px-8 font-bold">
+              <a href="/achievements">View All Achievements</a>
+            </Button>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl md:text-5xl font-heading font-bold uppercase text-center mb-4">
+            What Members <span className="text-primary">Say</span>
+          </h2>
+          <div className="w-20 h-1 bg-primary mx-auto mb-12" />
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {testimonials.map((t) => (
+              <Card key={t.name} className="border-border hover:border-primary/50 transition-all hover:shadow-lg">
+                <CardContent className="p-6">
+                  <Quote className="w-8 h-8 text-primary/30 mb-4" />
+                  <p className="text-foreground/80 italic leading-relaxed mb-6">"{t.quote}"</p>
+                  <div>
+                    <p className="font-heading font-bold">{t.name}</p>
+                    <p className="text-sm text-muted-foreground">{t.role}</p>
+                  </div>
+                </CardContent>
+              </Card>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="py-16 bg-slate-900 text-white">
-        <div className="container mx-auto px-4 text-center max-w-3xl">
-          <h3 className="text-2xl md:text-3xl font-bold mb-3">Get updates from KGF</h3>
-          <p className="text-slate-300 mb-6">News on chapters, scholarships, and events—straight to your inbox.</p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Input type="email" placeholder="Enter your email" className="bg-white text-black border-none" />
-            <Button className="bg-[#b99b4c] hover:bg-[#a3893f] text-white">Subscribe</Button>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-[#b99b4c] to-[#a3893f]">
-        <div className="container mx-auto text-center px-4">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-black">Join KGF</h2>
-          <p className="text-xl text-black/80 mb-8 max-w-3xl mx-auto">
-            Become a member, support scholarships, and help build thriving Kamma communities across the world.
+      {/* Final CTA */}
+      <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
+        <div className="container mx-auto px-4 text-center">
+          <h2 className="text-4xl md:text-6xl font-heading font-black uppercase mb-6">
+            Ready to Rise?
+          </h2>
+          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10">
+            Join thousands of community professionals. Network, grow, and make an impact together.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-8 py-4 rounded-lg text-lg">
-              <a href="/membership" className="flex items-center">
-                Become a Member
-                <ArrowRight className="ml-2" size={20} />
+            <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold rounded-full px-10 text-lg h-14">
+              <a href="/register">
+                Join RISE Now <ArrowRight className="ml-2 w-5 h-5" />
               </a>
             </Button>
-            <Button size="lg" variant="outline" className="border-black text-black hover:bg-black hover:text-white px-8 py-4 rounded-lg text-lg">
-              <a href="/donate">Donate Now</a>
+            <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold rounded-full px-10 text-lg h-14">
+              <a href="/directory">Explore Members</a>
             </Button>
           </div>
         </div>
       </section>
 
-      {/* Mega Footer */}
       <Footer />
+      <WhatsAppButton />
     </div>
   );
 };

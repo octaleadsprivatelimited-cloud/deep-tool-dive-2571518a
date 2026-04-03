@@ -86,7 +86,7 @@ const Register = () => {
       photo: photoPreview || '',
       highlighted: false,
     };
-    addMember(member);
+    saveMember(member);
     toast.success('Registration submitted successfully! We will review and get back to you.');
     form.reset();
     setProfilePhoto(null);

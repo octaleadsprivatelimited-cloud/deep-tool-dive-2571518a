@@ -60,10 +60,10 @@ const Header = ({ currentPage = 'Home' }) => {
                 href={item.href}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
                   currentPage === item.name
-                    ? 'text-primary font-bold'
+                    ? isScrolled ? 'text-primary font-bold' : 'text-primary-foreground font-bold'
                     : isScrolled
                     ? 'text-secondary-foreground/80 hover:text-primary'
-                    : 'text-foreground/80 hover:text-primary'
+                    : 'text-primary-foreground/90 hover:text-primary-foreground'
                 }`}
               >
                 {item.name}

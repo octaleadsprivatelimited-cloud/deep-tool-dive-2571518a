@@ -26,14 +26,15 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const load = async () => {
-      const [members, highlighted, blogs, gallery] = await Promise.all([
-        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(),
+      const [members, highlighted, blogs, gallery, donations] = await Promise.all([
+        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(), getDonations(),
       ]);
       setStats([
         { label: 'Total Members', value: members.length, icon: Users, color: 'text-primary' },
         { label: 'Highlighted', value: highlighted.length, icon: Star, color: 'text-accent' },
         { label: 'Blog Posts', value: blogs.length, icon: Newspaper, color: 'text-primary' },
         { label: 'Gallery Images', value: gallery.length, icon: Image, color: 'text-accent' },
+        { label: 'Donations', value: donations.length, icon: IndianRupee, color: 'text-primary' },
       ]);
     };
     load();

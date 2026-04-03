@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
 
-const Header = ({ currentPage = 'Home' }) => {
+const Header = ({ currentPage }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { logout, isAuthenticated } = useAuth();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => setIsScrolled(window.scrollY > 50);
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
@@ -27,13 +30,25 @@ const Header = ({ currentPage = 'Home' }) => {
     { name: 'Contact', href: '/contact' },
   ];
 
+  const isTransparentHeader = pathname === '/' && !isScrolled;
+  const activePage = currentPage ?? navItems.find((item) => item.href === pathname)?.name;
+  const headerSurfaceClass = isTransparentHeader
+    ? 'bg-transparent'
+    : 'bg-secondary/95 shadow-lg backdrop-blur border-b border-border/10';
+  const brandTextClass = 'text-primary-foreground';
+  const navLinkClass = isTransparentHeader
+    ? 'text-primary-foreground/90 hover:text-primary-foreground'
+    : 'text-secondary-foreground/80 hover:text-secondary-foreground';
+  const activeNavLinkClass = isTransparentHeader
+    ? 'text-primary-foreground font-bold'
+    : 'text-primary font-bold';
+  const loginButtonClass = isTransparentHeader
+    ? 'text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground'
+    : 'text-secondary-foreground hover:bg-primary-foreground/10 hover:text-secondary-foreground';
+
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'bg-secondary shadow-lg'
-          : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${headerSurfaceClass}`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16 md:h-20">
@@ -43,10 +58,10 @@ const Header = ({ currentPage = 'Home' }) => {
               <span className="text-primary-foreground font-heading font-black text-lg">R</span>
             </div>
             <div>
-              <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'}`}>
+              <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${brandTextClass}`}>
                 RISE
               </div>
-              <div className={`text-[10px] font-medium uppercase tracking-widest transition-colors ${isScrolled ? 'text-gold' : 'text-gold'}`}>
+              <div className="text-[10px] font-medium uppercase tracking-widest text-gold transition-colors">
                 Global Directory
               </div>
             </div>
@@ -59,11 +74,9 @@ const Header = ({ currentPage = 'Home' }) => {
                 key={item.name}
                 href={item.href}
                 className={`px-3 py-2 text-sm font-medium rounded-md transition-colors ${
-                  currentPage === item.name
-                    ? isScrolled ? 'text-primary font-bold' : 'text-primary-foreground font-bold'
-                    : isScrolled
-                    ? 'text-secondary-foreground/80 hover:text-primary'
-                    : 'text-primary-foreground/90 hover:text-primary-foreground'
+                  activePage === item.name
+                    ? activeNavLinkClass
+                    : navLinkClass
                 }`}
               >
                 {item.name}
@@ -75,7 +88,7 @@ const Header = ({ currentPage = 'Home' }) => {
           <div className="hidden lg:flex items-center gap-3">
             {!isAuthenticated ? (
               <>
-                <Button asChild variant="ghost" className={`${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'} hover:text-primary`}>
+                <Button asChild variant="ghost" className={loginButtonClass}>
                   <a href="/login">Login</a>
                 </Button>
                 <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6">
@@ -91,7 +104,7 @@ const Header = ({ currentPage = 'Home' }) => {
 
           {/* Mobile Menu Button */}
           <button
-            className={`lg:hidden p-2 transition-colors ${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'}`}
+            className={`lg:hidden p-2 transition-colors ${brandTextClass}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight } from 'lucide-react';
+import heroBg from '@/assets/hero-bg.jpg';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';

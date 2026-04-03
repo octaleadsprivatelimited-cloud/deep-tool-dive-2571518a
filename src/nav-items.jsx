@@ -40,4 +40,5 @@ export const navItems = [
   { title: "Admin Members", to: "/admin/members", icon: <Users className="h-4 w-4" />, page: <AdminMembers /> },
   { title: "Admin Blogs", to: "/admin/blogs", icon: <Newspaper className="h-4 w-4" />, page: <AdminBlogs /> },
   { title: "Admin Gallery", to: "/admin/gallery", icon: <Image className="h-4 w-4" />, page: <AdminGallery /> },
+  { title: "Admin Donations", to: "/admin/donations", icon: <IndianRupee className="h-4 w-4" />, page: <AdminDonations /> },
 ];

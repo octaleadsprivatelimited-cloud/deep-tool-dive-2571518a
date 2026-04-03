@@ -12,6 +12,7 @@ import Contact from "./pages/Contact.jsx";
 import Login from "./pages/Login.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
+import Donate from "./pages/Donate.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },

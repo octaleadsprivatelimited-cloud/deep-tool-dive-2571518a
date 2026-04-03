@@ -75,7 +75,7 @@ const Header = ({ currentPage = 'Home' }) => {
           <div className="hidden lg:flex items-center gap-3">
             {!isAuthenticated ? (
               <>
-                <Button asChild variant="ghost" className="text-foreground hover:text-primary">
+                <Button asChild variant="ghost" className={`${isScrolled ? 'text-secondary-foreground' : 'text-primary-foreground'} hover:text-primary`}>
                   <a href="/login">Login</a>
                 </Button>
                 <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6">

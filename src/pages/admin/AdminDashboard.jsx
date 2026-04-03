@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Newspaper, Image, Star, KeyRound } from 'lucide-react';
-import { getMembers, getBlogs, getGalleryImages, getHighlightedMembers } from '@/lib/dataStore';
+import { Users, Newspaper, Image, Star, KeyRound, IndianRupee } from 'lucide-react';
+import { getMembers, getBlogs, getGalleryImages, getHighlightedMembers, getDonations } from '@/lib/dataStore';
 import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Input } from '@/components/ui/input';

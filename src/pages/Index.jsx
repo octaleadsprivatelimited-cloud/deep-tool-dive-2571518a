@@ -268,23 +268,31 @@ const Index = () => {
       </section>
 
       {/* Final CTA */}
-      <section className="py-20 bg-gradient-to-r from-primary to-primary/80 text-primary-foreground">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-6xl font-heading font-black uppercase mb-6">
-            Ready to Rise?
-          </h2>
-          <p className="text-xl text-primary-foreground/80 max-w-2xl mx-auto mb-10">
-            Join thousands of community professionals. Network, grow, and make an impact together.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold rounded-full px-10 text-lg h-14">
-              <a href="/register">
-                Join RISE Now <ArrowRight className="ml-2 w-5 h-5" />
-              </a>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold rounded-full px-10 text-lg h-14">
-              <a href="/directory">Explore Members</a>
-            </Button>
+      <section className="relative min-h-[500px] flex items-center overflow-hidden">
+        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
+        <div className="absolute inset-0 bg-primary/85" />
+        <div className="relative z-10 w-full">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center py-20">
+              <div>
+                <h2 className="text-4xl md:text-6xl font-heading font-black uppercase text-primary-foreground leading-tight mb-6">
+                  Ready<br />to Rise?
+                </h2>
+                <p className="text-lg text-primary-foreground/80 max-w-lg mb-8">
+                  Join thousands of community professionals. Network, grow, and make an impact together.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row lg:flex-col gap-4 lg:items-end">
+                <Button asChild size="lg" className="bg-secondary text-secondary-foreground hover:bg-secondary/90 font-bold rounded-full px-10 text-lg h-14 shadow-2xl">
+                  <a href="/register">
+                    Join RISE Now <ArrowRight className="ml-2 w-5 h-5" />
+                  </a>
+                </Button>
+                <Button asChild size="lg" variant="outline" className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary font-bold rounded-full px-10 text-lg h-14">
+                  <a href="/directory">Explore Members</a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>

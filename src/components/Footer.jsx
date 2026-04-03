@@ -129,6 +129,9 @@ const Footer = () => {
         {/* Bottom */}
         <div className="border-t border-secondary-foreground/10 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
           <p className="text-xs text-secondary-foreground/50">&copy; {new Date().getFullYear()} RISE Global Directory. All rights reserved.</p>
+          <p className="text-xs text-secondary-foreground/50">
+            Developed by <a href="https://www.octaleads.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-colors">OctaLeads</a>
+          </p>
           <div className="flex gap-4 text-xs text-secondary-foreground/50">
             <a href="/privacy" className="hover:text-primary transition-colors">Privacy</a>
             <a href="/terms" className="hover:text-primary transition-colors">Terms</a>

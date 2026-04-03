@@ -13,6 +13,11 @@ import Login from "./pages/Login.jsx";
 import Privacy from "./pages/Privacy.jsx";
 import Terms from "./pages/Terms.jsx";
 import Donate from "./pages/Donate.jsx";
+import AdminLogin from "./pages/AdminLogin.jsx";
+import AdminDashboard from "./pages/admin/AdminDashboard.jsx";
+import AdminMembers from "./pages/admin/AdminMembers.jsx";
+import AdminBlogs from "./pages/admin/AdminBlogs.jsx";
+import AdminGallery from "./pages/admin/AdminGallery.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },
@@ -29,4 +34,9 @@ export const navItems = [
   { title: "Login", to: "/login", icon: <LogIn className="h-4 w-4" />, page: <Login /> },
   { title: "Privacy", to: "/privacy", icon: <ShieldCheck className="h-4 w-4" />, page: <Privacy /> },
   { title: "Terms", to: "/terms", icon: <FileText className="h-4 w-4" />, page: <Terms /> },
+  { title: "Admin Login", to: "/admin-login", icon: <ShieldCheck className="h-4 w-4" />, page: <AdminLogin /> },
+  { title: "Admin", to: "/admin", icon: <ShieldCheck className="h-4 w-4" />, page: <AdminDashboard /> },
+  { title: "Admin Members", to: "/admin/members", icon: <Users className="h-4 w-4" />, page: <AdminMembers /> },
+  { title: "Admin Blogs", to: "/admin/blogs", icon: <Newspaper className="h-4 w-4" />, page: <AdminBlogs /> },
+  { title: "Admin Gallery", to: "/admin/gallery", icon: <Image className="h-4 w-4" />, page: <AdminGallery /> },
 ];

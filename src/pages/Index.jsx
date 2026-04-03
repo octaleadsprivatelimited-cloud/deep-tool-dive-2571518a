@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight, UserPlus, Heart, Mail, Play } from 'lucide-react';
+import { getHighlightedMembers } from '@/lib/dataStore';
 import heroBg from '@/assets/hero-bg.jpg';
 import riseLogo from '@/assets/rise-logo.png';
 import { Button } from '@/components/ui/button';

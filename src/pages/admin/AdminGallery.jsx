@@ -6,36 +6,53 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Trash2, Plus, ImageIcon } from 'lucide-react';
-import { getGalleryImages, saveGalleryImage, deleteGalleryImage } from '@/lib/dataStore';
+import { getGalleryImages, saveGalleryImage, deleteGalleryImage, uploadFile } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
 const AdminGallery = () => {
   const [gallery, setGallery] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [form, setForm] = useState({ title: '', image: '' });
+  const [imageFile, setImageFile] = useState(null);
+  const [saving, setSaving] = useState(false);
 
-  useEffect(() => { setGallery(getGalleryImages()); }, []);
+  const loadGallery = async () => { setGallery(await getGalleryImages()); };
+  useEffect(() => { loadGallery(); }, []);
 
   const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setImageFile(file);
     const reader = new FileReader();
     reader.onload = (ev) => setForm((f) => ({ ...f, image: ev.target.result }));
     reader.readAsDataURL(file);
   };
 
-  const handleSave = () => {
-    if (!form.image) { toast.error('Image is required'); return; }
-    const updated = saveGalleryImage(form);
-    setGallery(updated);
-    setDialogOpen(false);
-    setForm({ title: '', image: '' });
-    toast.success('Image added to gallery');
+  const handleSave = async () => {
+    if (!form.image && !imageFile) { toast.error('Image is required'); return; }
+    setSaving(true);
+    try {
+      let imageUrl = form.image;
+      if (imageFile) {
+        imageUrl = await uploadFile(imageFile, `gallery/${Date.now()}_${imageFile.name}`);
+      }
+      await saveGalleryImage({ title: form.title, image: imageUrl });
+      await loadGallery();
+      setDialogOpen(false);
+      setForm({ title: '', image: '' });
+      setImageFile(null);
+      toast.success('Image added to gallery');
+    } catch (err) {
+      toast.error(err.message || 'Failed to save');
+    } finally {
+      setSaving(false);
+    }
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (!confirm('Delete this image?')) return;
-    setGallery(deleteGalleryImage(id));
+    await deleteGalleryImage(id);
+    await loadGallery();
     toast.success('Image deleted');
   };
 
@@ -43,7 +60,7 @@ const AdminGallery = () => {
     <AdminLayout title="Gallery Management">
       <div className="flex items-center justify-between mb-6">
         <p className="text-muted-foreground text-sm">{gallery.length} images</p>
-        <Button onClick={() => { setForm({ title: '', image: '' }); setDialogOpen(true); }} className="bg-primary hover:bg-primary/90 text-primary-foreground">
+        <Button onClick={() => { setForm({ title: '', image: '' }); setImageFile(null); setDialogOpen(true); }} className="bg-primary hover:bg-primary/90 text-primary-foreground">
           <Plus className="w-4 h-4 mr-2" /> Add Image
         </Button>
       </div>
@@ -94,7 +111,9 @@ const AdminGallery = () => {
               <Input value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} placeholder="Image description..." />
             </div>
             <div className="flex gap-3 pt-2">
-              <Button onClick={handleSave} className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">Add</Button>
+              <Button onClick={handleSave} disabled={saving} className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
+                {saving ? 'Uploading...' : 'Add'}
+              </Button>
               <Button variant="outline" onClick={() => setDialogOpen(false)} className="flex-1">Cancel</Button>
             </div>
           </div>

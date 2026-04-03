@@ -1,8 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Users, Newspaper, Image, LayoutDashboard, LogOut, ChevronRight } from 'lucide-react';
+import { Users, Newspaper, Image, LayoutDashboard, LogOut } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { isAdminLoggedIn, adminLogout } from '@/lib/dataStore';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '@/lib/firebase';
 
 const sidebarItems = [
   { label: 'Dashboard', icon: LayoutDashboard, href: '/admin' },
@@ -14,19 +15,28 @@ const sidebarItems = [
 const AdminLayout = ({ children, title }) => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
+  const [user, setUser] = useState(undefined); // undefined = loading
 
   useEffect(() => {
-    if (!isAdminLoggedIn()) {
-      navigate('/admin-login');
-    }
+    const unsub = onAuthStateChanged(auth, (u) => {
+      if (!u) navigate('/admin-login');
+      setUser(u);
+    });
+    return unsub;
   }, [navigate]);
 
-  const handleLogout = () => {
-    adminLogout();
+  const handleLogout = async () => {
+    await signOut(auth);
     navigate('/admin-login');
   };
 
-  if (!isAdminLoggedIn()) return null;
+  if (!user) {
+    return (
+      <div className="min-h-screen bg-muted flex items-center justify-center">
+        <p className="text-muted-foreground">Loading...</p>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-muted flex">
@@ -64,10 +74,8 @@ const AdminLayout = ({ children, title }) => {
 
       {/* Main Content */}
       <div className="flex-1 flex flex-col min-h-screen">
-        {/* Top bar for mobile */}
         <header className="bg-background border-b border-border px-6 py-4 flex items-center justify-between md:justify-start gap-4">
           <h1 className="font-heading font-bold text-xl">{title || 'Dashboard'}</h1>
-          {/* Mobile nav */}
           <div className="flex md:hidden gap-2">
             {sidebarItems.map((item) => (
               <Link key={item.href} to={item.href} className={`p-2 rounded-lg ${pathname === item.href ? 'bg-primary text-primary-foreground' : 'text-muted-foreground'}`}>

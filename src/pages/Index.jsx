@@ -13,17 +13,20 @@ const Index = () => {
   const [featuredMembers, setFeaturedMembers] = useState([]);
 
   useEffect(() => {
-    const highlighted = getHighlightedMembers();
-    if (highlighted.length > 0) {
-      setFeaturedMembers(highlighted.map((m) => ({ name: m.fullName, profession: m.profession, location: m.location, image: m.image })));
-    } else {
-      setFeaturedMembers([
-        { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
-        { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
-        { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
-        { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
-      ]);
-    }
+    const load = async () => {
+      const highlighted = await getHighlightedMembers();
+      if (highlighted.length > 0) {
+        setFeaturedMembers(highlighted.map((m) => ({ name: m.fullName || m.name, profession: m.profession, location: m.location || m.workingPlace, image: m.image || m.photo })));
+      } else {
+        setFeaturedMembers([
+          { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
+          { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
+          { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
+          { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
+        ]);
+      }
+    };
+    load();
   }, []);
 
   const highlights = [

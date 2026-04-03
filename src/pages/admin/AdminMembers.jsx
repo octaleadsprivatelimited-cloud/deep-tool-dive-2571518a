@@ -7,7 +7,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { Trash2, Pencil, Plus, Star, StarOff, Search } from 'lucide-react';
-import { getMembers, saveMember, deleteMember } from '@/lib/dataStore';
+import { getMembers, saveMember, deleteMember, uploadFile } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
 const emptyMember = { fullName: '', email: '', mobile: '', profession: '', location: '', image: '', highlighted: false };
@@ -18,37 +18,56 @@ const AdminMembers = () => {
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(emptyMember);
   const [search, setSearch] = useState('');
+  const [saving, setSaving] = useState(false);
+  const [imageFile, setImageFile] = useState(null);
 
-  useEffect(() => { setMembers(getMembers()); }, []);
+  const loadMembers = async () => {
+    setMembers(await getMembers());
+  };
 
-  const openNew = () => { setEditing(null); setForm(emptyMember); setDialogOpen(true); };
-  const openEdit = (m) => { setEditing(m); setForm(m); setDialogOpen(true); };
+  useEffect(() => { loadMembers(); }, []);
+
+  const openNew = () => { setEditing(null); setForm(emptyMember); setImageFile(null); setDialogOpen(true); };
+  const openEdit = (m) => { setEditing(m); setForm(m); setImageFile(null); setDialogOpen(true); };
 
   const handleImageChange = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    setImageFile(file);
     const reader = new FileReader();
     reader.onload = (ev) => setForm((f) => ({ ...f, image: ev.target.result }));
     reader.readAsDataURL(file);
   };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.fullName || !form.email) { toast.error('Name and email are required'); return; }
-    const updated = saveMember(editing ? { ...form, id: editing.id } : form);
-    setMembers(updated);
-    setDialogOpen(false);
-    toast.success(editing ? 'Member updated' : 'Member added');
+    setSaving(true);
+    try {
+      let imageUrl = form.image;
+      if (imageFile) {
+        imageUrl = await uploadFile(imageFile, `members/${Date.now()}_${imageFile.name}`);
+      }
+      await saveMember(editing ? { ...form, id: editing.id, image: imageUrl } : { ...form, image: imageUrl });
+      await loadMembers();
+      setDialogOpen(false);
+      toast.success(editing ? 'Member updated' : 'Member added');
+    } catch (err) {
+      toast.error(err.message || 'Failed to save');
+    } finally {
+      setSaving(false);
+    }
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (!confirm('Delete this member?')) return;
-    setMembers(deleteMember(id));
+    await deleteMember(id);
+    await loadMembers();
     toast.success('Member deleted');
   };
 
-  const toggleHighlight = (m) => {
-    const updated = saveMember({ ...m, highlighted: !m.highlighted });
-    setMembers(updated);
+  const toggleHighlight = async (m) => {
+    await saveMember({ ...m, highlighted: !m.highlighted });
+    await loadMembers();
     toast.success(m.highlighted ? 'Removed from homepage' : 'Added to homepage');
   };
 
@@ -104,7 +123,7 @@ const AdminMembers = () => {
                     <TableCell className="hidden lg:table-cell text-muted-foreground">{m.location}</TableCell>
                     <TableCell>
                       <button onClick={() => toggleHighlight(m)} className="p-1">
-                        {m.highlighted ? <Star className="w-5 h-5 text-yellow-500 fill-yellow-500" /> : <StarOff className="w-5 h-5 text-muted-foreground" />}
+                        {m.highlighted ? <Star className="w-5 h-5 text-accent fill-accent" /> : <StarOff className="w-5 h-5 text-muted-foreground" />}
                       </button>
                     </TableCell>
                     <TableCell className="text-right">
@@ -159,7 +178,9 @@ const AdminMembers = () => {
               <Label htmlFor="highlighted" className="cursor-pointer">Show on homepage (highlighted)</Label>
             </div>
             <div className="flex gap-3 pt-2">
-              <Button onClick={handleSave} className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">Save</Button>
+              <Button onClick={handleSave} disabled={saving} className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
+                {saving ? 'Saving...' : 'Save'}
+              </Button>
               <Button variant="outline" onClick={() => setDialogOpen(false)} className="flex-1">Cancel</Button>
             </div>
           </div>

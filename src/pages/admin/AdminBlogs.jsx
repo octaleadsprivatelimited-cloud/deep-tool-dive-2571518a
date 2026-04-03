@@ -18,23 +18,36 @@ const AdminBlogs = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [editing, setEditing] = useState(null);
   const [form, setForm] = useState(emptyBlog);
+  const [saving, setSaving] = useState(false);
 
-  useEffect(() => { setBlogs(getBlogs()); }, []);
+  const loadBlogs = async () => { setBlogs(await getBlogs()); };
+  useEffect(() => { loadBlogs(); }, []);
 
   const openNew = () => { setEditing(null); setForm(emptyBlog); setDialogOpen(true); };
   const openEdit = (b) => { setEditing(b); setForm(b); setDialogOpen(true); };
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!form.title) { toast.error('Title is required'); return; }
-    const updated = saveBlog(editing ? { ...form, id: editing.id } : { ...form, date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) });
-    setBlogs(updated);
-    setDialogOpen(false);
-    toast.success(editing ? 'Blog updated' : 'Blog published');
+    setSaving(true);
+    try {
+      await saveBlog(editing
+        ? { ...form, id: editing.id }
+        : { ...form, date: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }) }
+      );
+      await loadBlogs();
+      setDialogOpen(false);
+      toast.success(editing ? 'Blog updated' : 'Blog published');
+    } catch (err) {
+      toast.error(err.message || 'Failed to save');
+    } finally {
+      setSaving(false);
+    }
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (!confirm('Delete this blog post?')) return;
-    setBlogs(deleteBlog(id));
+    await deleteBlog(id);
+    await loadBlogs();
     toast.success('Blog deleted');
   };
 
@@ -104,7 +117,9 @@ const AdminBlogs = () => {
               <Textarea value={form.content} onChange={(e) => setForm((f) => ({ ...f, content: e.target.value }))} rows={6} placeholder="Full blog content..." />
             </div>
             <div className="flex gap-3 pt-2">
-              <Button onClick={handleSave} className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">Save</Button>
+              <Button onClick={handleSave} disabled={saving} className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">
+                {saving ? 'Saving...' : 'Save'}
+              </Button>
               <Button variant="outline" onClick={() => setDialogOpen(false)} className="flex-1">Cancel</Button>
             </div>
           </div>

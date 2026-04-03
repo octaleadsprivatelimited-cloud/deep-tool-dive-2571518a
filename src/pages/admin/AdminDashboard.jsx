@@ -16,6 +16,7 @@ const AdminDashboard = () => {
     { label: 'Highlighted', value: 0, icon: Star, color: 'text-accent' },
     { label: 'Blog Posts', value: 0, icon: Newspaper, color: 'text-primary' },
     { label: 'Gallery Images', value: 0, icon: Image, color: 'text-accent' },
+    { label: 'Donations', value: 0, icon: IndianRupee, color: 'text-primary' },
   ]);
 
   const [currentPassword, setCurrentPassword] = useState('');

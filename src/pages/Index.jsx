@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight } from 'lucide-react';
+import heroBg from '@/assets/hero-bg.jpg';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
@@ -44,21 +45,21 @@ const Index = () => {
       <Header currentPage="Home" />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center bg-secondary text-secondary-foreground overflow-hidden pt-20">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-transparent to-accent/10" />
-        <div className="absolute top-1/4 right-0 w-96 h-96 bg-primary/10 blur-[120px] rounded-full" />
+      <section className="relative min-h-screen flex items-center text-secondary-foreground overflow-hidden pt-20">
+        <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
+        <div className="absolute inset-0 bg-secondary/60" />
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl">
             <div className="inline-flex items-center px-4 py-2 rounded-full border border-gold/30 bg-gold/10 text-gold text-sm font-medium mb-8">
               <Star className="w-4 h-4 mr-2" />
               Exploring the Excellence
             </div>
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-heading font-black uppercase leading-[0.9] mb-6">
+            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black uppercase leading-[0.95] mb-6">
               RISE<br />
               <span className="text-primary">Global</span><br />
               Directory
             </h1>
-            <p className="text-lg md:text-xl text-secondary-foreground/70 max-w-2xl mb-10 leading-relaxed">
+            <p className="text-base md:text-lg text-secondary-foreground/70 max-w-2xl mb-10 leading-relaxed">
               Royal Information System for Excellence — connecting Royal (Balija Kapu, Telaga, Munnuru & Turpu Kapu) community professionals for networking, mentorship, and growth.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">

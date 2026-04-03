@@ -61,7 +61,7 @@ const Header = ({ currentPage }) => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-1">
-            {navItems.map((item) => (
+            {navItems.filter(i => i.name !== 'Donate').map((item) => (
               <a
                 key={item.name}
                 href={item.href}
@@ -74,6 +74,12 @@ const Header = ({ currentPage }) => {
                 {item.name}
               </a>
             ))}
+            <a
+              href="/donate"
+              className="ml-1 px-4 py-2 text-sm font-bold rounded-full bg-white text-black hover:bg-white/90 transition-colors"
+            >
+              Donate
+            </a>
           </nav>
 
           {/* Desktop CTA */}

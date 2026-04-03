@@ -56,14 +56,6 @@ const Header = ({ currentPage }) => {
           {/* Logo */}
           <a href="/" className="flex items-center space-x-2">
             <img src={riseLogo} alt="RISE Global Directory" className="w-12 h-12 md:w-14 md:h-14 object-contain" />
-            <div>
-              <div className={`text-xl font-heading font-bold tracking-tight transition-colors ${brandTextClass}`}>
-                RISE
-              </div>
-              <div className="text-[10px] font-medium uppercase tracking-widest text-gold transition-colors">
-                Global Directory
-              </div>
-            </div>
           </a>
 
           {/* Desktop Navigation */}

@@ -16,7 +16,7 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { toast } from 'sonner';
-import { saveMember, uploadFile } from '@/lib/dataStore';
+import { saveMember } from '@/lib/dataStore';
 
 const registerSchema = z.object({
   surname: z.string().min(1, 'Surname is required').max(100),
@@ -67,10 +67,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      let photoUrl = photoPreview || '';
-      if (profilePhoto) {
-        photoUrl = await uploadFile(profilePhoto, `members/${Date.now()}_${profilePhoto.name}`);
-      }
+      const photoUrl = photoPreview || '';
       const member = {
         name: `${data.surname} ${data.name}`,
         surname: data.surname,

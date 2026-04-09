@@ -5,6 +5,7 @@ import {
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 
 // ---- Helper ----
+const PAGE_SIZE = 500;
 const fetchCollection = async (name) => {
   const snap = await getDocs(query(collection(db, name), orderBy('createdAt', 'desc')));
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));

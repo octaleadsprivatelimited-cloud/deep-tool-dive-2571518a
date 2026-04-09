@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { Card, CardContent } from '@/components/ui/card';
-import { Users, Newspaper, Image, Star, KeyRound, IndianRupee } from 'lucide-react';
-import { getMembers, getBlogs, getGalleryImages, getHighlightedMembers, getDonations } from '@/lib/dataStore';
+import { Users, Newspaper, Image, Star, KeyRound, IndianRupee, Calendar, Youtube, UserPlus } from 'lucide-react';
+import { getMembers, getBlogs, getGalleryImages, getHighlightedMembers, getDonations, getEvents, getVideos } from '@/lib/dataStore';
 import { updatePassword, EmailAuthProvider, reauthenticateWithCredential } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 import { Input } from '@/components/ui/input';
@@ -13,9 +13,12 @@ import { toast } from 'sonner';
 const AdminDashboard = () => {
   const [stats, setStats] = useState([
     { label: 'Total Members', value: 0, icon: Users, color: 'text-primary' },
+    { label: 'Pending Registrations', value: 0, icon: UserPlus, color: 'text-orange-500' },
     { label: 'Highlighted', value: 0, icon: Star, color: 'text-accent' },
+    { label: 'Events', value: 0, icon: Calendar, color: 'text-primary' },
     { label: 'Blog Posts', value: 0, icon: Newspaper, color: 'text-primary' },
     { label: 'Gallery Images', value: 0, icon: Image, color: 'text-accent' },
+    { label: 'Videos', value: 0, icon: Youtube, color: 'text-primary' },
     { label: 'Donations', value: 0, icon: IndianRupee, color: 'text-primary' },
   ]);
 
@@ -26,14 +29,18 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const load = async () => {
-      const [members, highlighted, blogs, gallery, donations] = await Promise.all([
-        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(), getDonations(),
+      const [members, highlighted, blogs, gallery, donations, events, videos] = await Promise.all([
+        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(), getDonations(), getEvents(), getVideos(),
       ]);
+      const pending = members.filter((m) => !m.status || m.status === 'pending');
       setStats([
         { label: 'Total Members', value: members.length, icon: Users, color: 'text-primary' },
+        { label: 'Pending Registrations', value: pending.length, icon: UserPlus, color: 'text-orange-500' },
         { label: 'Highlighted', value: highlighted.length, icon: Star, color: 'text-accent' },
+        { label: 'Events', value: events.length, icon: Calendar, color: 'text-primary' },
         { label: 'Blog Posts', value: blogs.length, icon: Newspaper, color: 'text-primary' },
         { label: 'Gallery Images', value: gallery.length, icon: Image, color: 'text-accent' },
+        { label: 'Videos', value: videos.length, icon: Youtube, color: 'text-primary' },
         { label: 'Donations', value: donations.length, icon: IndianRupee, color: 'text-primary' },
       ]);
     };

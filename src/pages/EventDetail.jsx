@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Calendar, MapPin, Clock, Users as UsersIcon, ArrowLeft, ExternalLink, Share2, Tag } from 'lucide-react';
+import { Calendar, Clock, Users as UsersIcon, ArrowLeft, ExternalLink, Share2, Tag } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -42,11 +42,6 @@ const EventDetail = () => {
     }
   };
 
-  const openInMaps = () => {
-    if (event?.venue) {
-      window.open(`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(event.venue)}`, '_blank');
-    }
-  };
 
   if (loading) {
     return (
@@ -164,17 +159,6 @@ const EventDetail = () => {
                     </div>
                   )}
 
-                  {event.venue && (
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-4 h-4 text-primary shrink-0" />
-                      <div>
-                        <p className="text-sm font-medium">{event.venue}</p>
-                        <button onClick={openInMaps} className="text-xs text-primary hover:underline">
-                          View location on map
-                        </button>
-                      </div>
-                    </div>
-                  )}
 
                   {event.speakers && (
                     <div className="flex items-center gap-2">
@@ -194,14 +178,9 @@ const EventDetail = () => {
               <CardContent className="p-4">
                 <h3 className="text-base font-heading font-bold mb-1 text-secondary-foreground">Quick Access</h3>
                 <p className="text-xs text-secondary-foreground/70 mb-3">
-                  Get directions and share the event.
+                  Share the event with others.
                 </p>
                 <div className="flex flex-wrap gap-2">
-                  {event.venue && (
-                    <Button size="sm" onClick={openInMaps} className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-sm">
-                      Open in Google Maps
-                    </Button>
-                  )}
                   <Button size="sm" onClick={handleShare} variant="outline" className="rounded-full font-semibold text-sm">
                     <Share2 className="w-3.5 h-3.5 mr-2" /> Share Event
                   </Button>

@@ -67,11 +67,10 @@ const Index = () => {
     { icon: TrendingUp, title: 'Growth', desc: 'Unlock career and business opportunities within the community.' },
   ];
 
-  const upcomingEvents = [
-    { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
-    { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
-    { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
-  ];
+  const extractVideoId = (url) => {
+    const match = url?.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : null;
+  };
 
   const achievements = [
     { name: 'Dr. Suresh Babu', achievement: 'Padma Shri for contributions to Medicine' },

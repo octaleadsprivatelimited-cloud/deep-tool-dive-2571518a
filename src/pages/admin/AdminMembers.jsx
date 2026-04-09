@@ -12,7 +12,7 @@ import { parseCSV, mapCSVToMember } from '@/lib/csvParser';
 import { toast } from 'sonner';
 
 const PAGE_OPTIONS = ['Home', 'About', 'Events', 'Mentorship', 'Gallery', 'Achievements', 'Blog', 'Directory'];
-const emptyMember = { fullName: '', email: '', mobile: '', profession: '', location: '', image: '', highlighted: false, displayPages: [] };
+const emptyMember = { fullName: '', email: '', mobile: '', profession: '', location: '', image: '', highlighted: false, displayPages: [], showImagePublicly: true, showContactPublicly: false };
 
 const AdminMembers = () => {
   const [members, setMembers] = useState([]);
@@ -282,6 +282,14 @@ const AdminMembers = () => {
             <div className="flex items-center gap-2">
               <input type="checkbox" id="highlighted" checked={form.highlighted || false} onChange={(e) => setForm((f) => ({ ...f, highlighted: e.target.checked }))} />
               <Label htmlFor="highlighted" className="cursor-pointer">Show on homepage (highlighted)</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input type="checkbox" id="showImagePublicly" checked={form.showImagePublicly ?? true} onChange={(e) => setForm((f) => ({ ...f, showImagePublicly: e.target.checked }))} />
+              <Label htmlFor="showImagePublicly" className="cursor-pointer">Show image publicly</Label>
+            </div>
+            <div className="flex items-center gap-2">
+              <input type="checkbox" id="showContactPublicly" checked={form.showContactPublicly || false} onChange={(e) => setForm((f) => ({ ...f, showContactPublicly: e.target.checked }))} />
+              <Label htmlFor="showContactPublicly" className="cursor-pointer">Show mobile number publicly</Label>
             </div>
             <div className="flex gap-3 pt-2">
               <Button onClick={handleSave} disabled={saving} className="flex-1 bg-primary hover:bg-primary/90 text-primary-foreground">

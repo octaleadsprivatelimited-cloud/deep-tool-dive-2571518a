@@ -1,33 +1,47 @@
-import React, { useState } from 'react';
-import { Search, MapPin, Briefcase } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Search, MapPin, Briefcase, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-
-const sampleMembers = [
-  { id: 1, name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad', category: 'Healthcare' },
-  { id: 2, name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore', category: 'Technology' },
-  { id: 3, name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA', category: 'Business' },
-  { id: 4, name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada', category: 'Legal' },
-  { id: 5, name: 'Suresh Babu', profession: 'Civil Engineer', location: 'Chennai', category: 'Engineering' },
-  { id: 6, name: 'Anitha Kumari', profession: 'Teacher', location: 'London, UK', category: 'Education' },
-];
+import YouTubeSection from '@/components/YouTubeSection';
+import PageMembersSection from '@/components/PageMembersSection';
+import { getMembers } from '@/lib/dataStore';
 
 const Directory = () => {
+  const [members, setMembers] = useState([]);
   const [search, setSearch] = useState('');
   const [filterLocation, setFilterLocation] = useState('');
-  const [filterCategory, setFilterCategory] = useState('');
+  const [filterProfession, setFilterProfession] = useState('');
+  const [loading, setLoading] = useState(true);
 
-  const locations = [...new Set(sampleMembers.map((m) => m.location))];
-  const categories = [...new Set(sampleMembers.map((m) => m.category))];
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await getMembers();
+        // Only show approved members in directory
+        setMembers(data.filter((m) => m.status === 'approved'));
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
 
-  const filtered = sampleMembers.filter((m) => {
-    const matchSearch = m.name.toLowerCase().includes(search.toLowerCase()) || m.profession.toLowerCase().includes(search.toLowerCase());
-    const matchLocation = !filterLocation || m.location === filterLocation;
-    const matchCategory = !filterCategory || m.category === filterCategory;
-    return matchSearch && matchLocation && matchCategory;
+  const locations = [...new Set(members.map((m) => m.workingPlace || m.location).filter(Boolean))];
+  const professions = [...new Set(members.map((m) => m.profession).filter(Boolean))];
+
+  const filtered = members.filter((m) => {
+    const name = m.fullName || m.name || '';
+    const prof = m.profession || '';
+    const loc = m.workingPlace || m.location || '';
+    const matchSearch = name.toLowerCase().includes(search.toLowerCase()) || prof.toLowerCase().includes(search.toLowerCase());
+    const matchLocation = !filterLocation || loc === filterLocation;
+    const matchProfession = !filterProfession || prof === filterProfession;
+    return matchSearch && matchLocation && matchProfession;
   });
 
   return (
@@ -46,7 +60,6 @@ const Directory = () => {
 
       <section className="py-12 bg-background">
         <div className="container mx-auto px-4">
-          {/* Search & Filters */}
           <div className="flex flex-col md:flex-row gap-4 mb-10 max-w-4xl mx-auto">
             <div className="relative flex-1">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
@@ -56,36 +69,70 @@ const Directory = () => {
               <option value="">All Locations</option>
               {locations.map((l) => <option key={l} value={l}>{l}</option>)}
             </select>
-            <select className="border border-input rounded-md px-3 py-2 text-sm bg-background" value={filterCategory} onChange={(e) => setFilterCategory(e.target.value)}>
-              <option value="">All Categories</option>
-              {categories.map((c) => <option key={c} value={c}>{c}</option>)}
+            <select className="border border-input rounded-md px-3 py-2 text-sm bg-background" value={filterProfession} onChange={(e) => setFilterProfession(e.target.value)}>
+              <option value="">All Professions</option>
+              {professions.map((p) => <option key={p} value={p}>{p}</option>)}
             </select>
           </div>
 
-          {/* Member Cards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((m) => (
-              <Card key={m.id} className="border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                <CardContent className="p-6">
-                  <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-xl font-heading font-bold text-primary">
-                    {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                  </div>
-                  <h3 className="font-heading font-bold text-center text-lg mb-1">{m.name}</h3>
-                  <div className="flex items-center justify-center gap-1 text-primary text-sm mb-1">
-                    <Briefcase className="w-3 h-3" /> {m.profession}
-                  </div>
-                  <div className="flex items-center justify-center gap-1 text-muted-foreground text-sm">
-                    <MapPin className="w-3 h-3" /> {m.location}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          {filtered.length === 0 && (
+          {loading ? (
+            <p className="text-center text-muted-foreground py-12">Loading members...</p>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {filtered.map((m) => (
+                <Card key={m.id} className="border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                  <CardContent className="p-6">
+                    {(m.image || m.photo) ? (
+                      <img src={m.image || m.photo} alt={m.fullName} className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-primary/20" />
+                    ) : (
+                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-xl font-heading font-bold text-primary">
+                        {(m.fullName || m.name || '?').split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
+                    <h3 className="font-heading font-bold text-center text-lg mb-1">{m.fullName || m.name}</h3>
+                    {m.profession && (
+                      <div className="flex items-center justify-center gap-1 text-primary text-sm mb-1">
+                        <Briefcase className="w-3 h-3" /> {m.profession}
+                      </div>
+                    )}
+                    {(m.workingPlace || m.location) && (
+                      <div className="flex items-center justify-center gap-1 text-muted-foreground text-sm mb-3">
+                        <MapPin className="w-3 h-3" /> {m.workingPlace || m.location}
+                      </div>
+                    )}
+                    {/* Social links */}
+                    <div className="flex items-center justify-center gap-3">
+                      {m.linkedin && (
+                        <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                          <Linkedin className="w-4 h-4" />
+                        </a>
+                      )}
+                      {m.instagram && (
+                        <a href={m.instagram.startsWith('http') ? m.instagram : `https://instagram.com/${m.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                          <Instagram className="w-4 h-4" />
+                        </a>
+                      )}
+                      {m.facebook && (
+                        <a href={m.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                          <Facebook className="w-4 h-4" />
+                        </a>
+                      )}
+                    </div>
+                    {m.showContactPublicly && m.phone && (
+                      <p className="text-center text-xs text-muted-foreground mt-2">{m.phone}</p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          )}
+          {!loading && filtered.length === 0 && (
             <p className="text-center text-muted-foreground py-12">No members found matching your criteria.</p>
           )}
         </div>
       </section>
+
+      <YouTubeSection pageName="Directory" title="Community Videos" />
 
       <Footer />
       <WhatsAppButton />

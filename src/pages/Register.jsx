@@ -67,10 +67,7 @@ const Register = () => {
 
   const onSubmit = async (data) => {
     try {
-      let photoUrl = photoPreview || '';
-      if (profilePhoto) {
-        photoUrl = await uploadFile(profilePhoto, `members/${Date.now()}_${profilePhoto.name}`);
-      }
+      const photoUrl = photoPreview || '';
       const member = {
         name: `${data.surname} ${data.name}`,
         surname: data.surname,

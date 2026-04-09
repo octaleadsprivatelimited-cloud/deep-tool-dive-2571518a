@@ -1,22 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X } from 'lucide-react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-
-const galleryImages = [
-  { id: 1, title: 'RISE Summit 2025', color: 'bg-primary/20' },
-  { id: 2, title: 'Networking Night', color: 'bg-gold/20' },
-  { id: 3, title: 'Community Health Camp', color: 'bg-secondary/20' },
-  { id: 4, title: 'Youth Workshop', color: 'bg-primary/10' },
-  { id: 5, title: 'Award Ceremony', color: 'bg-gold/10' },
-  { id: 6, title: 'Cultural Event', color: 'bg-primary/15' },
-  { id: 7, title: 'Mentorship Meet', color: 'bg-secondary/10' },
-  { id: 8, title: 'Annual Gala', color: 'bg-gold/15' },
-];
+import YouTubeSection from '@/components/YouTubeSection';
+import PageMembersSection from '@/components/PageMembersSection';
+import { getGalleryImages } from '@/lib/dataStore';
 
 const Gallery = () => {
+  const [galleryImages, setGalleryImages] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const data = await getGalleryImages();
+        if (data.length > 0) {
+          setGalleryImages(data);
+        }
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    load();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -33,30 +40,49 @@ const Gallery = () => {
 
       <section className="py-16 bg-background">
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-            {galleryImages.map((img) => (
-              <div
-                key={img.id}
-                className={`${img.color} rounded-xl aspect-square flex items-center justify-center cursor-pointer hover:scale-105 hover:shadow-xl transition-all duration-300 border border-border`}
-                onClick={() => setSelectedImage(img)}
-              >
-                <span className="font-heading font-bold text-sm text-center px-4">{img.title}</span>
-              </div>
-            ))}
-          </div>
+          {galleryImages.length === 0 ? (
+            <p className="text-center text-muted-foreground py-12">Gallery images coming soon!</p>
+          ) : (
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {galleryImages.map((img) => (
+                <div
+                  key={img.id}
+                  className="rounded-xl aspect-square overflow-hidden cursor-pointer hover:scale-105 hover:shadow-xl transition-all duration-300 border border-border"
+                  onClick={() => setSelectedImage(img)}
+                >
+                  {img.image ? (
+                    <img src={img.image} alt={img.title} className="w-full h-full object-cover" />
+                  ) : (
+                    <div className="w-full h-full bg-primary/10 flex items-center justify-center">
+                      <span className="font-heading font-bold text-sm text-center px-4">{img.title}</span>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
         </div>
       </section>
 
       {selectedImage && (
         <div className="fixed inset-0 z-50 bg-secondary/90 flex items-center justify-center p-4" onClick={() => setSelectedImage(null)}>
-          <div className={`${selectedImage.color} rounded-2xl w-full max-w-2xl aspect-video flex items-center justify-center relative`}>
-            <button className="absolute top-4 right-4 text-foreground" onClick={() => setSelectedImage(null)}>
+          <div className="rounded-2xl w-full max-w-2xl aspect-video relative overflow-hidden">
+            <button className="absolute top-4 right-4 text-foreground z-10" onClick={() => setSelectedImage(null)}>
               <X className="w-6 h-6" />
             </button>
-            <span className="font-heading font-bold text-2xl">{selectedImage.title}</span>
+            {selectedImage.image ? (
+              <img src={selectedImage.image} alt={selectedImage.title} className="w-full h-full object-cover" />
+            ) : (
+              <div className="w-full h-full bg-primary/10 flex items-center justify-center">
+                <span className="font-heading font-bold text-2xl">{selectedImage.title}</span>
+              </div>
+            )}
           </div>
         </div>
       )}
+
+      <YouTubeSection pageName="Gallery" title="Video Gallery" />
+      <PageMembersSection pageName="Gallery" title="Featured" />
 
       <Footer />
       <WhatsAppButton />

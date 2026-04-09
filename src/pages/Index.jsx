@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight, UserPlus, Heart, Mail, Play } from 'lucide-react';
-import { getHighlightedMembers } from '@/lib/dataStore';
+import { getHighlightedMembers, getEvents, getVideosByPage } from '@/lib/dataStore';
 import heroBg from '@/assets/hero-bg.jpg';
 import riseLogo from '@/assets/rise-logo.png';
 import { Button } from '@/components/ui/button';
@@ -11,9 +11,13 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   const [featuredMembers, setFeaturedMembers] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [homeVideos, setHomeVideos] = useState([]);
+  const [playingVideoId, setPlayingVideoId] = useState(null);
 
   useEffect(() => {
     const load = async () => {
+      // Load highlighted members
       const highlighted = await getHighlightedMembers();
       if (highlighted.length > 0) {
         setFeaturedMembers(highlighted.map((m) => ({ name: m.fullName || m.name, profession: m.profession, location: m.location || m.workingPlace, image: m.image || m.photo })));
@@ -25,6 +29,33 @@ const Index = () => {
           { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
         ]);
       }
+
+      // Load upcoming events
+      try {
+        const events = await getEvents();
+        const upcoming = events.filter((e) => e.type === 'upcoming').slice(0, 3);
+        if (upcoming.length > 0) {
+          setUpcomingEvents(upcoming.map((e) => ({ title: e.title, date: e.date, location: e.venue || 'TBA' })));
+        } else {
+          setUpcomingEvents([
+            { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
+            { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
+            { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
+          ]);
+        }
+      } catch {
+        setUpcomingEvents([
+          { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
+          { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
+          { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
+        ]);
+      }
+
+      // Load home videos
+      try {
+        const vids = await getVideosByPage('Home');
+        setHomeVideos(vids.sort((a, b) => (a.order || 0) - (b.order || 0)));
+      } catch {}
     };
     load();
   }, []);
@@ -36,11 +67,10 @@ const Index = () => {
     { icon: TrendingUp, title: 'Growth', desc: 'Unlock career and business opportunities within the community.' },
   ];
 
-  const upcomingEvents = [
-    { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
-    { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
-    { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
-  ];
+  const extractVideoId = (url) => {
+    const match = url?.match(/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
+    return match ? match[1] : null;
+  };
 
   const achievements = [
     { name: 'Dr. Suresh Babu', achievement: 'Padma Shri for contributions to Medicine' },
@@ -100,24 +130,65 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Video / Image Thumbnails — 3 column grid like Jana Sena */}
-      <section className="bg-background pb-16">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {['Community Summit 2025', 'Mentorship Program', 'Youth Leadership'].map((title) => (
-              <div key={title} className="relative group cursor-pointer">
-                <div className="aspect-video bg-secondary rounded-lg overflow-hidden flex items-center justify-center">
-                  <div className="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-60" />
-                  <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
-                    <Play className="w-7 h-7 text-primary-foreground ml-1" />
+      {/* Video / Image Thumbnails — Dynamic from admin */}
+      {homeVideos.length > 0 ? (
+        <section className="bg-background pb-16">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {homeVideos.slice(0, 6).map((v) => {
+                const videoId = extractVideoId(v.youtubeUrl);
+                if (!videoId) return null;
+                return (
+                  <div key={v.id} className="relative group cursor-pointer" onClick={() => setPlayingVideoId(playingVideoId === v.id ? null : v.id)}>
+                    {playingVideoId === v.id ? (
+                      <div className="aspect-video rounded-lg overflow-hidden">
+                        <iframe
+                          src={`https://www.youtube.com/embed/${videoId}?autoplay=1`}
+                          title={v.title}
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                          allowFullScreen
+                          className="w-full h-full"
+                        />
+                      </div>
+                    ) : (
+                      <>
+                        <div className="aspect-video bg-secondary rounded-lg overflow-hidden relative">
+                          <img src={`https://img.youtube.com/vi/${videoId}/hqdefault.jpg`} alt={v.title} className="w-full h-full object-cover" />
+                          <div className="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-60" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+                              <Play className="w-7 h-7 text-primary-foreground ml-1" />
+                            </div>
+                          </div>
+                        </div>
+                        <p className="text-center mt-3 font-medium text-sm text-foreground">{v.title}</p>
+                      </>
+                    )}
                   </div>
-                </div>
-                <p className="text-center mt-3 font-medium text-sm text-foreground">{title}</p>
-              </div>
-            ))}
+                );
+              })}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ) : (
+        <section className="bg-background pb-16">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {['Community Summit 2025', 'Mentorship Program', 'Youth Leadership'].map((title) => (
+                <div key={title} className="relative group cursor-pointer">
+                  <div className="aspect-video bg-secondary rounded-lg overflow-hidden flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-60" />
+                    <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
+                      <Play className="w-7 h-7 text-primary-foreground ml-1" />
+                    </div>
+                  </div>
+                  <p className="text-center mt-3 font-medium text-sm text-foreground">{title}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Action Strip — Horizontal bar with icons like Jana Sena */}
       <section className="bg-primary">

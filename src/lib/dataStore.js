@@ -83,3 +83,48 @@ export const saveDonation = async (donation) => {
 export const deleteDonation = async (id) => {
   await deleteDoc(doc(db, 'donations', id));
 };
+
+// ---- Events ----
+export const getEvents = () => fetchCollection('events');
+
+export const saveEvent = async (event) => {
+  if (event.id) {
+    const docRef = doc(db, 'events', event.id);
+    const { id, ...data } = event;
+    await updateDoc(docRef, data);
+  } else {
+    await addDoc(collection(db, 'events'), { ...event, createdAt: serverTimestamp() });
+  }
+};
+
+export const deleteEvent = async (id) => {
+  await deleteDoc(doc(db, 'events', id));
+};
+
+// ---- YouTube Videos ----
+export const getVideos = () => fetchCollection('videos');
+
+export const saveVideo = async (video) => {
+  if (video.id) {
+    const docRef = doc(db, 'videos', video.id);
+    const { id, ...data } = video;
+    await updateDoc(docRef, data);
+  } else {
+    await addDoc(collection(db, 'videos'), { ...video, createdAt: serverTimestamp() });
+  }
+};
+
+export const deleteVideo = async (id) => {
+  await deleteDoc(doc(db, 'videos', id));
+};
+
+// ---- Page-specific queries ----
+export const getMembersByPage = async (pageName) => {
+  const snap = await getDocs(query(collection(db, 'members'), where('displayPages', 'array-contains', pageName)));
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+};
+
+export const getVideosByPage = async (pageName) => {
+  const snap = await getDocs(query(collection(db, 'videos'), where('displayPages', 'array-contains', pageName)));
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
+};

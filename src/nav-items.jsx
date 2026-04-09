@@ -1,4 +1,4 @@
-import { Home, Users, Calendar, Handshake, Newspaper, Image, Trophy, Phone, UserPlus, LogIn, ShieldCheck, FileText, Heart, IndianRupee } from "lucide-react";
+import { Home, Users, Calendar, Handshake, Newspaper, Image, Trophy, Phone, UserPlus, LogIn, ShieldCheck, FileText, Heart, IndianRupee, Youtube } from "lucide-react";
 import Index from "./pages/Index.jsx";
 import About from "./pages/About.jsx";
 import Directory from "./pages/Directory.jsx";
@@ -19,6 +19,8 @@ import AdminMembers from "./pages/admin/AdminMembers.jsx";
 import AdminBlogs from "./pages/admin/AdminBlogs.jsx";
 import AdminGallery from "./pages/admin/AdminGallery.jsx";
 import AdminDonations from "./pages/admin/AdminDonations.jsx";
+import AdminEvents from "./pages/admin/AdminEvents.jsx";
+import AdminVideos from "./pages/admin/AdminVideos.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },
@@ -38,7 +40,9 @@ export const navItems = [
   { title: "Admin Login", to: "/admin-login", icon: <ShieldCheck className="h-4 w-4" />, page: <AdminLogin /> },
   { title: "Admin", to: "/admin", icon: <ShieldCheck className="h-4 w-4" />, page: <AdminDashboard /> },
   { title: "Admin Members", to: "/admin/members", icon: <Users className="h-4 w-4" />, page: <AdminMembers /> },
+  { title: "Admin Events", to: "/admin/events", icon: <Calendar className="h-4 w-4" />, page: <AdminEvents /> },
   { title: "Admin Blogs", to: "/admin/blogs", icon: <Newspaper className="h-4 w-4" />, page: <AdminBlogs /> },
   { title: "Admin Gallery", to: "/admin/gallery", icon: <Image className="h-4 w-4" />, page: <AdminGallery /> },
+  { title: "Admin Videos", to: "/admin/videos", icon: <Youtube className="h-4 w-4" />, page: <AdminVideos /> },
   { title: "Admin Donations", to: "/admin/donations", icon: <IndianRupee className="h-4 w-4" />, page: <AdminDonations /> },
 ];

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import riseLogo from '@/assets/rise-logo.png';
 import { Users, Newspaper, Image, LayoutDashboard, LogOut, IndianRupee, Calendar, Youtube, UserPlus, Handshake, Award } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
@@ -48,9 +49,12 @@ const AdminLayout = ({ children, title }) => {
     <div className="min-h-screen bg-muted flex">
       {/* Sidebar */}
       <aside className="w-64 bg-secondary text-secondary-foreground flex flex-col shrink-0 hidden md:flex">
-        <div className="p-6 border-b border-border/20">
-          <h2 className="font-heading font-bold text-lg text-primary">RISE Admin</h2>
-          <p className="text-xs text-secondary-foreground/60 mt-1">Management Panel</p>
+        <div className="p-6 border-b border-border/20 flex items-center gap-3">
+          <img src={riseLogo} alt="RISE Logo" className="w-10 h-10 object-contain" />
+          <div>
+            <h2 className="font-heading font-bold text-lg text-primary">RISE Admin</h2>
+            <p className="text-xs text-secondary-foreground/60">Management Panel</p>
+          </div>
         </div>
         <nav className="flex-1 p-4 space-y-1">
           {sidebarItems.map((item) => {

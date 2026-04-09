@@ -168,7 +168,6 @@ const EventDetail = () => {
                     <div className="flex items-center gap-2">
                       <MapPin className="w-4 h-4 text-primary shrink-0" />
                       <div>
-                        <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Venue</p>
                         <p className="text-sm font-medium">{event.venue}</p>
                         <button onClick={openInMaps} className="text-xs text-primary hover:underline">
                           View location on map

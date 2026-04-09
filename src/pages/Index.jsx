@@ -15,7 +15,7 @@ const Index = () => {
   const [homeVideos, setHomeVideos] = useState([]);
   const [playingVideoId, setPlayingVideoId] = useState(null);
   const [leaders, setLeaders] = useState([]);
-  const leadersRef = useRef(null);
+  
 
   useEffect(() => {
     const load = async () => {

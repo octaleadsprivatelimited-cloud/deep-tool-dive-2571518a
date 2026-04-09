@@ -157,7 +157,9 @@ const AdminEvents = () => {
                     <TableCell className="text-muted-foreground">{event.date}</TableCell>
                     <TableCell className="hidden text-muted-foreground md:table-cell">{event.venue}</TableCell>
                     <TableCell>
-                      <Badge variant={event.type === 'upcoming' ? 'default' : 'secondary'}>{event.type || 'upcoming'}</Badge>
+                      <Badge variant={event.type === 'upcoming' ? 'default' : event.type === 'ongoing' ? 'default' : event.type === 'cancelled' ? 'destructive' : 'secondary'}>
+                        {event.type || 'upcoming'}
+                      </Badge>
                     </TableCell>
                     <TableCell className="text-right">
                       <div className="flex items-center justify-end gap-1">
@@ -280,14 +282,16 @@ const AdminEvents = () => {
             </div>
 
             <div className="space-y-2">
-              <Label>Type</Label>
+              <Label>Status</Label>
               <select
                 value={form.type}
                 onChange={(e) => setForm((current) => ({ ...current, type: e.target.value }))}
                 className="w-full rounded-md border border-border bg-background px-3 py-2 text-foreground"
               >
                 <option value="upcoming">Upcoming</option>
-                <option value="past">Past</option>
+                <option value="ongoing">Ongoing</option>
+                <option value="completed">Completed</option>
+                <option value="cancelled">Cancelled</option>
               </select>
             </div>
 

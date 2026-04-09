@@ -76,6 +76,7 @@ const Register = () => {
         email: data.email,
         phone: data.phone,
         showContactPublicly: data.showContactPublicly,
+        showImagePublicly: data.showImagePublicly,
         address: data.address,
         dateOfBirth: data.dateOfBirth.toISOString(),
         nativePlace: data.nativePlace,

@@ -46,8 +46,7 @@ const Register = () => {
     defaultValues: {
       surname: '', name: '', phone: '', showContactPublicly: false, showImagePublicly: true,
       email: '', address: '', nativePlace: '',
-      educationQualification: '', profession: '',
-      workingOrganisation: '', workingPlace: '',
+      profession: '', company: '',
       linkedin: '', instagram: '', facebook: '',
     },
   });

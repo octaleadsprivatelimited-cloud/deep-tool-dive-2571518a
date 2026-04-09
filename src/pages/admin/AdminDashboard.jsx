@@ -15,7 +15,9 @@ const AdminDashboard = () => {
     { label: 'Total Members', value: 0, icon: Users, color: 'text-primary' },
     { label: 'Pending Registrations', value: 0, icon: UserPlus, color: 'text-orange-500' },
     { label: 'Highlighted', value: 0, icon: Star, color: 'text-accent' },
-    { label: 'Events', value: 0, icon: Calendar, color: 'text-primary' },
+    { label: 'Upcoming Events', value: 0, icon: Calendar, color: 'text-primary' },
+    { label: 'Ongoing Events', value: 0, icon: Calendar, color: 'text-green-500' },
+    { label: 'Completed Events', value: 0, icon: Calendar, color: 'text-muted-foreground' },
     { label: 'Blog Posts', value: 0, icon: Newspaper, color: 'text-primary' },
     { label: 'Gallery Images', value: 0, icon: Image, color: 'text-accent' },
     { label: 'Videos', value: 0, icon: Youtube, color: 'text-primary' },
@@ -33,11 +35,16 @@ const AdminDashboard = () => {
         getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(), getDonations(), getEvents(), getVideos(),
       ]);
       const pending = members.filter((m) => !m.status || m.status === 'pending');
+      const upcomingEvents = events.filter((e) => e.type === 'upcoming');
+      const ongoingEvents = events.filter((e) => e.type === 'ongoing');
+      const completedEvents = events.filter((e) => e.type === 'completed' || e.type === 'past');
       setStats([
         { label: 'Total Members', value: members.length, icon: Users, color: 'text-primary' },
         { label: 'Pending Registrations', value: pending.length, icon: UserPlus, color: 'text-orange-500' },
         { label: 'Highlighted', value: highlighted.length, icon: Star, color: 'text-accent' },
-        { label: 'Events', value: events.length, icon: Calendar, color: 'text-primary' },
+        { label: 'Upcoming Events', value: upcomingEvents.length, icon: Calendar, color: 'text-primary' },
+        { label: 'Ongoing Events', value: ongoingEvents.length, icon: Calendar, color: 'text-green-500' },
+        { label: 'Completed Events', value: completedEvents.length, icon: Calendar, color: 'text-muted-foreground' },
         { label: 'Blog Posts', value: blogs.length, icon: Newspaper, color: 'text-primary' },
         { label: 'Gallery Images', value: gallery.length, icon: Image, color: 'text-accent' },
         { label: 'Videos', value: videos.length, icon: Youtube, color: 'text-primary' },

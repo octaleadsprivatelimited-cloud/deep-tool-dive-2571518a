@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import riseLogo from '@/assets/rise-logo.png';
-import { Users, Newspaper, Image, LayoutDashboard, LogOut, IndianRupee, Calendar, Youtube, UserPlus, Handshake, Award } from 'lucide-react';
+import { Users, Newspaper, Image, LayoutDashboard, LogOut, IndianRupee, Calendar, Youtube, UserPlus, Handshake, Award, BookOpen } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
@@ -16,6 +16,7 @@ const sidebarItems = [
   { label: 'Blogs', icon: Newspaper, href: '/admin/blogs' },
   { label: 'Gallery', icon: Image, href: '/admin/gallery' },
   { label: 'Videos', icon: Youtube, href: '/admin/videos' },
+  { label: 'Library', icon: BookOpen, href: '/admin/library' },
   { label: 'Donations', icon: IndianRupee, href: '/admin/donations' },
 ];
 

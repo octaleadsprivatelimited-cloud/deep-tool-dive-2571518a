@@ -205,6 +205,9 @@ const Register = () => {
                           selected={field.value}
                           onSelect={field.onChange}
                           disabled={(date) => date > new Date() || date < new Date('1900-01-01')}
+                          captionLayout="dropdown-buttons"
+                          fromYear={1940}
+                          toYear={new Date().getFullYear()}
                           initialFocus
                           className={cn("p-3 pointer-events-auto")}
                         />

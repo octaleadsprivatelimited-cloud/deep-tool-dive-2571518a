@@ -12,8 +12,6 @@ import { saveDonation } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
 const donationAreas = [
-  { icon: GraduationCap, title: 'Education', desc: 'Support scholarships and educational programs for underprivileged youth in our community.' },
-  { icon: Stethoscope, title: 'Healthcare', desc: 'Fund medical camps, health awareness drives, and emergency medical support.' },
   { icon: Users, title: 'Community Development', desc: 'Help build community centers, organize events, and empower local leaders.' },
   { icon: HomeIcon, title: 'Rural Upliftment', desc: 'Contribute to infrastructure, skill development, and livelihood programs in rural areas.' },
 ];
@@ -106,7 +104,7 @@ const Donate = () => {
           </h1>
           <div className="w-24 h-1.5 bg-primary mx-auto mb-6" />
           <p className="text-secondary-foreground/70 text-lg max-w-2xl mx-auto leading-relaxed">
-            Your generous contribution empowers our community through education, healthcare, and development programs. Every rupee makes a difference.
+            Your generous contribution empowers our community through development and upliftment programs. Every rupee makes a difference.
           </p>
         </div>
       </section>

@@ -24,6 +24,7 @@ import AdminEvents from "./pages/admin/AdminEvents.jsx";
 import AdminVideos from "./pages/admin/AdminVideos.jsx";
 import AdminRegistrations from "./pages/admin/AdminRegistrations.jsx";
 import AdminMentorship from "./pages/admin/AdminMentorship.jsx";
+import AdminHallOfFame from "./pages/admin/AdminHallOfFame.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },
@@ -51,4 +52,5 @@ export const navItems = [
   { title: "Admin Videos", to: "/admin/videos", icon: <Youtube className="h-4 w-4" />, page: <AdminVideos /> },
   { title: "Admin Donations", to: "/admin/donations", icon: <IndianRupee className="h-4 w-4" />, page: <AdminDonations /> },
   { title: "Admin Mentorship", to: "/admin/mentorship", icon: <Handshake className="h-4 w-4" />, page: <AdminMentorship /> },
+  { title: "Admin Hall of Fame", to: "/admin/hall-of-fame", icon: <Trophy className="h-4 w-4" />, page: <AdminHallOfFame /> },
 ];

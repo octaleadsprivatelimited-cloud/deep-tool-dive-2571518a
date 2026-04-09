@@ -9,18 +9,23 @@ import { Trash2, Plus, ImageIcon } from 'lucide-react';
 import { getGalleryImages, saveGalleryImage, deleteGalleryImage } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
-const compressImage = (base64, maxWidth = 1200) =>
-  new Promise((resolve) => {
+const compressImage = (base64, maxWidth = 800) =>
+  new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => {
-      const canvas = document.createElement('canvas');
-      const ratio = Math.min(maxWidth / img.width, 1);
-      canvas.width = img.width * ratio;
-      canvas.height = img.height * ratio;
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-      resolve(canvas.toDataURL('image/jpeg', 0.7));
+      try {
+        const canvas = document.createElement('canvas');
+        const ratio = Math.min(maxWidth / img.width, 1);
+        canvas.width = img.width * ratio;
+        canvas.height = img.height * ratio;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', 0.5));
+      } catch (err) {
+        reject(err);
+      }
     };
+    img.onerror = () => reject(new Error('Failed to load image'));
     img.src = base64;
   });
 

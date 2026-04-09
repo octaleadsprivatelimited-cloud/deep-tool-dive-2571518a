@@ -78,8 +78,8 @@ const EventDetail = () => {
       {/* Hero Banner */}
       <section className="pt-24 pb-0">
         {event.image ? (
-          <div className="w-full h-48 md:h-72 relative overflow-hidden">
-            <img src={event.image} alt={event.title} className="w-full h-full object-cover object-center" />
+          <div className="w-full relative overflow-hidden">
+            <img src={event.image} alt={event.title} className="w-full h-auto object-contain" />
             <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-background/80 backdrop-blur-sm">
               <div className="container mx-auto flex items-center gap-3">
                 <Badge className={isActive ? 'bg-primary text-primary-foreground' : 'bg-muted text-muted-foreground'}>

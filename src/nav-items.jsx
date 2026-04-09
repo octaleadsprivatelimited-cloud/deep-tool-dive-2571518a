@@ -25,6 +25,7 @@ import AdminVideos from "./pages/admin/AdminVideos.jsx";
 import AdminRegistrations from "./pages/admin/AdminRegistrations.jsx";
 import AdminMentorship from "./pages/admin/AdminMentorship.jsx";
 import AdminHallOfFame from "./pages/admin/AdminHallOfFame.jsx";
+import EventDetail from "./pages/EventDetail.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },
@@ -32,6 +33,7 @@ export const navItems = [
   { title: "Directory", to: "/directory", icon: <Users className="h-4 w-4" />, page: <Directory /> },
   { title: "Register", to: "/register", icon: <UserPlus className="h-4 w-4" />, page: <Register /> },
   { title: "Events", to: "/events", icon: <Calendar className="h-4 w-4" />, page: <Events /> },
+  { title: "Event Detail", to: "/events/:id", icon: <Calendar className="h-4 w-4" />, page: <EventDetail /> },
   { title: "Mentorship", to: "/mentorship", icon: <Handshake className="h-4 w-4" />, page: <Mentorship /> },
   { title: "Blog", to: "/blog", icon: <Newspaper className="h-4 w-4" />, page: <Blog /> },
   { title: "Blog Post", to: "/blog/:id", icon: <Newspaper className="h-4 w-4" />, page: <BlogPost /> },

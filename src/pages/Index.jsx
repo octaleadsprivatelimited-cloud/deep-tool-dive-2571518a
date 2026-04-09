@@ -37,10 +37,10 @@ const Index = () => {
   }, []);
 
   const highlights = [
-    { icon: Users, title: 'Networking', desc: 'Connect with professionals across industries and regions.' },
-    { icon: Handshake, title: 'Mentorship', desc: 'Get guidance from experienced leaders and mentors.' },
-    { icon: Calendar, title: 'Events', desc: 'Attend exclusive community events, summits, and workshops.' },
-    { icon: TrendingUp, title: 'Growth', desc: 'Unlock career and business opportunities within the community.' },
+    { icon: Users, title: 'Networking', desc: 'Connect with professionals across industries and regions.', href: '/directory' },
+    { icon: Handshake, title: 'Mentorship', desc: 'Get guidance from experienced leaders and mentors.', href: '/mentorship' },
+    { icon: Calendar, title: 'Events', desc: 'Attend exclusive community events, summits, and workshops.', href: '/events' },
+    { icon: TrendingUp, title: 'Growth', desc: 'Unlock career and business opportunities within the community.', href: '/achievements' },
   ];
 
   const extractVideoId = (url) => {
@@ -173,8 +173,9 @@ const Index = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 border border-border rounded-xl overflow-hidden">
             {highlights.map((h, i) => (
-              <div
+              <a
                 key={h.title}
+                href={h.href}
                 className={`p-8 text-center hover:bg-primary hover:text-primary-foreground transition-all duration-300 group cursor-pointer ${
                   i < 3 ? 'border-r border-border' : ''
                 }`}
@@ -184,7 +185,7 @@ const Index = () => {
                 </div>
                 <h3 className="font-heading font-bold uppercase text-sm mb-2">{h.title}</h3>
                 <p className="text-muted-foreground group-hover:text-primary-foreground/70 text-xs leading-relaxed transition-colors">{h.desc}</p>
-              </div>
+              </a>
             ))}
           </div>
         </div>

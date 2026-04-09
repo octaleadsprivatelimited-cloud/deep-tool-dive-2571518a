@@ -203,11 +203,11 @@ const Index = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
               {featuredMembers.map((m) => (
                 <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
-                  <div className="h-48 bg-secondary flex items-center justify-center">
+                  <div className="h-48 bg-secondary overflow-hidden">
                     {m.image ? (
-                      <img src={m.image} alt={m.name} className="w-24 h-24 rounded-full object-cover border-4 border-primary/30 group-hover:border-primary transition-colors" />
+                      <img src={m.image} alt={m.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform" />
                     ) : (
-                      <div className="w-24 h-24 rounded-full bg-primary/20 border-4 border-primary/30 flex items-center justify-center text-3xl font-heading font-bold text-primary group-hover:border-primary transition-colors">
+                      <div className="w-full h-full bg-primary/20 flex items-center justify-center text-3xl font-heading font-bold text-primary">
                         {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
                       </div>
                     )}

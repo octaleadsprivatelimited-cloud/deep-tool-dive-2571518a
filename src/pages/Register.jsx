@@ -24,6 +24,7 @@ const registerSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100),
   phone: z.string().regex(/^[+]?[\d\s-]{10,15}$/, 'Invalid phone number'),
   showContactPublicly: z.boolean().default(false),
+  showImagePublicly: z.boolean().default(false),
   email: z.string().email('Invalid email address').max(255),
   address: z.string().max(300).optional(),
   dateOfBirth: z.date({ required_error: 'Date of birth is required' }),
@@ -44,7 +45,7 @@ const Register = () => {
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      surname: '', name: '', phone: '', showContactPublicly: false,
+      surname: '', name: '', phone: '', showContactPublicly: false, showImagePublicly: false,
       email: '', address: '', nativePlace: '',
       educationQualification: '', profession: '',
       workingOrganisation: '', workingPlace: '',

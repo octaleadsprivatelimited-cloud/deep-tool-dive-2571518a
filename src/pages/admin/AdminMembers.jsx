@@ -174,6 +174,30 @@ const AdminMembers = () => {
               <Input type="file" accept="image/*" onChange={handleImageChange} />
               {form.image && <img src={form.image} alt="Preview" className="w-16 h-16 rounded-full object-cover mt-2" />}
             </div>
+            <div className="space-y-2">
+              <Label>Display on Pages</Label>
+              <div className="flex flex-wrap gap-2">
+                {PAGE_OPTIONS.map((page) => (
+                  <button
+                    key={page}
+                    type="button"
+                    onClick={() => setForm((f) => ({
+                      ...f,
+                      displayPages: f.displayPages?.includes(page)
+                        ? f.displayPages.filter((p) => p !== page)
+                        : [...(f.displayPages || []), page],
+                    }))}
+                    className={`px-3 py-1.5 rounded-full text-xs font-medium border transition-colors ${
+                      form.displayPages?.includes(page)
+                        ? 'bg-primary text-primary-foreground border-primary'
+                        : 'bg-muted text-muted-foreground border-border hover:border-primary'
+                    }`}
+                  >
+                    {page}
+                  </button>
+                ))}
+              </div>
+            </div>
             <div className="flex items-center gap-2">
               <input type="checkbox" id="highlighted" checked={form.highlighted || false} onChange={(e) => setForm((f) => ({ ...f, highlighted: e.target.checked }))} />
               <Label htmlFor="highlighted" className="cursor-pointer">Show on homepage (highlighted)</Label>

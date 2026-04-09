@@ -151,6 +151,8 @@ const Events = () => {
                   </div>
                 </>
               )}
+            </>
+          )}
         </div>
       </section>
 

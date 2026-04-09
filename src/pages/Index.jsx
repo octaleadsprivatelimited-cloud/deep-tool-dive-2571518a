@@ -11,9 +11,13 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 
 const Index = () => {
   const [featuredMembers, setFeaturedMembers] = useState([]);
+  const [upcomingEvents, setUpcomingEvents] = useState([]);
+  const [homeVideos, setHomeVideos] = useState([]);
+  const [playingVideoId, setPlayingVideoId] = useState(null);
 
   useEffect(() => {
     const load = async () => {
+      // Load highlighted members
       const highlighted = await getHighlightedMembers();
       if (highlighted.length > 0) {
         setFeaturedMembers(highlighted.map((m) => ({ name: m.fullName || m.name, profession: m.profession, location: m.location || m.workingPlace, image: m.image || m.photo })));
@@ -25,6 +29,33 @@ const Index = () => {
           { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
         ]);
       }
+
+      // Load upcoming events
+      try {
+        const events = await getEvents();
+        const upcoming = events.filter((e) => e.type === 'upcoming').slice(0, 3);
+        if (upcoming.length > 0) {
+          setUpcomingEvents(upcoming.map((e) => ({ title: e.title, date: e.date, location: e.venue || 'TBA' })));
+        } else {
+          setUpcomingEvents([
+            { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
+            { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
+            { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
+          ]);
+        }
+      } catch {
+        setUpcomingEvents([
+          { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
+          { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
+          { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
+        ]);
+      }
+
+      // Load home videos
+      try {
+        const vids = await getVideosByPage('Home');
+        setHomeVideos(vids.sort((a, b) => (a.order || 0) - (b.order || 0)));
+      } catch {}
     };
     load();
   }, []);

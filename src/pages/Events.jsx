@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Calendar, MapPin, Clock, Users as UsersIcon, ExternalLink } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -56,7 +57,8 @@ const Events = () => {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
                   {upcoming.map((e) => (
-                    <Card key={e.id} className="border-border hover:border-primary transition-all hover:shadow-lg hover:scale-[1.02] overflow-hidden">
+                    <Link to={`/events/${e.id}`} key={e.id}>
+                    <Card className="border-border hover:border-primary transition-all hover:shadow-lg hover:scale-[1.02] overflow-hidden cursor-pointer">
                       {e.image && (
                         <img src={e.image} alt={e.title} className="w-full h-40 object-cover" />
                       )}
@@ -81,6 +83,7 @@ const Events = () => {
                         )}
                       </CardContent>
                     </Card>
+                    </Link>
                   ))}
                 </div>
               )}
@@ -91,7 +94,8 @@ const Events = () => {
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                   {past.map((e) => (
-                    <Card key={e.id} className="border-border opacity-75 overflow-hidden">
+                    <Link to={`/events/${e.id}`} key={e.id}>
+                    <Card className="border-border opacity-75 overflow-hidden hover:opacity-100 transition-all cursor-pointer">
                       {e.image && (
                         <img src={e.image} alt={e.title} className="w-full h-40 object-cover grayscale" />
                       )}
@@ -105,6 +109,7 @@ const Events = () => {
                         </div>
                       </CardContent>
                     </Card>
+                    </Link>
                   ))}
                 </div>
               )}

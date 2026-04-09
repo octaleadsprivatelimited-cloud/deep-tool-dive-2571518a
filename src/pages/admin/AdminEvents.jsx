@@ -22,6 +22,7 @@ const emptyEvent = {
   image: '',
   registrationLink: '',
   speakers: '',
+  category: '',
   type: 'upcoming',
 };
 
@@ -222,6 +223,15 @@ const AdminEvents = () => {
                 value={form.speakers}
                 onChange={(e) => setForm((current) => ({ ...current, speakers: e.target.value }))}
                 placeholder="Speaker 1, Speaker 2"
+              />
+            </div>
+
+            <div className="space-y-2">
+              <Label>Category</Label>
+              <Input
+                value={form.category}
+                onChange={(e) => setForm((current) => ({ ...current, category: e.target.value }))}
+                placeholder="e.g. Summit, Workshop, Webinar"
               />
             </div>
 

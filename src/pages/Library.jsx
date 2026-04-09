@@ -29,7 +29,7 @@ const Library = () => {
     <div className="min-h-screen bg-background">
       <Header />
 
-      <section className="py-16 bg-gradient-to-br from-primary/10 to-accent/10">
+      <section className="pt-32 pb-16 bg-gradient-to-br from-primary/10 to-accent/10">
         <div className="container mx-auto px-4 text-center">
           <BookOpen className="w-12 h-12 text-primary mx-auto mb-4" />
           <h1 className="text-4xl font-heading font-bold text-foreground mb-4">Library</h1>

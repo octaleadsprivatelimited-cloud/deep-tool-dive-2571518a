@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar } from 'lucide-react';
+import { Calendar, User } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Header from '@/components/Header';
@@ -8,10 +8,12 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import YouTubeSection from '@/components/YouTubeSection';
 import PageMembersSection from '@/components/PageMembersSection';
 import { getBlogs } from '@/lib/dataStore';
+import { useNavigate } from 'react-router-dom';
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const load = async () => {
@@ -49,15 +51,28 @@ const Blog = () => {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {posts.map((p) => (
-                <Card key={p.id} className="border-border hover:border-primary transition-all hover:shadow-lg hover:scale-[1.01] cursor-pointer">
+                <Card
+                  key={p.id}
+                  className="border-border hover:border-primary transition-all hover:shadow-lg hover:scale-[1.01] cursor-pointer overflow-hidden"
+                  onClick={() => navigate(`/blog/${p.id}`)}
+                >
+                  {p.coverImage && (
+                    <img src={p.coverImage} alt={p.title} className="w-full h-48 object-cover" />
+                  )}
                   <CardContent className="p-6">
-                    <div className="flex items-center gap-3 mb-3">
+                    <div className="flex flex-wrap items-center gap-3 mb-3">
                       {p.category && <Badge className="bg-primary/10 text-primary border-none">{p.category}</Badge>}
                       {p.date && <span className="text-xs text-muted-foreground flex items-center gap-1"><Calendar className="w-3 h-3" /> {p.date}</span>}
+                      {p.author && <span className="text-xs text-muted-foreground flex items-center gap-1"><User className="w-3 h-3" /> {p.author}</span>}
                     </div>
                     <h3 className="font-heading font-bold text-xl mb-2">{p.title}</h3>
-                    {p.excerpt && <p className="text-muted-foreground text-sm">{p.excerpt}</p>}
-                    {p.content && !p.excerpt && <p className="text-muted-foreground text-sm line-clamp-3">{p.content}</p>}
+                    {p.excerpt && <p className="text-muted-foreground text-sm line-clamp-2">{p.excerpt}</p>}
+                    {!p.excerpt && p.contentBlocks?.[0]?.type === 'text' && (
+                      <p className="text-muted-foreground text-sm line-clamp-2">{p.contentBlocks[0].value}</p>
+                    )}
+                    {!p.excerpt && !p.contentBlocks?.length && p.content && (
+                      <p className="text-muted-foreground text-sm line-clamp-2">{p.content}</p>
+                    )}
                   </CardContent>
                 </Card>
               ))}

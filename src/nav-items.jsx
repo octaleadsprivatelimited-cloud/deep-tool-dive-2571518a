@@ -6,6 +6,7 @@ import Register from "./pages/Register.jsx";
 import Events from "./pages/Events.jsx";
 import Mentorship from "./pages/Mentorship.jsx";
 import Blog from "./pages/Blog.jsx";
+import BlogPost from "./pages/BlogPost.jsx";
 import Gallery from "./pages/Gallery.jsx";
 import Achievements from "./pages/Achievements.jsx";
 import Contact from "./pages/Contact.jsx";

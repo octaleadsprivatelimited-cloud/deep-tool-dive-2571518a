@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { uploadFile, saveDonation } from '@/lib/dataStore';
+import { saveDonation } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
 const donationAreas = [
@@ -59,13 +59,20 @@ const Donate = () => {
 
     setLoading(true);
     try {
-      const screenshotUrl = await uploadFile(screenshot, `donations/${Date.now()}_${screenshot.name}`);
+      // Convert screenshot to base64
+      const base64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result);
+        reader.onerror = reject;
+        reader.readAsDataURL(screenshot);
+      });
+
       await saveDonation({
         name,
         mobile,
         amount: amount || 'Not specified',
         message: form.message.trim(),
-        screenshotUrl,
+        screenshotBase64: base64,
       });
       setSubmitted(true);
       toast.success('Thank you! Your donation details have been submitted.');

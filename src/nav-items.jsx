@@ -32,6 +32,7 @@ export const navItems = [
   { title: "Events", to: "/events", icon: <Calendar className="h-4 w-4" />, page: <Events /> },
   { title: "Mentorship", to: "/mentorship", icon: <Handshake className="h-4 w-4" />, page: <Mentorship /> },
   { title: "Blog", to: "/blog", icon: <Newspaper className="h-4 w-4" />, page: <Blog /> },
+  { title: "Blog Post", to: "/blog/:id", icon: <Newspaper className="h-4 w-4" />, page: <BlogPost /> },
   { title: "Gallery", to: "/gallery", icon: <Image className="h-4 w-4" />, page: <Gallery /> },
   { title: "Achievements", to: "/achievements", icon: <Trophy className="h-4 w-4" />, page: <Achievements /> },
   { title: "Contact", to: "/contact", icon: <Phone className="h-4 w-4" />, page: <Contact /> },

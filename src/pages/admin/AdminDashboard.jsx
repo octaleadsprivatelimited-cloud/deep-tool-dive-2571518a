@@ -29,14 +29,18 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const load = async () => {
-      const [members, highlighted, blogs, gallery, donations] = await Promise.all([
-        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(), getDonations(),
+      const [members, highlighted, blogs, gallery, donations, events, videos] = await Promise.all([
+        getMembers(), getHighlightedMembers(), getBlogs(), getGalleryImages(), getDonations(), getEvents(), getVideos(),
       ]);
+      const pending = members.filter((m) => !m.status || m.status === 'pending');
       setStats([
         { label: 'Total Members', value: members.length, icon: Users, color: 'text-primary' },
+        { label: 'Pending Registrations', value: pending.length, icon: UserPlus, color: 'text-orange-500' },
         { label: 'Highlighted', value: highlighted.length, icon: Star, color: 'text-accent' },
+        { label: 'Events', value: events.length, icon: Calendar, color: 'text-primary' },
         { label: 'Blog Posts', value: blogs.length, icon: Newspaper, color: 'text-primary' },
         { label: 'Gallery Images', value: gallery.length, icon: Image, color: 'text-accent' },
+        { label: 'Videos', value: videos.length, icon: Youtube, color: 'text-primary' },
         { label: 'Donations', value: donations.length, icon: IndianRupee, color: 'text-primary' },
       ]);
     };

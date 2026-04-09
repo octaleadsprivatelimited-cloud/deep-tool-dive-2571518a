@@ -10,7 +10,8 @@ import { Trash2, Pencil, Plus, Star, StarOff, Search } from 'lucide-react';
 import { getMembers, saveMember, deleteMember, uploadFile } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
-const emptyMember = { fullName: '', email: '', mobile: '', profession: '', location: '', image: '', highlighted: false };
+const PAGE_OPTIONS = ['Home', 'About', 'Events', 'Mentorship', 'Gallery', 'Achievements', 'Blog', 'Directory'];
+const emptyMember = { fullName: '', email: '', mobile: '', profession: '', location: '', image: '', highlighted: false, displayPages: [] };
 
 const AdminMembers = () => {
   const [members, setMembers] = useState([]);

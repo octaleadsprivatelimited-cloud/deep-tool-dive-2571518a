@@ -54,6 +54,21 @@ const AdminLibrary = () => {
     load();
   };
 
+  const handleImageUpload = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    try {
+      setUploading(true);
+      const base64 = await compressImageToFirestoreLimit(file);
+      setForm((prev) => ({ ...prev, thumbnail: base64 }));
+      toast.success('Image ready');
+    } catch (err) {
+      toast.error(err.message || 'Failed to process image');
+    } finally {
+      setUploading(false);
+    }
+  };
+
   return (
     <AdminLayout title="Library Management">
       <div className="grid lg:grid-cols-3 gap-6">
@@ -78,20 +93,23 @@ const AdminLibrary = () => {
                 <Input value={form.category} onChange={(e) => setForm({ ...form, category: e.target.value })} placeholder="e.g. Fiction, Science" />
               </div>
               <div>
-                <Label>Thumbnail URL *</Label>
-                <Input value={form.thumbnail} onChange={(e) => setForm({ ...form, thumbnail: e.target.value })} placeholder="Image URL for book cover" />
+                <Label>Thumbnail Image *</Label>
+                <div className="space-y-2">
+                  <Input type="file" accept="image/*" disabled={uploading} onChange={handleImageUpload} />
+                  {uploading && <p className="text-xs text-muted-foreground">Compressing...</p>}
+                  {form.thumbnail && (
+                    <div className="aspect-[3/4] w-24 rounded overflow-hidden border">
+                      <img src={form.thumbnail} alt="Preview" className="w-full h-full object-cover" />
+                    </div>
+                  )}
+                </div>
               </div>
               <div>
                 <Label>Google Drive Link *</Label>
                 <Input value={form.driveLink} onChange={(e) => setForm({ ...form, driveLink: e.target.value })} placeholder="https://drive.google.com/..." />
               </div>
-              {form.thumbnail && (
-                <div className="aspect-[3/4] w-24 rounded overflow-hidden border">
-                  <img src={form.thumbnail} alt="Preview" className="w-full h-full object-cover" />
-                </div>
-              )}
               <div className="flex gap-2">
-                <Button type="submit" className="flex-1">{form.id ? 'Update' : 'Add Book'}</Button>
+                <Button type="submit" className="flex-1" disabled={uploading}>{form.id ? 'Update' : 'Add Book'}</Button>
                 {editing && (
                   <Button type="button" variant="outline" onClick={() => { setForm(emptyForm); setEditing(false); }}>
                     <X className="w-4 h-4" />

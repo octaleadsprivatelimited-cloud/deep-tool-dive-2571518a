@@ -17,6 +17,7 @@ import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { toast } from 'sonner';
 import { saveMember } from '@/lib/dataStore';
+import { compressImageToFirestoreLimit } from '@/lib/imageCompression';
 
 const registerSchema = z.object({
   surname: z.string().min(1, 'Surname is required').max(100),
@@ -51,17 +52,15 @@ const Register = () => {
     },
   });
 
-  const handlePhotoChange = (e) => {
+  const handlePhotoChange = async (e) => {
     const file = e.target.files?.[0];
-    if (file) {
-      if (file.size > 5 * 1024 * 1024) {
-        toast.error('Photo must be under 5MB');
-        return;
-      }
+    if (!file) return;
+    try {
+      const compressed = await compressImageToFirestoreLimit(file);
       setProfilePhoto(file);
-      const reader = new FileReader();
-      reader.onloadend = () => setPhotoPreview(reader.result);
-      reader.readAsDataURL(file);
+      setPhotoPreview(compressed);
+    } catch (err) {
+      toast.error(err.message || 'Failed to process photo');
     }
   };
 

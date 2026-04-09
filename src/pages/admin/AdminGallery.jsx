@@ -169,7 +169,6 @@ const AdminGallery = () => {
                 </button>
               )}
             </div>
-            </div>
             <div className="space-y-2">
               <Label>Caption (optional)</Label>
               <Input value={form.title} onChange={(e) => setForm((f) => ({ ...f, title: e.target.value }))} placeholder="Image description..." />

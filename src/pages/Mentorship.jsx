@@ -1,16 +1,12 @@
 import React from 'react';
-import { Users, Handshake, GraduationCap } from 'lucide-react';
+import { Handshake, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-
-const mentors = [
-  { name: 'Dr. Suresh Babu', expertise: 'Healthcare Leadership', experience: '25+ years' },
-  { name: 'Kavitha Naidu', expertise: 'Tech Entrepreneurship', experience: '15+ years' },
-  { name: 'Rajendra Prasad', expertise: 'Education & Social Impact', experience: '20+ years' },
-];
+import YouTubeSection from '@/components/YouTubeSection';
+import PageMembersSection from '@/components/PageMembersSection';
 
 const Mentorship = () => (
   <div className="min-h-screen bg-background text-foreground">
@@ -28,22 +24,6 @@ const Mentorship = () => (
 
     <section className="py-16 bg-background">
       <div className="container mx-auto px-4">
-        <h2 className="text-2xl font-heading font-bold uppercase mb-8 text-center">Our Mentors</h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-          {mentors.map((m) => (
-            <Card key={m.name} className="border-border hover:border-primary transition-all hover:shadow-lg hover:scale-[1.02]">
-              <CardContent className="p-6 text-center">
-                <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-xl font-heading font-bold text-primary">
-                  {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                </div>
-                <h3 className="font-heading font-bold text-lg mb-1">{m.name}</h3>
-                <p className="text-primary text-sm font-medium mb-1">{m.expertise}</p>
-                <p className="text-muted-foreground text-sm">{m.experience}</p>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-3xl mx-auto">
           <Card className="border-primary/20 bg-primary/5">
             <CardContent className="p-8 text-center">
@@ -64,6 +44,9 @@ const Mentorship = () => (
         </div>
       </div>
     </section>
+
+    <PageMembersSection pageName="Mentorship" title="Our Mentor" />
+    <YouTubeSection pageName="Mentorship" title="Mentorship Stories" />
 
     <Footer />
     <WhatsAppButton />

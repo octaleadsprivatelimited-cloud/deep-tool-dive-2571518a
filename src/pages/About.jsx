@@ -4,6 +4,8 @@ import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
 import { Card, CardContent } from '@/components/ui/card';
+import YouTubeSection from '@/components/YouTubeSection';
+import PageMembersSection from '@/components/PageMembersSection';
 
 const About = () => {
   return (
@@ -66,6 +68,9 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      <YouTubeSection pageName="About" title="About RISE" />
+      <PageMembersSection pageName="About" title="Our" />
 
       <Footer />
       <WhatsAppButton />

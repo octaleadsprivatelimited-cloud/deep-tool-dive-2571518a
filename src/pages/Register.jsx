@@ -133,6 +133,14 @@ const Register = () => {
                   Upload Photo
                   <input type="file" accept="image/*" className="hidden" onChange={handlePhotoChange} />
                 </label>
+                <FormField control={form.control} name="showImagePublicly" render={({ field }) => (
+                  <FormItem className="flex items-center gap-3">
+                    <FormControl>
+                      <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel className="!mt-0 text-sm">Show my image publicly</FormLabel>
+                  </FormItem>
+                )} />
               </div>
 
               {/* Personal Info */}

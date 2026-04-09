@@ -28,6 +28,7 @@ const Header = ({ currentPage }) => {
     { name: 'Blog', href: '/blog' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Achievements', href: '/achievements' },
+    { name: 'Library', href: '/library' },
     { name: 'Contact', href: '/contact' },
     { name: 'Donate', href: '/donate' },
   ];

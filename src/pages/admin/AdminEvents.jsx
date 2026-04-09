@@ -12,6 +12,26 @@ import { Badge } from '@/components/ui/badge';
 import { getEvents, saveEvent, deleteEvent } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
+const compressImage = (base64, maxWidth = 800) =>
+  new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => {
+      try {
+        const canvas = document.createElement('canvas');
+        const ratio = Math.min(maxWidth / img.width, 1);
+        canvas.width = img.width * ratio;
+        canvas.height = img.height * ratio;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+        resolve(canvas.toDataURL('image/jpeg', 0.5));
+      } catch (err) {
+        reject(err);
+      }
+    };
+    img.onerror = () => reject(new Error('Failed to load image'));
+    img.src = base64;
+  });
+
 const emptyEvent = {
   title: '', date: '', time: '', venue: '', description: '', image: '',
   registrationLink: '', speakers: '', type: 'upcoming',
@@ -38,7 +58,14 @@ const AdminEvents = () => {
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = (ev) => setForm((f) => ({ ...f, image: ev.target.result }));
+    reader.onload = async (ev) => {
+      try {
+        const compressed = await compressImage(ev.target.result);
+        setForm((f) => ({ ...f, image: compressed }));
+      } catch (err) {
+        toast.error('Failed to process image');
+      }
+    };
     reader.readAsDataURL(file);
   };
 

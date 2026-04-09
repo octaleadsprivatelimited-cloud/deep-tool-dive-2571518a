@@ -13,9 +13,12 @@ import { toast } from 'sonner';
 const AdminDashboard = () => {
   const [stats, setStats] = useState([
     { label: 'Total Members', value: 0, icon: Users, color: 'text-primary' },
+    { label: 'Pending Registrations', value: 0, icon: UserPlus, color: 'text-orange-500' },
     { label: 'Highlighted', value: 0, icon: Star, color: 'text-accent' },
+    { label: 'Events', value: 0, icon: Calendar, color: 'text-primary' },
     { label: 'Blog Posts', value: 0, icon: Newspaper, color: 'text-primary' },
     { label: 'Gallery Images', value: 0, icon: Image, color: 'text-accent' },
+    { label: 'Videos', value: 0, icon: Youtube, color: 'text-primary' },
     { label: 'Donations', value: 0, icon: IndianRupee, color: 'text-primary' },
   ]);
 

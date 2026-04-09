@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { Users, Newspaper, Image, LayoutDashboard, LogOut, IndianRupee, Calendar, Youtube } from 'lucide-react';
+import { Users, Newspaper, Image, LayoutDashboard, LogOut, IndianRupee, Calendar, Youtube, UserPlus } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { onAuthStateChanged, signOut } from 'firebase/auth';
 import { auth } from '@/lib/firebase';
 
 const sidebarItems = [
   { label: 'Dashboard', icon: LayoutDashboard, href: '/admin' },
+  { label: 'Registrations', icon: UserPlus, href: '/admin/registrations' },
   { label: 'Members', icon: Users, href: '/admin/members' },
   { label: 'Events', icon: Calendar, href: '/admin/events' },
   { label: 'Blogs', icon: Newspaper, href: '/admin/blogs' },

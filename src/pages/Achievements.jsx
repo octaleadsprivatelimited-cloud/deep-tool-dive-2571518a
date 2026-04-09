@@ -43,41 +43,6 @@ const Achievements = () => {
         </div>
       </section>
 
-      {/* Leaders Gallery */}
-      {!loading && leaders.length > 0 && (
-        <section className="py-12 bg-muted">
-          <div className="container mx-auto px-4">
-            <div className="text-center mb-8">
-              <h2 className="text-xl md:text-2xl font-heading font-bold">
-                Our <span className="text-primary">Pride</span>
-              </h2>
-              <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
-            </div>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
-              {leaders.map((l) => (
-                <div key={l.id} className="group">
-                  <div className="aspect-[3/4] rounded-lg overflow-hidden border border-border bg-secondary">
-                    {l.image ? (
-                      <img src={l.image} alt={l.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
-                    ) : (
-                      <div className="w-full h-full bg-primary/10 flex items-center justify-center">
-                        <span className="text-4xl font-bold text-primary/30">{l.name?.charAt(0)}</span>
-                      </div>
-                    )}
-                  </div>
-                  <div className="mt-2 text-center">
-                    <h3 className="font-heading font-bold text-xs sm:text-sm truncate">{l.name}</h3>
-                    <p className="text-[10px] sm:text-xs text-muted-foreground">
-                      {l.yearFrom}{l.yearTo ? ` – ${l.yearTo}` : ''}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
-
       {/* Hall of Fame Gallery */}
       {!loading && hallOfFame.length > 0 && (
         <section className="py-16 bg-background">
@@ -110,6 +75,41 @@ const Achievements = () => {
                   <div className="mt-2 text-center">
                     <h3 className="font-heading font-bold text-xs sm:text-sm truncate">{m.fullName}</h3>
                     {m.title && <p className="text-[10px] sm:text-xs text-muted-foreground truncate">{m.title}</p>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
+      {/* Leaders Gallery - Our Pride */}
+      {!loading && leaders.length > 0 && (
+        <section className="py-12 bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-8">
+              <h2 className="text-xl md:text-2xl font-heading font-bold">
+                Our <span className="text-primary">Pride</span>
+              </h2>
+              <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
+            </div>
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
+              {leaders.map((l) => (
+                <div key={l.id} className="group">
+                  <div className="aspect-[3/4] rounded-lg overflow-hidden border border-border bg-secondary">
+                    {l.image ? (
+                      <img src={l.image} alt={l.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
+                    ) : (
+                      <div className="w-full h-full bg-primary/10 flex items-center justify-center">
+                        <span className="text-4xl font-bold text-primary/30">{l.name?.charAt(0)}</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-2 text-center">
+                    <h3 className="font-heading font-bold text-xs sm:text-sm truncate">{l.name}</h3>
+                    <p className="text-[10px] sm:text-xs text-muted-foreground">
+                      {l.yearFrom}{l.yearTo ? ` – ${l.yearTo}` : ''}
+                    </p>
                   </div>
                 </div>
               ))}

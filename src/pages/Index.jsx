@@ -67,7 +67,7 @@ const Index = () => {
       <Header currentPage="Home" />
 
       {/* Hero Banner */}
-      <section className="relative min-h-[50vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
         <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/40 to-transparent" />
         <div className="container mx-auto px-4 relative z-10 pb-16 md:pb-24">

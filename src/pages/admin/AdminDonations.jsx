@@ -104,8 +104,8 @@ const AdminDonations = () => {
                     <TableCell>₹{d.amount}</TableCell>
                     <TableCell className="max-w-[200px] truncate">{d.message || '—'}</TableCell>
                     <TableCell>
-                      {d.screenshotUrl ? (
-                        <button onClick={() => setViewImage(d.screenshotUrl)} className="text-primary hover:underline text-sm flex items-center gap-1">
+                      {(d.screenshotBase64 || d.screenshotUrl) ? (
+                        <button onClick={() => setViewImage(d.screenshotBase64 || d.screenshotUrl)} className="text-primary hover:underline text-sm flex items-center gap-1">
                           <Eye className="w-4 h-4" /> View
                         </button>
                       ) : '—'}

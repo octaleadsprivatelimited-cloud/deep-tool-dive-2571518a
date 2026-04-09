@@ -84,18 +84,13 @@ const Header = ({ currentPage }) => {
 
           {/* Desktop CTA */}
           <div className="hidden lg:flex items-center gap-3">
-            {!isAuthenticated ? (
-              <>
-                <Button asChild variant="ghost" className={loginButtonClass}>
-                  <a href="https://deep-tool-dive.lovable.app/admin">Login</a>
-                </Button>
-                <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6">
-                  <a href="/register">Join Now</a>
-                </Button>
-              </>
-            ) : (
+            {isAuthenticated ? (
               <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-full" onClick={logout}>
                 Logout
+              </Button>
+            ) : (
+              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6">
+                <a href="/register">Join Now</a>
               </Button>
             )}
           </div>
@@ -134,18 +129,13 @@ const Header = ({ currentPage }) => {
                   </a>
                 ))}
                 <div className="pt-4 border-t border-border space-y-2">
-                  {!isAuthenticated ? (
-                    <>
-                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full">
-                        <a href="/register">Join Now</a>
-                      </Button>
-                      <Button asChild variant="outline" className="w-full border-border text-secondary-foreground rounded-full">
-                        <a href="https://deep-tool-dive.lovable.app/admin">Login</a>
-                      </Button>
-                    </>
-                  ) : (
+                  {isAuthenticated ? (
                     <Button className="w-full" variant="outline" onClick={() => { logout(); setIsMobileMenuOpen(false); }}>
                       Logout
+                    </Button>
+                  ) : (
+                    <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full">
+                      <a href="/register">Join Now</a>
                     </Button>
                   )}
                 </div>

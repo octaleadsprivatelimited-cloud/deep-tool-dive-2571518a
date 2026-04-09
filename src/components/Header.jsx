@@ -87,7 +87,7 @@ const Header = ({ currentPage }) => {
             {!isAuthenticated ? (
               <>
                 <Button asChild variant="ghost" className={loginButtonClass}>
-                  <a href="/login">Login</a>
+                  <a href="/admin-login">Login</a>
                 </Button>
                 <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6">
                   <a href="/register">Join Now</a>
@@ -140,7 +140,7 @@ const Header = ({ currentPage }) => {
                         <a href="/register">Join Now</a>
                       </Button>
                       <Button asChild variant="outline" className="w-full border-border text-secondary-foreground rounded-full">
-                        <a href="/login">Login</a>
+                        <a href="/admin-login">Login</a>
                       </Button>
                     </>
                   ) : (

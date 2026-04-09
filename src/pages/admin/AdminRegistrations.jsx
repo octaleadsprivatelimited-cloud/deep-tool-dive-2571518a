@@ -5,9 +5,11 @@ import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Trash2, Search, Eye, CheckCircle, XCircle, UserPlus } from 'lucide-react';
+import { Trash2, Search, Eye, CheckCircle, XCircle, UserPlus, ImageIcon, Phone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { getMembers, saveMember, deleteMember } from '@/lib/dataStore';
+import { Switch } from '@/components/ui/switch';
+import { Label } from '@/components/ui/label';
 import { toast } from 'sonner';
 
 const AdminRegistrations = () => {
@@ -120,6 +122,20 @@ const AdminRegistrations = () => {
                       <div className="flex items-center justify-end gap-1">
                         <Button variant="ghost" size="icon" onClick={() => setViewMember(m)} title="View details">
                           <Eye className="w-4 h-4" />
+                        </Button>
+                        <Button
+                          variant="ghost" size="icon"
+                          title={m.showImagePublicly !== false ? 'Image visible — click to hide' : 'Image hidden — click to show'}
+                          onClick={async () => { await saveMember({ ...m, showImagePublicly: m.showImagePublicly === false }); await loadMembers(); toast.success('Image visibility updated'); }}
+                        >
+                          <ImageIcon className={`w-4 h-4 ${m.showImagePublicly !== false ? 'text-green-600' : 'text-muted-foreground'}`} />
+                        </Button>
+                        <Button
+                          variant="ghost" size="icon"
+                          title={m.showContactPublicly ? 'Phone visible — click to hide' : 'Phone hidden — click to show'}
+                          onClick={async () => { await saveMember({ ...m, showContactPublicly: !m.showContactPublicly }); await loadMembers(); toast.success('Phone visibility updated'); }}
+                        >
+                          <Phone className={`w-4 h-4 ${m.showContactPublicly ? 'text-green-600' : 'text-muted-foreground'}`} />
                         </Button>
                         {(!m.status || m.status === 'pending') && (
                           <Button variant="ghost" size="icon" className="text-green-600" onClick={() => handleApprove(m)} title="Approve">

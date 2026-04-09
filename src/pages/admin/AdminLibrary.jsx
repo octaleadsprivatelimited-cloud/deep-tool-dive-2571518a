@@ -4,8 +4,9 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Trash2, Plus, Pencil, X, BookOpen } from 'lucide-react';
+import { Trash2, Plus, Pencil, X, BookOpen, Upload } from 'lucide-react';
 import { getBooks, saveBook, deleteBook } from '@/lib/dataStore';
+import { compressImageToFirestoreLimit } from '@/lib/imageCompression';
 import { toast } from 'sonner';
 
 const emptyForm = { title: '', author: '', category: '', thumbnail: '', driveLink: '' };

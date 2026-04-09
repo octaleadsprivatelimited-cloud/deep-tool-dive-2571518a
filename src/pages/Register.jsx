@@ -236,14 +236,6 @@ const Register = () => {
               {/* Professional Info */}
               <h3 className="font-heading font-bold text-lg">Professional Details</h3>
 
-              <FormField control={form.control} name="educationQualification" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Education Qualification</FormLabel>
-                  <FormControl><Input placeholder="e.g. B.Tech, MBA" {...field} /></FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} />
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField control={form.control} name="profession" render={({ field }) => (
                   <FormItem>
@@ -252,10 +244,10 @@ const Register = () => {
                     <FormMessage />
                   </FormItem>
                 )} />
-                <FormField control={form.control} name="workingOrganisation" render={({ field }) => (
+                <FormField control={form.control} name="company" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Working Organisation</FormLabel>
-                    <FormControl><Input placeholder="Company / Organisation" {...field} /></FormControl>
+                    <FormLabel>Company</FormLabel>
+                    <FormControl><Input placeholder="Company name" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />

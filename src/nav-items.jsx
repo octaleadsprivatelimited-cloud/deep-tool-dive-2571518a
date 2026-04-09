@@ -1,4 +1,4 @@
-import { Home, Users, Calendar, Handshake, Newspaper, Image, Trophy, Phone, UserPlus, LogIn, ShieldCheck, FileText, Heart, IndianRupee, Youtube, BookOpen } from "lucide-react";
+import { Home, Users, Calendar, Handshake, Newspaper, Image, Trophy, Phone, UserPlus, LogIn, ShieldCheck, FileText, Heart, IndianRupee, Youtube, BookOpen, Crown } from "lucide-react";
 import Index from "./pages/Index.jsx";
 import About from "./pages/About.jsx";
 import Directory from "./pages/Directory.jsx";
@@ -28,6 +28,7 @@ import AdminHallOfFame from "./pages/admin/AdminHallOfFame.jsx";
 import EventDetail from "./pages/EventDetail.jsx";
 import Library from "./pages/Library.jsx";
 import AdminLibrary from "./pages/admin/AdminLibrary.jsx";
+import AdminLeaders from "./pages/admin/AdminLeaders.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },
@@ -59,4 +60,5 @@ export const navItems = [
   { title: "Admin Mentorship", to: "/admin/mentorship", icon: <Handshake className="h-4 w-4" />, page: <AdminMentorship /> },
   { title: "Admin Hall of Fame", to: "/admin/hall-of-fame", icon: <Trophy className="h-4 w-4" />, page: <AdminHallOfFame /> },
   { title: "Admin Library", to: "/admin/library", icon: <BookOpen className="h-4 w-4" />, page: <AdminLibrary /> },
+  { title: "Admin Leaders", to: "/admin/leaders", icon: <Crown className="h-4 w-4" />, page: <AdminLeaders /> },
 ];

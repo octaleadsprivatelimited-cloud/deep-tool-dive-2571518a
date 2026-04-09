@@ -89,6 +89,7 @@ const Directory = () => {
                         {(m.fullName || m.name || '?').split(' ').map((n) => n[0]).join('').slice(0, 2)}
                       </div>
                     )}
+                    <div className="p-4">
                     <h3 className="font-heading font-bold text-center text-lg mb-1">{m.fullName || m.name}</h3>
                     {m.profession && (
                       <div className="flex items-center justify-center gap-1 text-primary text-sm mb-1">

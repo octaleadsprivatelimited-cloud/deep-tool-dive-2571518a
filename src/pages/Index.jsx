@@ -90,28 +90,18 @@ const Index = () => {
 
       {/* Leaders Scrolling Section */}
       {leaders.length > 0 && (
-        <section className="py-12 bg-muted">
-          <div className="container mx-auto px-4">
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl md:text-2xl font-heading font-bold">
-                Our <span className="text-primary">Leaders</span>
-              </h2>
-              <div className="flex gap-2">
-                <Button size="icon" variant="outline" className="rounded-full" onClick={() => leadersRef.current?.scrollBy({ left: -280, behavior: 'smooth' })}>
-                  <ChevronLeft className="w-4 h-4" />
-                </Button>
-                <Button size="icon" variant="outline" className="rounded-full" onClick={() => leadersRef.current?.scrollBy({ left: 280, behavior: 'smooth' })}>
-                  <ChevronRight className="w-4 h-4" />
-                </Button>
-              </div>
-            </div>
+        <section className="py-12 bg-muted overflow-hidden">
+          <div className="container mx-auto px-4 mb-6">
+            <h2 className="text-xl md:text-2xl font-heading font-bold">
+              Our <span className="text-primary">Leaders</span>
+            </h2>
+          </div>
+          <div className="relative group/marquee">
             <div
-              ref={leadersRef}
-              className="flex gap-5 overflow-x-auto pb-4"
-              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+              className="flex gap-5 w-max animate-[marquee_30s_linear_infinite] group-hover/marquee:[animation-play-state:paused]"
             >
-              {leaders.map((l) => (
-                <div key={l.id} className="flex-shrink-0 w-56 group">
+              {[...leaders, ...leaders].map((l, i) => (
+                <div key={`${l.id}-${i}`} className="flex-shrink-0 w-56 group">
                   <div className="w-56 h-64 rounded-xl overflow-hidden border border-border shadow-sm group-hover:shadow-lg transition-shadow">
                     {l.image ? (
                       <img src={l.image} alt={l.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />

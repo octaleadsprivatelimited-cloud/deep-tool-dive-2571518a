@@ -58,7 +58,14 @@ const AdminEvents = () => {
     const file = e.target.files?.[0];
     if (!file) return;
     const reader = new FileReader();
-    reader.onload = (ev) => setForm((f) => ({ ...f, image: ev.target.result }));
+    reader.onload = async (ev) => {
+      try {
+        const compressed = await compressImage(ev.target.result);
+        setForm((f) => ({ ...f, image: compressed }));
+      } catch (err) {
+        toast.error('Failed to process image');
+      }
+    };
     reader.readAsDataURL(file);
   };
 

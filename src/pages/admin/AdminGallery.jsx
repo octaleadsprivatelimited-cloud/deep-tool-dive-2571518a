@@ -76,12 +76,6 @@ const AdminGallery = () => {
     setForm((f) => ({ ...f, image: '' }));
     if (fileInputRef.current) fileInputRef.current.value = '';
   };
-      const compressed = await compressImage(ev.target.result);
-      setForm((f) => ({ ...f, image: compressed }));
-    };
-    reader.readAsDataURL(file);
-  };
-
   const handleSave = async () => {
     if (!form.image) { toast.error('Image is required'); return; }
     setSaving(true);
@@ -152,8 +146,29 @@ const AdminGallery = () => {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label>Image *</Label>
-              <Input type="file" accept="image/*" onChange={handleImageChange} />
-              {form.image && <img src={form.image} alt="Preview" className="w-full h-48 object-cover rounded-lg mt-2" />}
+              <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImageChange} className="hidden" />
+              {form.image ? (
+                <div className="relative group">
+                  <img src={form.image} alt="Preview" className="w-full h-48 object-cover rounded-lg border border-border" />
+                  <button onClick={removeImage} className="absolute top-2 right-2 bg-destructive text-destructive-foreground rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <X className="w-4 h-4" />
+                  </button>
+                  <button onClick={() => fileInputRef.current?.click()} className="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                    <span className="text-secondary-foreground text-sm font-medium">Change Image</span>
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={imageLoading}
+                  className="w-full border-2 border-dashed border-border rounded-lg p-8 flex flex-col items-center gap-2 hover:border-primary/50 hover:bg-accent/50 transition-colors cursor-pointer"
+                >
+                  <Upload className="w-8 h-8 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground">{imageLoading ? 'Processing...' : 'Click to upload image'}</span>
+                  <span className="text-xs text-muted-foreground/60">Max 5MB • JPG, PNG, WebP</span>
+                </button>
+              )}
+            </div>
             </div>
             <div className="space-y-2">
               <Label>Caption (optional)</Label>

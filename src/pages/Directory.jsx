@@ -20,8 +20,8 @@ const Directory = () => {
     const load = async () => {
       try {
         const data = await getMembers();
-        // Only show approved members in directory
-        setMembers(data.filter((m) => m.status === 'approved'));
+        // Only show approved members that are highlighted (marked to show publicly by admin)
+        setMembers(data.filter((m) => m.status === 'approved' && m.highlighted));
       } catch (err) {
         console.error(err);
       } finally {

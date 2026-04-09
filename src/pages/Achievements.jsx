@@ -96,7 +96,7 @@ const Achievements = () => {
         </section>
       )}
 
-      {/* Hall of Fame Members */}
+      {/* Hall of Fame Gallery */}
       {!loading && hallOfFame.length > 0 && (
         <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
@@ -107,32 +107,29 @@ const Achievements = () => {
               </h2>
               <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {hallOfFame.map((m) => (
-                <Card key={m.id} className="overflow-hidden border-border hover:shadow-xl transition-shadow group">
-                  <div className="h-56 bg-secondary overflow-hidden">
+                <div key={m.id} className="group cursor-pointer">
+                  <div className="aspect-[3/4] rounded-lg overflow-hidden border border-border bg-secondary relative">
                     {m.image ? (
-                      <img src={m.image} alt={m.fullName} className="w-full h-full object-cover group-hover:scale-105 transition-transform" loading="lazy" />
+                      <img src={m.image} alt={m.fullName} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy" />
                     ) : (
                       <div className="w-full h-full bg-primary/10 flex items-center justify-center">
-                        <Trophy className="w-16 h-16 text-primary/30" />
+                        <Trophy className="w-12 h-12 text-primary/30" />
                       </div>
                     )}
-                  </div>
-                  <CardContent className="p-5">
-                    <h3 className="font-heading font-bold text-lg">{m.fullName}</h3>
-                    {m.title && <p className="text-sm text-muted-foreground">{m.title}</p>}
-                    <div className="flex items-center gap-2 mt-2">
-                      <span className="inline-block bg-primary/10 text-primary text-xs font-semibold px-3 py-1 rounded-full">
-                        {m.achievement}
-                      </span>
-                      {m.year && <span className="text-xs text-muted-foreground">{m.year}</span>}
+                    <div className="absolute inset-0 bg-gradient-to-t from-secondary/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3">
+                      {m.achievement && (
+                        <span className="text-xs text-primary font-semibold">{m.achievement}</span>
+                      )}
+                      {m.year && <span className="text-[10px] text-primary-foreground/60">{m.year}</span>}
                     </div>
-                    {m.description && (
-                      <p className="text-sm text-muted-foreground mt-3 line-clamp-3">{m.description}</p>
-                    )}
-                  </CardContent>
-                </Card>
+                  </div>
+                  <div className="mt-2 text-center">
+                    <h3 className="font-heading font-bold text-xs sm:text-sm truncate">{m.fullName}</h3>
+                    {m.title && <p className="text-[10px] sm:text-xs text-muted-foreground truncate">{m.title}</p>}
+                  </div>
+                </div>
               ))}
             </div>
           </div>

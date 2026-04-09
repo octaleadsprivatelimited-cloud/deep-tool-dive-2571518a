@@ -197,6 +197,22 @@ export const deleteBook = async (id) => {
   await deleteDoc(doc(db, 'books', id));
 };
 
+// ---- Leaders ----
+export const getLeaders = () => fetchCollection('leaders');
+
+export const saveLeader = async (leader) => {
+  if (leader.id) {
+    const { id, ...data } = leader;
+    await updateDoc(doc(db, 'leaders', id), data);
+  } else {
+    await addDoc(collection(db, 'leaders'), { ...leader, createdAt: serverTimestamp() });
+  }
+};
+
+export const deleteLeader = async (id) => {
+  await deleteDoc(doc(db, 'leaders', id));
+};
+
 // ---- Page-specific queries ----
 export const getMembersByPage = async (pageName) => {
   const snap = await getDocs(query(collection(db, 'members'), where('displayPages', 'array-contains', pageName)));

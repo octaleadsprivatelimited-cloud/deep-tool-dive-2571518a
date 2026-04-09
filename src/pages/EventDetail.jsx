@@ -82,27 +82,26 @@ const EventDetail = () => {
       {/* Hero Banner */}
       <section className="pt-24 pb-0">
         {event.image ? (
-          <div className="w-full h-64 md:h-96 relative">
-            <img src={event.image} alt={event.title} className="w-full h-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background/90 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-              <div className="container mx-auto">
+          <div className="w-full h-48 md:h-72 relative overflow-hidden">
+            <img src={event.image} alt={event.title} className="w-full h-full object-cover object-center" />
+            <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6 bg-background/80 backdrop-blur-sm">
+              <div className="container mx-auto flex items-center gap-3">
                 <Badge className={isPast ? 'bg-muted text-muted-foreground' : 'bg-primary text-primary-foreground'}>
                   {isPast ? 'Completed' : 'Upcoming'}
                 </Badge>
-                <h1 className="text-3xl md:text-5xl font-heading font-black uppercase mt-2 text-foreground drop-shadow-lg">
+                <h1 className="text-xl md:text-3xl font-heading font-black uppercase text-foreground">
                   {event.title}
                 </h1>
               </div>
             </div>
           </div>
         ) : (
-          <div className="bg-secondary pt-8 pb-10">
-            <div className="container mx-auto px-4">
+          <div className="bg-secondary pt-8 pb-6">
+            <div className="container mx-auto px-4 flex items-center gap-3">
               <Badge className={isPast ? 'bg-muted text-muted-foreground' : 'bg-primary text-primary-foreground'}>
                 {isPast ? 'Completed' : 'Upcoming'}
               </Badge>
-              <h1 className="text-3xl md:text-5xl font-heading font-black uppercase mt-2 text-secondary-foreground">
+              <h1 className="text-xl md:text-3xl font-heading font-black uppercase text-secondary-foreground">
                 {event.title}
               </h1>
             </div>
@@ -134,57 +133,57 @@ const EventDetail = () => {
             </div>
 
             {/* Sidebar */}
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Event Details Card */}
               <Card className="border-border">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-heading font-bold mb-4">Event Details</h3>
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-3">
-                      <Calendar className="w-5 h-5 text-primary mt-0.5" />
+                <CardContent className="p-4">
+                  <h3 className="text-base font-heading font-bold mb-3">Event Details</h3>
+                  <div className="space-y-3">
+                    <div className="flex items-center gap-2">
+                      <Calendar className="w-4 h-4 text-primary shrink-0" />
                       <div>
-                        <p className="text-xs uppercase tracking-wider text-primary font-semibold">Status</p>
-                        <p className="font-medium">{isPast ? 'Completed' : 'Upcoming'}</p>
+                        <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Status</p>
+                        <p className="text-sm font-medium">{isPast ? 'Completed' : 'Upcoming'}</p>
                       </div>
                     </div>
 
                     {event.category && (
-                      <div className="flex items-start gap-3">
-                        <Tag className="w-5 h-5 text-primary mt-0.5" />
+                      <div className="flex items-center gap-2">
+                        <Tag className="w-4 h-4 text-primary shrink-0" />
                         <div>
-                          <p className="text-xs uppercase tracking-wider text-primary font-semibold">Category</p>
-                          <p className="font-medium">{event.category}</p>
+                          <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Category</p>
+                          <p className="text-sm font-medium">{event.category}</p>
                         </div>
                       </div>
                     )}
 
                     {event.date && (
-                      <div className="flex items-start gap-3">
-                        <Calendar className="w-5 h-5 text-primary mt-0.5" />
+                      <div className="flex items-center gap-2">
+                        <Calendar className="w-4 h-4 text-primary shrink-0" />
                         <div>
-                          <p className="text-xs uppercase tracking-wider text-primary font-semibold">Date</p>
-                          <p className="font-medium">{event.date}</p>
+                          <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Date</p>
+                          <p className="text-sm font-medium">{event.date}</p>
                         </div>
                       </div>
                     )}
 
                     {event.time && (
-                      <div className="flex items-start gap-3">
-                        <Clock className="w-5 h-5 text-primary mt-0.5" />
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-primary shrink-0" />
                         <div>
-                          <p className="text-xs uppercase tracking-wider text-primary font-semibold">Time</p>
-                          <p className="font-medium">{event.time}</p>
+                          <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Time</p>
+                          <p className="text-sm font-medium">{event.time}</p>
                         </div>
                       </div>
                     )}
 
                     {event.venue && (
-                      <div className="flex items-start gap-3">
-                        <MapPin className="w-5 h-5 text-primary mt-0.5" />
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-primary shrink-0" />
                         <div>
-                          <p className="text-xs uppercase tracking-wider text-primary font-semibold">Venue</p>
-                          <p className="font-medium">{event.venue}</p>
-                          <button onClick={openInMaps} className="text-sm text-primary hover:underline mt-1">
+                          <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Venue</p>
+                          <p className="text-sm font-medium">{event.venue}</p>
+                          <button onClick={openInMaps} className="text-xs text-primary hover:underline">
                             View location on map
                           </button>
                         </div>
@@ -192,11 +191,11 @@ const EventDetail = () => {
                     )}
 
                     {event.speakers && (
-                      <div className="flex items-start gap-3">
-                        <UsersIcon className="w-5 h-5 text-primary mt-0.5" />
+                      <div className="flex items-center gap-2">
+                        <UsersIcon className="w-4 h-4 text-primary shrink-0" />
                         <div>
-                          <p className="text-xs uppercase tracking-wider text-primary font-semibold">Speakers</p>
-                          <p className="font-medium">{event.speakers}</p>
+                          <p className="text-[10px] uppercase tracking-wider text-primary font-semibold">Speakers</p>
+                          <p className="text-sm font-medium">{event.speakers}</p>
                         </div>
                       </div>
                     )}
@@ -206,24 +205,24 @@ const EventDetail = () => {
 
               {/* Quick Access Card */}
               <Card className="border-border bg-secondary">
-                <CardContent className="p-6">
-                  <h3 className="text-lg font-heading font-bold mb-2 text-secondary-foreground">Quick Access</h3>
-                  <p className="text-sm text-secondary-foreground/70 mb-4">
-                    Get directions and share the event with your community.
+                <CardContent className="p-4">
+                  <h3 className="text-base font-heading font-bold mb-1 text-secondary-foreground">Quick Access</h3>
+                  <p className="text-xs text-secondary-foreground/70 mb-3">
+                    Get directions and share the event.
                   </p>
-                  <div className="space-y-3">
+                  <div className="space-y-2">
                     {event.venue && (
-                      <Button onClick={openInMaps} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold">
+                      <Button size="sm" onClick={openInMaps} className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-sm">
                         Open in Google Maps
                       </Button>
                     )}
-                    <Button onClick={handleShare} variant="outline" className="w-full rounded-full font-semibold">
-                      <Share2 className="w-4 h-4 mr-2" /> Share Event
+                    <Button size="sm" onClick={handleShare} variant="outline" className="w-full rounded-full font-semibold text-sm">
+                      <Share2 className="w-3.5 h-3.5 mr-2" /> Share Event
                     </Button>
                     {!isPast && event.registrationLink && (
-                      <Button asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold">
+                      <Button size="sm" asChild className="w-full bg-primary hover:bg-primary/90 text-primary-foreground rounded-full font-semibold text-sm">
                         <a href={event.registrationLink} target="_blank" rel="noopener noreferrer">
-                          Register Now <ExternalLink className="w-4 h-4 ml-2" />
+                          Register Now <ExternalLink className="w-3.5 h-3.5 ml-2" />
                         </a>
                       </Button>
                     )}

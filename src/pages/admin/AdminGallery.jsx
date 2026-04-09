@@ -1,26 +1,36 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
-import { Trash2, Plus, ImageIcon } from 'lucide-react';
+import { Trash2, Plus, ImageIcon, Upload, X } from 'lucide-react';
 import { getGalleryImages, saveGalleryImage, deleteGalleryImage } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
-const compressImage = (base64, maxWidth = 800) =>
+const MAX_FILE_SIZE = 5 * 1024 * 1024;
+
+const compressImage = (base64, maxWidth = 800, quality = 0.4) =>
   new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => {
       try {
         const canvas = document.createElement('canvas');
-        const ratio = Math.min(maxWidth / img.width, 1);
-        canvas.width = img.width * ratio;
-        canvas.height = img.height * ratio;
+        let w = img.width;
+        let h = img.height;
+        if (w > maxWidth) { h = (maxWidth / w) * h; w = maxWidth; }
+        const maxH = 600;
+        if (h > maxH) { w = (maxH / h) * w; h = maxH; }
+        canvas.width = Math.round(w);
+        canvas.height = Math.round(h);
         const ctx = canvas.getContext('2d');
         ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-        resolve(canvas.toDataURL('image/jpeg', 0.5));
+        let result = canvas.toDataURL('image/jpeg', quality);
+        if (result.length > 800000) {
+          result = canvas.toDataURL('image/jpeg', 0.2);
+        }
+        resolve(result);
       } catch (err) {
         reject(err);
       }
@@ -34,6 +44,8 @@ const AdminGallery = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [form, setForm] = useState({ title: '', image: '' });
   const [saving, setSaving] = useState(false);
+  const [imageLoading, setImageLoading] = useState(false);
+  const fileInputRef = useRef(null);
 
   const loadGallery = async () => { setGallery(await getGalleryImages()); };
   useEffect(() => { loadGallery(); }, []);
@@ -41,14 +53,29 @@ const AdminGallery = () => {
   const handleImageChange = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
+    if (file.size > MAX_FILE_SIZE) {
+      toast.error('File size must be under 5MB');
+      return;
+    }
+    setImageLoading(true);
     const reader = new FileReader();
     reader.onload = async (ev) => {
-      const compressed = await compressImage(ev.target.result);
-      setForm((f) => ({ ...f, image: compressed }));
+      try {
+        const compressed = await compressImage(ev.target.result);
+        setForm((f) => ({ ...f, image: compressed }));
+      } catch (err) {
+        toast.error('Failed to process image');
+      } finally {
+        setImageLoading(false);
+      }
     };
     reader.readAsDataURL(file);
   };
 
+  const removeImage = () => {
+    setForm((f) => ({ ...f, image: '' }));
+    if (fileInputRef.current) fileInputRef.current.value = '';
+  };
   const handleSave = async () => {
     if (!form.image) { toast.error('Image is required'); return; }
     setSaving(true);
@@ -119,8 +146,29 @@ const AdminGallery = () => {
           <div className="space-y-4">
             <div className="space-y-2">
               <Label>Image *</Label>
-              <Input type="file" accept="image/*" onChange={handleImageChange} />
-              {form.image && <img src={form.image} alt="Preview" className="w-full h-48 object-cover rounded-lg mt-2" />}
+              <input type="file" accept="image/*" ref={fileInputRef} onChange={handleImageChange} className="hidden" />
+              {form.image ? (
+                <div className="relative group">
+                  <img src={form.image} alt="Preview" className="w-full h-48 object-cover rounded-lg border border-border" />
+                  <button onClick={removeImage} className="absolute top-2 right-2 bg-destructive text-destructive-foreground rounded-full p-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <X className="w-4 h-4" />
+                  </button>
+                  <button onClick={() => fileInputRef.current?.click()} className="absolute inset-0 bg-secondary/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center rounded-lg">
+                    <span className="text-secondary-foreground text-sm font-medium">Change Image</span>
+                  </button>
+                </div>
+              ) : (
+                <button
+                  onClick={() => fileInputRef.current?.click()}
+                  disabled={imageLoading}
+                  className="w-full border-2 border-dashed border-border rounded-lg p-8 flex flex-col items-center gap-2 hover:border-primary/50 hover:bg-accent/50 transition-colors cursor-pointer"
+                >
+                  <Upload className="w-8 h-8 text-muted-foreground" />
+                  <span className="text-sm text-muted-foreground">{imageLoading ? 'Processing...' : 'Click to upload image'}</span>
+                  <span className="text-xs text-muted-foreground/60">Max 5MB • JPG, PNG, WebP</span>
+                </button>
+              )}
+            </div>
             </div>
             <div className="space-y-2">
               <Label>Caption (optional)</Label>

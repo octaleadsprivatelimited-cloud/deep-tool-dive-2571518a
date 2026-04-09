@@ -180,6 +180,23 @@ export const deleteVideo = async (id) => {
   await deleteDoc(doc(db, 'videos', id));
 };
 
+// ---- Library / Books ----
+export const getBooks = () => fetchCollection('books');
+
+export const saveBook = async (book) => {
+  if (book.id) {
+    const docRef = doc(db, 'books', book.id);
+    const { id, ...data } = book;
+    await updateDoc(docRef, data);
+  } else {
+    await addDoc(collection(db, 'books'), { ...book, createdAt: serverTimestamp() });
+  }
+};
+
+export const deleteBook = async (id) => {
+  await deleteDoc(doc(db, 'books', id));
+};
+
 // ---- Page-specific queries ----
 export const getMembersByPage = async (pageName) => {
   const snap = await getDocs(query(collection(db, 'members'), where('displayPages', 'array-contains', pageName)));

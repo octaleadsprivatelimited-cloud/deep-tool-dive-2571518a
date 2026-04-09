@@ -1,4 +1,4 @@
-import { Home, Users, Calendar, Handshake, Newspaper, Image, Trophy, Phone, UserPlus, LogIn, ShieldCheck, FileText, Heart, IndianRupee, Youtube } from "lucide-react";
+import { Home, Users, Calendar, Handshake, Newspaper, Image, Trophy, Phone, UserPlus, LogIn, ShieldCheck, FileText, Heart, IndianRupee, Youtube, BookOpen } from "lucide-react";
 import Index from "./pages/Index.jsx";
 import About from "./pages/About.jsx";
 import Directory from "./pages/Directory.jsx";
@@ -26,6 +26,8 @@ import AdminRegistrations from "./pages/admin/AdminRegistrations.jsx";
 import AdminMentorship from "./pages/admin/AdminMentorship.jsx";
 import AdminHallOfFame from "./pages/admin/AdminHallOfFame.jsx";
 import EventDetail from "./pages/EventDetail.jsx";
+import Library from "./pages/Library.jsx";
+import AdminLibrary from "./pages/admin/AdminLibrary.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },
@@ -40,6 +42,7 @@ export const navItems = [
   { title: "Gallery", to: "/gallery", icon: <Image className="h-4 w-4" />, page: <Gallery /> },
   { title: "Achievements", to: "/achievements", icon: <Trophy className="h-4 w-4" />, page: <Achievements /> },
   { title: "Contact", to: "/contact", icon: <Phone className="h-4 w-4" />, page: <Contact /> },
+  { title: "Library", to: "/library", icon: <BookOpen className="h-4 w-4" />, page: <Library /> },
   { title: "Donate", to: "/donate", icon: <Heart className="h-4 w-4" />, page: <Donate /> },
   { title: "Login", to: "/login", icon: <LogIn className="h-4 w-4" />, page: <Login /> },
   { title: "Privacy", to: "/privacy", icon: <ShieldCheck className="h-4 w-4" />, page: <Privacy /> },
@@ -55,4 +58,5 @@ export const navItems = [
   { title: "Admin Donations", to: "/admin/donations", icon: <IndianRupee className="h-4 w-4" />, page: <AdminDonations /> },
   { title: "Admin Mentorship", to: "/admin/mentorship", icon: <Handshake className="h-4 w-4" />, page: <AdminMentorship /> },
   { title: "Admin Hall of Fame", to: "/admin/hall-of-fame", icon: <Trophy className="h-4 w-4" />, page: <AdminHallOfFame /> },
+  { title: "Admin Library", to: "/admin/library", icon: <BookOpen className="h-4 w-4" />, page: <AdminLibrary /> },
 ];

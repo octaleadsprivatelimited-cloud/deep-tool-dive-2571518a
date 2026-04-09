@@ -29,9 +29,8 @@ const registerSchema = z.object({
   address: z.string().max(300).optional(),
   dateOfBirth: z.date({ required_error: 'Date of birth is required' }),
   nativePlace: z.string().max(100).optional(),
-  educationQualification: z.string().max(200).optional(),
   profession: z.string().max(100).optional(),
-  workingOrganisation: z.string().max(200).optional(),
+  company: z.string().max(200).optional(),
   workingPlace: z.string().max(100).optional(),
   linkedin: z.string().url('Invalid URL').max(300).optional().or(z.literal('')),
   instagram: z.string().max(300).optional(),
@@ -47,8 +46,7 @@ const Register = () => {
     defaultValues: {
       surname: '', name: '', phone: '', showContactPublicly: false, showImagePublicly: true,
       email: '', address: '', nativePlace: '',
-      educationQualification: '', profession: '',
-      workingOrganisation: '', workingPlace: '',
+      profession: '', company: '',
       linkedin: '', instagram: '', facebook: '',
     },
   });
@@ -80,9 +78,8 @@ const Register = () => {
         address: data.address,
         dateOfBirth: data.dateOfBirth.toISOString(),
         nativePlace: data.nativePlace,
-        education: data.educationQualification,
         profession: data.profession,
-        workingOrganisation: data.workingOrganisation,
+        company: data.company,
         workingPlace: data.workingPlace,
         linkedin: data.linkedin,
         instagram: data.instagram,
@@ -239,14 +236,6 @@ const Register = () => {
               {/* Professional Info */}
               <h3 className="font-heading font-bold text-lg">Professional Details</h3>
 
-              <FormField control={form.control} name="educationQualification" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Education Qualification</FormLabel>
-                  <FormControl><Input placeholder="e.g. B.Tech, MBA" {...field} /></FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} />
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField control={form.control} name="profession" render={({ field }) => (
                   <FormItem>
@@ -255,10 +244,10 @@ const Register = () => {
                     <FormMessage />
                   </FormItem>
                 )} />
-                <FormField control={form.control} name="workingOrganisation" render={({ field }) => (
+                <FormField control={form.control} name="company" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Working Organisation</FormLabel>
-                    <FormControl><Input placeholder="Company / Organisation" {...field} /></FormControl>
+                    <FormLabel>Company</FormLabel>
+                    <FormControl><Input placeholder="Company name" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />

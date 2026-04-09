@@ -28,6 +28,20 @@ export const deleteMember = async (id) => {
   await deleteDoc(doc(db, 'members', id));
 };
 
+// Upsert member by email – used for CSV import
+export const upsertMemberByEmail = async (memberData) => {
+  const snap = await getDocs(query(collection(db, 'members'), where('email', '==', memberData.email)));
+  if (snap.empty) {
+    await addDoc(collection(db, 'members'), { ...memberData, createdAt: serverTimestamp() });
+    return 'added';
+  } else {
+    const existing = snap.docs[0];
+    const { id, ...data } = memberData;
+    await updateDoc(doc(db, 'members', existing.id), data);
+    return 'updated';
+  }
+};
+
 export const getHighlightedMembers = async () => {
   const snap = await getDocs(query(collection(db, 'members'), where('highlighted', '==', true)));
   return snap.docs.map((d) => ({ id: d.id, ...d.data() }));

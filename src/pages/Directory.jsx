@@ -78,50 +78,51 @@ const Directory = () => {
           {loading ? (
             <p className="text-center text-muted-foreground py-12">Loading members...</p>
           ) : (
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {filtered.map((m) => (
                 <Card key={m.id} className="border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
                   <CardContent className="p-0">
-                    {(m.image || m.photo) ? (
-                      <img src={m.image || m.photo} alt={m.fullName} className="w-full h-48 object-cover" />
-                    ) : (
-                      <div className="w-full h-48 bg-primary/10 flex items-center justify-center text-3xl font-heading font-bold text-primary">
-                        {(m.fullName || m.name || '?').split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                      </div>
-                    )}
-                    <div className="p-4">
-                    <h3 className="font-heading font-bold text-center text-lg mb-1">{m.fullName || m.name}</h3>
-                    {m.profession && (
-                      <div className="flex items-center justify-center gap-1 text-primary text-sm mb-1">
-                        <Briefcase className="w-3 h-3" /> {m.profession}
-                      </div>
-                    )}
-                    {(m.workingPlace || m.location) && (
-                      <div className="flex items-center justify-center gap-1 text-muted-foreground text-sm mb-3">
-                        <MapPin className="w-3 h-3" /> {m.workingPlace || m.location}
-                      </div>
-                    )}
-                    {/* Social links */}
-                    <div className="flex items-center justify-center gap-3">
-                      {m.linkedin && (
-                        <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
-                          <Linkedin className="w-4 h-4" />
-                        </a>
-                      )}
-                      {m.instagram && (
-                        <a href={m.instagram.startsWith('http') ? m.instagram : `https://instagram.com/${m.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
-                          <Instagram className="w-4 h-4" />
-                        </a>
-                      )}
-                      {m.facebook && (
-                        <a href={m.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
-                          <Facebook className="w-4 h-4" />
-                        </a>
+                    <div className="w-full aspect-[3/4] bg-primary/10 overflow-hidden">
+                      {(m.image || m.photo) ? (
+                        <img src={m.image || m.photo} alt={m.fullName} className="w-full h-full object-contain bg-muted" />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center text-2xl font-heading font-bold text-primary">
+                          {(m.fullName || m.name || '?').split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                        </div>
                       )}
                     </div>
-                    {m.showContactPublicly && m.phone && (
-                      <p className="text-center text-xs text-muted-foreground mt-2">{m.phone}</p>
-                    )}
+                    <div className="p-2 text-center">
+                      <h3 className="font-heading font-bold text-sm leading-tight mb-0.5">{m.fullName || m.name}</h3>
+                      {m.profession && (
+                        <div className="flex items-center justify-center gap-1 text-primary text-xs">
+                          <Briefcase className="w-3 h-3 shrink-0" /> <span className="truncate">{m.profession}</span>
+                        </div>
+                      )}
+                      {(m.workingPlace || m.location) && (
+                        <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs">
+                          <MapPin className="w-3 h-3 shrink-0" /> <span className="truncate">{m.workingPlace || m.location}</span>
+                        </div>
+                      )}
+                      <div className="flex items-center justify-center gap-2 mt-1">
+                        {m.linkedin && (
+                          <a href={m.linkedin} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                            <Linkedin className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        {m.instagram && (
+                          <a href={m.instagram.startsWith('http') ? m.instagram : `https://instagram.com/${m.instagram.replace('@', '')}`} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                            <Instagram className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                        {m.facebook && (
+                          <a href={m.facebook} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary">
+                            <Facebook className="w-3.5 h-3.5" />
+                          </a>
+                        )}
+                      </div>
+                      {m.showContactPublicly && m.phone && (
+                        <p className="text-xs text-muted-foreground mt-1">{m.phone}</p>
+                      )}
                     </div>
                   </CardContent>
                 </Card>

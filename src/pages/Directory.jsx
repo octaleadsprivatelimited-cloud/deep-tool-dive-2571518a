@@ -81,14 +81,15 @@ const Directory = () => {
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {filtered.map((m) => (
                 <Card key={m.id} className="border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
-                  <CardContent className="p-6">
+                  <CardContent className="p-0">
                     {(m.image || m.photo) ? (
-                      <img src={m.image || m.photo} alt={m.fullName} className="w-20 h-20 rounded-full object-cover mx-auto mb-4 border-2 border-primary/20" />
+                      <img src={m.image || m.photo} alt={m.fullName} className="w-full h-48 object-cover" />
                     ) : (
-                      <div className="w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 text-xl font-heading font-bold text-primary">
+                      <div className="w-full h-48 bg-primary/10 flex items-center justify-center text-3xl font-heading font-bold text-primary">
                         {(m.fullName || m.name || '?').split(' ').map((n) => n[0]).join('').slice(0, 2)}
                       </div>
                     )}
+                    <div className="p-4">
                     <h3 className="font-heading font-bold text-center text-lg mb-1">{m.fullName || m.name}</h3>
                     {m.profession && (
                       <div className="flex items-center justify-center gap-1 text-primary text-sm mb-1">
@@ -121,6 +122,7 @@ const Directory = () => {
                     {m.showContactPublicly && m.phone && (
                       <p className="text-center text-xs text-muted-foreground mt-2">{m.phone}</p>
                     )}
+                    </div>
                   </CardContent>
                 </Card>
               ))}

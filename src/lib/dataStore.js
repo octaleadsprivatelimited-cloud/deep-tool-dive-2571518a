@@ -146,6 +146,23 @@ export const updateMentorApplicationStatus = async (id, status) => {
   await updateDoc(doc(db, 'mentorApplications', id), { status });
 };
 
+// ---- Hall of Fame ----
+export const getHallOfFame = () => fetchCollection('hallOfFame');
+
+export const saveHallOfFameMember = async (member) => {
+  if (member.id) {
+    const docRef = doc(db, 'hallOfFame', member.id);
+    const { id, ...data } = member;
+    await updateDoc(docRef, data);
+  } else {
+    await addDoc(collection(db, 'hallOfFame'), { ...member, createdAt: serverTimestamp() });
+  }
+};
+
+export const deleteHallOfFameMember = async (id) => {
+  await deleteDoc(doc(db, 'hallOfFame', id));
+};
+
 // ---- YouTube Videos ----
 export const getVideos = () => fetchCollection('videos');
 

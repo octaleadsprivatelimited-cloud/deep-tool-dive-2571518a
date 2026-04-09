@@ -177,6 +177,7 @@ const AdminRegistrations = () => {
                   ['Organisation', viewMember.workingOrganisation],
                   ['Working Place', viewMember.workingPlace || viewMember.location],
                   ['Show Contact', viewMember.showContactPublicly ? 'Yes' : 'No'],
+                  ['Show Image', viewMember.showImagePublicly ? 'Yes' : 'No'],
                   ['LinkedIn', viewMember.linkedin],
                   ['Instagram', viewMember.instagram],
                   ['Facebook', viewMember.facebook],

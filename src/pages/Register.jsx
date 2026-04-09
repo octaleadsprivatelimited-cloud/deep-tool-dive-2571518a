@@ -24,6 +24,7 @@ const registerSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100),
   phone: z.string().regex(/^[+]?[\d\s-]{10,15}$/, 'Invalid phone number'),
   showContactPublicly: z.boolean().default(false),
+  showImagePublicly: z.boolean().default(false),
   email: z.string().email('Invalid email address').max(255),
   address: z.string().max(300).optional(),
   dateOfBirth: z.date({ required_error: 'Date of birth is required' }),
@@ -44,7 +45,7 @@ const Register = () => {
   const form = useForm({
     resolver: zodResolver(registerSchema),
     defaultValues: {
-      surname: '', name: '', phone: '', showContactPublicly: false,
+      surname: '', name: '', phone: '', showContactPublicly: false, showImagePublicly: false,
       email: '', address: '', nativePlace: '',
       educationQualification: '', profession: '',
       workingOrganisation: '', workingPlace: '',
@@ -75,6 +76,7 @@ const Register = () => {
         email: data.email,
         phone: data.phone,
         showContactPublicly: data.showContactPublicly,
+        showImagePublicly: data.showImagePublicly,
         address: data.address,
         dateOfBirth: data.dateOfBirth.toISOString(),
         nativePlace: data.nativePlace,
@@ -131,6 +133,14 @@ const Register = () => {
                   Upload Photo
                   <input type="file" accept="image/*" className="hidden" onChange={handlePhotoChange} />
                 </label>
+                <FormField control={form.control} name="showImagePublicly" render={({ field }) => (
+                  <FormItem className="flex items-center gap-3">
+                    <FormControl>
+                      <Switch checked={field.value} onCheckedChange={field.onChange} />
+                    </FormControl>
+                    <FormLabel className="!mt-0 text-sm">Show my image publicly</FormLabel>
+                  </FormItem>
+                )} />
               </div>
 
               {/* Personal Info */}

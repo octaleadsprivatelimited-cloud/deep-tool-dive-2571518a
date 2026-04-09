@@ -233,8 +233,14 @@ const Index = () => {
 
       {/* Video Thumbnails — Dynamic from admin */}
       {homeVideos.length > 0 && (
-        <section className="bg-background pb-16">
+        <section className="py-16 bg-background">
           <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold">
+                Video <span className="text-primary">Gallery</span>
+              </h2>
+              <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
+            </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {homeVideos.slice(0, 6).map((v) => {
                 const videoId = extractVideoId(v.youtubeUrl);

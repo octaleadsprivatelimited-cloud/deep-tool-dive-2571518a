@@ -14,7 +14,20 @@ const Achievements = () => {
   const [leaders, setLeaders] = useState([]);
   const [loading, setLoading] = useState(true);
 
-
+  useEffect(() => {
+    const load = async () => {
+      try {
+        const [hof, ld] = await Promise.all([getHallOfFame(), getLeaders()]);
+        setHallOfFame(hof);
+        setLeaders(ld);
+      } catch (err) {
+        console.error(err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    load();
+  }, []);
 
   return (
     <div className="min-h-screen bg-background text-foreground">

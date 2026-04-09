@@ -6,41 +6,52 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Trash2, Plus, ImageIcon } from 'lucide-react';
-import { getGalleryImages, saveGalleryImage, deleteGalleryImage, uploadFile } from '@/lib/dataStore';
+import { getGalleryImages, saveGalleryImage, deleteGalleryImage } from '@/lib/dataStore';
 import { toast } from 'sonner';
+
+const compressImage = (base64, maxWidth = 1200) =>
+  new Promise((resolve) => {
+    const img = new Image();
+    img.onload = () => {
+      const canvas = document.createElement('canvas');
+      const ratio = Math.min(maxWidth / img.width, 1);
+      canvas.width = img.width * ratio;
+      canvas.height = img.height * ratio;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+      resolve(canvas.toDataURL('image/jpeg', 0.7));
+    };
+    img.src = base64;
+  });
 
 const AdminGallery = () => {
   const [gallery, setGallery] = useState([]);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [form, setForm] = useState({ title: '', image: '' });
-  const [imageFile, setImageFile] = useState(null);
   const [saving, setSaving] = useState(false);
 
   const loadGallery = async () => { setGallery(await getGalleryImages()); };
   useEffect(() => { loadGallery(); }, []);
 
-  const handleImageChange = (e) => {
+  const handleImageChange = async (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
-    setImageFile(file);
     const reader = new FileReader();
-    reader.onload = (ev) => setForm((f) => ({ ...f, image: ev.target.result }));
+    reader.onload = async (ev) => {
+      const compressed = await compressImage(ev.target.result);
+      setForm((f) => ({ ...f, image: compressed }));
+    };
     reader.readAsDataURL(file);
   };
 
   const handleSave = async () => {
-    if (!form.image && !imageFile) { toast.error('Image is required'); return; }
+    if (!form.image) { toast.error('Image is required'); return; }
     setSaving(true);
     try {
-      let imageUrl = form.image;
-      if (imageFile) {
-        imageUrl = await uploadFile(imageFile, `gallery/${Date.now()}_${imageFile.name}`);
-      }
-      await saveGalleryImage({ title: form.title, image: imageUrl });
+      await saveGalleryImage({ title: form.title, image: form.image });
       await loadGallery();
       setDialogOpen(false);
       setForm({ title: '', image: '' });
-      setImageFile(null);
       toast.success('Image added to gallery');
     } catch (err) {
       toast.error(err.message || 'Failed to save');
@@ -60,7 +71,7 @@ const AdminGallery = () => {
     <AdminLayout title="Gallery Management">
       <div className="flex items-center justify-between mb-6">
         <p className="text-muted-foreground text-sm">{gallery.length} images</p>
-        <Button onClick={() => { setForm({ title: '', image: '' }); setImageFile(null); setDialogOpen(true); }} className="bg-primary hover:bg-primary/90 text-primary-foreground">
+        <Button onClick={() => { setForm({ title: '', image: '' }); setDialogOpen(true); }} className="bg-primary hover:bg-primary/90 text-primary-foreground">
           <Plus className="w-4 h-4 mr-2" /> Add Image
         </Button>
       </div>

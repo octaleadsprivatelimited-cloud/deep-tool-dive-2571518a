@@ -44,9 +44,6 @@ const Header = ({ currentPage }) => {
   const activeNavLinkClass = isTransparentHeader
     ? 'text-primary-foreground font-bold'
     : 'text-primary font-bold';
-  const loginButtonClass = isTransparentHeader
-    ? 'text-primary-foreground hover:bg-primary-foreground/10 hover:text-primary-foreground'
-    : 'text-secondary-foreground hover:bg-primary-foreground/10 hover:text-secondary-foreground';
 
   return (
     <header

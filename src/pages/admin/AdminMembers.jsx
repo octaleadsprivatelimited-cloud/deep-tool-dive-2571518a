@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -6,8 +6,9 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
-import { Trash2, Pencil, Plus, Star, StarOff, Search } from 'lucide-react';
-import { getMembers, saveMember, deleteMember, uploadFile } from '@/lib/dataStore';
+import { Trash2, Pencil, Plus, Star, StarOff, Search, Upload, FileSpreadsheet, Download, CheckCircle, AlertCircle } from 'lucide-react';
+import { getMembers, saveMember, deleteMember, uploadFile, upsertMemberByEmail } from '@/lib/dataStore';
+import { parseCSV, mapCSVToMember } from '@/lib/csvParser';
 import { toast } from 'sonner';
 
 const PAGE_OPTIONS = ['Home', 'About', 'Events', 'Mentorship', 'Gallery', 'Achievements', 'Blog', 'Directory'];
@@ -21,6 +22,13 @@ const AdminMembers = () => {
   const [search, setSearch] = useState('');
   const [saving, setSaving] = useState(false);
   const [imageFile, setImageFile] = useState(null);
+
+  // CSV import state
+  const [csvDialogOpen, setCsvDialogOpen] = useState(false);
+  const [csvData, setCsvData] = useState([]);
+  const [csvImporting, setCsvImporting] = useState(false);
+  const [csvResult, setCsvResult] = useState(null);
+  const csvInputRef = useRef(null);
 
   const loadMembers = async () => {
     setMembers(await getMembers());
@@ -72,6 +80,73 @@ const AdminMembers = () => {
     toast.success(m.highlighted ? 'Removed from homepage' : 'Added to homepage');
   };
 
+  // --- CSV Import ---
+  const handleCSVFileChange = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!file.name.endsWith('.csv')) {
+      toast.error('Please select a .csv file');
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const parsed = parseCSV(ev.target.result);
+        if (parsed.length === 0) {
+          toast.error('No data rows found in CSV');
+          return;
+        }
+        const mapped = parsed.map(mapCSVToMember).filter((m) => m.email);
+        if (mapped.length === 0) {
+          toast.error('No valid rows with email found. Make sure your CSV has an "email" column.');
+          return;
+        }
+        setCsvData(mapped);
+        setCsvResult(null);
+        setCsvDialogOpen(true);
+      } catch (err) {
+        toast.error('Failed to parse CSV file');
+      }
+    };
+    reader.readAsText(file);
+    if (csvInputRef.current) csvInputRef.current.value = '';
+  };
+
+  const handleCSVImport = async () => {
+    setCsvImporting(true);
+    setCsvResult(null);
+    let added = 0;
+    let updated = 0;
+    let failed = 0;
+
+    for (const member of csvData) {
+      try {
+        const result = await upsertMemberByEmail(member);
+        if (result === 'added') added++;
+        else updated++;
+      } catch {
+        failed++;
+      }
+    }
+
+    setCsvResult({ added, updated, failed });
+    setCsvImporting(false);
+    await loadMembers();
+    toast.success(`Import complete: ${added} added, ${updated} updated${failed ? `, ${failed} failed` : ''}`);
+  };
+
+  const downloadSampleCSV = () => {
+    const headers = 'fullName,email,mobile,profession,location,workingPlace,linkedin,instagram,facebook,highlighted,status';
+    const sample = 'John Doe,john@example.com,+1234567890,Engineer,New York,Acme Corp,https://linkedin.com/in/john,,https://facebook.com/john,false,Approved';
+    const blob = new Blob([headers + '\n' + sample], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'members_sample.csv';
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   const filtered = members.filter((m) =>
     m.fullName?.toLowerCase().includes(search.toLowerCase()) ||
     m.email?.toLowerCase().includes(search.toLowerCase())
@@ -84,9 +159,15 @@ const AdminMembers = () => {
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input placeholder="Search members..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10" />
         </div>
-        <Button onClick={openNew} className="bg-primary hover:bg-primary/90 text-primary-foreground">
-          <Plus className="w-4 h-4 mr-2" /> Add Member
-        </Button>
+        <div className="flex items-center gap-2">
+          <input ref={csvInputRef} type="file" accept=".csv" onChange={handleCSVFileChange} className="hidden" />
+          <Button variant="outline" onClick={() => csvInputRef.current?.click()} className="gap-2">
+            <FileSpreadsheet className="w-4 h-4" /> Import CSV
+          </Button>
+          <Button onClick={openNew} className="bg-primary hover:bg-primary/90 text-primary-foreground">
+            <Plus className="w-4 h-4 mr-2" /> Add Member
+          </Button>
+        </div>
       </div>
 
       <Card className="border-border">

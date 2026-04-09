@@ -8,7 +8,7 @@ import { Textarea } from '@/components/ui/textarea';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { uploadFile, saveDonation } from '@/lib/dataStore';
+import { saveDonation } from '@/lib/dataStore';
 import { toast } from 'sonner';
 
 const donationAreas = [

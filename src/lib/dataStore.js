@@ -116,6 +116,36 @@ export const deleteEvent = async (id) => {
   await deleteDoc(doc(db, 'events', id));
 };
 
+// ---- Mentor Requests ----
+export const getMentorRequests = () => fetchCollection('mentorRequests');
+
+export const saveMentorRequest = async (request) => {
+  await addDoc(collection(db, 'mentorRequests'), { ...request, type: 'request', status: 'pending', createdAt: serverTimestamp() });
+};
+
+export const deleteMentorRequest = async (id) => {
+  await deleteDoc(doc(db, 'mentorRequests', id));
+};
+
+export const updateMentorRequestStatus = async (id, status) => {
+  await updateDoc(doc(db, 'mentorRequests', id), { status });
+};
+
+// ---- Mentor Applications ----
+export const getMentorApplications = () => fetchCollection('mentorApplications');
+
+export const saveMentorApplication = async (application) => {
+  await addDoc(collection(db, 'mentorApplications'), { ...application, type: 'application', status: 'pending', createdAt: serverTimestamp() });
+};
+
+export const deleteMentorApplication = async (id) => {
+  await deleteDoc(doc(db, 'mentorApplications', id));
+};
+
+export const updateMentorApplicationStatus = async (id, status) => {
+  await updateDoc(doc(db, 'mentorApplications', id), { status });
+};
+
 // ---- YouTube Videos ----
 export const getVideos = () => fetchCollection('videos');
 

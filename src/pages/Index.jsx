@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight, UserPlus, Heart, Mail, Play } from 'lucide-react';
-import { getHighlightedMembers, getEvents, getVideosByPage } from '@/lib/dataStore';
+import React, { useState, useEffect, useRef } from 'react';
+import { ArrowRight, Users, Handshake, Calendar, TrendingUp, Star, Award, Quote, ChevronRight, ChevronLeft, UserPlus, Heart, Mail, Play } from 'lucide-react';
+import { getHighlightedMembers, getEvents, getVideosByPage, getLeaders } from '@/lib/dataStore';
 import heroBg from '@/assets/hero-bg.jpg';
 import riseLogo from '@/assets/rise-logo.png';
 import { Button } from '@/components/ui/button';
@@ -14,6 +14,8 @@ const Index = () => {
   const [upcomingEvents, setUpcomingEvents] = useState([]);
   const [homeVideos, setHomeVideos] = useState([]);
   const [playingVideoId, setPlayingVideoId] = useState(null);
+  const [leaders, setLeaders] = useState([]);
+  const leadersRef = useRef(null);
 
   useEffect(() => {
     const load = async () => {
@@ -31,6 +33,11 @@ const Index = () => {
       try {
         const vids = await getVideosByPage('Home');
         setHomeVideos(vids.sort((a, b) => (a.order || 0) - (b.order || 0)));
+      } catch {}
+
+      try {
+        const ld = await getLeaders();
+        setLeaders(ld);
       } catch {}
     };
     load();
@@ -80,6 +87,52 @@ const Index = () => {
           </div>
         </div>
       </section>
+
+      {/* Leaders Scrolling Section */}
+      {leaders.length > 0 && (
+        <section className="py-12 bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="flex items-center justify-between mb-6">
+              <h2 className="text-xl md:text-2xl font-heading font-bold">
+                Our <span className="text-primary">Leaders</span>
+              </h2>
+              <div className="flex gap-2">
+                <Button size="icon" variant="outline" className="rounded-full" onClick={() => leadersRef.current?.scrollBy({ left: -280, behavior: 'smooth' })}>
+                  <ChevronLeft className="w-4 h-4" />
+                </Button>
+                <Button size="icon" variant="outline" className="rounded-full" onClick={() => leadersRef.current?.scrollBy({ left: 280, behavior: 'smooth' })}>
+                  <ChevronRight className="w-4 h-4" />
+                </Button>
+              </div>
+            </div>
+            <div
+              ref={leadersRef}
+              className="flex gap-5 overflow-x-auto pb-4"
+              style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            >
+              {leaders.map((l) => (
+                <div key={l.id} className="flex-shrink-0 w-56 group">
+                  <div className="w-56 h-64 rounded-xl overflow-hidden border border-border shadow-sm group-hover:shadow-lg transition-shadow">
+                    {l.image ? (
+                      <img src={l.image} alt={l.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                    ) : (
+                      <div className="w-full h-full bg-primary/10 flex items-center justify-center">
+                        <span className="text-4xl font-bold text-primary/30">{l.name?.charAt(0)}</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="mt-3 text-center">
+                    <h3 className="font-heading font-bold text-sm">{l.name}</h3>
+                    <p className="text-xs text-muted-foreground">
+                      {l.yearFrom}{l.yearTo ? ` – ${l.yearTo}` : ''}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
 
       {/* Mission */}
       <section className="py-16 md:py-24 bg-background">

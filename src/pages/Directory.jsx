@@ -122,6 +122,7 @@ const Directory = () => {
                     {m.showContactPublicly && m.phone && (
                       <p className="text-center text-xs text-muted-foreground mt-2">{m.phone}</p>
                     )}
+                    </div>
                   </CardContent>
                 </Card>
               ))}

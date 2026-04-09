@@ -49,7 +49,7 @@ const Achievements = () => {
           <div className="container mx-auto px-4">
             <div className="text-center mb-8">
               <h2 className="text-xl md:text-2xl font-heading font-bold">
-                Our <span className="text-primary">Leaders</span>
+                Our <span className="text-primary">Pride</span>
               </h2>
               <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
             </div>

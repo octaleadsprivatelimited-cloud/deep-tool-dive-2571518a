@@ -292,6 +292,96 @@ const AdminMembers = () => {
           </div>
         </DialogContent>
       </Dialog>
+
+      {/* CSV Import Dialog */}
+      <Dialog open={csvDialogOpen} onOpenChange={(open) => { setCsvDialogOpen(open); if (!open) { setCsvData([]); setCsvResult(null); } }}>
+        <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <FileSpreadsheet className="w-5 h-5 text-primary" /> Import Members from CSV
+            </DialogTitle>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            {/* Download sample */}
+            <button onClick={downloadSampleCSV} className="flex items-center gap-2 text-sm text-primary hover:underline">
+              <Download className="w-4 h-4" /> Download sample CSV template
+            </button>
+
+            {/* Preview */}
+            {csvData.length > 0 && !csvResult && (
+              <>
+                <div className="rounded-lg border border-border overflow-hidden">
+                  <div className="bg-muted px-4 py-2 text-sm font-medium text-foreground">
+                    Preview — {csvData.length} member{csvData.length !== 1 ? 's' : ''} found
+                  </div>
+                  <div className="max-h-64 overflow-y-auto">
+                    <Table>
+                      <TableHeader>
+                        <TableRow>
+                          <TableHead>Name</TableHead>
+                          <TableHead>Email</TableHead>
+                          <TableHead>Profession</TableHead>
+                          <TableHead>Location</TableHead>
+                        </TableRow>
+                      </TableHeader>
+                      <TableBody>
+                        {csvData.map((m, i) => (
+                          <TableRow key={i}>
+                            <TableCell className="font-medium">{m.fullName}</TableCell>
+                            <TableCell className="text-muted-foreground text-sm">{m.email}</TableCell>
+                            <TableCell className="text-muted-foreground text-sm">{m.profession}</TableCell>
+                            <TableCell className="text-muted-foreground text-sm">{m.location}</TableCell>
+                          </TableRow>
+                        ))}
+                      </TableBody>
+                    </Table>
+                  </div>
+                </div>
+
+                <p className="text-xs text-muted-foreground">
+                  Members with matching emails will be <strong>updated</strong>. New emails will be <strong>added</strong>.
+                </p>
+
+                <div className="flex gap-3">
+                  <Button onClick={handleCSVImport} disabled={csvImporting} className="flex-1 bg-primary text-primary-foreground hover:bg-primary/90">
+                    {csvImporting ? 'Importing...' : `Import ${csvData.length} Members`}
+                  </Button>
+                  <Button variant="outline" onClick={() => setCsvDialogOpen(false)} className="flex-1">Cancel</Button>
+                </div>
+              </>
+            )}
+
+            {/* Results */}
+            {csvResult && (
+              <div className="space-y-3">
+                <div className="rounded-lg border border-border p-4 space-y-2">
+                  <div className="flex items-center gap-2 text-foreground font-medium">
+                    <CheckCircle className="w-5 h-5 text-green-600" /> Import Complete
+                  </div>
+                  <div className="grid grid-cols-3 gap-3 text-center text-sm">
+                    <div className="bg-green-50 dark:bg-green-900/20 rounded-lg p-3">
+                      <div className="text-2xl font-bold text-green-700 dark:text-green-400">{csvResult.added}</div>
+                      <div className="text-muted-foreground">Added</div>
+                    </div>
+                    <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3">
+                      <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">{csvResult.updated}</div>
+                      <div className="text-muted-foreground">Updated</div>
+                    </div>
+                    {csvResult.failed > 0 && (
+                      <div className="bg-red-50 dark:bg-red-900/20 rounded-lg p-3">
+                        <div className="text-2xl font-bold text-red-700 dark:text-red-400">{csvResult.failed}</div>
+                        <div className="text-muted-foreground">Failed</div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                <Button onClick={() => setCsvDialogOpen(false)} className="w-full">Done</Button>
+              </div>
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </AdminLayout>
   );
 };

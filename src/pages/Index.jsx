@@ -17,41 +17,17 @@ const Index = () => {
 
   useEffect(() => {
     const load = async () => {
-      // Load highlighted members
-      const highlighted = await getHighlightedMembers();
-      if (highlighted.length > 0) {
+      try {
+        const highlighted = await getHighlightedMembers();
         setFeaturedMembers(highlighted.map((m) => ({ name: m.fullName || m.name, profession: m.profession, location: m.location || m.workingPlace, image: m.image || m.photo })));
-      } else {
-        setFeaturedMembers([
-          { name: 'Dr. Ramesh Kumar', profession: 'Cardiologist', location: 'Hyderabad' },
-          { name: 'Priya Reddy', profession: 'Software Architect', location: 'Bangalore' },
-          { name: 'Venkat Naidu', profession: 'Entrepreneur', location: 'Dallas, USA' },
-          { name: 'Lakshmi Devi', profession: 'Advocate', location: 'Vijayawada' },
-        ]);
-      }
+      } catch {}
 
-      // Load upcoming events
       try {
         const events = await getEvents();
         const upcoming = events.filter((e) => e.type === 'upcoming').slice(0, 3);
-        if (upcoming.length > 0) {
-          setUpcomingEvents(upcoming.map((e) => ({ title: e.title, date: e.date, location: e.venue || 'TBA' })));
-        } else {
-          setUpcomingEvents([
-            { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
-            { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
-            { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
-          ]);
-        }
-      } catch {
-        setUpcomingEvents([
-          { title: 'RISE Annual Summit 2026', date: 'May 15-16, 2026', location: 'Hyderabad' },
-          { title: 'Networking Night', date: 'Apr 20, 2026', location: 'Virtual' },
-          { title: 'Youth Leadership Workshop', date: 'Jun 8, 2026', location: 'Bangalore' },
-        ]);
-      }
+        setUpcomingEvents(upcoming.map((e) => ({ title: e.title, date: e.date, location: e.venue || 'TBA' })));
+      } catch {}
 
-      // Load home videos
       try {
         const vids = await getVideosByPage('Home');
         setHomeVideos(vids.sort((a, b) => (a.order || 0) - (b.order || 0)));
@@ -72,18 +48,6 @@ const Index = () => {
     return match ? match[1] : null;
   };
 
-  const achievements = [
-    { name: 'Dr. Suresh Babu', achievement: 'Padma Shri for contributions to Medicine' },
-    { name: 'Kavitha Naidu', achievement: 'Forbes 30 Under 30 — Tech Innovator' },
-    { name: 'Rajendra Prasad', achievement: 'Built 100+ schools across rural India' },
-  ];
-
-  const testimonials = [
-    { quote: 'RISE connected me with a mentor who changed my career trajectory. Truly life-changing.', name: 'Harini T.', role: 'Software Engineer, Hyderabad' },
-    { quote: 'The community events are world-class. I found my co-founder at a RISE networking night.', name: 'Srinivas K.', role: 'Startup Founder, Mumbai' },
-    { quote: 'Being part of RISE gave me a sense of belonging and purpose beyond my profession.', name: 'Anita P.', role: 'Teacher, London' },
-  ];
-
   const actionItems = [
     { icon: UserPlus, label: 'Get', highlight: 'Membership', href: '/register' },
     { icon: Users, label: 'Become a', highlight: 'Volunteer', href: '/register' },
@@ -95,7 +59,7 @@ const Index = () => {
     <div className="min-h-screen bg-background text-foreground">
       <Header currentPage="Home" />
 
-      {/* Hero Banner — Full width image with bottom-left text overlay */}
+      {/* Hero Banner */}
       <section className="relative min-h-screen flex items-end overflow-hidden">
         <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/40 to-transparent" />
@@ -117,7 +81,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Mission / About — Centered heading + quote style */}
+      {/* Mission */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-2">
@@ -130,8 +94,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Video / Image Thumbnails — Dynamic from admin */}
-      {homeVideos.length > 0 ? (
+      {/* Video Thumbnails — Dynamic from admin */}
+      {homeVideos.length > 0 && (
         <section className="bg-background pb-16">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -170,27 +134,9 @@ const Index = () => {
             </div>
           </div>
         </section>
-      ) : (
-        <section className="bg-background pb-16">
-          <div className="container mx-auto px-4">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {['Community Summit 2025', 'Mentorship Program', 'Youth Leadership'].map((title) => (
-                <div key={title} className="relative group cursor-pointer">
-                  <div className="aspect-video bg-secondary rounded-lg overflow-hidden flex items-center justify-center">
-                    <div className="absolute inset-0 bg-gradient-to-t from-secondary to-transparent opacity-60" />
-                    <div className="w-16 h-16 rounded-full bg-primary/90 flex items-center justify-center z-10 group-hover:scale-110 transition-transform">
-                      <Play className="w-7 h-7 text-primary-foreground ml-1" />
-                    </div>
-                  </div>
-                  <p className="text-center mt-3 font-medium text-sm text-foreground">{title}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
       )}
 
-      {/* Action Strip — Horizontal bar with icons like Jana Sena */}
+      {/* Action Strip */}
       <section className="bg-primary">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-2 md:grid-cols-4">
@@ -213,7 +159,7 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Why RISE — Clean centered section with icon cards */}
+      {/* Why RISE — 4 Pillars */}
       <section className="py-16 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
@@ -244,131 +190,82 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Featured Members — Simple clean cards */}
-      <section className="py-16 md:py-24 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold">
-              Featured <span className="text-primary">Members</span>
-            </h2>
-            <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredMembers.map((m) => (
-              <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
-                {/* Profile image area */}
-                <div className="h-48 bg-secondary flex items-center justify-center">
-                  {m.image ? (
-                    <img src={m.image} alt={m.name} className="w-24 h-24 rounded-full object-cover border-4 border-primary/30 group-hover:border-primary transition-colors" />
-                  ) : (
-                    <div className="w-24 h-24 rounded-full bg-primary/20 border-4 border-primary/30 flex items-center justify-center text-3xl font-heading font-bold text-primary group-hover:border-primary transition-colors">
-                      {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
-                    </div>
-                  )}
-                </div>
-                <div className="p-5 text-center">
-                  <h3 className="font-heading font-bold text-base mb-1">{m.name}</h3>
-                  <p className="text-primary text-sm font-medium">{m.profession}</p>
-                  <p className="text-muted-foreground text-xs mt-1">{m.location}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-8 font-bold h-12">
-              <a href="/directory">View All Members <ArrowRight className="ml-2 w-4 h-4" /></a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Upcoming Events — Clean list with side accent */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
-            {/* Left heading */}
-            <div>
-              <h2 className="text-2xl md:text-3xl font-heading font-bold mb-3">
-                Upcoming <span className="text-primary">Events</span>
+      {/* Featured Members — Only from admin */}
+      {featuredMembers.length > 0 && (
+        <section className="py-16 md:py-24 bg-muted">
+          <div className="container mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-heading font-bold">
+                Featured <span className="text-primary">Members</span>
               </h2>
-              <div className="w-16 h-0.5 bg-primary mb-6" />
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6">
-                Join us at summits, workshops, and networking nights designed to inspire and connect the community.
-              </p>
-              <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-md px-6 font-semibold">
-                <a href="/events">View All Events</a>
-              </Button>
+              <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
             </div>
-            {/* Right event cards */}
-            <div className="lg:col-span-2 space-y-4">
-              {upcomingEvents.map((e) => (
-                <div key={e.title} className="flex items-center gap-5 p-5 bg-muted rounded-lg border-l-4 border-primary hover:shadow-md transition-all group">
-                  <div className="w-14 h-14 rounded-lg bg-primary flex items-center justify-center shrink-0">
-                    <Calendar className="w-6 h-6 text-primary-foreground" />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              {featuredMembers.map((m) => (
+                <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
+                  <div className="h-48 bg-secondary flex items-center justify-center">
+                    {m.image ? (
+                      <img src={m.image} alt={m.name} className="w-24 h-24 rounded-full object-cover border-4 border-primary/30 group-hover:border-primary transition-colors" />
+                    ) : (
+                      <div className="w-24 h-24 rounded-full bg-primary/20 border-4 border-primary/30 flex items-center justify-center text-3xl font-heading font-bold text-primary group-hover:border-primary transition-colors">
+                        {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
+                      </div>
+                    )}
                   </div>
-                  <div className="flex-1">
-                    <h3 className="font-heading font-bold text-base group-hover:text-primary transition-colors">{e.title}</h3>
-                    <p className="text-muted-foreground text-sm">{e.date} · {e.location}</p>
+                  <div className="p-5 text-center">
+                    <h3 className="font-heading font-bold text-base mb-1">{m.name}</h3>
+                    <p className="text-primary text-sm font-medium">{m.profession}</p>
+                    <p className="text-muted-foreground text-xs mt-1">{m.location}</p>
                   </div>
-                  <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all hidden md:block" />
                 </div>
               ))}
             </div>
+            <div className="text-center mt-10">
+              <Button asChild className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-md px-8 font-bold h-12">
+                <a href="/directory">View All Members <ArrowRight className="ml-2 w-4 h-4" /></a>
+              </Button>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Hall of Fame */}
-      <section className="py-16 md:py-24 bg-secondary text-secondary-foreground">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold">
-              Hall of <span className="text-gold">Fame</span>
-            </h2>
-            <div className="w-16 h-0.5 bg-gold mx-auto mt-4" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {achievements.map((a) => (
-              <div key={a.name} className="bg-secondary-foreground/5 border border-gold/20 rounded-lg p-6 hover:border-gold/60 transition-all">
-                <Award className="w-10 h-10 text-gold mb-4" />
-                <h3 className="font-heading font-bold text-lg mb-2">{a.name}</h3>
-                <p className="text-secondary-foreground/60 text-sm">{a.achievement}</p>
+      {/* Upcoming Events — Only from admin */}
+      {upcomingEvents.length > 0 && (
+        <section className="py-16 md:py-24 bg-background">
+          <div className="container mx-auto px-4">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+              <div>
+                <h2 className="text-2xl md:text-3xl font-heading font-bold mb-3">
+                  Upcoming <span className="text-primary">Events</span>
+                </h2>
+                <div className="w-16 h-0.5 bg-primary mb-6" />
+                <p className="text-muted-foreground text-sm leading-relaxed mb-6">
+                  Join us at summits, workshops, and networking nights designed to inspire and connect the community.
+                </p>
+                <Button asChild variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground rounded-md px-6 font-semibold">
+                  <a href="/events">View All Events</a>
+                </Button>
               </div>
-            ))}
-          </div>
-          <div className="text-center mt-10">
-            <Button asChild variant="outline" className="border-gold text-gold hover:bg-gold hover:text-secondary rounded-md px-8 font-bold">
-              <a href="/achievements">View All Achievements</a>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section className="py-16 md:py-24 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold">
-              What Members <span className="text-primary">Say</span>
-            </h2>
-            <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <div key={t.name} className="bg-background rounded-lg p-6 border border-border hover:border-primary/30 transition-all">
-                <Quote className="w-8 h-8 text-primary/20 mb-4" />
-                <p className="text-foreground/80 italic text-sm leading-relaxed mb-6">"{t.quote}"</p>
-                <div>
-                  <p className="font-heading font-bold text-sm">{t.name}</p>
-                  <p className="text-xs text-muted-foreground">{t.role}</p>
-                </div>
+              <div className="lg:col-span-2 space-y-4">
+                {upcomingEvents.map((e) => (
+                  <div key={e.title} className="flex items-center gap-5 p-5 bg-muted rounded-lg border-l-4 border-primary hover:shadow-md transition-all group">
+                    <div className="w-14 h-14 rounded-lg bg-primary flex items-center justify-center shrink-0">
+                      <Calendar className="w-6 h-6 text-primary-foreground" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="font-heading font-bold text-base group-hover:text-primary transition-colors">{e.title}</h3>
+                      <p className="text-muted-foreground text-sm">{e.date} · {e.location}</p>
+                    </div>
+                    <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all hidden md:block" />
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
-      {/* Final CTA — Full-width background like Jana Sena volunteer banner */}
+      {/* Final CTA */}
       <section className="relative min-h-[400px] flex items-center overflow-hidden">
         <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" loading="lazy" />
         <div className="absolute inset-0 bg-secondary/80" />

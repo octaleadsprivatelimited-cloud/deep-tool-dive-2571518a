@@ -67,6 +67,15 @@ const Contact = () => {
                     <p className="text-muted-foreground text-sm">+91 9848353503</p>
                   </div>
                 </div>
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                    <Mail className="w-5 h-5 text-primary" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold mb-1">Email</h3>
+                    <a href="mailto:info@risecensus.com" className="text-muted-foreground text-sm hover:text-primary transition-colors">info@risecensus.com</a>
+                  </div>
+                </div>
               </div>
               <div className="rounded-xl overflow-hidden border border-border">
                 <iframe

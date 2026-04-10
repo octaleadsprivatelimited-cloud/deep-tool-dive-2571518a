@@ -109,28 +109,6 @@ const Donate = () => {
         </div>
       </section>
 
-      {/* Donation Areas */}
-      <section className="py-16 md:py-24 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="text-2xl md:text-3xl font-heading font-bold">
-              Where Your <span className="text-primary">Donation</span> Goes
-            </h2>
-            <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {donationAreas.map((area) => (
-              <div key={area.title} className="p-6 rounded-lg border border-border hover:border-primary/30 hover:shadow-lg transition-all text-center group">
-                <div className="w-14 h-14 rounded-full bg-primary/10 group-hover:bg-primary/20 flex items-center justify-center mx-auto mb-4 transition-colors">
-                  <area.icon className="w-7 h-7 text-primary" />
-                </div>
-                <h3 className="font-heading font-bold text-base mb-2">{area.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{area.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* Scan & Pay + Confirmation Form */}
       <section className="py-12 md:py-16 bg-muted">

@@ -71,7 +71,7 @@ const Contact = () => {
               <div className="rounded-xl overflow-hidden border border-border">
                 <iframe
                   title="RISE Location"
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7!2d78.4!3d17.4!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTfCsDI0JzAwLjAiTiA3OMKwMjQnMDAuMCJF!5e0!3m2!1sen!2sin!4v1234567890"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d500!2d78.4324341!3d17.4339256!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!1s0x0%3A0x0!5e0!3m2!1sen!2sin"
                   width="100%"
                   height="300"
                   style={{ border: 0 }}

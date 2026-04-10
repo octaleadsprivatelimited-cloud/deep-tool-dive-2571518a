@@ -67,17 +67,17 @@ const Index = () => {
       <Header currentPage="Home" />
 
       {/* Hero Banner */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[50vh] md:min-h-[70vh] flex items-end overflow-hidden">
         <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/40 to-transparent" />
-        <div className="container mx-auto px-4 relative z-10 pb-16 md:pb-24">
+        <div className="container mx-auto px-4 relative z-10 pb-10 md:pb-24">
           <div className="flex items-end justify-between gap-8">
           <div className="max-w-3xl flex-1">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black uppercase leading-tight mb-4 text-primary-foreground">
+            <h1 className="text-2xl md:text-5xl lg:text-6xl font-heading font-black uppercase leading-tight mb-3 text-primary-foreground">
               RISE Global Directory
             </h1>
-            <div className="w-24 h-1.5 bg-primary mb-6" />
-            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed">
+            <div className="w-16 md:w-24 h-1.5 bg-primary mb-4 md:mb-6" />
+            <p className="text-base md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed">
               Exploring the Excellence — Connecting Royal community professionals for networking, mentorship, and growth.
             </p>
           </div>
@@ -90,7 +90,7 @@ const Index = () => {
 
       {/* Leaders Scrolling Section */}
       {leaders.length > 0 && (
-        <section className="py-12 bg-muted overflow-hidden">
+        <section className="py-8 md:py-12 bg-muted overflow-hidden">
           <div className="container mx-auto px-4 mb-6">
             <h2 className="text-xl md:text-2xl font-heading font-bold">
               Our <span className="text-primary">Pride</span>
@@ -125,7 +125,7 @@ const Index = () => {
       )}
 
       {/* Mission */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-10 md:py-24 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-2">
             <span className="text-primary">RISE</span> Mission
@@ -161,7 +161,7 @@ const Index = () => {
       </section>
 
       {/* Why RISE — 4 Pillars */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-10 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="inline-block">
@@ -194,7 +194,7 @@ const Index = () => {
 
       {/* Featured Members — Only from admin */}
       {featuredMembers.length > 0 && (
-        <section className="py-16 md:py-24 bg-muted">
+        <section className="py-10 md:py-24 bg-muted">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-heading font-bold">
@@ -202,23 +202,23 @@ const Index = () => {
               </h2>
               <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {featuredMembers.map((m) => (
-                <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
-                  <div className="aspect-[3/4] bg-secondary overflow-hidden flex items-center justify-center">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
+               {featuredMembers.map((m) => (
+                 <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
+                  <div className="aspect-square bg-secondary overflow-hidden flex items-center justify-center">
                     {m.image ? (
                       <img src={m.image} alt={m.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
                     ) : (
-                      <div className="w-full h-full bg-primary/20 flex items-center justify-center text-3xl font-heading font-bold text-primary">
+                      <div className="w-full h-full bg-primary/20 flex items-center justify-center text-2xl md:text-3xl font-heading font-bold text-primary">
                         {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
                       </div>
                     )}
                   </div>
-                  <div className="p-5 text-center">
-                    <h3 className="font-heading font-bold text-base mb-1">{m.name}</h3>
-                    <p className="text-primary text-sm font-medium">{m.profession}</p>
-                    <p className="text-muted-foreground text-xs mt-1">{m.location}</p>
-                  </div>
+                   <div className="p-3 md:p-5 text-center">
+                     <h3 className="font-heading font-bold text-sm md:text-base mb-0.5">{m.name}</h3>
+                     <p className="text-primary text-xs md:text-sm font-medium">{m.profession}</p>
+                     <p className="text-muted-foreground text-[10px] md:text-xs mt-0.5">{m.location}</p>
+                   </div>
                 </div>
               ))}
             </div>
@@ -233,7 +233,7 @@ const Index = () => {
 
       {/* Video Thumbnails — Dynamic from admin */}
       {homeVideos.length > 0 && (
-        <section className="py-16 bg-background">
+        <section className="py-10 md:py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-heading font-bold">
@@ -281,7 +281,7 @@ const Index = () => {
 
       {/* Upcoming Events — Only from admin */}
       {upcomingEvents.length > 0 && (
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-10 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
               <div>

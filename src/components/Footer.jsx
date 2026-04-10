@@ -37,6 +37,7 @@ const Footer = () => {
   const socialLinks = [
     { icon: Facebook, href: 'https://www.facebook.com/RISECensus' },
     { icon: Twitter, href: 'https://x.com/Rise_Census' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/risecensus' },
     { icon: Instagram, href: 'https://www.instagram.com/risecensus' },
     { icon: Youtube, href: 'https://www.youtube.com/@RISECensus' },
   ];

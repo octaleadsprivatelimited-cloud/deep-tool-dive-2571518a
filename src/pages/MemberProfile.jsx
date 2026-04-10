@@ -7,11 +7,11 @@ import { Separator } from '@/components/ui/separator';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import WhatsAppButton from '@/components/WhatsAppButton';
-import { getMemberById } from '@/lib/dataStore';
+import { getMemberBySlug } from '@/lib/dataStore';
 import { format } from 'date-fns';
 
 const MemberProfile = () => {
-  const { id } = useParams();
+  const { slug } = useParams();
   const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
@@ -19,7 +19,7 @@ const MemberProfile = () => {
   useEffect(() => {
     const load = async () => {
       try {
-        const data = await getMemberById(id);
+        const data = await getMemberBySlug(slug);
         if (!data || data.status !== 'approved') {
           setNotFound(true);
         } else {
@@ -33,7 +33,7 @@ const MemberProfile = () => {
       }
     };
     load();
-  }, [id]);
+  }, [slug]);
 
   if (loading) {
     return (

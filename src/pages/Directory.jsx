@@ -9,6 +9,7 @@ import WhatsAppButton from '@/components/WhatsAppButton';
 import YouTubeSection from '@/components/YouTubeSection';
 import PageMembersSection from '@/components/PageMembersSection';
 import { getMembers } from '@/lib/dataStore';
+import { generateMemberSlug } from '@/lib/dataStore';
 
 const Directory = () => {
   const [members, setMembers] = useState([]);
@@ -81,7 +82,7 @@ const Directory = () => {
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {filtered.map((m) => (
-                <Link key={m.id} to={`/member/${m.id}`} className="block">
+                <Link key={m.id} to={`/member/${generateMemberSlug(m)}`} className="block">
                 <Card className="border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
                   <CardContent className="p-0">
                     <div className="w-full aspect-[3/4] bg-primary/10 overflow-hidden">

@@ -22,6 +22,20 @@ export const getMemberById = async (id) => {
   return { id: snap.id, ...snap.data() };
 };
 
+export const getMemberBySlug = async (slug) => {
+  const members = await getMembers();
+  return members.find((m) => {
+    const name = m.fullName || `${m.surname || ''} ${m.name || ''}`.trim();
+    const memberSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+    return memberSlug === slug;
+  }) || null;
+};
+
+export const generateMemberSlug = (member) => {
+  const name = member.fullName || `${member.surname || ''} ${member.name || ''}`.trim();
+  return name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '');
+};
+
 export const saveMember = async (member) => {
   if (member.id) {
     const docRef = doc(db, 'members', member.id);

@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /admin/*
+Disallow: /admin-login
+Disallow: /login
+
+Sitemap: https://deep-tool-dive.lovable.app/sitemap.xml

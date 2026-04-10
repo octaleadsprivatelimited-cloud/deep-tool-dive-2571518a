@@ -35,11 +35,9 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Facebook, href: '#' },
-    { icon: Twitter, href: '#' },
-    { icon: Linkedin, href: '#' },
-    { icon: Instagram, href: '#' },
-    { icon: Youtube, href: '#' },
+    { icon: Facebook, href: 'https://www.facebook.com/RISECensus' },
+    { icon: Instagram, href: 'https://www.instagram.com/risecensus' },
+    { icon: Youtube, href: 'https://www.youtube.com/@RISECensus' },
   ];
 
   return (

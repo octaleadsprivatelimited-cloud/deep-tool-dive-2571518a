@@ -19,7 +19,7 @@ const Footer = () => {
       title: 'Services',
       items: [
         { name: 'Mentorship', href: '/mentorship' },
-        { name: 'Blog & News', href: '/blog' },
+        { name: 'News', href: '/blog' },
         { name: 'Gallery', href: '/gallery' },
         { name: 'Hall of Fame', href: '/achievements' },
       ],

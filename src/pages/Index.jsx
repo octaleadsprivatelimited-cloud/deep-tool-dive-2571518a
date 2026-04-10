@@ -125,7 +125,7 @@ const Index = () => {
       )}
 
       {/* Mission */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-10 md:py-24 bg-background">
         <div className="container mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-heading font-bold mb-2">
             <span className="text-primary">RISE</span> Mission
@@ -161,7 +161,7 @@ const Index = () => {
       </section>
 
       {/* Why RISE — 4 Pillars */}
-      <section className="py-16 md:py-24 bg-background">
+      <section className="py-10 md:py-24 bg-background">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <div className="inline-block">
@@ -194,7 +194,7 @@ const Index = () => {
 
       {/* Featured Members — Only from admin */}
       {featuredMembers.length > 0 && (
-        <section className="py-16 md:py-24 bg-muted">
+        <section className="py-10 md:py-24 bg-muted">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-heading font-bold">
@@ -202,7 +202,7 @@ const Index = () => {
               </h2>
               <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
               {featuredMembers.map((m) => (
                 <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
                   <div className="aspect-[3/4] bg-secondary overflow-hidden flex items-center justify-center">
@@ -233,7 +233,7 @@ const Index = () => {
 
       {/* Video Thumbnails — Dynamic from admin */}
       {homeVideos.length > 0 && (
-        <section className="py-16 bg-background">
+        <section className="py-10 md:py-16 bg-background">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-2xl md:text-3xl font-heading font-bold">
@@ -281,7 +281,7 @@ const Index = () => {
 
       {/* Upcoming Events — Only from admin */}
       {upcomingEvents.length > 0 && (
-        <section className="py-16 md:py-24 bg-background">
+        <section className="py-10 md:py-24 bg-background">
           <div className="container mx-auto px-4">
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
               <div>

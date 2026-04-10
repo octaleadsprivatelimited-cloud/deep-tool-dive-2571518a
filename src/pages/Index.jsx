@@ -203,22 +203,22 @@ const Index = () => {
               <div className="w-16 h-0.5 bg-primary mx-auto mt-4" />
             </div>
             <div className="grid grid-cols-2 gap-3 md:grid-cols-4 md:gap-6">
-              {featuredMembers.map((m) => (
-                <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
-                  <div className="aspect-[3/4] bg-secondary overflow-hidden flex items-center justify-center">
+               {featuredMembers.map((m) => (
+                 <div key={m.name} className="bg-background rounded-lg overflow-hidden shadow-sm hover:shadow-xl hover:border-primary border border-transparent transition-all duration-300 group">
+                  <div className="aspect-square bg-secondary overflow-hidden flex items-center justify-center">
                     {m.image ? (
                       <img src={m.image} alt={m.name} className="w-full h-full object-contain group-hover:scale-105 transition-transform" />
                     ) : (
-                      <div className="w-full h-full bg-primary/20 flex items-center justify-center text-3xl font-heading font-bold text-primary">
+                      <div className="w-full h-full bg-primary/20 flex items-center justify-center text-2xl md:text-3xl font-heading font-bold text-primary">
                         {m.name.split(' ').map((n) => n[0]).join('').slice(0, 2)}
                       </div>
                     )}
                   </div>
-                  <div className="p-5 text-center">
-                    <h3 className="font-heading font-bold text-base mb-1">{m.name}</h3>
-                    <p className="text-primary text-sm font-medium">{m.profession}</p>
-                    <p className="text-muted-foreground text-xs mt-1">{m.location}</p>
-                  </div>
+                   <div className="p-3 md:p-5 text-center">
+                     <h3 className="font-heading font-bold text-sm md:text-base mb-0.5">{m.name}</h3>
+                     <p className="text-primary text-xs md:text-sm font-medium">{m.profession}</p>
+                     <p className="text-muted-foreground text-[10px] md:text-xs mt-0.5">{m.location}</p>
+                   </div>
                 </div>
               ))}
             </div>

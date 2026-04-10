@@ -49,11 +49,9 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-                <span className="text-primary-foreground font-heading font-black text-lg">R</span>
-              </div>
+              <img src="/favicon.png" alt="Rise Census Logo" className="w-10 h-10 rounded-full" />
               <div>
-                <div className="text-lg font-heading font-bold">RISE</div>
+                <div className="text-lg font-heading font-bold">Rise Census</div>
                 <div className="text-[10px] text-gold uppercase tracking-widest">Global Directory</div>
               </div>
             </div>
@@ -86,11 +84,9 @@ const Footer = () => {
         {/* Mobile */}
         <div className="md:hidden space-y-3 mb-8">
           <div className="flex items-center space-x-2 mb-4">
-            <div className="w-10 h-10 rounded-full bg-primary flex items-center justify-center">
-              <span className="text-primary-foreground font-heading font-black text-lg">R</span>
-            </div>
+            <img src="/favicon.png" alt="Rise Census Logo" className="w-10 h-10 rounded-full" />
             <div>
-              <div className="text-lg font-heading font-bold">RISE</div>
+              <div className="text-lg font-heading font-bold">Rise Census</div>
               <div className="text-[10px] text-gold uppercase tracking-widest">Global Directory</div>
             </div>
           </div>
@@ -127,7 +123,7 @@ const Footer = () => {
 
         {/* Bottom */}
         <div className="border-t border-secondary-foreground/10 pt-4 flex flex-col md:flex-row justify-between items-center gap-3">
-          <p className="text-xs text-secondary-foreground/50">&copy; {new Date().getFullYear()} RISE Global Directory. All rights reserved.</p>
+          <p className="text-xs text-secondary-foreground/50">&copy; {new Date().getFullYear()} Rise Census. All rights reserved.</p>
           <p className="text-xs text-secondary-foreground/50">
             Developed by <a href="https://www.octaleads.com" target="_blank" rel="noopener noreferrer" className="text-primary hover:underline transition-colors">OctaLeads</a>
           </p>

@@ -90,7 +90,7 @@ const Index = () => {
 
       {/* Leaders Scrolling Section */}
       {leaders.length > 0 && (
-        <section className="py-12 bg-muted overflow-hidden">
+        <section className="py-8 md:py-12 bg-muted overflow-hidden">
           <div className="container mx-auto px-4 mb-6">
             <h2 className="text-xl md:text-2xl font-heading font-bold">
               Our <span className="text-primary">Pride</span>

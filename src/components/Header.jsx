@@ -25,7 +25,7 @@ const Header = ({ currentPage }) => {
     { name: 'Directory', href: '/directory' },
     { name: 'Events', href: '/events' },
     { name: 'Mentorship', href: '/mentorship' },
-    { name: 'Blog', href: '/blog' },
+    { name: 'News', href: '/blog' },
     { name: 'Gallery', href: '/gallery' },
     { name: 'Achievements', href: '/achievements' },
     { name: 'Library', href: '/library' },

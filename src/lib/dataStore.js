@@ -14,6 +14,14 @@ const fetchCollection = async (name) => {
 // ---- Members ----
 export const getMembers = () => fetchCollection('members');
 
+export const getMemberById = async (id) => {
+  const { getDoc } = await import('firebase/firestore');
+  const docRef = doc(db, 'members', id);
+  const snap = await getDoc(docRef);
+  if (!snap.exists()) return null;
+  return { id: snap.id, ...snap.data() };
+};
+
 export const saveMember = async (member) => {
   if (member.id) {
     const docRef = doc(db, 'members', member.id);

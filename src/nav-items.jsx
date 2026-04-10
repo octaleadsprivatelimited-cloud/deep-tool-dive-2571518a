@@ -29,11 +29,13 @@ import EventDetail from "./pages/EventDetail.jsx";
 import Library from "./pages/Library.jsx";
 import AdminLibrary from "./pages/admin/AdminLibrary.jsx";
 import AdminLeaders from "./pages/admin/AdminLeaders.jsx";
+import MemberProfile from "./pages/MemberProfile.jsx";
 
 export const navItems = [
   { title: "Home", to: "/", icon: <Home className="h-4 w-4" />, page: <Index /> },
   { title: "About", to: "/about", icon: <Users className="h-4 w-4" />, page: <About /> },
   { title: "Directory", to: "/directory", icon: <Users className="h-4 w-4" />, page: <Directory /> },
+  { title: "Member Profile", to: "/member/:id", icon: <Users className="h-4 w-4" />, page: <MemberProfile /> },
   { title: "Register", to: "/register", icon: <UserPlus className="h-4 w-4" />, page: <Register /> },
   { title: "Events", to: "/events", icon: <Calendar className="h-4 w-4" />, page: <Events /> },
   { title: "Event Detail", to: "/events/:id", icon: <Calendar className="h-4 w-4" />, page: <EventDetail /> },

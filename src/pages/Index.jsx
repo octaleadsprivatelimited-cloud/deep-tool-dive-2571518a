@@ -67,17 +67,17 @@ const Index = () => {
       <Header currentPage="Home" />
 
       {/* Hero Banner */}
-      <section className="relative min-h-[70vh] flex items-end overflow-hidden">
+      <section className="relative min-h-[50vh] md:min-h-[70vh] flex items-end overflow-hidden">
         <img src={heroBg} alt="" className="absolute inset-0 w-full h-full object-cover" width={1920} height={1080} />
         <div className="absolute inset-0 bg-gradient-to-t from-secondary via-secondary/40 to-transparent" />
-        <div className="container mx-auto px-4 relative z-10 pb-16 md:pb-24">
+        <div className="container mx-auto px-4 relative z-10 pb-10 md:pb-24">
           <div className="flex items-end justify-between gap-8">
           <div className="max-w-3xl flex-1">
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-heading font-black uppercase leading-tight mb-4 text-primary-foreground">
+            <h1 className="text-2xl md:text-5xl lg:text-6xl font-heading font-black uppercase leading-tight mb-3 text-primary-foreground">
               RISE Global Directory
             </h1>
-            <div className="w-24 h-1.5 bg-primary mb-6" />
-            <p className="text-lg md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed">
+            <div className="w-16 md:w-24 h-1.5 bg-primary mb-4 md:mb-6" />
+            <p className="text-base md:text-xl text-primary-foreground/80 max-w-xl leading-relaxed">
               Exploring the Excellence — Connecting Royal community professionals for networking, mentorship, and growth.
             </p>
           </div>

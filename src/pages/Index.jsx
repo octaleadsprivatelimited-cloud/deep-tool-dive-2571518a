@@ -56,7 +56,7 @@ const Index = () => {
   };
 
   const actionItems = [
-    { icon: UserPlus, label: 'Get', highlight: 'Membership', href: '/register' },
+    { icon: UserPlus, label: 'Join', highlight: 'Us', href: '/register' },
     { icon: Users, label: 'Become a', highlight: 'Volunteer', href: '/register' },
     { icon: Mail, label: 'Get Email', highlight: 'Updates', href: '/contact' },
     { icon: Heart, label: 'Make a', highlight: 'Donation', href: '/donate' },

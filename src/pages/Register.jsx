@@ -29,7 +29,9 @@ const registerSchema = z.object({
   address: z.string().max(300).optional(),
   dateOfBirth: z.date({ required_error: 'Date of birth is required' }),
   nativePlace: z.string().max(100).optional(),
+  education: z.string().max(200).optional(),
   profession: z.string().max(100).optional(),
+  designation: z.string().max(100).optional(),
   company: z.string().max(200).optional(),
   workingPlace: z.string().max(100).optional(),
   linkedin: z.string().url('Invalid URL').max(300).optional().or(z.literal('')),
@@ -46,7 +48,7 @@ const Register = () => {
     defaultValues: {
       surname: '', name: '', phone: '', showContactPublicly: false, showImagePublicly: true,
       email: '', address: '', nativePlace: '',
-      profession: '', company: '',
+      education: '', profession: '', designation: '', company: '', workingPlace: '',
       linkedin: '', instagram: '', facebook: '',
     },
   });
@@ -78,7 +80,9 @@ const Register = () => {
         address: data.address,
         dateOfBirth: data.dateOfBirth.toISOString(),
         nativePlace: data.nativePlace,
+        education: data.education,
         profession: data.profession,
+        designation: data.designation,
         company: data.company,
         workingPlace: data.workingPlace,
         linkedin: data.linkedin,
@@ -236,30 +240,47 @@ const Register = () => {
               {/* Professional Info */}
               <h3 className="font-heading font-bold text-lg">Professional Details</h3>
 
+              <FormField control={form.control} name="education" render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Education</FormLabel>
+                  <FormControl><Input placeholder="e.g. B.Tech, MBA, MBBS" {...field} /></FormControl>
+                  <FormMessage />
+                </FormItem>
+              )} />
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <FormField control={form.control} name="profession" render={({ field }) => (
                   <FormItem>
                     <FormLabel>Profession</FormLabel>
-                    <FormControl><Input placeholder="Your profession" {...field} /></FormControl>
+                    <FormControl><Input placeholder="e.g. Engineer, Doctor" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
-                <FormField control={form.control} name="company" render={({ field }) => (
+                <FormField control={form.control} name="designation" render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Company</FormLabel>
-                    <FormControl><Input placeholder="Company name" {...field} /></FormControl>
+                    <FormLabel>Designation</FormLabel>
+                    <FormControl><Input placeholder="e.g. Senior Manager, Director" {...field} /></FormControl>
                     <FormMessage />
                   </FormItem>
                 )} />
               </div>
 
-              <FormField control={form.control} name="workingPlace" render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Working Organization</FormLabel>
-                  <FormControl><Input placeholder="City where you work" {...field} /></FormControl>
-                  <FormMessage />
-                </FormItem>
-              )} />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <FormField control={form.control} name="company" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Organization</FormLabel>
+                    <FormControl><Input placeholder="Company / Organization name" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+                <FormField control={form.control} name="workingPlace" render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Working Place</FormLabel>
+                    <FormControl><Input placeholder="City where you work" {...field} /></FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )} />
+              </div>
 
               <Separator />
 

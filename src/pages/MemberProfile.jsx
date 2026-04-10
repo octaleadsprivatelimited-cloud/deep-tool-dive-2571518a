@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { MapPin, Briefcase, Building2, Mail, Phone, Calendar, Linkedin, Instagram, Facebook, ArrowLeft, Globe, Share2, ExternalLink } from 'lucide-react';
+import { MapPin, Briefcase, Building2, Mail, Phone, Calendar, Linkedin, Instagram, Facebook, ArrowLeft, Globe, Share2, ExternalLink, GraduationCap, BadgeCheck } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
 import Header from '@/components/Header';
@@ -89,9 +89,11 @@ const MemberProfile = () => {
   ].filter(s => s.url);
 
   const infoItems = [
+    { icon: GraduationCap, value: m.education, label: 'Education' },
     { icon: Briefcase, value: m.profession, label: 'Profession' },
-    { icon: Building2, value: m.company, label: 'Company' },
-    { icon: MapPin, value: m.workingPlace || m.location, label: 'Location' },
+    { icon: BadgeCheck, value: m.designation, label: 'Designation' },
+    { icon: Building2, value: m.company, label: 'Organization' },
+    { icon: MapPin, value: m.workingPlace || m.location, label: 'Working Place' },
     { icon: Globe, value: m.nativePlace, label: 'Native Place' },
     { icon: Calendar, value: dob ? format(dob, 'dd MMM yyyy') : null, label: 'Date of Birth' },
   ].filter(i => i.value);

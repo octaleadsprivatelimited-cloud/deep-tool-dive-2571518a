@@ -255,7 +255,7 @@ const Register = () => {
 
               <FormField control={form.control} name="workingPlace" render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Working Place</FormLabel>
+                  <FormLabel>Working Organization</FormLabel>
                   <FormControl><Input placeholder="City where you work" {...field} /></FormControl>
                   <FormMessage />
                 </FormItem>

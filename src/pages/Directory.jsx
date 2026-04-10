@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Search, MapPin, Briefcase, Linkedin, Instagram, Facebook } from 'lucide-react';
+import { Search, MapPin, Briefcase, Linkedin, Instagram, Facebook, GraduationCap, Building2, BadgeCheck } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
 import Header from '@/components/Header';
@@ -101,9 +101,24 @@ const Directory = () => {
                           <Briefcase className="w-3 h-3 shrink-0" /> <span className="truncate">{m.profession}</span>
                         </div>
                       )}
+                      {m.designation && (
+                        <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs">
+                          <BadgeCheck className="w-3 h-3 shrink-0" /> <span className="truncate">{m.designation}</span>
+                        </div>
+                      )}
+                      {m.company && (
+                        <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs">
+                          <Building2 className="w-3 h-3 shrink-0" /> <span className="truncate">{m.company}</span>
+                        </div>
+                      )}
                       {(m.workingPlace || m.location) && (
                         <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs">
                           <MapPin className="w-3 h-3 shrink-0" /> <span className="truncate">{m.workingPlace || m.location}</span>
+                        </div>
+                      )}
+                      {m.education && (
+                        <div className="flex items-center justify-center gap-1 text-muted-foreground text-xs">
+                          <GraduationCap className="w-3 h-3 shrink-0" /> <span className="truncate">{m.education}</span>
                         </div>
                       )}
                       <div className="flex items-center justify-center gap-2 mt-1">

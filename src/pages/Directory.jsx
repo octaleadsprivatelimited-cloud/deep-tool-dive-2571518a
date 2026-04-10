@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Search, MapPin, Briefcase, Linkedin, Instagram, Facebook } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Card, CardContent } from '@/components/ui/card';
@@ -80,7 +81,8 @@ const Directory = () => {
           ) : (
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
               {filtered.map((m) => (
-                <Card key={m.id} className="border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-[1.02]">
+                <Link key={m.id} to={`/member/${m.id}`} className="block">
+                <Card className="border-border hover:border-primary hover:shadow-lg transition-all duration-300 hover:scale-[1.02] cursor-pointer">
                   <CardContent className="p-0">
                     <div className="w-full aspect-[3/4] bg-primary/10 overflow-hidden">
                       {(m.image || m.photo) ? (
@@ -126,6 +128,7 @@ const Directory = () => {
                     </div>
                   </CardContent>
                 </Card>
+                </Link>
               ))}
             </div>
           )}
